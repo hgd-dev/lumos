@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LUMOS: Localized Unified Monitoring Optimization System">
+  <title>LUMOS v0.1</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">Localized Unified Monitoring Optimization System</p>
+      <h1>LUMOS <span>v0.1 Core</span></h1>
+    </div>
+    <div class="header-actions">
+      <button id="newScenarioButton" class="secondary-button" type="button">New scenario</button>
+      <button id="optimizeButton" class="primary-button" type="button">Optimize network</button>
+    </div>
+  </header>
+
+  <nav class="domain-tabs" aria-label="LUMOS modes">
+    <button class="domain-tab active" data-domain="core" type="button">Core</button>
+    <button class="domain-tab" data-domain="heat" type="button">Heat</button>
+    <button class="domain-tab" data-domain="air" type="button">Air</button>
+    <button class="domain-tab" data-domain="soil" type="button">Soil</button>
+    <button class="domain-tab" data-domain="water" type="button">Water</button>
+  </nav>
+
+  <main class="workspace">
+    <aside class="control-panel">
+      <section class="panel-section">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Current mode</p>
+            <h2 id="domainTitle">Core optimization</h2>
+          </div>
+          <span id="domainStatus" class="status-pill">Shared engine</span>
+        </div>
+        <p id="domainDescription" class="muted-copy"></p>
+      </section>
+
+      <section class="panel-section">
+        <div class="control-row">
+          <label for="monitorCount">New monitors</label>
+          <output id="monitorCountValue" for="monitorCount">10</output>
+        </div>
+        <input id="monitorCount" type="range" min="3" max="25" value="10" step="1">
+
+        <div class="control-row compact-top">
+          <label for="influenceScale">Influence scale</label>
+          <output id="influenceScaleValue" for="influenceScale">1.00x</output>
+        </div>
+        <input id="influenceScale" type="range" min="0.50" max="2.00" value="1.00" step="0.05">
+      </section>
+
+      <section class="panel-section">
+        <div class="section-heading small">
+          <div>
+            <p class="section-kicker">Shared objectives</p>
+            <h3>Optimization priorities</h3>
+          </div>
+          <button id="resetWeightsButton" class="text-button" type="button">Reset</button>
+        </div>
+        <div id="weightControls" class="weight-controls"></div>
+      </section>
+
+      <section class="panel-section">
+        <div class="section-heading small">
+          <div>
+            <p class="section-kicker">Social safeguards</p>
+            <h3>Network requirements</h3>
+          </div>
+        </div>
+        <label class="toggle-row">
+          <input id="fairnessConstraint" type="checkbox" checked>
+          <span>
+            <strong>Limit community information gaps</strong>
+            <small>Penalizes unequal remaining uncertainty across population groups.</small>
+          </span>
+        </label>
+        <label class="toggle-row">
+          <input id="minimumSeparation" type="checkbox" checked>
+          <span>
+            <strong>Prevent local oversaturation</strong>
+            <small>Rejects placements that are too close unless the domain requires collocation.</small>
+          </span>
+        </label>
+        <label class="toggle-row">
+          <input id="showCandidates" type="checkbox">
+          <span>
+            <strong>Show feasible candidate sites</strong>
+            <small>Displays every installation location considered by the solver.</small>
+          </span>
+        </label>
+      </section>
+
+      <section class="panel-section model-note">
+        <p class="section-kicker">Model status</p>
+        <p>This release uses a shared nonlinear influence and social-objective engine. The next model milestone replaces the information proxy with posterior variance from a probabilistic field model.</p>
+      </section>
+    </aside>
+
+    <section class="map-shell">
+      <div class="map-toolbar">
+        <div class="layer-switcher" role="group" aria-label="Map layer">
+          <button class="layer-button active" data-layer="risk" type="button">Risk</button>
+          <button class="layer-button" data-layer="uncertainty" type="button">Uncertainty</button>
+          <button class="layer-button" data-layer="exposure" type="button">Exposure</button>
+          <button class="layer-button" data-layer="vulnerability" type="button">Vulnerability</button>
+          <button class="layer-button" data-layer="remaining" type="button">Remaining uncertainty</button>
+        </div>
+        <div id="runStatus" class="run-status">Synthetic continuous-field scenario ready</div>
+      </div>
+      <div id="map" aria-label="LUMOS optimization map">
+        <canvas id="mapCanvas"></canvas>
+      </div>
+      <div class="legend" aria-hidden="true">
+        <span>Lower</span>
+        <div class="legend-gradient"></div>
+        <span>Higher</span>
+      </div>
+    </section>
+
+    <aside class="results-panel">
+      <section class="panel-section results-summary">
+        <p class="section-kicker">Recommended network</p>
+        <h2 id="resultHeading">Run the optimizer</h2>
+        <p id="resultSummary" class="muted-copy">LUMOS will compare its selected network against random, uniform, hotspot-only, and uncertainty-only strategies.</p>
+      </section>
+
+      <section class="metric-grid" aria-label="Optimization metrics">
+        <article class="metric-card">
+          <span>Objective</span>
+          <strong id="metricObjective">--</strong>
+        </article>
+        <article class="metric-card">
+          <span>Information</span>
+          <strong id="metricInformation">--</strong>
+        </article>
+        <article class="metric-card">
+          <span>Exposure</span>
+          <strong id="metricExposure">--</strong>
+        </article>
+        <article class="metric-card">
+          <span>Equity gap</span>
+          <strong id="metricFairness">--</strong>
+        </article>
+        <article class="metric-card">
+          <span>Redundancy</span>
+          <strong id="metricRedundancy">--</strong>
+        </article>
+        <article class="metric-card">
+          <span>Reliability</span>
+          <strong id="metricReliability">--</strong>
+        </article>
+      </section>
+
+      <section class="panel-section">
+        <div class="section-heading small">
+          <div>
+            <p class="section-kicker">Benchmarking</p>
+            <h3>Strategy comparison</h3>
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Strategy</th>
+                <th>Score</th>
+                <th>Info.</th>
+                <th>Equity gap</th>
+              </tr>
+            </thead>
+            <tbody id="baselineTableBody">
+              <tr><td colspan="4" class="empty-cell">No run yet</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel-section">
+        <div class="section-heading small">
+          <div>
+            <p class="section-kicker">Explainability</p>
+            <h3>Why these sites?</h3>
+          </div>
+        </div>
+        <ol id="explanationList" class="explanation-list">
+          <li>Selections will appear after optimization.</li>
+        </ol>
+      </section>
+    </aside>
+  </main>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
