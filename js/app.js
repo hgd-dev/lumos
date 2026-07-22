@@ -20,6 +20,10 @@ const elements = {
   monitorCountValue: document.querySelector("#monitorCountValue"),
   influenceScale: document.querySelector("#influenceScale"),
   influenceScaleValue: document.querySelector("#influenceScaleValue"),
+  measurementNoise: document.querySelector("#measurementNoise"),
+  measurementNoiseValue: document.querySelector("#measurementNoiseValue"),
+  fairnessLimit: document.querySelector("#fairnessLimit"),
+  fairnessLimitValue: document.querySelector("#fairnessLimitValue"),
   weightControls: document.querySelector("#weightControls"),
   fairnessConstraint: document.querySelector("#fairnessConstraint"),
   minimumSeparation: document.querySelector("#minimumSeparation"),
@@ -37,7 +41,8 @@ const elements = {
   metricExposure: document.querySelector("#metricExposure"),
   metricFairness: document.querySelector("#metricFairness"),
   metricRedundancy: document.querySelector("#metricRedundancy"),
-  metricReliability: document.querySelector("#metricReliability")
+  metricReliability: document.querySelector("#metricReliability"),
+  metricWorstGroup: document.querySelector("#metricWorstGroup")
 };
 
 const map = new LumosMap("map");
@@ -82,13 +87,14 @@ function resetResults() {
   elements.metricFairness.textContent = "--";
   elements.metricRedundancy.textContent = "--";
   elements.metricReliability.textContent = "--";
+  elements.metricWorstGroup.textContent = "--";
 }
 
 function loadScenario() {
   state.scenario = generateScenario(state.domainKey, state.seed);
   map.setScenario(state.scenario);
   resetResults();
-  elements.runStatus.textContent = `Scenario ${state.seed} ready · ${state.scenario.cells.length} evaluation points · ${state.scenario.candidates.length} candidate sites`;
+  elements.runStatus.textContent = `Scenario ${state.seed} ready · ${state.scenario.cells.length} evaluation points · ${state.scenario.candidates.length} candidates · ${state.scenario.observations.length} existing observations`;
 }
 
 function applyDomain(domainKey) {
@@ -107,13 +113,14 @@ function renderResult(result) {
   const metrics = result.metrics;
   map.setResult(result);
   elements.resultHeading.textContent = `${result.selected.length} recommended monitors`;
-  elements.resultSummary.textContent = `The shared ${state.domainKey} adapter selected a network that balances environmental information with exposure, equity, reliability, cost, and spatial redundancy.`;
+  elements.resultSummary.textContent = `${result.model.family} selected sites that reduce posterior epistemic uncertainty while balancing exposure, equity, reliability, cost, and redundancy.`;
   elements.metricObjective.textContent = metrics.score.toFixed(3);
   elements.metricInformation.textContent = formatPercent(metrics.information);
   elements.metricExposure.textContent = formatPercent(metrics.exposure);
   elements.metricFairness.textContent = formatPercent(metrics.fairnessGap);
   elements.metricRedundancy.textContent = formatPercent(metrics.redundancy);
   elements.metricReliability.textContent = formatPercent(metrics.reliability);
+  elements.metricWorstGroup.textContent = formatPercent(metrics.fairnessWorstLoss);
 
   elements.baselineTableBody.innerHTML = result.baselines.map((baseline) => `
     <tr class="${baseline.name === "LUMOS" ? "best-row" : ""}">
@@ -137,15 +144,22 @@ function runOptimization() {
       candidates: state.scenario.candidates,
       domain,
       weights: state.weights,
-      influenceScale: Number(elements.influenceScale.value),
+      observations: state.scenario.observations,
       fairnessConstraint: elements.fairnessConstraint.checked,
+      fairnessLimit: Number(elements.fairnessLimit.value),
+      modelSettings: {
+        measurementNoise: Number(elements.measurementNoise.value),
+        lengthScaleMultiplier: Number(elements.influenceScale.value),
+        transportAngle: state.scenario.model?.transportAngle
+      },
       seed: state.seed
     };
     state.result = optimizeNetwork(context, Number(elements.monitorCount.value), {
       minimumSeparation: elements.minimumSeparation.checked
     });
     renderResult(state.result);
-    elements.runStatus.textContent = `Optimization complete · best score ${state.result.metrics.score.toFixed(3)}`;
+    const constraintText = state.result.metrics.fairnessSatisfied ? "fairness target satisfied" : "fairness target not reached";
+    elements.runStatus.textContent = `Optimization complete · score ${state.result.metrics.score.toFixed(3)} · ${constraintText}`;
     elements.optimizeButton.disabled = false;
   });
 }
@@ -167,6 +181,12 @@ elements.monitorCount.addEventListener("input", () => {
 });
 elements.influenceScale.addEventListener("input", () => {
   elements.influenceScaleValue.value = `${Number(elements.influenceScale.value).toFixed(2)}x`;
+});
+elements.measurementNoise.addEventListener("input", () => {
+  elements.measurementNoiseValue.value = Number(elements.measurementNoise.value).toFixed(3);
+});
+elements.fairnessLimit.addEventListener("input", () => {
+  elements.fairnessLimitValue.value = formatPercent(Number(elements.fairnessLimit.value));
 });
 elements.showCandidates.addEventListener("change", () => map.setCandidatesVisible(elements.showCandidates.checked));
 elements.optimizeButton.addEventListener("click", runOptimization);

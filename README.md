@@ -1,54 +1,86 @@
-# LUMOS v0.1 Core
+# LUMOS v0.2 Bayesian Core
 
 **Localized Unified Monitoring Optimization System**
 
-LUMOS is a static, browser-executed environmental monitoring design tool intended for GitHub Pages. One shared optimization and social-objective engine branches into Heat, Air, Soil, and Water modes through domain adapters.
+LUMOS is a static, browser-executed environmental monitoring design tool intended for GitHub Pages. A shared probabilistic optimization engine branches into Heat, Air, Soil, and Water modes through domain adapters.
 
-## What this starter already does
+## What v0.2 does
 
 - Runs entirely in HTML, CSS, and JavaScript.
 - Uses one map interface with Core, Heat, Air, Soil, and Water tabs.
-- Generates continuous-field demonstration scenarios at 841 evaluation points.
-- Separates evaluation points from 169 feasible installation candidates.
-- Uses domain-specific proxy influence kernels.
-- Optimizes information, risk, exposure, vulnerability, community priorities, ecology, reliability, cost, fairness, and redundancy.
-- Supports minimum-separation and community-information-gap safeguards.
-- Runs greedy construction followed by local swap improvement.
-- Benchmarks LUMOS against random, uniform, hotspot, and uncertainty-only placement.
-- Explains the largest marginal reasons for selected sites.
+- Separates 841 dense field-evaluation points from 169 feasible installation candidates.
+- Conditions a Gaussian-process field model on six existing observations.
+- Uses domain-aware Matérn 3/2 covariance structures.
+- Selects new monitors by expected posterior epistemic-variance reduction.
+- Weights information gain by risk, human exposure, vulnerability, community priorities, and ecology.
+- Measures group-level remaining information loss and an uncertainty-equity gap.
+- Includes measurement noise, reliability, feasibility, cost, redundancy, and minimum-separation controls.
+- Benchmarks LUMOS against random, uniform, hotspot-only, and uncertainty-only placement.
+- Explains the largest marginal reasons for every selected site.
+- Runs without a backend, build system, external package, or API key.
 
-## Important scientific status
+## Scientific status
 
-This is the **architectural and executable model scaffold**, not the final research algorithm. Its information term currently measures uncertainty-weighted expected observation. The next model milestone will implement probabilistic field reconstruction and posterior epistemic-variance reduction, then add hard social information-quality constraints and Pareto optimization.
+Version 0.2 is the first genuine Bayesian experimental-design core. It replaces the v0.1 geometric observation proxy with conditional posterior variance reduction.
 
-Read `MODEL_SPECIFICATION.md` for equations and planned state-of-the-art extensions.
+It is not yet the final research system. Current limitations include:
+
+- synthetic demonstration fields rather than real environmental data;
+- a fixed Matérn family rather than learned hyperparameters;
+- one scalar objective rather than a generated Pareto frontier;
+- a strong fairness penalty and target diagnostic rather than a guaranteed constrained solver;
+- greedy sequential design rather than exact, continuous, or robust solver comparisons;
+- no temporal field, sensor relocation, or intervention-effect design yet.
+
+Read `MODEL_SPECIFICATION.md` for equations and architecture.
 
 ## Run locally
 
-ES modules require a local web server rather than opening `index.html` directly.
-
 ```bash
-python -m http.server 8000
+python -m http.server 5500
 ```
 
-Then open `http://localhost:8000`.
+Then open `http://localhost:5500`.
+
+## Run tests
+
+```bash
+npm test
+```
+
+No package installation is required; the test suite uses Node's built-in test runner.
 
 ## Publish on GitHub Pages
 
-1. Create a GitHub repository.
-2. Upload the contents of this folder to the repository root.
-3. Open **Settings > Pages**.
-4. Select **Deploy from a branch**.
-5. Select the `main` branch and `/root` directory.
+1. Push the repository to GitHub.
+2. Open **Settings > Pages**.
+3. Choose **Deploy from a branch**.
+4. Select `main` and `/root`.
 
-No backend, build step, API key, or package installation is required.
+## Core architecture
 
-## Planned milestones
+```text
+Shared standardized field and social layers
+                    |
+Existing observations -> Bayesian field conditioning
+                    |
+Domain-aware covariance and measurement model
+                    |
+Socially weighted posterior variance reduction
+                    |
+Sequential monitor selection and diagnostics
+                    |
+       +------------+------------+------------+
+       |            |            |            |
+     Heat          Air          Soil         Water
+```
 
-1. Replace synthetic information proxy with stationary GP posterior variance.
-2. Add sparse and nonstationary probabilistic backbones.
-3. Add explicit hard fairness and geographic-representation constraints.
-4. Implement Pareto-front generation.
-5. Connect the Heat adapter to free public data.
-6. Add Air, Soil, and Water data and physics adapters.
-7. Add sequential and pre/post-intervention monitoring design.
+## Next milestones
+
+1. Add hard constrained and Pareto optimization modes.
+2. Add A-optimal, D-optimal, mutual-information, and pivoted-Cholesky benchmarks.
+3. Add robust sensor-failure and uncertain-source scenarios.
+4. Add temporal and adaptive batch deployment.
+5. Connect the Heat adapter to versioned public datasets.
+6. Add intervention/control/spillover monitoring design.
+7. Add Air, Soil, and Water data and physics adapters incrementally.

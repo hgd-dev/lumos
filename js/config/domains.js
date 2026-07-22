@@ -5,6 +5,7 @@ export const DOMAINS = {
     description: "A domain-independent continuous-field scenario used to test information, exposure, equity, reliability, cost, and redundancy objectives before real environmental data are attached.",
     kernel: "radial",
     kernelSigma: 0.105,
+    gpLengthScale: 0.115,
     minSeparation: 0.055,
     weights: {
       information: 1.0,
@@ -25,6 +26,7 @@ export const DOMAINS = {
     description: "Prioritizes fine-scale heat burden, pedestrian and residential exposure, vulnerable populations, canopy deficits, and intervention-ready public locations.",
     kernel: "heat",
     kernelSigma: 0.09,
+    gpLengthScale: 0.10,
     minSeparation: 0.05,
     weights: {
       information: 0.85,
@@ -45,6 +47,10 @@ export const DOMAINS = {
     description: "Uses an anisotropic wind-aligned influence kernel and emphasizes source gradients, mobility exposure, calibration quality, and socially disaggregated prediction uncertainty.",
     kernel: "air",
     kernelSigma: 0.08,
+    gpLengthScale: 0.082,
+    gpAlongScale: 2.35,
+    gpAcrossScale: 0.56,
+    transportAngle: Math.PI * 0.16,
     minSeparation: 0.045,
     weights: {
       information: 1.0,
@@ -65,6 +71,7 @@ export const DOMAINS = {
     description: "Uses short-range spatial similarity and prioritizes contamination uncertainty, land-use history, sensitive public sites, ecological value, and representative sampling.",
     kernel: "soil",
     kernelSigma: 0.055,
+    gpLengthScale: 0.062,
     minSeparation: 0.035,
     weights: {
       information: 1.0,
@@ -85,6 +92,10 @@ export const DOMAINS = {
     description: "Demonstrates a flow-oriented network proxy. The final adapter will replace geometric distance with pipe, watershed, service-zone, and upstream/downstream connectivity.",
     kernel: "water",
     kernelSigma: 0.07,
+    gpLengthScale: 0.078,
+    gpAlongScale: 2.0,
+    gpAcrossScale: 0.46,
+    transportAngle: Math.PI * 0.3,
     minSeparation: 0.04,
     weights: {
       information: 1.0,

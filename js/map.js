@@ -26,7 +26,7 @@ export class LumosMap {
     this.context = this.canvas.getContext("2d");
     this.scenario = null;
     this.currentLayer = "risk";
-    this.metrics = null;
+    this.result = null;
     this.selected = [];
     this.showCandidates = false;
     this.pixelRatio = window.devicePixelRatio || 1;
@@ -47,7 +47,7 @@ export class LumosMap {
 
   setScenario(scenario) {
     this.scenario = scenario;
-    this.metrics = null;
+    this.result = null;
     this.selected = [];
     this.render();
   }
@@ -63,14 +63,14 @@ export class LumosMap {
   }
 
   setResult(result) {
-    this.metrics = result?.metrics ?? null;
+    this.result = result ?? null;
     this.selected = result?.selected ?? [];
     this.render();
   }
 
   valueForCell(cell, index) {
-    if (this.currentLayer === "remaining" && this.metrics?.coverage) {
-      return cell.uncertainty * (1 - this.metrics.coverage[index]);
+    if (this.currentLayer === "remaining" && this.result?.posteriorVariance) {
+      return this.result.posteriorVariance[index];
     }
     return cell[this.currentLayer] ?? cell.risk;
   }
@@ -165,6 +165,26 @@ export class LumosMap {
     }
   }
 
+
+  drawExistingObservations() {
+    if (!this.scenario?.observations) return;
+    const ctx = this.context;
+    for (const observation of this.scenario.observations) {
+      const point = this.point(observation.x, observation.y);
+      ctx.beginPath();
+      ctx.arc(point.x, point.y, 7, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(7,16,15,0.92)";
+      ctx.fill();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = "rgba(137,221,255,0.95)";
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(point.x, point.y, 2, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(137,221,255,0.95)";
+      ctx.fill();
+    }
+  }
+
   drawSensors() {
     const ctx = this.context;
     this.selected.forEach((candidate, index) => {
@@ -194,7 +214,8 @@ export class LumosMap {
     ctx.textAlign = "left";
     ctx.fillText("Synthetic continuous-field evaluation surface", 30, 26);
     ctx.textAlign = "right";
-    ctx.fillText(`${this.scenario?.cells.length ?? 0} evaluation points`, this.width - 30, 26);
+    const existing = this.scenario?.observations?.length ?? 0;
+    ctx.fillText(`${this.scenario?.cells.length ?? 0} evaluation points · ${existing} existing observations`, this.width - 30, 26);
   }
 
   render() {
@@ -202,6 +223,7 @@ export class LumosMap {
     this.drawBackground();
     this.drawField();
     this.drawCandidates();
+    this.drawExistingObservations();
     this.drawSensors();
     this.drawLabels();
   }

@@ -140,6 +140,25 @@ export function generateScenario(domainKey, seed = 20260721) {
     }
   }
 
+  const observationIndices = [8, 34, 72, 96, 132, 158]
+    .filter((index) => index < candidates.length);
+  const observations = observationIndices.map((index, observationIndex) => {
+    const site = candidates[index];
+    const nearest = cells.reduce((best, cell) => {
+      const distance = (cell.x - site.x) ** 2 + (cell.y - site.y) ** 2;
+      return distance < best.distance ? { cell, distance } : best;
+    }, { cell: cells[0], distance: Infinity }).cell;
+    return {
+      ...site,
+      id: `existing-${observationIndex + 1}`,
+      existing: true,
+      observedValue: clamp(nearest.risk + (random() - 0.5) * 0.08),
+      sensorNoise: 0.025 + random() * 0.02,
+      reliability: clamp(0.88 + random() * 0.1),
+      feasibility: 1
+    };
+  });
+
   return {
     seed,
     domainKey,
@@ -148,7 +167,11 @@ export function generateScenario(domainKey, seed = 20260721) {
       [center.lat - latSpan / 2, center.lng - lngSpan / 2],
       [center.lat + latSpan / 2, center.lng + lngSpan / 2]
     ],
+    model: {
+      transportAngle: domainKey === "air" ? Math.PI * 0.16 : domainKey === "water" ? Math.PI * 0.3 : 0
+    },
     cells,
-    candidates
+    candidates,
+    observations
   };
 }

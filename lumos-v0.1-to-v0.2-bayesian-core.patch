@@ -1,0 +1,2191 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+new file mode 100644
+index 0000000..e42e0cb
+--- /dev/null
++++ b/CHANGELOG.md
+@@ -0,0 +1,14 @@
++# Changelog
++
++## v0.2.0 - Bayesian Core
++
++- Replaced uncertainty-weighted geometric coverage with conditional Gaussian-process posterior variance reduction.
++- Added domain-aware Matérn 3/2 covariance for Core, Heat, Air, Soil, and Water modes.
++- Added conditioning on existing observations and reliability-adjusted measurement noise.
++- Added sequential Schur-complement covariance updates for fast browser execution.
++- Reframed social objectives as weighted information-quality gains.
++- Added group-level remaining uncertainty, worst-group loss, and a configurable equity-gap target.
++- Added existing-monitor visualization.
++- Added standardized scenario validation.
++- Updated all baselines to obey common feasibility and separation rules.
++- Expanded automated tests across all domain adapters.
+diff --git a/MODEL_SPECIFICATION.md b/MODEL_SPECIFICATION.md
+index caa2cff..95e46fe 100644
+--- a/MODEL_SPECIFICATION.md
++++ b/MODEL_SPECIFICATION.md
+@@ -1,191 +1,308 @@
+-# LUMOS Core Model Specification v0.1
++# LUMOS Core Model Specification v0.2
+ 
+-**LUMOS** stands for **Localized Unified Monitoring Optimization System**.
++**Localized Unified Monitoring Optimization System**
+ 
+-This file defines the domain-independent layer shared by the future Heat, Air, Soil, and Water adapters. Version 0.1 is an executable structural prototype. It uses nonlinear measurement influence and multi-objective network scoring; the next scientific milestone replaces its information proxy with posterior epistemic-variance reduction from a probabilistic field model.
++Version 0.2 defines the first executable Bayesian core shared by the Heat, Air, Soil, and Water branches. It uses a continuous latent-field interpretation, dense numerical evaluation points, discrete feasible installation candidates, existing observations, domain-aware covariance, and socially weighted sequential Bayesian experimental design.
+ 
+-## 1. Continuous environmental field
++## 1. Spatial objects
+ 
+-For domain \(d\), environmental condition is a latent field
++For environmental domain \(d\), the true condition is a latent field
+ 
+ \[
+-Z_d(s,t), \qquad s \in \Omega,\; t \in T.
++Z_d(s,t), \qquad s\in\Omega,\ t\in T.
+ \]
+ 
+-The model is conceptually continuous. Numerical evaluation uses a dense or adaptive point set \(V=\{s_i\}\), while installation is restricted to feasible candidate sites \(C=\{c_j\}\). The visualization gradient is separate from both.
++The browser approximates the spatial domain using three separate objects:
+ 
+-Each evaluation point contains standardized layers:
++1. **Evaluation points** \(V=\{s_i\}_{i=1}^n\), used for integration and performance measurement.
++2. **Candidate sites** \(C=\{c_j\}_{j=1}^m\), where installation is physically feasible.
++3. **Visualization surface**, a smooth map rendering that does not define the optimization resolution.
++
++Each evaluation point stores normalized layers:
+ 
+ - \(r_i\): predicted environmental risk;
+-- \(u_i\): reducible epistemic uncertainty;
+-- \(p_i\): dynamic human presence or exposure;
++- \(u_i\): initial epistemic uncertainty scale;
++- \(p_i\): human presence or exposure;
+ - \(v_i\): vulnerability priority;
+ - \(q_i\): community-designated priority;
+ - \(e_i\): ecological importance;
+-- \(g_i\): social or geographic group membership.
++- \(g_i\): social or geographic group.
+ 
+-Each candidate site contains:
++Each candidate site stores:
+ 
+-- installation cost \(c_j\);
+-- feasibility probability \(f_j\);
+-- operational reliability \(\rho_j\);
+-- sensor type and calibration properties in later versions.
++- cost \(c_j\);
++- feasibility \(f_j\);
++- reliability \(\rho_j\);
++- measurement-noise parameters;
++- domain covariates used by the covariance adapter.
+ 
+-## 2. Domain adapter
++## 2. Gaussian-process field model
+ 
+-The global engine receives a domain-specific influence function
++The latent field is represented as
+ 
+ \[
+-a^{(d)}_{ij,t}=K_d(s_i,c_j,t;\theta_d) \in [0,1].
++Z_d(s)\sim\mathcal{GP}\!\left(\mu_d(s),K_d(s,s')\right).
+ \]
+ 
+-The adapters ultimately use:
++The current executable focuses on posterior covariance because hypothetical future measurements change expected uncertainty before their values are known.
+ 
+-- **Heat:** surface covariance, canopy, imperviousness, urban morphology, time of day;
+-- **Air:** pollutant-specific atmospheric transport, wind, source geometry, street canyons, calibration;
+-- **Soil:** local covariance, land-use history, contamination pathways, depth and soil similarity;
+-- **Water:** pipe, watershed, service-zone, hydraulic, and upstream/downstream connectivity.
++The covariance is
+ 
+-Version 0.1 demonstrates radial, morphology-aware, anisotropic, local-similarity, and flow-oriented proxy kernels.
++\[
++K_d(a,b)=\sigma(a)\sigma(b)\,M_{3/2}\!\left(D_d(a,b)\right)\,S_d(a,b),
++\]
+ 
+-## 3. Expected effective observation
++where
+ 
+-For selected network \(S\), the expected observation of point \(i\) is
++\[
++M_{3/2}(z)=(1+\sqrt{3}z)e^{-\sqrt{3}z},
++\]
++
++\(D_d\) is a domain-specific normalized distance, \(S_d\) is a contextual-similarity kernel, and
+ 
+ \[
+-P_i(S)=1-\prod_{j\in S}\left(1-a_{ij}f_j\rho_j\right).
++\sigma(a)=0.16+0.84u(a).
+ \]
+ 
+-This nonlinear saturation means additional nearby monitors yield declining benefit rather than unlimited geometric coverage.
++Current domain adapters use:
++
++- **Core:** isotropic geographic distance;
++- **Heat:** geographic distance multiplied by built-form similarity;
++- **Air:** symmetric wind-axis anisotropy with longer correlation along transport;
++- **Soil:** short-range distance multiplied by land-class similarity;
++- **Water:** flow-axis anisotropy plus a network-branch distance proxy.
+ 
+-## 4. Shared objective components
++These are shared-interface demonstration kernels. Later domain releases will replace them with calibrated or physics-derived structures.
+ 
+-Version 0.1 calculates normalized terms:
++## 3. Existing observations
++
++Let existing observations occur at sites \(O=\{o_l\}_{l=1}^h\). Their measurement covariance is
+ 
+ \[
+-I(S)=\frac{\sum_i u_iP_i(S)}{\sum_i u_i}
++K_{OO}^{y}=K_{OO}+\Sigma_{\epsilon,O}.
+ \]
+ 
++The effective noise variance for site \(j\) is
++
+ \[
+-H(S)=\frac{\sum_i r_iP_i(S)}{\sum_i r_i}
++\sigma_{\epsilon,j}^2=
++\frac{\sigma_{\mathrm{base}}^2+\sigma_{\mathrm{sensor},j}^2}
++{\max(\rho_j f_j,\varepsilon)}.
+ \]
+ 
++Before optimizing new sites, LUMOS conditions all field and candidate covariances on existing observations:
++
+ \[
+-E(S)=\frac{\sum_i r_ip_iP_i(S)}{\sum_i r_ip_i}
++K_{AB\mid O}=K_{AB}-K_{AO}(K_{OO}^{y})^{-1}K_{OB}.
+ \]
+ 
++The baseline posterior variance at evaluation point \(i\) is therefore
++
+ \[
+-Q(S)=\frac{\sum_i r_ip_i(0.2+v_i)P_i(S)}{\sum_i r_ip_i(0.2+v_i)}
++\sigma_{i,0}^2=K_{ii\mid O}.
+ \]
+ 
++## 4. Sequential posterior update
++
++Suppose selected sites are \(S\), and candidate \(j\notin S\) is considered next. Its conditional measurement variance is
++
+ \[
+-C(S)=\frac{\sum_i (0.05+q_i)P_i(S)}{\sum_i(0.05+q_i)}
++v_{j\mid S}=K_{jj\mid O,S}+\sigma_{\epsilon,j}^2.
+ \]
+ 
++The expected variance reduction at evaluation point \(i\) is
++
+ \[
+-G(S)=\frac{\sum_i (0.05+e_i)P_i(S)}{\sum_i(0.05+e_i)}.
++\Delta\sigma_{i,j\mid S}^2=
++\frac{K_{ij\mid O,S}^2}{v_{j\mid S}}.
+ \]
+ 
+-The current information term \(I(S)\) is an uncertainty-weighted observation proxy. The planned Bayesian version is integrated epistemic variance reduction:
++After selecting \(j\), LUMOS performs the rank-one update
+ 
+ \[
+-I_{\mathrm{Bayes}}(S)=
+-\int_T\int_\Omega w(s,t)
+-\left[\sigma_{0,\mathrm{ep}}^2(s,t)-\sigma_{S,\mathrm{ep}}^2(s,t)\right]dsdt.
++\sigma_{i,S\cup\{j\}}^2=
++\sigma_{i,S}^2-
++\Delta\sigma_{i,j\mid S}^2.
+ \]
+ 
+-## 5. Social information fairness
++All remaining candidate and evaluation-to-candidate covariances are updated with the same Schur-complement step. This gives an efficient browser implementation related to sequential GP conditioning and pivoted covariance factorization.
++
++## 5. Socially weighted information objectives
+ 
+-For group \(g\), remaining weighted uncertainty is
++For nonnegative weights \(w_i\), normalized integrated variance reduction is
+ 
+ \[
+-L_g(S)=
+-\frac{\sum_{i:g_i=g}u_i\left(1-P_i(S)\right)\omega_i}
+-{\sum_{i:g_i=g}\omega_i},
++\mathcal I_w(S)=
++\frac{\sum_i w_i\left(\sigma_{i,0}^2-\sigma_{i,S}^2\right)}
++{\sum_i w_i\sigma_{i,0}^2}.
+ \]
+ 
+-where \(\omega_i\) includes exposure and vulnerability.
++Version 0.2 evaluates:
+ 
+-The v0.1 disparity measure is
++### Global information
+ 
+ \[
+-F_{\mathrm{gap}}(S)=\max_g L_g(S)-\min_g L_g(S).
++I(S)=\mathcal I_1(S).
+ \]
+ 
+-Later releases will support hard requirements \(L_g(S)\leq \tau_g\), worst-group minimization, rural representation, and Pareto-front reporting.
++### Risk-weighted information
+ 
+-## 6. Redundancy, cost, and reliability
++\[
++H(S)=\mathcal I_{0.05+r_i}(S).
++\]
++
++### Exposure-weighted information
++
++\[
++E(S)=\mathcal I_{0.02+r_ip_i}(S).
++\]
++
++### Vulnerability-weighted information
++
++\[
++Q(S)=\mathcal I_{0.02+r_ip_i(0.2+v_i)}(S).
++\]
++
++### Community-priority information
++
++\[
++C(S)=\mathcal I_{0.05+q_i}(S).
++\]
+ 
+-Let
++### Ecological information
+ 
+ \[
+-M_i(S)=\sum_{j\in S}a_{ij}f_j\rho_j.
++G(S)=\mathcal I_{0.05+e_i}(S).
+ \]
+ 
+-Then redundancy is
++These terms value information gained in socially or environmentally consequential areas rather than equating value with geometric proximity alone.
++
++## 6. Group information quality
++
++For group \(g\), define its remaining normalized epistemic loss as
+ 
+ \[
+-R(S)=\frac{1}{|V|}\sum_i\max(0,M_i(S)-1)^2.
++L_g(S)=
++\frac{\sum_{i:g_i=g}\omega_i\sigma_{i,S}^2}
++{\sum_{i:g_i=g}\omega_i\sigma_{i,0}^2},
+ \]
+ 
++where
++
++\[
++\omega_i=0.1+p_i(0.35+0.65v_i).
++\]
++
++The current disparity diagnostic is
++
++\[
++F_{\mathrm{gap}}(S)=\max_gL_g(S)-\min_gL_g(S),
++\]
++
++and worst-group information loss is
++
++\[
++F_{\mathrm{worst}}(S)=\max_gL_g(S).
++\]
++
++The interface accepts a target \(\tau_F\). Version 0.2 adds a sharply increasing penalty when
++
++\[
++F_{\mathrm{gap}}(S)>\tau_F.
++\]
++
++This is not yet a proof of hard feasibility. A later constrained solver will enforce group bounds directly and report infeasibility when no network under the budget can satisfy them.
++
++## 7. Reliability, cost, and redundancy
++
+ Expected network reliability is
+ 
+ \[
+-Y(S)=\frac{1}{|S|}\sum_{j\in S}f_j\rho_j.
++Y(S)=\frac{1}{|S|}\sum_{j\in S}\rho_jf_j.
+ \]
+ 
+ Normalized cost is
+ 
+ \[
+-K(S)=\frac{\sum_{j\in S}c_j}{|S|c_{\mathrm{reference}}}.
++K(S)=\frac{\sum_{j\in S}c_j}{1.25|S|}.
++\]
++
++Because GP variance reduction already has diminishing returns for correlated measurements, redundancy is partly intrinsic. LUMOS additionally reports mean squared pairwise latent correlation:
++
++\[
++R(S)=\frac{1}{\binom{|S|}{2}}
++\sum_{j<k}
++\left(
++\frac{K_{jk\mid O}}
++{\sqrt{K_{jj\mid O}K_{kk\mid O}}}
++\right)^2.
+ \]
+ 
+-## 7. Current scalar objective
++## 8. Current acquisition objective
++
++At each sequential step, candidate \(j\) is scored by the resulting network objective
++
++\[
++\begin{aligned}
++J(S)=
++&\;w_I I(S)+w_HH(S)+w_EE(S)+w_QQ(S)\\
++&+w_CC(S)+w_GG(S)+w_YY(S)\\
++&-w_RR(S)-w_F\Phi(F_{\mathrm{gap}}(S),\tau_F)-w_KK(S),
++\end{aligned}
++\]
+ 
+-The executable prototype solves
++where
+ 
+ \[
+-\max_S J(S)=
+- w_I I(S)+w_HH(S)+w_EE(S)+w_QQ(S)+w_CC(S)+w_GG(S)+w_YY(S)
+- -w_RR(S)-w_FF_{\mathrm{gap}}(S)-w_KK(S).
++\Phi(F,\tau)=F+7.5\max(0,F-\tau)^2.
+ \]
+ 
+-subject to monitor count and optional minimum-separation constraints.
++The greedy rule is
+ 
+-The final framework will prefer goal constraints and Pareto solutions over relying exclusively on a scalar weighted sum.
++\[
++j^*=\arg\max_{j\in C\setminus S}J(S\cup\{j\}),
++\]
+ 
+-## 8. Solver v0.1
++subject to feasibility and optional minimum-separation requirements.
+ 
+-1. Greedy marginal-gain construction.
+-2. Minimum-distance feasibility filtering.
+-3. Single-swap local improvement until convergence or pass limit.
+-4. Comparison against random, space-filling, hotspot, and uncertainty baselines.
++## 9. Baselines
+ 
+-Future benchmark solvers:
++Every run evaluates the same posterior-variance and social metrics for:
+ 
+-- Gaussian-process mutual-information greedy;
+-- A-optimal and D-optimal design;
+-- pivoted Cholesky and Nystrom approximations;
+-- exact mixed-integer formulations on small cases;
+-- continuous sparse-GP placement;
+-- NSGA-II or comparable Pareto optimization;
+-- robust scenario and sequential active-learning policies.
++- LUMOS Bayesian sequential selection;
++- random feasible placement;
++- uniform farthest-point placement;
++- highest local risk;
++- highest initial local uncertainty.
+ 
+-## 9. Planned branch structure
++The research version will add serious Bayesian-design baselines including A-optimality, D-optimality, mutual information, pivoted Cholesky, exact small-instance optimization, and equity-aware constrained placement.
+ 
+-The shared model remains above four domain branches:
++## 10. Shared-to-domain architecture
+ 
+ ```text
+-Continuous latent environmental field
+-        + shared social layers
+-        + shared operational layers
++Continuous latent field and standardized layers
+                     |
+-            LUMOS Core Engine
++Existing observations and sensor characteristics
+                     |
+-        +-----------+-----------+-----------+
+-        |           |           |           |
+-      Heat         Air         Soil        Water
+-  surface model  transport   local field  flow network
++Shared Bayesian posterior and social metrics
++                    |
++Shared constrained / Pareto solver family
++                    |
++      +-------------+-------------+-------------+
++      |             |             |             |
++    Heat           Air           Soil          Water
++ morphology     transport     local/depth    graph/flow
++ covariance     covariance     covariance     covariance
+ ```
+ 
+-Each mode remains a tab in one map-based LUMOS application, rather than becoming a separate product.
++All four domains remain visible as modes in one map application. Incremental MVP releases change the data and physical adapter beneath the shared core rather than creating separate products.
++
++## 11. Next mathematical upgrades
++
++1. Learn or validate kernel hyperparameters from held-out observations.
++2. Separate epistemic and aleatoric uncertainty explicitly.
++3. Add hard group, geographic, rural, calibration, and uptime constraints.
++4. Generate Pareto-optimal networks instead of only a scalar solution.
++5. Add robust optimization under source, weather, demand, and failure scenarios.
++6. Add temporal covariance, staged budgets, and adaptive relocation.
++7. Optimize statistical power for intervention, control, boundary, and spillover monitoring.
+diff --git a/README.md b/README.md
+index 9c5541e..ec5aba7 100644
+--- a/README.md
++++ b/README.md
+@@ -1,54 +1,86 @@
+-# LUMOS v0.1 Core
++# LUMOS v0.2 Bayesian Core
+ 
+ **Localized Unified Monitoring Optimization System**
+ 
+-LUMOS is a static, browser-executed environmental monitoring design tool intended for GitHub Pages. One shared optimization and social-objective engine branches into Heat, Air, Soil, and Water modes through domain adapters.
++LUMOS is a static, browser-executed environmental monitoring design tool intended for GitHub Pages. A shared probabilistic optimization engine branches into Heat, Air, Soil, and Water modes through domain adapters.
+ 
+-## What this starter already does
++## What v0.2 does
+ 
+ - Runs entirely in HTML, CSS, and JavaScript.
+ - Uses one map interface with Core, Heat, Air, Soil, and Water tabs.
+-- Generates continuous-field demonstration scenarios at 841 evaluation points.
+-- Separates evaluation points from 169 feasible installation candidates.
+-- Uses domain-specific proxy influence kernels.
+-- Optimizes information, risk, exposure, vulnerability, community priorities, ecology, reliability, cost, fairness, and redundancy.
+-- Supports minimum-separation and community-information-gap safeguards.
+-- Runs greedy construction followed by local swap improvement.
+-- Benchmarks LUMOS against random, uniform, hotspot, and uncertainty-only placement.
+-- Explains the largest marginal reasons for selected sites.
++- Separates 841 dense field-evaluation points from 169 feasible installation candidates.
++- Conditions a Gaussian-process field model on six existing observations.
++- Uses domain-aware Matérn 3/2 covariance structures.
++- Selects new monitors by expected posterior epistemic-variance reduction.
++- Weights information gain by risk, human exposure, vulnerability, community priorities, and ecology.
++- Measures group-level remaining information loss and an uncertainty-equity gap.
++- Includes measurement noise, reliability, feasibility, cost, redundancy, and minimum-separation controls.
++- Benchmarks LUMOS against random, uniform, hotspot-only, and uncertainty-only placement.
++- Explains the largest marginal reasons for every selected site.
++- Runs without a backend, build system, external package, or API key.
+ 
+-## Important scientific status
++## Scientific status
+ 
+-This is the **architectural and executable model scaffold**, not the final research algorithm. Its information term currently measures uncertainty-weighted expected observation. The next model milestone will implement probabilistic field reconstruction and posterior epistemic-variance reduction, then add hard social information-quality constraints and Pareto optimization.
++Version 0.2 is the first genuine Bayesian experimental-design core. It replaces the v0.1 geometric observation proxy with conditional posterior variance reduction.
+ 
+-Read `MODEL_SPECIFICATION.md` for equations and planned state-of-the-art extensions.
++It is not yet the final research system. Current limitations include:
++
++- synthetic demonstration fields rather than real environmental data;
++- a fixed Matérn family rather than learned hyperparameters;
++- one scalar objective rather than a generated Pareto frontier;
++- a strong fairness penalty and target diagnostic rather than a guaranteed constrained solver;
++- greedy sequential design rather than exact, continuous, or robust solver comparisons;
++- no temporal field, sensor relocation, or intervention-effect design yet.
++
++Read `MODEL_SPECIFICATION.md` for equations and architecture.
+ 
+ ## Run locally
+ 
+-ES modules require a local web server rather than opening `index.html` directly.
++```bash
++python -m http.server 5500
++```
++
++Then open `http://localhost:5500`.
++
++## Run tests
+ 
+ ```bash
+-python -m http.server 8000
++npm test
+ ```
+ 
+-Then open `http://localhost:8000`.
++No package installation is required; the test suite uses Node's built-in test runner.
+ 
+ ## Publish on GitHub Pages
+ 
+-1. Create a GitHub repository.
+-2. Upload the contents of this folder to the repository root.
+-3. Open **Settings > Pages**.
+-4. Select **Deploy from a branch**.
+-5. Select the `main` branch and `/root` directory.
+-
+-No backend, build step, API key, or package installation is required.
++1. Push the repository to GitHub.
++2. Open **Settings > Pages**.
++3. Choose **Deploy from a branch**.
++4. Select `main` and `/root`.
++
++## Core architecture
++
++```text
++Shared standardized field and social layers
++                    |
++Existing observations -> Bayesian field conditioning
++                    |
++Domain-aware covariance and measurement model
++                    |
++Socially weighted posterior variance reduction
++                    |
++Sequential monitor selection and diagnostics
++                    |
++       +------------+------------+------------+
++       |            |            |            |
++     Heat          Air          Soil         Water
++```
+ 
+-## Planned milestones
++## Next milestones
+ 
+-1. Replace synthetic information proxy with stationary GP posterior variance.
+-2. Add sparse and nonstationary probabilistic backbones.
+-3. Add explicit hard fairness and geographic-representation constraints.
+-4. Implement Pareto-front generation.
+-5. Connect the Heat adapter to free public data.
+-6. Add Air, Soil, and Water data and physics adapters.
+-7. Add sequential and pre/post-intervention monitoring design.
++1. Add hard constrained and Pareto optimization modes.
++2. Add A-optimal, D-optimal, mutual-information, and pivoted-Cholesky benchmarks.
++3. Add robust sensor-failure and uncertain-source scenarios.
++4. Add temporal and adaptive batch deployment.
++5. Connect the Heat adapter to versioned public datasets.
++6. Add intervention/control/spillover monitoring design.
++7. Add Air, Soil, and Water data and physics adapters incrementally.
+diff --git a/index.html b/index.html
+index 1dd55ba..f698d29 100644
+--- a/index.html
++++ b/index.html
+@@ -4,14 +4,14 @@
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="description" content="LUMOS: Localized Unified Monitoring Optimization System">
+-  <title>LUMOS v0.1</title>
++  <title>LUMOS v0.2 Bayesian Core</title>
+   <link rel="stylesheet" href="css/styles.css">
+ </head>
+ <body>
+   <header class="app-header">
+     <div>
+       <p class="eyebrow">Localized Unified Monitoring Optimization System</p>
+-      <h1>LUMOS <span>v0.1 Core</span></h1>
++      <h1>LUMOS <span>v0.2 Bayesian Core</span></h1>
+     </div>
+     <div class="header-actions">
+       <button id="newScenarioButton" class="secondary-button" type="button">New scenario</button>
+@@ -48,10 +48,16 @@
+         <input id="monitorCount" type="range" min="3" max="25" value="10" step="1">
+ 
+         <div class="control-row compact-top">
+-          <label for="influenceScale">Influence scale</label>
++          <label for="influenceScale">Correlation length</label>
+           <output id="influenceScaleValue" for="influenceScale">1.00x</output>
+         </div>
+-        <input id="influenceScale" type="range" min="0.50" max="2.00" value="1.00" step="0.05">
++        <input id="influenceScale" type="range" min="0.55" max="1.80" value="1.00" step="0.05">
++
++        <div class="control-row compact-top">
++          <label for="measurementNoise">Measurement noise</label>
++          <output id="measurementNoiseValue" for="measurementNoise">0.060</output>
++        </div>
++        <input id="measurementNoise" type="range" min="0.01" max="0.18" value="0.06" step="0.005">
+       </section>
+ 
+       <section class="panel-section">
+@@ -79,6 +85,12 @@
+             <small>Penalizes unequal remaining uncertainty across population groups.</small>
+           </span>
+         </label>
++        <div class="control-row compact-top">
++          <label for="fairnessLimit">Maximum group uncertainty gap</label>
++          <output id="fairnessLimitValue" for="fairnessLimit">16%</output>
++        </div>
++        <input id="fairnessLimit" type="range" min="0.03" max="0.35" value="0.16" step="0.01">
++
+         <label class="toggle-row">
+           <input id="minimumSeparation" type="checkbox" checked>
+           <span>
+@@ -97,7 +109,7 @@
+ 
+       <section class="panel-section model-note">
+         <p class="section-kicker">Model status</p>
+-        <p>This release uses a shared nonlinear influence and social-objective engine. The next model milestone replaces the information proxy with posterior variance from a probabilistic field model.</p>
++        <p>This release conditions a domain-aware Matérn Gaussian process on existing observations, then selects new monitors by socially weighted posterior epistemic-variance reduction. It is an experimental-design core, not a geometric coverage proxy.</p>
+       </section>
+     </aside>
+ 
+@@ -135,7 +147,7 @@
+           <strong id="metricObjective">--</strong>
+         </article>
+         <article class="metric-card">
+-          <span>Information</span>
++          <span>Bayes information</span>
+           <strong id="metricInformation">--</strong>
+         </article>
+         <article class="metric-card">
+@@ -154,6 +166,10 @@
+           <span>Reliability</span>
+           <strong id="metricReliability">--</strong>
+         </article>
++        <article class="metric-card">
++          <span>Worst-group uncertainty</span>
++          <strong id="metricWorstGroup">--</strong>
++        </article>
+       </section>
+ 
+       <section class="panel-section">
+diff --git a/js/app.js b/js/app.js
+index e9bab1a..a025783 100644
+--- a/js/app.js
++++ b/js/app.js
+@@ -20,6 +20,10 @@ const elements = {
+   monitorCountValue: document.querySelector("#monitorCountValue"),
+   influenceScale: document.querySelector("#influenceScale"),
+   influenceScaleValue: document.querySelector("#influenceScaleValue"),
++  measurementNoise: document.querySelector("#measurementNoise"),
++  measurementNoiseValue: document.querySelector("#measurementNoiseValue"),
++  fairnessLimit: document.querySelector("#fairnessLimit"),
++  fairnessLimitValue: document.querySelector("#fairnessLimitValue"),
+   weightControls: document.querySelector("#weightControls"),
+   fairnessConstraint: document.querySelector("#fairnessConstraint"),
+   minimumSeparation: document.querySelector("#minimumSeparation"),
+@@ -37,7 +41,8 @@ const elements = {
+   metricExposure: document.querySelector("#metricExposure"),
+   metricFairness: document.querySelector("#metricFairness"),
+   metricRedundancy: document.querySelector("#metricRedundancy"),
+-  metricReliability: document.querySelector("#metricReliability")
++  metricReliability: document.querySelector("#metricReliability"),
++  metricWorstGroup: document.querySelector("#metricWorstGroup")
+ };
+ 
+ const map = new LumosMap("map");
+@@ -82,13 +87,14 @@ function resetResults() {
+   elements.metricFairness.textContent = "--";
+   elements.metricRedundancy.textContent = "--";
+   elements.metricReliability.textContent = "--";
++  elements.metricWorstGroup.textContent = "--";
+ }
+ 
+ function loadScenario() {
+   state.scenario = generateScenario(state.domainKey, state.seed);
+   map.setScenario(state.scenario);
+   resetResults();
+-  elements.runStatus.textContent = `Scenario ${state.seed} ready · ${state.scenario.cells.length} evaluation points · ${state.scenario.candidates.length} candidate sites`;
++  elements.runStatus.textContent = `Scenario ${state.seed} ready · ${state.scenario.cells.length} evaluation points · ${state.scenario.candidates.length} candidates · ${state.scenario.observations.length} existing observations`;
+ }
+ 
+ function applyDomain(domainKey) {
+@@ -107,13 +113,14 @@ function renderResult(result) {
+   const metrics = result.metrics;
+   map.setResult(result);
+   elements.resultHeading.textContent = `${result.selected.length} recommended monitors`;
+-  elements.resultSummary.textContent = `The shared ${state.domainKey} adapter selected a network that balances environmental information with exposure, equity, reliability, cost, and spatial redundancy.`;
++  elements.resultSummary.textContent = `${result.model.family} selected sites that reduce posterior epistemic uncertainty while balancing exposure, equity, reliability, cost, and redundancy.`;
+   elements.metricObjective.textContent = metrics.score.toFixed(3);
+   elements.metricInformation.textContent = formatPercent(metrics.information);
+   elements.metricExposure.textContent = formatPercent(metrics.exposure);
+   elements.metricFairness.textContent = formatPercent(metrics.fairnessGap);
+   elements.metricRedundancy.textContent = formatPercent(metrics.redundancy);
+   elements.metricReliability.textContent = formatPercent(metrics.reliability);
++  elements.metricWorstGroup.textContent = formatPercent(metrics.fairnessWorstLoss);
+ 
+   elements.baselineTableBody.innerHTML = result.baselines.map((baseline) => `
+     <tr class="${baseline.name === "LUMOS" ? "best-row" : ""}">
+@@ -137,15 +144,22 @@ function runOptimization() {
+       candidates: state.scenario.candidates,
+       domain,
+       weights: state.weights,
+-      influenceScale: Number(elements.influenceScale.value),
++      observations: state.scenario.observations,
+       fairnessConstraint: elements.fairnessConstraint.checked,
++      fairnessLimit: Number(elements.fairnessLimit.value),
++      modelSettings: {
++        measurementNoise: Number(elements.measurementNoise.value),
++        lengthScaleMultiplier: Number(elements.influenceScale.value),
++        transportAngle: state.scenario.model?.transportAngle
++      },
+       seed: state.seed
+     };
+     state.result = optimizeNetwork(context, Number(elements.monitorCount.value), {
+       minimumSeparation: elements.minimumSeparation.checked
+     });
+     renderResult(state.result);
+-    elements.runStatus.textContent = `Optimization complete · best score ${state.result.metrics.score.toFixed(3)}`;
++    const constraintText = state.result.metrics.fairnessSatisfied ? "fairness target satisfied" : "fairness target not reached";
++    elements.runStatus.textContent = `Optimization complete · score ${state.result.metrics.score.toFixed(3)} · ${constraintText}`;
+     elements.optimizeButton.disabled = false;
+   });
+ }
+@@ -168,6 +182,12 @@ elements.monitorCount.addEventListener("input", () => {
+ elements.influenceScale.addEventListener("input", () => {
+   elements.influenceScaleValue.value = `${Number(elements.influenceScale.value).toFixed(2)}x`;
+ });
++elements.measurementNoise.addEventListener("input", () => {
++  elements.measurementNoiseValue.value = Number(elements.measurementNoise.value).toFixed(3);
++});
++elements.fairnessLimit.addEventListener("input", () => {
++  elements.fairnessLimitValue.value = formatPercent(Number(elements.fairnessLimit.value));
++});
+ elements.showCandidates.addEventListener("change", () => map.setCandidatesVisible(elements.showCandidates.checked));
+ elements.optimizeButton.addEventListener("click", runOptimization);
+ elements.newScenarioButton.addEventListener("click", () => {
+diff --git a/js/config/domains.js b/js/config/domains.js
+index 7dd7ca9..f39e5ce 100644
+--- a/js/config/domains.js
++++ b/js/config/domains.js
+@@ -5,6 +5,7 @@ export const DOMAINS = {
+     description: "A domain-independent continuous-field scenario used to test information, exposure, equity, reliability, cost, and redundancy objectives before real environmental data are attached.",
+     kernel: "radial",
+     kernelSigma: 0.105,
++    gpLengthScale: 0.115,
+     minSeparation: 0.055,
+     weights: {
+       information: 1.0,
+@@ -25,6 +26,7 @@ export const DOMAINS = {
+     description: "Prioritizes fine-scale heat burden, pedestrian and residential exposure, vulnerable populations, canopy deficits, and intervention-ready public locations.",
+     kernel: "heat",
+     kernelSigma: 0.09,
++    gpLengthScale: 0.10,
+     minSeparation: 0.05,
+     weights: {
+       information: 0.85,
+@@ -45,6 +47,10 @@ export const DOMAINS = {
+     description: "Uses an anisotropic wind-aligned influence kernel and emphasizes source gradients, mobility exposure, calibration quality, and socially disaggregated prediction uncertainty.",
+     kernel: "air",
+     kernelSigma: 0.08,
++    gpLengthScale: 0.082,
++    gpAlongScale: 2.35,
++    gpAcrossScale: 0.56,
++    transportAngle: Math.PI * 0.16,
+     minSeparation: 0.045,
+     weights: {
+       information: 1.0,
+@@ -65,6 +71,7 @@ export const DOMAINS = {
+     description: "Uses short-range spatial similarity and prioritizes contamination uncertainty, land-use history, sensitive public sites, ecological value, and representative sampling.",
+     kernel: "soil",
+     kernelSigma: 0.055,
++    gpLengthScale: 0.062,
+     minSeparation: 0.035,
+     weights: {
+       information: 1.0,
+@@ -85,6 +92,10 @@ export const DOMAINS = {
+     description: "Demonstrates a flow-oriented network proxy. The final adapter will replace geometric distance with pipe, watershed, service-zone, and upstream/downstream connectivity.",
+     kernel: "water",
+     kernelSigma: 0.07,
++    gpLengthScale: 0.078,
++    gpAlongScale: 2.0,
++    gpAcrossScale: 0.46,
++    transportAngle: Math.PI * 0.3,
+     minSeparation: 0.04,
+     weights: {
+       information: 1.0,
+diff --git a/js/data/synthetic.js b/js/data/synthetic.js
+index 8309f43..9379d57 100644
+--- a/js/data/synthetic.js
++++ b/js/data/synthetic.js
+@@ -140,6 +140,25 @@ export function generateScenario(domainKey, seed = 20260721) {
+     }
+   }
+ 
++  const observationIndices = [8, 34, 72, 96, 132, 158]
++    .filter((index) => index < candidates.length);
++  const observations = observationIndices.map((index, observationIndex) => {
++    const site = candidates[index];
++    const nearest = cells.reduce((best, cell) => {
++      const distance = (cell.x - site.x) ** 2 + (cell.y - site.y) ** 2;
++      return distance < best.distance ? { cell, distance } : best;
++    }, { cell: cells[0], distance: Infinity }).cell;
++    return {
++      ...site,
++      id: `existing-${observationIndex + 1}`,
++      existing: true,
++      observedValue: clamp(nearest.risk + (random() - 0.5) * 0.08),
++      sensorNoise: 0.025 + random() * 0.02,
++      reliability: clamp(0.88 + random() * 0.1),
++      feasibility: 1
++    };
++  });
++
+   return {
+     seed,
+     domainKey,
+@@ -148,7 +167,11 @@ export function generateScenario(domainKey, seed = 20260721) {
+       [center.lat - latSpan / 2, center.lng - lngSpan / 2],
+       [center.lat + latSpan / 2, center.lng + lngSpan / 2]
+     ],
++    model: {
++      transportAngle: domainKey === "air" ? Math.PI * 0.16 : domainKey === "water" ? Math.PI * 0.3 : 0
++    },
+     cells,
+-    candidates
++    candidates,
++    observations
+   };
+ }
+diff --git a/js/map.js b/js/map.js
+index 72fe84e..2fec142 100644
+--- a/js/map.js
++++ b/js/map.js
+@@ -26,7 +26,7 @@ export class LumosMap {
+     this.context = this.canvas.getContext("2d");
+     this.scenario = null;
+     this.currentLayer = "risk";
+-    this.metrics = null;
++    this.result = null;
+     this.selected = [];
+     this.showCandidates = false;
+     this.pixelRatio = window.devicePixelRatio || 1;
+@@ -47,7 +47,7 @@ export class LumosMap {
+ 
+   setScenario(scenario) {
+     this.scenario = scenario;
+-    this.metrics = null;
++    this.result = null;
+     this.selected = [];
+     this.render();
+   }
+@@ -63,14 +63,14 @@ export class LumosMap {
+   }
+ 
+   setResult(result) {
+-    this.metrics = result?.metrics ?? null;
++    this.result = result ?? null;
+     this.selected = result?.selected ?? [];
+     this.render();
+   }
+ 
+   valueForCell(cell, index) {
+-    if (this.currentLayer === "remaining" && this.metrics?.coverage) {
+-      return cell.uncertainty * (1 - this.metrics.coverage[index]);
++    if (this.currentLayer === "remaining" && this.result?.posteriorVariance) {
++      return this.result.posteriorVariance[index];
+     }
+     return cell[this.currentLayer] ?? cell.risk;
+   }
+@@ -165,6 +165,26 @@ export class LumosMap {
+     }
+   }
+ 
++
++  drawExistingObservations() {
++    if (!this.scenario?.observations) return;
++    const ctx = this.context;
++    for (const observation of this.scenario.observations) {
++      const point = this.point(observation.x, observation.y);
++      ctx.beginPath();
++      ctx.arc(point.x, point.y, 7, 0, Math.PI * 2);
++      ctx.fillStyle = "rgba(7,16,15,0.92)";
++      ctx.fill();
++      ctx.lineWidth = 2;
++      ctx.strokeStyle = "rgba(137,221,255,0.95)";
++      ctx.stroke();
++      ctx.beginPath();
++      ctx.arc(point.x, point.y, 2, 0, Math.PI * 2);
++      ctx.fillStyle = "rgba(137,221,255,0.95)";
++      ctx.fill();
++    }
++  }
++
+   drawSensors() {
+     const ctx = this.context;
+     this.selected.forEach((candidate, index) => {
+@@ -194,7 +214,8 @@ export class LumosMap {
+     ctx.textAlign = "left";
+     ctx.fillText("Synthetic continuous-field evaluation surface", 30, 26);
+     ctx.textAlign = "right";
+-    ctx.fillText(`${this.scenario?.cells.length ?? 0} evaluation points`, this.width - 30, 26);
++    const existing = this.scenario?.observations?.length ?? 0;
++    ctx.fillText(`${this.scenario?.cells.length ?? 0} evaluation points · ${existing} existing observations`, this.width - 30, 26);
+   }
+ 
+   render() {
+@@ -202,6 +223,7 @@ export class LumosMap {
+     this.drawBackground();
+     this.drawField();
+     this.drawCandidates();
++    this.drawExistingObservations();
+     this.drawSensors();
+     this.drawLabels();
+   }
+diff --git a/js/model/bayesian/design.js b/js/model/bayesian/design.js
+new file mode 100644
+index 0000000..3724514
+--- /dev/null
++++ b/js/model/bayesian/design.js
+@@ -0,0 +1,209 @@
++import { latentCovariance, latentVariance, measurementNoiseVariance } from "./kernel.js";
++import { cholesky, solveCholesky } from "./linalg.js";
++
++const EPSILON = 1e-12;
++
++function matrix(rows, columns) {
++  return Array.from({ length: rows }, () => new Float64Array(columns));
++}
++
++function conditionOnObservations(evaluationPoints, candidates, observations, domain, modelSettings) {
++  const evaluationCount = evaluationPoints.length;
++  const candidateCount = candidates.length;
++  const observationCount = observations.length;
++
++  const posteriorVariance = Float64Array.from(evaluationPoints, (point) => latentVariance(point));
++  const candidateCovariance = matrix(candidateCount, candidateCount);
++  const evaluationCandidateCovariance = matrix(evaluationCount, candidateCount);
++
++  for (let left = 0; left < candidateCount; left += 1) {
++    for (let right = 0; right <= left; right += 1) {
++      const value = latentCovariance(candidates[left], candidates[right], domain, modelSettings);
++      candidateCovariance[left][right] = value;
++      candidateCovariance[right][left] = value;
++    }
++  }
++
++  for (let pointIndex = 0; pointIndex < evaluationCount; pointIndex += 1) {
++    for (let candidateIndex = 0; candidateIndex < candidateCount; candidateIndex += 1) {
++      evaluationCandidateCovariance[pointIndex][candidateIndex] = latentCovariance(
++        evaluationPoints[pointIndex], candidates[candidateIndex], domain, modelSettings
++      );
++    }
++  }
++
++  if (observationCount === 0) {
++    return { posteriorVariance, candidateCovariance, evaluationCandidateCovariance };
++  }
++
++  const observationCovariance = matrix(observationCount, observationCount);
++  const candidateObservationCovariance = matrix(candidateCount, observationCount);
++  const evaluationObservationCovariance = matrix(evaluationCount, observationCount);
++
++  for (let left = 0; left < observationCount; left += 1) {
++    for (let right = 0; right <= left; right += 1) {
++      const value = latentCovariance(observations[left], observations[right], domain, modelSettings)
++        + (left === right ? measurementNoiseVariance(observations[left], modelSettings) : 0);
++      observationCovariance[left][right] = value;
++      observationCovariance[right][left] = value;
++    }
++  }
++
++  for (let candidateIndex = 0; candidateIndex < candidateCount; candidateIndex += 1) {
++    for (let observationIndex = 0; observationIndex < observationCount; observationIndex += 1) {
++      candidateObservationCovariance[candidateIndex][observationIndex] = latentCovariance(
++        candidates[candidateIndex], observations[observationIndex], domain, modelSettings
++      );
++    }
++  }
++
++  for (let pointIndex = 0; pointIndex < evaluationCount; pointIndex += 1) {
++    for (let observationIndex = 0; observationIndex < observationCount; observationIndex += 1) {
++      evaluationObservationCovariance[pointIndex][observationIndex] = latentCovariance(
++        evaluationPoints[pointIndex], observations[observationIndex], domain, modelSettings
++      );
++    }
++  }
++
++  const lower = cholesky(observationCovariance);
++  const solvedCandidateRows = candidateObservationCovariance.map((row) => solveCholesky(lower, row));
++  const solvedEvaluationRows = evaluationObservationCovariance.map((row) => solveCholesky(lower, row));
++
++  for (let pointIndex = 0; pointIndex < evaluationCount; pointIndex += 1) {
++    let reduction = 0;
++    for (let observationIndex = 0; observationIndex < observationCount; observationIndex += 1) {
++      reduction += evaluationObservationCovariance[pointIndex][observationIndex]
++        * solvedEvaluationRows[pointIndex][observationIndex];
++    }
++    posteriorVariance[pointIndex] = Math.max(EPSILON, posteriorVariance[pointIndex] - reduction);
++  }
++
++  for (let left = 0; left < candidateCount; left += 1) {
++    for (let right = 0; right < candidateCount; right += 1) {
++      let reduction = 0;
++      for (let observationIndex = 0; observationIndex < observationCount; observationIndex += 1) {
++        reduction += candidateObservationCovariance[left][observationIndex]
++          * solvedCandidateRows[right][observationIndex];
++      }
++      candidateCovariance[left][right] -= reduction;
++    }
++  }
++
++  for (let pointIndex = 0; pointIndex < evaluationCount; pointIndex += 1) {
++    for (let candidateIndex = 0; candidateIndex < candidateCount; candidateIndex += 1) {
++      let reduction = 0;
++      for (let observationIndex = 0; observationIndex < observationCount; observationIndex += 1) {
++        reduction += evaluationObservationCovariance[pointIndex][observationIndex]
++          * solvedCandidateRows[candidateIndex][observationIndex];
++      }
++      evaluationCandidateCovariance[pointIndex][candidateIndex] -= reduction;
++    }
++  }
++
++  return { posteriorVariance, candidateCovariance, evaluationCandidateCovariance };
++}
++
++export function prepareBayesianDesign({
++  evaluationPoints,
++  candidates,
++  observations = [],
++  domain,
++  modelSettings = {}
++}) {
++  const conditioned = conditionOnObservations(
++    evaluationPoints,
++    candidates,
++    observations,
++    domain,
++    modelSettings
++  );
++
++  return {
++    evaluationPoints,
++    candidates,
++    observations,
++    domain,
++    modelSettings,
++    baselineVariance: Float64Array.from(conditioned.posteriorVariance),
++    posteriorVariance: conditioned.posteriorVariance,
++    candidateCovariance: conditioned.candidateCovariance,
++    evaluationCandidateCovariance: conditioned.evaluationCandidateCovariance,
++    selectedIndices: []
++  };
++}
++
++export function cloneDesign(design) {
++  return {
++    ...design,
++    baselineVariance: Float64Array.from(design.baselineVariance),
++    posteriorVariance: Float64Array.from(design.baselineVariance),
++    candidateCovariance: design.candidateCovariance.map((row) => Float64Array.from(row)),
++    evaluationCandidateCovariance: design.evaluationCandidateCovariance.map((row) => Float64Array.from(row)),
++    selectedIndices: []
++  };
++}
++
++export function candidateVariance(design, candidateIndex) {
++  return Math.max(
++    EPSILON,
++    design.candidateCovariance[candidateIndex][candidateIndex]
++      + measurementNoiseVariance(design.candidates[candidateIndex], design.modelSettings)
++  );
++}
++
++export function marginalVarianceReduction(design, candidateIndex) {
++  const denominator = candidateVariance(design, candidateIndex);
++  const reduction = new Float64Array(design.evaluationPoints.length);
++
++  for (let pointIndex = 0; pointIndex < reduction.length; pointIndex += 1) {
++    const covariance = design.evaluationCandidateCovariance[pointIndex][candidateIndex];
++    reduction[pointIndex] = Math.min(
++      design.posteriorVariance[pointIndex],
++      Math.max(0, covariance * covariance / denominator)
++    );
++  }
++
++  return reduction;
++}
++
++export function assimilateCandidate(design, candidateIndex) {
++  const denominator = candidateVariance(design, candidateIndex);
++  const candidateCount = design.candidates.length;
++  const evaluationCount = design.evaluationPoints.length;
++  const pivotColumn = new Float64Array(candidateCount);
++
++  for (let index = 0; index < candidateCount; index += 1) {
++    pivotColumn[index] = design.candidateCovariance[index][candidateIndex];
++  }
++
++  for (let pointIndex = 0; pointIndex < evaluationCount; pointIndex += 1) {
++    const pivotCovariance = design.evaluationCandidateCovariance[pointIndex][candidateIndex];
++    design.posteriorVariance[pointIndex] = Math.max(
++      EPSILON,
++      design.posteriorVariance[pointIndex] - pivotCovariance * pivotCovariance / denominator
++    );
++
++    for (let candidate = 0; candidate < candidateCount; candidate += 1) {
++      design.evaluationCandidateCovariance[pointIndex][candidate] -= (
++        pivotCovariance * pivotColumn[candidate] / denominator
++      );
++    }
++  }
++
++  for (let left = 0; left < candidateCount; left += 1) {
++    for (let right = 0; right < candidateCount; right += 1) {
++      design.candidateCovariance[left][right] -= (
++        pivotColumn[left] * pivotColumn[right] / denominator
++      );
++    }
++  }
++
++  design.selectedIndices.push(candidateIndex);
++  return design;
++}
++
++export function evaluateSelectedOrder(baseDesign, selectedIndices) {
++  const design = cloneDesign(baseDesign);
++  for (const candidateIndex of selectedIndices) assimilateCandidate(design, candidateIndex);
++  return design;
++}
+diff --git a/js/model/bayesian/kernel.js b/js/model/bayesian/kernel.js
+new file mode 100644
+index 0000000..8ef4710
+--- /dev/null
++++ b/js/model/bayesian/kernel.js
+@@ -0,0 +1,91 @@
++const SQRT_THREE = Math.sqrt(3);
++
++function clamp(value, min, max) {
++  return Math.max(min, Math.min(max, value));
++}
++
++function rotate(dx, dy, angle) {
++  const cosine = Math.cos(angle);
++  const sine = Math.sin(angle);
++  return {
++    parallel: dx * cosine + dy * sine,
++    perpendicular: -dx * sine + dy * cosine
++  };
++}
++
++function matern32(distance) {
++  const scaled = SQRT_THREE * Math.max(0, distance);
++  return (1 + scaled) * Math.exp(-scaled);
++}
++
++function epistemicScale(point) {
++  const uncertainty = Number.isFinite(point.uncertainty)
++    ? point.uncertainty
++    : Number.isFinite(point.localUncertainty)
++      ? point.localUncertainty
++      : 0.5;
++  return 0.16 + 0.84 * clamp(uncertainty, 0, 1);
++}
++
++function spatialDistance(a, b, domain, modelSettings = {}) {
++  const dx = a.x - b.x;
++  const dy = a.y - b.y;
++  const baseLength = Math.max(0.012, domain.gpLengthScale ?? domain.kernelSigma ?? 0.1);
++  const lengthScale = baseLength * (modelSettings.lengthScaleMultiplier ?? 1);
++
++  if (domain.kernel === "air") {
++    const angle = modelSettings.transportAngle
++      ?? domain.transportAngle
++      ?? Math.PI * 0.16;
++    const rotated = rotate(dx, dy, angle);
++    const along = lengthScale * (domain.gpAlongScale ?? 2.2);
++    const across = lengthScale * (domain.gpAcrossScale ?? 0.58);
++    return Math.hypot(rotated.parallel / along, rotated.perpendicular / across);
++  }
++
++  if (domain.kernel === "water") {
++    const angle = modelSettings.transportAngle
++      ?? domain.transportAngle
++      ?? Math.PI * 0.3;
++    const rotated = rotate(dx, dy, angle);
++    const along = lengthScale * (domain.gpAlongScale ?? 2.0);
++    const across = lengthScale * (domain.gpAcrossScale ?? 0.48);
++    const branchDistance = Math.abs((a.networkBranch ?? 0) - (b.networkBranch ?? 0));
++    return Math.hypot(rotated.parallel / along, rotated.perpendicular / across, branchDistance * 0.72);
++  }
++
++  return Math.hypot(dx, dy) / lengthScale;
++}
++
++function contextualSimilarity(a, b, domain) {
++  if (domain.kernel === "soil") {
++    const difference = ((a.landClass ?? 0.5) - (b.landClass ?? 0.5)) / 0.24;
++    return Math.exp(-0.5 * difference * difference);
++  }
++
++  if (domain.kernel === "heat") {
++    const difference = ((a.builtForm ?? 0.5) - (b.builtForm ?? 0.5)) / 0.32;
++    return 0.55 + 0.45 * Math.exp(-0.5 * difference * difference);
++  }
++
++  return 1;
++}
++
++export function latentCovariance(a, b, domain, modelSettings = {}) {
++  const distance = spatialDistance(a, b, domain, modelSettings);
++  const correlation = matern32(distance) * contextualSimilarity(a, b, domain);
++  return epistemicScale(a) * epistemicScale(b) * correlation;
++}
++
++export function latentVariance(point) {
++  const scale = epistemicScale(point);
++  return scale * scale;
++}
++
++export function measurementNoiseVariance(site, modelSettings = {}) {
++  const baseNoise = Math.max(0.0025, modelSettings.measurementNoise ?? 0.06);
++  const reliability = clamp(site.reliability ?? 0.9, 0.08, 1);
++  const feasibility = clamp(site.feasibility ?? 1, 0.08, 1);
++  const sensorNoise = Math.max(0, site.sensorNoise ?? 0);
++  return (baseNoise * baseNoise + sensorNoise * sensorNoise) / (reliability * feasibility);
++}
+diff --git a/js/model/bayesian/linalg.js b/js/model/bayesian/linalg.js
+new file mode 100644
+index 0000000..a6771b3
+--- /dev/null
++++ b/js/model/bayesian/linalg.js
+@@ -0,0 +1,56 @@
++const JITTER = 1e-10;
++
++export function cholesky(matrix) {
++  const size = matrix.length;
++  const lower = Array.from({ length: size }, () => new Float64Array(size));
++
++  for (let row = 0; row < size; row += 1) {
++    for (let column = 0; column <= row; column += 1) {
++      let value = matrix[row][column];
++      for (let index = 0; index < column; index += 1) {
++        value -= lower[row][index] * lower[column][index];
++      }
++
++      if (row === column) {
++        lower[row][column] = Math.sqrt(Math.max(value, JITTER));
++      } else {
++        lower[row][column] = value / lower[column][column];
++      }
++    }
++  }
++
++  return lower;
++}
++
++export function solveCholesky(lower, vector) {
++  const size = lower.length;
++  const forward = new Float64Array(size);
++  const result = new Float64Array(size);
++
++  for (let row = 0; row < size; row += 1) {
++    let value = vector[row];
++    for (let column = 0; column < row; column += 1) {
++      value -= lower[row][column] * forward[column];
++    }
++    forward[row] = value / lower[row][row];
++  }
++
++  for (let row = size - 1; row >= 0; row -= 1) {
++    let value = forward[row];
++    for (let column = row + 1; column < size; column += 1) {
++      value -= lower[column][row] * result[column];
++    }
++    result[row] = value / lower[row][row];
++  }
++
++  return result;
++}
++
++export function quadraticFormSolve(lower, vector) {
++  const solution = solveCholesky(lower, vector);
++  let value = 0;
++  for (let index = 0; index < vector.length; index += 1) {
++    value += vector[index] * solution[index];
++  }
++  return value;
++}
+diff --git a/js/model/bayesian/metrics.js b/js/model/bayesian/metrics.js
+new file mode 100644
+index 0000000..6376e92
+--- /dev/null
++++ b/js/model/bayesian/metrics.js
+@@ -0,0 +1,155 @@
++const EPSILON = 1e-12;
++
++function weightedReduction(points, baselineVariance, posteriorVariance, weightFunction) {
++  let gained = 0;
++  let available = 0;
++
++  for (let index = 0; index < points.length; index += 1) {
++    const weight = Math.max(0, weightFunction(points[index]));
++    available += weight * baselineVariance[index];
++    gained += weight * Math.max(0, baselineVariance[index] - posteriorVariance[index]);
++  }
++
++  return available > EPSILON ? gained / available : 0;
++}
++
++function fairnessMetrics(points, baselineVariance, posteriorVariance) {
++  const groups = new Map();
++
++  for (let index = 0; index < points.length; index += 1) {
++    const point = points[index];
++    const group = point.communityGroup;
++    if (!groups.has(group)) groups.set(group, { baseline: 0, remaining: 0 });
++    const weight = 0.1 + point.exposure * (0.35 + 0.65 * point.vulnerability);
++    const entry = groups.get(group);
++    entry.baseline += weight * baselineVariance[index];
++    entry.remaining += weight * posteriorVariance[index];
++  }
++
++  const groupLosses = [...groups.entries()].map(([group, values]) => ({
++    group,
++    loss: values.remaining / Math.max(EPSILON, values.baseline)
++  }));
++  const losses = groupLosses.map((entry) => entry.loss);
++  const worstLoss = losses.length ? Math.max(...losses) : 0;
++  const bestLoss = losses.length ? Math.min(...losses) : 0;
++  const meanLoss = losses.length
++    ? losses.reduce((sum, value) => sum + value, 0) / losses.length
++    : 0;
++
++  return {
++    gap: worstLoss - bestLoss,
++    worstLoss,
++    meanLoss,
++    groupLosses
++  };
++}
++
++function pairwiseRedundancy(selectedIndices, baseCandidateCovariance) {
++  if (selectedIndices.length < 2) return 0;
++  let sum = 0;
++  let pairs = 0;
++
++  for (let left = 0; left < selectedIndices.length; left += 1) {
++    for (let right = left + 1; right < selectedIndices.length; right += 1) {
++      const leftIndex = selectedIndices[left];
++      const rightIndex = selectedIndices[right];
++      const covariance = baseCandidateCovariance[leftIndex][rightIndex];
++      const denominator = Math.sqrt(
++        Math.max(EPSILON, baseCandidateCovariance[leftIndex][leftIndex])
++        * Math.max(EPSILON, baseCandidateCovariance[rightIndex][rightIndex])
++      );
++      const correlation = covariance / denominator;
++      sum += correlation * correlation;
++      pairs += 1;
++    }
++  }
++
++  return pairs ? sum / pairs : 0;
++}
++
++export function calculateBayesianMetrics({
++  points,
++  candidates,
++  selectedIndices,
++  baselineVariance,
++  posteriorVariance,
++  baseCandidateCovariance,
++  weights,
++  fairnessConstraint = true,
++  fairnessLimit = 0.16
++}) {
++  const information = weightedReduction(points, baselineVariance, posteriorVariance, () => 1);
++  const risk = weightedReduction(points, baselineVariance, posteriorVariance, (point) => 0.05 + point.risk);
++  const exposure = weightedReduction(points, baselineVariance, posteriorVariance, (point) => 0.02 + point.risk * point.exposure);
++  const equity = weightedReduction(
++    points,
++    baselineVariance,
++    posteriorVariance,
++    (point) => 0.02 + point.risk * point.exposure * (0.2 + point.vulnerability)
++  );
++  const community = weightedReduction(points, baselineVariance, posteriorVariance, (point) => 0.05 + point.communityPriority);
++  const ecology = weightedReduction(points, baselineVariance, posteriorVariance, (point) => 0.05 + point.ecology);
++  const fairness = fairnessMetrics(points, baselineVariance, posteriorVariance);
++  const redundancy = pairwiseRedundancy(selectedIndices, baseCandidateCovariance);
++  const selected = selectedIndices.map((index) => candidates[index]);
++  const reliability = selected.length
++    ? selected.reduce((sum, site) => sum + site.reliability * site.feasibility, 0) / selected.length
++    : 0;
++  const cost = selected.length
++    ? selected.reduce((sum, site) => sum + site.cost, 0) / (selected.length * 1.25)
++    : 0;
++  const fairnessExcess = Math.max(0, fairness.gap - fairnessLimit);
++  const fairnessPenalty = fairnessConstraint
++    ? fairness.gap + 7.5 * fairnessExcess * fairnessExcess
++    : fairness.gap * 0.12;
++
++  const score = selected.length === 0
++    ? 0
++    : weights.information * information
++      + weights.risk * risk
++      + weights.exposure * exposure
++      + weights.equity * equity
++      + weights.community * community
++      + weights.ecology * ecology
++      + weights.reliability * reliability
++      - weights.redundancy * redundancy
++      - weights.fairness * fairnessPenalty
++      - weights.cost * cost;
++
++  return {
++    score,
++    information,
++    risk,
++    exposure,
++    equity,
++    community,
++    ecology,
++    reliability,
++    redundancy,
++    fairnessGap: fairness.gap,
++    fairnessWorstLoss: fairness.worstLoss,
++    fairnessMeanLoss: fairness.meanLoss,
++    groupLosses: fairness.groupLosses,
++    fairnessSatisfied: !fairnessConstraint || fairness.gap <= fairnessLimit + 1e-9,
++    fairnessLimit,
++    cost,
++    posteriorVariance
++  };
++}
++
++export function summarizeMarginalContributions(before, after) {
++  return [
++    ["Bayesian information", after.information - before.information],
++    ["risk-weighted information", after.risk - before.risk],
++    ["exposure-weighted information", after.exposure - before.exposure],
++    ["vulnerability-weighted information", after.equity - before.equity],
++    ["community-priority information", after.community - before.community],
++    ["ecological information", after.ecology - before.ecology],
++    ["group information parity", before.fairnessGap - after.fairnessGap]
++  ]
++    .sort((left, right) => right[1] - left[1])
++    .slice(0, 3)
++    .map(([label, value]) => `${label} ${value >= 0 ? "+" : ""}${(value * 100).toFixed(1)} pts`)
++    .join("; ");
++}
+diff --git a/js/model/objective.js b/js/model/objective.js
+index ca96f26..141d7bb 100644
+--- a/js/model/objective.js
++++ b/js/model/objective.js
+@@ -1,142 +1,42 @@
+-import { influence } from "./kernels.js";
+-
+-const EPSILON = 1e-9;
+-
+-function weightedCoverage(cells, coverage, weightFunction) {
+-  let numerator = 0;
+-  let denominator = 0;
+-  for (let i = 0; i < cells.length; i += 1) {
+-    const weight = Math.max(0, weightFunction(cells[i]));
+-    numerator += weight * coverage[i];
+-    denominator += weight;
+-  }
+-  return denominator > EPSILON ? numerator / denominator : 0;
+-}
+-
+-function computeCoverage(cells, selected, domain, influenceScale) {
+-  const coverage = new Float64Array(cells.length);
+-  const additive = new Float64Array(cells.length);
+-
+-  for (let i = 0; i < cells.length; i += 1) {
+-    let remaining = 1;
+-    let sum = 0;
+-    for (const candidate of selected) {
+-      const effective = influence(candidate, cells[i], domain, influenceScale)
+-        * candidate.reliability
+-        * candidate.feasibility;
+-      remaining *= 1 - Math.min(0.999, effective);
+-      sum += effective;
+-    }
+-    coverage[i] = 1 - remaining;
+-    additive[i] = sum;
+-  }
+-  return { coverage, additive };
+-}
+-
+-function computeFairness(cells, coverage) {
+-  const groups = new Map();
+-  for (let i = 0; i < cells.length; i += 1) {
+-    const cell = cells[i];
+-    const group = cell.communityGroup;
+-    if (!groups.has(group)) groups.set(group, { weightedRemaining: 0, weight: 0 });
+-    const entry = groups.get(group);
+-    const socialWeight = 0.2 + cell.exposure * (0.5 + 0.5 * cell.vulnerability);
+-    entry.weightedRemaining += cell.uncertainty * (1 - coverage[i]) * socialWeight;
+-    entry.weight += socialWeight;
+-  }
+-
+-  const losses = [...groups.values()].map((entry) => entry.weightedRemaining / Math.max(EPSILON, entry.weight));
+-  const maxLoss = Math.max(...losses);
+-  const minLoss = Math.min(...losses);
+-  const meanLoss = losses.reduce((sum, value) => sum + value, 0) / Math.max(1, losses.length);
+-  return {
+-    gap: maxLoss - minLoss,
+-    worstLoss: maxLoss,
+-    meanLoss,
+-    groupLosses: losses
+-  };
+-}
+-
+-function computeRedundancy(additive) {
+-  let redundancy = 0;
+-  for (const value of additive) {
+-    redundancy += Math.max(0, value - 1) ** 2;
+-  }
+-  return redundancy / Math.max(1, additive.length);
+-}
+-
+-export function evaluateNetwork({ cells, selected, domain, weights, influenceScale = 1, fairnessConstraint = true }) {
+-  if (selected.length === 0) {
+-    return {
+-      score: 0,
+-      information: 0,
+-      risk: 0,
+-      exposure: 0,
+-      equity: 0,
+-      community: 0,
+-      ecology: 0,
+-      reliability: 0,
+-      redundancy: 0,
+-      fairnessGap: 1,
+-      cost: 0,
+-      coverage: new Float64Array(cells.length)
+-    };
+-  }
+-
+-  const { coverage, additive } = computeCoverage(cells, selected, domain, influenceScale);
+-  const information = weightedCoverage(cells, coverage, (cell) => cell.uncertainty);
+-  const risk = weightedCoverage(cells, coverage, (cell) => cell.risk);
+-  const exposure = weightedCoverage(cells, coverage, (cell) => cell.risk * cell.exposure);
+-  const equity = weightedCoverage(cells, coverage, (cell) => cell.risk * cell.exposure * (0.2 + cell.vulnerability));
+-  const community = weightedCoverage(cells, coverage, (cell) => 0.05 + cell.communityPriority);
+-  const ecology = weightedCoverage(cells, coverage, (cell) => 0.05 + cell.ecology);
+-  const redundancy = computeRedundancy(additive);
+-  const fairness = computeFairness(cells, coverage);
+-  const reliability = selected.reduce((sum, item) => sum + item.reliability * item.feasibility, 0) / selected.length;
+-  const cost = selected.reduce((sum, item) => sum + item.cost, 0) / Math.max(EPSILON, selected.length * 1.25);
+-
+-  const fairnessPenalty = fairnessConstraint ? fairness.gap : fairness.gap * 0.15;
+-  const score =
+-    weights.information * information
+-    + weights.risk * risk
+-    + weights.exposure * exposure
+-    + weights.equity * equity
+-    + weights.community * community
+-    + weights.ecology * ecology
+-    + weights.reliability * reliability
+-    - weights.redundancy * redundancy
+-    - weights.fairness * fairnessPenalty
+-    - weights.cost * cost;
+-
+-  return {
+-    score,
+-    information,
+-    risk,
+-    exposure,
+-    equity,
+-    community,
+-    ecology,
+-    reliability,
+-    redundancy,
+-    fairnessGap: fairness.gap,
+-    fairnessWorstLoss: fairness.worstLoss,
+-    cost,
+-    coverage
+-  };
+-}
+-
+-export function explainCandidate(candidate, cells, selectedBefore, domain, weights, influenceScale, fairnessConstraint) {
+-  const before = evaluateNetwork({ cells, selected: selectedBefore, domain, weights, influenceScale, fairnessConstraint });
+-  const after = evaluateNetwork({ cells, selected: [...selectedBefore, candidate], domain, weights, influenceScale, fairnessConstraint });
+-  const changes = [
+-    ["information gain", after.information - before.information],
+-    ["risk detection", after.risk - before.risk],
+-    ["exposure representation", after.exposure - before.exposure],
+-    ["equity coverage", after.equity - before.equity],
+-    ["community priority", after.community - before.community],
+-    ["ecological representation", after.ecology - before.ecology],
+-    ["fairness improvement", before.fairnessGap - after.fairnessGap]
+-  ].sort((a, b) => b[1] - a[1]);
+-
+-  return changes.slice(0, 2).map(([label, value]) => `${label} +${Math.max(0, value * 100).toFixed(1)} pts`).join("; ");
++import { prepareBayesianDesign, evaluateSelectedOrder } from "./bayesian/design.js";
++import { calculateBayesianMetrics } from "./bayesian/metrics.js";
++
++export function evaluateNetwork({
++  cells,
++  candidates = [],
++  observations = [],
++  selected = [],
++  domain,
++  weights,
++  fairnessConstraint = true,
++  fairnessLimit = 0.16,
++  modelSettings = {}
++}) {
++  const allCandidates = candidates.length ? candidates : selected;
++  const selectedIds = new Set(selected.map((candidate) => candidate.id));
++  const selectedIndices = allCandidates
++    .map((candidate, index) => ({ candidate, index }))
++    .filter(({ candidate }) => selectedIds.has(candidate.id))
++    .map(({ index }) => index);
++  const design = prepareBayesianDesign({
++    evaluationPoints: cells,
++    candidates: allCandidates,
++    observations,
++    domain,
++    modelSettings
++  });
++  const baseCandidateCovariance = design.candidateCovariance.map((row) => Float64Array.from(row));
++  const evaluated = evaluateSelectedOrder(design, selectedIndices);
++
++  return calculateBayesianMetrics({
++    points: cells,
++    candidates: allCandidates,
++    selectedIndices,
++    baselineVariance: evaluated.baselineVariance,
++    posteriorVariance: evaluated.posteriorVariance,
++    baseCandidateCovariance,
++    weights,
++    fairnessConstraint,
++    fairnessLimit
++  });
+ }
+diff --git a/js/model/optimizer.js b/js/model/optimizer.js
+index 961160b..b09850f 100644
+--- a/js/model/optimizer.js
++++ b/js/model/optimizer.js
+@@ -1,66 +1,116 @@
+ import { candidateDistance } from "./kernels.js";
+-import { evaluateNetwork, explainCandidate } from "./objective.js";
++import {
++  prepareBayesianDesign,
++  cloneDesign,
++  marginalVarianceReduction,
++  assimilateCandidate,
++  evaluateSelectedOrder
++} from "./bayesian/design.js";
++import {
++  calculateBayesianMetrics,
++  summarizeMarginalContributions
++} from "./bayesian/metrics.js";
++import { validateScenario } from "./schema/scenario.js";
+ 
+-function isSeparated(candidate, selected, minimumDistance) {
+-  return selected.every((item) => candidateDistance(candidate, item) >= minimumDistance);
++function isSeparated(candidate, selectedIndices, candidates, minimumDistance, fixedSites = []) {
++  return selectedIndices.every((index) => (
++    candidateDistance(candidate, candidates[index]) >= minimumDistance
++  )) && fixedSites.every((site) => candidateDistance(candidate, site) >= minimumDistance);
+ }
+ 
+-function compareCandidates(candidate, best, selected, context) {
+-  const metrics = evaluateNetwork({ ...context, selected: [...selected, candidate] });
+-  if (!best || metrics.score > best.metrics.score) return { candidate, metrics };
+-  return best;
++function posteriorAfterReduction(posteriorVariance, reduction) {
++  const trial = new Float64Array(posteriorVariance.length);
++  for (let index = 0; index < trial.length; index += 1) {
++    trial[index] = Math.max(1e-12, posteriorVariance[index] - reduction[index]);
++  }
++  return trial;
+ }
+ 
+-function greedySelect(context, count, options = {}) {
+-  const selected = [];
+-  const remaining = new Set(context.candidates.map((candidate) => candidate.id));
++function metricsFor(design, selectedIndices, posteriorVariance, context, baseCandidateCovariance) {
++  return calculateBayesianMetrics({
++    points: design.evaluationPoints,
++    candidates: design.candidates,
++    selectedIndices,
++    baselineVariance: design.baselineVariance,
++    posteriorVariance,
++    baseCandidateCovariance,
++    weights: context.weights,
++    fairnessConstraint: context.fairnessConstraint,
++    fairnessLimit: context.fairnessLimit
++  });
++}
++
++function greedyBayesianSelect(baseDesign, count, context, options = {}) {
++  const design = cloneDesign(baseDesign);
++  const baseCandidateCovariance = baseDesign.candidateCovariance.map((row) => Float64Array.from(row));
++  const selectedIndices = [];
++  const selectedSet = new Set();
++  const explanations = [];
+   const minimumDistance = options.minimumSeparation ? context.domain.minSeparation : 0;
+ 
+-  while (selected.length < count && remaining.size > 0) {
++  let currentMetrics = metricsFor(
++    design,
++    selectedIndices,
++    design.posteriorVariance,
++    context,
++    baseCandidateCovariance
++  );
++
++  while (selectedIndices.length < count) {
+     let best = null;
+-    for (const candidate of context.candidates) {
+-      if (!remaining.has(candidate.id) || !candidate.feasible) continue;
+-      if (minimumDistance > 0 && !isSeparated(candidate, selected, minimumDistance)) continue;
+-      best = compareCandidates(candidate, best, selected, context);
+-    }
+-    if (!best) break;
+-    selected.push(best.candidate);
+-    remaining.delete(best.candidate.id);
+-  }
+-  return selected;
+-}
+ 
+-function localImprove(context, initial, options = {}) {
+-  let selected = [...initial];
+-  let currentMetrics = evaluateNetwork({ ...context, selected });
+-  const minimumDistance = options.minimumSeparation ? context.domain.minSeparation : 0;
+-  let improved = true;
+-  let passes = 0;
+-
+-  while (improved && passes < 4) {
+-    improved = false;
+-    passes += 1;
+-    const selectedIds = new Set(selected.map((item) => item.id));
+-
+-    for (let position = 0; position < selected.length; position += 1) {
+-      const without = selected.filter((_, index) => index !== position);
+-      for (const candidate of context.candidates) {
+-        if (selectedIds.has(candidate.id) || !candidate.feasible) continue;
+-        if (minimumDistance > 0 && !isSeparated(candidate, without, minimumDistance)) continue;
+-        const trial = [...without, candidate];
+-        const metrics = evaluateNetwork({ ...context, selected: trial });
+-        if (metrics.score > currentMetrics.score + 1e-7) {
+-          selected = trial;
+-          currentMetrics = metrics;
+-          improved = true;
+-          break;
+-        }
++    for (let candidateIndex = 0; candidateIndex < design.candidates.length; candidateIndex += 1) {
++      const candidate = design.candidates[candidateIndex];
++      if (selectedSet.has(candidateIndex) || !candidate.feasible) continue;
++      if (minimumDistance > 0 && !isSeparated(
++        candidate,
++        selectedIndices,
++        design.candidates,
++        minimumDistance,
++        context.observations ?? []
++      )) continue;
++
++      const reduction = marginalVarianceReduction(design, candidateIndex);
++      const trialPosterior = posteriorAfterReduction(design.posteriorVariance, reduction);
++      const trialIndices = [...selectedIndices, candidateIndex];
++      const trialMetrics = metricsFor(
++        design,
++        trialIndices,
++        trialPosterior,
++        context,
++        baseCandidateCovariance
++      );
++
++      if (!best || trialMetrics.score > best.metrics.score) {
++        best = { candidateIndex, reduction, posteriorVariance: trialPosterior, metrics: trialMetrics };
+       }
+-      if (improved) break;
+     }
++
++    if (!best) break;
++
++    explanations.push({
++      id: design.candidates[best.candidateIndex].id,
++      text: summarizeMarginalContributions(currentMetrics, best.metrics)
++    });
++    assimilateCandidate(design, best.candidateIndex);
++    selectedIndices.push(best.candidateIndex);
++    selectedSet.add(best.candidateIndex);
++    currentMetrics = metricsFor(
++      design,
++      selectedIndices,
++      design.posteriorVariance,
++      context,
++      baseCandidateCovariance
++    );
+   }
+ 
+-  return { selected, metrics: currentMetrics };
++  return {
++    selectedIndices,
++    selected: selectedIndices.map((index) => design.candidates[index]),
++    metrics: currentMetrics,
++    posteriorVariance: Float64Array.from(design.posteriorVariance),
++    explanations
++  };
+ }
+ 
+ function seededRandom(seed) {
+@@ -71,76 +121,138 @@ function seededRandom(seed) {
+   };
+ }
+ 
+-function randomStrategy(candidates, count, seed) {
+-  const random = seededRandom(seed);
+-  return [...candidates]
+-    .filter((item) => item.feasible)
+-    .sort(() => random() - 0.5)
+-    .slice(0, count);
++function feasibleIndices(candidates, observations = [], minimumDistance = 0) {
++  return candidates
++    .map((candidate, index) => ({ candidate, index }))
++    .filter(({ candidate }) => (
++      candidate.feasible
++      && (minimumDistance <= 0 || observations.every((site) => (
++        candidateDistance(candidate, site) >= minimumDistance
++      )))
++    ))
++    .map(({ index }) => index);
++}
++
++function selectFromOrder(order, candidates, count, minimumDistance) {
++  const selected = [];
++  for (const index of order) {
++    if (minimumDistance > 0 && !isSeparated(
++      candidates[index], selected, candidates, minimumDistance
++    )) continue;
++    selected.push(index);
++    if (selected.length >= count) break;
++  }
++  return selected;
+ }
+ 
+-function hotspotStrategy(candidates, count) {
+-  return [...candidates].filter((item) => item.feasible).sort((a, b) => b.localRisk - a.localRisk).slice(0, count);
++function randomStrategy(candidates, count, seed, observations, minimumDistance) {
++  const random = seededRandom(seed);
++  const order = feasibleIndices(candidates, observations, minimumDistance)
++    .map((index) => ({ index, key: random() }))
++    .sort((left, right) => left.key - right.key)
++    .map(({ index }) => index);
++  return selectFromOrder(order, candidates, count, minimumDistance);
+ }
+ 
+-function uncertaintyStrategy(candidates, count) {
+-  return [...candidates].filter((item) => item.feasible).sort((a, b) => b.localUncertainty - a.localUncertainty).slice(0, count);
++function rankedStrategy(candidates, count, field, observations, minimumDistance) {
++  const order = feasibleIndices(candidates, observations, minimumDistance)
++    .sort((left, right) => (candidates[right][field] ?? 0) - (candidates[left][field] ?? 0));
++  return selectFromOrder(order, candidates, count, minimumDistance);
+ }
+ 
+-function uniformStrategy(candidates, count) {
+-  const feasible = candidates.filter((item) => item.feasible);
++function uniformStrategy(candidates, count, observations, minimumDistance) {
++  const feasible = feasibleIndices(candidates, observations, minimumDistance);
+   if (count >= feasible.length) return feasible;
+-  const selected = [feasible.reduce((best, item) => item.x + item.y < best.x + best.y ? item : best, feasible[0])];
++  const selected = [feasible.reduce((best, index) => (
++    candidates[index].x + candidates[index].y < candidates[best].x + candidates[best].y ? index : best
++  ), feasible[0])];
++
+   while (selected.length < count) {
+-    const selectedIds = new Set(selected.map((item) => item.id));
+-    let best = null;
++    let bestIndex = null;
+     let bestDistance = -Infinity;
+-    for (const candidate of feasible) {
+-      if (selectedIds.has(candidate.id)) continue;
+-      const nearest = Math.min(...selected.map((item) => candidateDistance(candidate, item)));
+-      if (nearest > bestDistance) {
+-        best = candidate;
++    for (const index of feasible) {
++      if (selected.includes(index)) continue;
++      const nearest = Math.min(...selected.map((selectedIndex) => (
++        candidateDistance(candidates[index], candidates[selectedIndex])
++      )));
++      if (nearest >= minimumDistance && nearest > bestDistance) {
+         bestDistance = nearest;
++        bestIndex = index;
+       }
+     }
+-    if (!best) break;
+-    selected.push(best);
++    if (bestIndex === null) break;
++    selected.push(bestIndex);
+   }
++
+   return selected;
+ }
+ 
++function evaluateBaseline(baseDesign, selectedIndices, context, baseCandidateCovariance) {
++  const evaluated = evaluateSelectedOrder(baseDesign, selectedIndices);
++  return calculateBayesianMetrics({
++    points: evaluated.evaluationPoints,
++    candidates: evaluated.candidates,
++    selectedIndices,
++    baselineVariance: evaluated.baselineVariance,
++    posteriorVariance: evaluated.posteriorVariance,
++    baseCandidateCovariance,
++    weights: context.weights,
++    fairnessConstraint: context.fairnessConstraint,
++    fairnessLimit: context.fairnessLimit
++  });
++}
++
+ export function optimizeNetwork(context, count, options = {}) {
+-  const greedy = greedySelect(context, count, options);
+-  const improved = localImprove(context, greedy, options);
++  validateScenario({
++    cells: context.cells,
++    candidates: context.candidates,
++    observations: context.observations ?? []
++  });
+ 
+-  const explanations = [];
+-  const prefix = [];
+-  for (const candidate of improved.selected) {
+-    explanations.push({
+-      id: candidate.id,
+-      text: explainCandidate(candidate, context.cells, prefix, context.domain, context.weights, context.influenceScale, context.fairnessConstraint)
+-    });
+-    prefix.push(candidate);
+-  }
++  const baseDesign = prepareBayesianDesign({
++    evaluationPoints: context.cells,
++    candidates: context.candidates,
++    observations: context.observations ?? [],
++    domain: context.domain,
++    modelSettings: context.modelSettings ?? {}
++  });
++  const baseCandidateCovariance = baseDesign.candidateCovariance.map((row) => Float64Array.from(row));
++  const optimized = greedyBayesianSelect(baseDesign, count, context, options);
+ 
+-  const baselineNetworks = {
+-    LUMOS: improved.selected,
+-    Random: randomStrategy(context.candidates, count, context.seed + 91),
+-    Uniform: uniformStrategy(context.candidates, count),
+-    Hotspot: hotspotStrategy(context.candidates, count),
+-    Uncertainty: uncertaintyStrategy(context.candidates, count)
++  const minimumDistance = options.minimumSeparation ? context.domain.minSeparation : 0;
++  const observations = context.observations ?? [];
++  const networks = {
++    LUMOS: optimized.selectedIndices,
++    Random: randomStrategy(context.candidates, count, (context.seed ?? 1) + 91, observations, minimumDistance),
++    Uniform: uniformStrategy(context.candidates, count, observations, minimumDistance),
++    Hotspot: rankedStrategy(context.candidates, count, "localRisk", observations, minimumDistance),
++    Uncertainty: rankedStrategy(context.candidates, count, "localUncertainty", observations, minimumDistance)
+   };
+ 
+-  const baselines = Object.entries(baselineNetworks).map(([name, selected]) => ({
+-    name,
+-    selected,
+-    metrics: evaluateNetwork({ ...context, selected })
+-  })).sort((a, b) => b.metrics.score - a.metrics.score);
++  const baselines = Object.entries(networks)
++    .map(([name, selectedIndices]) => ({
++      name,
++      selected: selectedIndices.map((index) => context.candidates[index]),
++      selectedIndices,
++      metrics: name === "LUMOS"
++        ? optimized.metrics
++        : evaluateBaseline(baseDesign, selectedIndices, context, baseCandidateCovariance)
++    }))
++    .sort((left, right) => right.metrics.score - left.metrics.score);
+ 
+   return {
+-    selected: improved.selected,
+-    metrics: improved.metrics,
+-    explanations,
+-    baselines
++    selected: optimized.selected,
++    selectedIndices: optimized.selectedIndices,
++    metrics: optimized.metrics,
++    posteriorVariance: optimized.posteriorVariance,
++    baselineVariance: Float64Array.from(baseDesign.baselineVariance),
++    explanations: optimized.explanations,
++    baselines,
++    model: {
++      family: "Sequential Gaussian-process experimental design",
++      covariance: "Domain-aware Matérn 3/2",
++      acquisition: "Socially weighted integrated posterior variance reduction",
++      observationsConditioned: (context.observations ?? []).length
++    }
+   };
+ }
+diff --git a/js/model/schema/scenario.js b/js/model/schema/scenario.js
+new file mode 100644
+index 0000000..b724495
+--- /dev/null
++++ b/js/model/schema/scenario.js
+@@ -0,0 +1,67 @@
++const REQUIRED_CELL_FIELDS = [
++  "id", "x", "y", "risk", "uncertainty", "exposure",
++  "vulnerability", "communityPriority", "ecology", "communityGroup"
++];
++
++const REQUIRED_CANDIDATE_FIELDS = [
++  "id", "x", "y", "cost", "feasibility", "reliability", "feasible"
++];
++
++function assertFinite(record, field, label) {
++  if (!Number.isFinite(record[field])) {
++    throw new TypeError(`${label}.${field} must be a finite number.`);
++  }
++}
++
++export function validateScenario(scenario) {
++  if (!scenario || typeof scenario !== "object") {
++    throw new TypeError("A LUMOS scenario object is required.");
++  }
++  if (!Array.isArray(scenario.cells) || scenario.cells.length === 0) {
++    throw new TypeError("scenario.cells must be a non-empty array.");
++  }
++  if (!Array.isArray(scenario.candidates) || scenario.candidates.length === 0) {
++    throw new TypeError("scenario.candidates must be a non-empty array.");
++  }
++
++  scenario.cells.forEach((cell, index) => {
++    for (const field of REQUIRED_CELL_FIELDS) {
++      if (!(field in cell)) throw new TypeError(`cell[${index}] is missing ${field}.`);
++    }
++    for (const field of REQUIRED_CELL_FIELDS.filter((field) => field !== "id")) {
++      assertFinite(cell, field, `cell[${index}]`);
++    }
++  });
++
++  scenario.candidates.forEach((candidate, index) => {
++    for (const field of REQUIRED_CANDIDATE_FIELDS) {
++      if (!(field in candidate)) throw new TypeError(`candidate[${index}] is missing ${field}.`);
++    }
++    for (const field of REQUIRED_CANDIDATE_FIELDS.filter((field) => !["id", "feasible"].includes(field))) {
++      assertFinite(candidate, field, `candidate[${index}]`);
++    }
++  });
++
++  if (scenario.observations && !Array.isArray(scenario.observations)) {
++    throw new TypeError("scenario.observations must be an array when provided.");
++  }
++
++  return scenario;
++}
++
++export function toLumosDataset(scenario) {
++  validateScenario(scenario);
++  return {
++    metadata: {
++      seed: scenario.seed,
++      domainKey: scenario.domainKey,
++      center: scenario.center,
++      bounds: scenario.bounds,
++      model: scenario.model ?? {}
++    },
++    evaluationPoints: scenario.cells,
++    candidateSites: scenario.candidates,
++    observations: scenario.observations ?? [],
++    socialGroups: [...new Set(scenario.cells.map((cell) => cell.communityGroup))]
++  };
++}
+diff --git a/package.json b/package.json
+index bb27951..717efbe 100644
+--- a/package.json
++++ b/package.json
+@@ -1,9 +1,9 @@
+ {
+   "name": "lumos-core",
+-  "version": "0.1.0",
++  "version": "0.2.0",
+   "private": true,
+   "type": "module",
+   "scripts": {
+-    "test": "node --test tests/model.test.js"
++    "test": "node --test tests/*.test.js"
+   }
+ }
+diff --git a/tests/model.test.js b/tests/model.test.js
+index 7d7464a..5678b40 100644
+--- a/tests/model.test.js
++++ b/tests/model.test.js
+@@ -2,42 +2,103 @@ import test from "node:test";
+ import assert from "node:assert/strict";
+ import { DOMAINS } from "../js/config/domains.js";
+ import { generateScenario } from "../js/data/synthetic.js";
+-import { evaluateNetwork } from "../js/model/objective.js";
++import { prepareBayesianDesign, assimilateCandidate } from "../js/model/bayesian/design.js";
+ import { optimizeNetwork } from "../js/model/optimizer.js";
++import { validateScenario } from "../js/model/schema/scenario.js";
+ 
+-test("synthetic scenario has dense cells and distinct candidate sites", () => {
++function varianceSum(values) {
++  return values.reduce((sum, value) => sum + value, 0);
++}
++
++test("synthetic scenario conforms to the shared LUMOS schema", () => {
+   const scenario = generateScenario("core", 1234);
++  assert.doesNotThrow(() => validateScenario(scenario));
+   assert.equal(scenario.cells.length, 29 * 29);
+   assert.equal(scenario.candidates.length, 13 * 13);
+-  assert.ok(scenario.cells.every((cell) => cell.risk >= 0 && cell.risk <= 1));
++  assert.equal(scenario.observations.length, 6);
+ });
+ 
+-test("adding a feasible sensor improves information over an empty network", () => {
++test("conditioning on existing observations lowers prior field uncertainty", () => {
+   const scenario = generateScenario("heat", 1234);
+-  const context = {
+-    cells: scenario.cells,
++  const withoutObservations = prepareBayesianDesign({
++    evaluationPoints: scenario.cells,
++    candidates: scenario.candidates,
++    observations: [],
+     domain: DOMAINS.heat,
+-    weights: DOMAINS.heat.weights,
+-    influenceScale: 1,
+-    fairnessConstraint: true
+-  };
+-  const empty = evaluateNetwork({ ...context, selected: [] });
+-  const one = evaluateNetwork({ ...context, selected: [scenario.candidates.find((candidate) => candidate.feasible)] });
+-  assert.ok(one.information > empty.information);
++    modelSettings: { measurementNoise: 0.06 }
++  });
++  const withObservations = prepareBayesianDesign({
++    evaluationPoints: scenario.cells,
++    candidates: scenario.candidates,
++    observations: scenario.observations,
++    domain: DOMAINS.heat,
++    modelSettings: { measurementNoise: 0.06 }
++  });
++  assert.ok(varianceSum(withObservations.posteriorVariance) < varianceSum(withoutObservations.posteriorVariance));
++});
++
++test("assimilating a feasible candidate monotonically reduces posterior variance", () => {
++  const scenario = generateScenario("air", 2222);
++  const design = prepareBayesianDesign({
++    evaluationPoints: scenario.cells,
++    candidates: scenario.candidates,
++    observations: scenario.observations,
++    domain: DOMAINS.air,
++    modelSettings: { measurementNoise: 0.06 }
++  });
++  const before = Float64Array.from(design.posteriorVariance);
++  const candidateIndex = scenario.candidates.findIndex((candidate) => candidate.feasible);
++  assimilateCandidate(design, candidateIndex);
++  assert.ok(design.posteriorVariance.every((value, index) => value <= before[index] + 1e-10));
++  assert.ok(varianceSum(design.posteriorVariance) < varianceSum(before));
+ });
+ 
+-test("optimizer returns requested count when sufficient feasible sites exist", () => {
++test("optimizer returns the requested network and Bayesian diagnostics", () => {
+   const scenario = generateScenario("air", 4321);
+   const result = optimizeNetwork({
+     cells: scenario.cells,
+     candidates: scenario.candidates,
++    observations: scenario.observations,
+     domain: DOMAINS.air,
+     weights: DOMAINS.air.weights,
+-    influenceScale: 1,
+     fairnessConstraint: true,
++    fairnessLimit: 0.18,
++    modelSettings: {
++      measurementNoise: 0.06,
++      lengthScaleMultiplier: 1,
++      transportAngle: scenario.model.transportAngle
++    },
+     seed: scenario.seed
+   }, 8, { minimumSeparation: true });
++
+   assert.equal(result.selected.length, 8);
+   assert.equal(result.baselines.length, 5);
++  assert.equal(result.posteriorVariance.length, scenario.cells.length);
++  assert.ok(result.metrics.information > 0);
+   assert.ok(Number.isFinite(result.metrics.score));
++  assert.equal(result.model.observationsConditioned, 6);
++});
++
++test("all domain adapters produce finite optimization results", () => {
++  for (const domainKey of Object.keys(DOMAINS)) {
++    const scenario = generateScenario(domainKey, 7788);
++    const result = optimizeNetwork({
++      cells: scenario.cells,
++      candidates: scenario.candidates,
++      observations: scenario.observations,
++      domain: DOMAINS[domainKey],
++      weights: DOMAINS[domainKey].weights,
++      fairnessConstraint: true,
++      fairnessLimit: 0.2,
++      modelSettings: {
++        measurementNoise: 0.06,
++        lengthScaleMultiplier: 1,
++        transportAngle: scenario.model.transportAngle
++      },
++      seed: scenario.seed
++    }, 6, { minimumSeparation: true });
++    assert.equal(result.selected.length, 6, domainKey);
++    assert.ok(Number.isFinite(result.metrics.score), domainKey);
++    assert.ok(result.metrics.information > 0, domainKey);
++  }
+ });

@@ -1,191 +1,308 @@
-# LUMOS Core Model Specification v0.1
+# LUMOS Core Model Specification v0.2
 
-**LUMOS** stands for **Localized Unified Monitoring Optimization System**.
+**Localized Unified Monitoring Optimization System**
 
-This file defines the domain-independent layer shared by the future Heat, Air, Soil, and Water adapters. Version 0.1 is an executable structural prototype. It uses nonlinear measurement influence and multi-objective network scoring; the next scientific milestone replaces its information proxy with posterior epistemic-variance reduction from a probabilistic field model.
+Version 0.2 defines the first executable Bayesian core shared by the Heat, Air, Soil, and Water branches. It uses a continuous latent-field interpretation, dense numerical evaluation points, discrete feasible installation candidates, existing observations, domain-aware covariance, and socially weighted sequential Bayesian experimental design.
 
-## 1. Continuous environmental field
+## 1. Spatial objects
 
-For domain \(d\), environmental condition is a latent field
+For environmental domain \(d\), the true condition is a latent field
 
 \[
-Z_d(s,t), \qquad s \in \Omega,\; t \in T.
+Z_d(s,t), \qquad s\in\Omega,\ t\in T.
 \]
 
-The model is conceptually continuous. Numerical evaluation uses a dense or adaptive point set \(V=\{s_i\}\), while installation is restricted to feasible candidate sites \(C=\{c_j\}\). The visualization gradient is separate from both.
+The browser approximates the spatial domain using three separate objects:
 
-Each evaluation point contains standardized layers:
+1. **Evaluation points** \(V=\{s_i\}_{i=1}^n\), used for integration and performance measurement.
+2. **Candidate sites** \(C=\{c_j\}_{j=1}^m\), where installation is physically feasible.
+3. **Visualization surface**, a smooth map rendering that does not define the optimization resolution.
+
+Each evaluation point stores normalized layers:
 
 - \(r_i\): predicted environmental risk;
-- \(u_i\): reducible epistemic uncertainty;
-- \(p_i\): dynamic human presence or exposure;
+- \(u_i\): initial epistemic uncertainty scale;
+- \(p_i\): human presence or exposure;
 - \(v_i\): vulnerability priority;
 - \(q_i\): community-designated priority;
 - \(e_i\): ecological importance;
-- \(g_i\): social or geographic group membership.
+- \(g_i\): social or geographic group.
 
-Each candidate site contains:
+Each candidate site stores:
 
-- installation cost \(c_j\);
-- feasibility probability \(f_j\);
-- operational reliability \(\rho_j\);
-- sensor type and calibration properties in later versions.
+- cost \(c_j\);
+- feasibility \(f_j\);
+- reliability \(\rho_j\);
+- measurement-noise parameters;
+- domain covariates used by the covariance adapter.
 
-## 2. Domain adapter
+## 2. Gaussian-process field model
 
-The global engine receives a domain-specific influence function
-
-\[
-a^{(d)}_{ij,t}=K_d(s_i,c_j,t;\theta_d) \in [0,1].
-\]
-
-The adapters ultimately use:
-
-- **Heat:** surface covariance, canopy, imperviousness, urban morphology, time of day;
-- **Air:** pollutant-specific atmospheric transport, wind, source geometry, street canyons, calibration;
-- **Soil:** local covariance, land-use history, contamination pathways, depth and soil similarity;
-- **Water:** pipe, watershed, service-zone, hydraulic, and upstream/downstream connectivity.
-
-Version 0.1 demonstrates radial, morphology-aware, anisotropic, local-similarity, and flow-oriented proxy kernels.
-
-## 3. Expected effective observation
-
-For selected network \(S\), the expected observation of point \(i\) is
+The latent field is represented as
 
 \[
-P_i(S)=1-\prod_{j\in S}\left(1-a_{ij}f_j\rho_j\right).
+Z_d(s)\sim\mathcal{GP}\!\left(\mu_d(s),K_d(s,s')\right).
 \]
 
-This nonlinear saturation means additional nearby monitors yield declining benefit rather than unlimited geometric coverage.
+The current executable focuses on posterior covariance because hypothetical future measurements change expected uncertainty before their values are known.
 
-## 4. Shared objective components
-
-Version 0.1 calculates normalized terms:
+The covariance is
 
 \[
-I(S)=\frac{\sum_i u_iP_i(S)}{\sum_i u_i}
+K_d(a,b)=\sigma(a)\sigma(b)\,M_{3/2}\!\left(D_d(a,b)\right)\,S_d(a,b),
 \]
+
+where
 
 \[
-H(S)=\frac{\sum_i r_iP_i(S)}{\sum_i r_i}
+M_{3/2}(z)=(1+\sqrt{3}z)e^{-\sqrt{3}z},
 \]
+
+\(D_d\) is a domain-specific normalized distance, \(S_d\) is a contextual-similarity kernel, and
 
 \[
-E(S)=\frac{\sum_i r_ip_iP_i(S)}{\sum_i r_ip_i}
+\sigma(a)=0.16+0.84u(a).
 \]
+
+Current domain adapters use:
+
+- **Core:** isotropic geographic distance;
+- **Heat:** geographic distance multiplied by built-form similarity;
+- **Air:** symmetric wind-axis anisotropy with longer correlation along transport;
+- **Soil:** short-range distance multiplied by land-class similarity;
+- **Water:** flow-axis anisotropy plus a network-branch distance proxy.
+
+These are shared-interface demonstration kernels. Later domain releases will replace them with calibrated or physics-derived structures.
+
+## 3. Existing observations
+
+Let existing observations occur at sites \(O=\{o_l\}_{l=1}^h\). Their measurement covariance is
 
 \[
-Q(S)=\frac{\sum_i r_ip_i(0.2+v_i)P_i(S)}{\sum_i r_ip_i(0.2+v_i)}
+K_{OO}^{y}=K_{OO}+\Sigma_{\epsilon,O}.
 \]
+
+The effective noise variance for site \(j\) is
 
 \[
-C(S)=\frac{\sum_i (0.05+q_i)P_i(S)}{\sum_i(0.05+q_i)}
+\sigma_{\epsilon,j}^2=
+\frac{\sigma_{\mathrm{base}}^2+\sigma_{\mathrm{sensor},j}^2}
+{\max(\rho_j f_j,\varepsilon)}.
 \]
+
+Before optimizing new sites, LUMOS conditions all field and candidate covariances on existing observations:
 
 \[
-G(S)=\frac{\sum_i (0.05+e_i)P_i(S)}{\sum_i(0.05+e_i)}.
+K_{AB\mid O}=K_{AB}-K_{AO}(K_{OO}^{y})^{-1}K_{OB}.
 \]
 
-The current information term \(I(S)\) is an uncertainty-weighted observation proxy. The planned Bayesian version is integrated epistemic variance reduction:
+The baseline posterior variance at evaluation point \(i\) is therefore
 
 \[
-I_{\mathrm{Bayes}}(S)=
-\int_T\int_\Omega w(s,t)
-\left[\sigma_{0,\mathrm{ep}}^2(s,t)-\sigma_{S,\mathrm{ep}}^2(s,t)\right]dsdt.
+\sigma_{i,0}^2=K_{ii\mid O}.
 \]
 
-## 5. Social information fairness
+## 4. Sequential posterior update
 
-For group \(g\), remaining weighted uncertainty is
+Suppose selected sites are \(S\), and candidate \(j\notin S\) is considered next. Its conditional measurement variance is
+
+\[
+v_{j\mid S}=K_{jj\mid O,S}+\sigma_{\epsilon,j}^2.
+\]
+
+The expected variance reduction at evaluation point \(i\) is
+
+\[
+\Delta\sigma_{i,j\mid S}^2=
+\frac{K_{ij\mid O,S}^2}{v_{j\mid S}}.
+\]
+
+After selecting \(j\), LUMOS performs the rank-one update
+
+\[
+\sigma_{i,S\cup\{j\}}^2=
+\sigma_{i,S}^2-
+\Delta\sigma_{i,j\mid S}^2.
+\]
+
+All remaining candidate and evaluation-to-candidate covariances are updated with the same Schur-complement step. This gives an efficient browser implementation related to sequential GP conditioning and pivoted covariance factorization.
+
+## 5. Socially weighted information objectives
+
+For nonnegative weights \(w_i\), normalized integrated variance reduction is
+
+\[
+\mathcal I_w(S)=
+\frac{\sum_i w_i\left(\sigma_{i,0}^2-\sigma_{i,S}^2\right)}
+{\sum_i w_i\sigma_{i,0}^2}.
+\]
+
+Version 0.2 evaluates:
+
+### Global information
+
+\[
+I(S)=\mathcal I_1(S).
+\]
+
+### Risk-weighted information
+
+\[
+H(S)=\mathcal I_{0.05+r_i}(S).
+\]
+
+### Exposure-weighted information
+
+\[
+E(S)=\mathcal I_{0.02+r_ip_i}(S).
+\]
+
+### Vulnerability-weighted information
+
+\[
+Q(S)=\mathcal I_{0.02+r_ip_i(0.2+v_i)}(S).
+\]
+
+### Community-priority information
+
+\[
+C(S)=\mathcal I_{0.05+q_i}(S).
+\]
+
+### Ecological information
+
+\[
+G(S)=\mathcal I_{0.05+e_i}(S).
+\]
+
+These terms value information gained in socially or environmentally consequential areas rather than equating value with geometric proximity alone.
+
+## 6. Group information quality
+
+For group \(g\), define its remaining normalized epistemic loss as
 
 \[
 L_g(S)=
-\frac{\sum_{i:g_i=g}u_i\left(1-P_i(S)\right)\omega_i}
-{\sum_{i:g_i=g}\omega_i},
+\frac{\sum_{i:g_i=g}\omega_i\sigma_{i,S}^2}
+{\sum_{i:g_i=g}\omega_i\sigma_{i,0}^2},
 \]
 
-where \(\omega_i\) includes exposure and vulnerability.
-
-The v0.1 disparity measure is
+where
 
 \[
-F_{\mathrm{gap}}(S)=\max_g L_g(S)-\min_g L_g(S).
+\omega_i=0.1+p_i(0.35+0.65v_i).
 \]
 
-Later releases will support hard requirements \(L_g(S)\leq \tau_g\), worst-group minimization, rural representation, and Pareto-front reporting.
-
-## 6. Redundancy, cost, and reliability
-
-Let
+The current disparity diagnostic is
 
 \[
-M_i(S)=\sum_{j\in S}a_{ij}f_j\rho_j.
+F_{\mathrm{gap}}(S)=\max_gL_g(S)-\min_gL_g(S),
 \]
 
-Then redundancy is
+and worst-group information loss is
 
 \[
-R(S)=\frac{1}{|V|}\sum_i\max(0,M_i(S)-1)^2.
+F_{\mathrm{worst}}(S)=\max_gL_g(S).
 \]
+
+The interface accepts a target \(\tau_F\). Version 0.2 adds a sharply increasing penalty when
+
+\[
+F_{\mathrm{gap}}(S)>\tau_F.
+\]
+
+This is not yet a proof of hard feasibility. A later constrained solver will enforce group bounds directly and report infeasibility when no network under the budget can satisfy them.
+
+## 7. Reliability, cost, and redundancy
 
 Expected network reliability is
 
 \[
-Y(S)=\frac{1}{|S|}\sum_{j\in S}f_j\rho_j.
+Y(S)=\frac{1}{|S|}\sum_{j\in S}\rho_jf_j.
 \]
 
 Normalized cost is
 
 \[
-K(S)=\frac{\sum_{j\in S}c_j}{|S|c_{\mathrm{reference}}}.
+K(S)=\frac{\sum_{j\in S}c_j}{1.25|S|}.
 \]
 
-## 7. Current scalar objective
-
-The executable prototype solves
+Because GP variance reduction already has diminishing returns for correlated measurements, redundancy is partly intrinsic. LUMOS additionally reports mean squared pairwise latent correlation:
 
 \[
-\max_S J(S)=
- w_I I(S)+w_HH(S)+w_EE(S)+w_QQ(S)+w_CC(S)+w_GG(S)+w_YY(S)
- -w_RR(S)-w_FF_{\mathrm{gap}}(S)-w_KK(S).
+R(S)=\frac{1}{\binom{|S|}{2}}
+\sum_{j<k}
+\left(
+\frac{K_{jk\mid O}}
+{\sqrt{K_{jj\mid O}K_{kk\mid O}}}
+\right)^2.
 \]
 
-subject to monitor count and optional minimum-separation constraints.
+## 8. Current acquisition objective
 
-The final framework will prefer goal constraints and Pareto solutions over relying exclusively on a scalar weighted sum.
+At each sequential step, candidate \(j\) is scored by the resulting network objective
 
-## 8. Solver v0.1
+\[
+\begin{aligned}
+J(S)=
+&\;w_I I(S)+w_HH(S)+w_EE(S)+w_QQ(S)\\
+&+w_CC(S)+w_GG(S)+w_YY(S)\\
+&-w_RR(S)-w_F\Phi(F_{\mathrm{gap}}(S),\tau_F)-w_KK(S),
+\end{aligned}
+\]
 
-1. Greedy marginal-gain construction.
-2. Minimum-distance feasibility filtering.
-3. Single-swap local improvement until convergence or pass limit.
-4. Comparison against random, space-filling, hotspot, and uncertainty baselines.
+where
 
-Future benchmark solvers:
+\[
+\Phi(F,\tau)=F+7.5\max(0,F-\tau)^2.
+\]
 
-- Gaussian-process mutual-information greedy;
-- A-optimal and D-optimal design;
-- pivoted Cholesky and Nystrom approximations;
-- exact mixed-integer formulations on small cases;
-- continuous sparse-GP placement;
-- NSGA-II or comparable Pareto optimization;
-- robust scenario and sequential active-learning policies.
+The greedy rule is
 
-## 9. Planned branch structure
+\[
+j^*=\arg\max_{j\in C\setminus S}J(S\cup\{j\}),
+\]
 
-The shared model remains above four domain branches:
+subject to feasibility and optional minimum-separation requirements.
+
+## 9. Baselines
+
+Every run evaluates the same posterior-variance and social metrics for:
+
+- LUMOS Bayesian sequential selection;
+- random feasible placement;
+- uniform farthest-point placement;
+- highest local risk;
+- highest initial local uncertainty.
+
+The research version will add serious Bayesian-design baselines including A-optimality, D-optimality, mutual information, pivoted Cholesky, exact small-instance optimization, and equity-aware constrained placement.
+
+## 10. Shared-to-domain architecture
 
 ```text
-Continuous latent environmental field
-        + shared social layers
-        + shared operational layers
+Continuous latent field and standardized layers
                     |
-            LUMOS Core Engine
+Existing observations and sensor characteristics
                     |
-        +-----------+-----------+-----------+
-        |           |           |           |
-      Heat         Air         Soil        Water
-  surface model  transport   local field  flow network
+Shared Bayesian posterior and social metrics
+                    |
+Shared constrained / Pareto solver family
+                    |
+      +-------------+-------------+-------------+
+      |             |             |             |
+    Heat           Air           Soil          Water
+ morphology     transport     local/depth    graph/flow
+ covariance     covariance     covariance     covariance
 ```
 
-Each mode remains a tab in one map-based LUMOS application, rather than becoming a separate product.
+All four domains remain visible as modes in one map application. Incremental MVP releases change the data and physical adapter beneath the shared core rather than creating separate products.
+
+## 11. Next mathematical upgrades
+
+1. Learn or validate kernel hyperparameters from held-out observations.
+2. Separate epistemic and aleatoric uncertainty explicitly.
+3. Add hard group, geographic, rural, calibration, and uptime constraints.
+4. Generate Pareto-optimal networks instead of only a scalar solution.
+5. Add robust optimization under source, weather, demand, and failure scenarios.
+6. Add temporal covariance, staged budgets, and adaptive relocation.
+7. Optimize statistical power for intervention, control, boundary, and spillover monitoring.

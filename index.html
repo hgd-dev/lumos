@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="LUMOS: Localized Unified Monitoring Optimization System">
-  <title>LUMOS v0.1</title>
+  <title>LUMOS v0.2 Bayesian Core</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <header class="app-header">
     <div>
       <p class="eyebrow">Localized Unified Monitoring Optimization System</p>
-      <h1>LUMOS <span>v0.1 Core</span></h1>
+      <h1>LUMOS <span>v0.2 Bayesian Core</span></h1>
     </div>
     <div class="header-actions">
       <button id="newScenarioButton" class="secondary-button" type="button">New scenario</button>
@@ -48,10 +48,16 @@
         <input id="monitorCount" type="range" min="3" max="25" value="10" step="1">
 
         <div class="control-row compact-top">
-          <label for="influenceScale">Influence scale</label>
+          <label for="influenceScale">Correlation length</label>
           <output id="influenceScaleValue" for="influenceScale">1.00x</output>
         </div>
-        <input id="influenceScale" type="range" min="0.50" max="2.00" value="1.00" step="0.05">
+        <input id="influenceScale" type="range" min="0.55" max="1.80" value="1.00" step="0.05">
+
+        <div class="control-row compact-top">
+          <label for="measurementNoise">Measurement noise</label>
+          <output id="measurementNoiseValue" for="measurementNoise">0.060</output>
+        </div>
+        <input id="measurementNoise" type="range" min="0.01" max="0.18" value="0.06" step="0.005">
       </section>
 
       <section class="panel-section">
@@ -79,6 +85,12 @@
             <small>Penalizes unequal remaining uncertainty across population groups.</small>
           </span>
         </label>
+        <div class="control-row compact-top">
+          <label for="fairnessLimit">Maximum group uncertainty gap</label>
+          <output id="fairnessLimitValue" for="fairnessLimit">16%</output>
+        </div>
+        <input id="fairnessLimit" type="range" min="0.03" max="0.35" value="0.16" step="0.01">
+
         <label class="toggle-row">
           <input id="minimumSeparation" type="checkbox" checked>
           <span>
@@ -97,7 +109,7 @@
 
       <section class="panel-section model-note">
         <p class="section-kicker">Model status</p>
-        <p>This release uses a shared nonlinear influence and social-objective engine. The next model milestone replaces the information proxy with posterior variance from a probabilistic field model.</p>
+        <p>This release conditions a domain-aware Matérn Gaussian process on existing observations, then selects new monitors by socially weighted posterior epistemic-variance reduction. It is an experimental-design core, not a geometric coverage proxy.</p>
       </section>
     </aside>
 
@@ -135,7 +147,7 @@
           <strong id="metricObjective">--</strong>
         </article>
         <article class="metric-card">
-          <span>Information</span>
+          <span>Bayes information</span>
           <strong id="metricInformation">--</strong>
         </article>
         <article class="metric-card">
@@ -153,6 +165,10 @@
         <article class="metric-card">
           <span>Reliability</span>
           <strong id="metricReliability">--</strong>
+        </article>
+        <article class="metric-card">
+          <span>Worst-group uncertainty</span>
+          <strong id="metricWorstGroup">--</strong>
         </article>
       </section>
 
