@@ -20,7 +20,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/hgd-dev/lumos/actions/workflows/deploy-pages.yml"><img alt="GitHub Pages deployment" src="https://github.com/hgd-dev/lumos/actions/workflows/deploy-pages.yml/badge.svg"></a>
+  <a href="https://github.com/hgd-dev/lumos/actions/workflows/deploy.yml"><img alt="GitHub Pages deployment" src="https://github.com/hgd-dev/lumos/actions/workflows/deploy.yml/badge.svg"></a>
   <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-bdfc6b"></a>
   <a href="https://github.com/hgd-dev/lumos/releases"><img alt="Latest release" src="https://img.shields.io/github/v/release/hgd-dev/lumos?display_name=tag&sort=semver"></a>
   <img alt="Static browser application" src="https://img.shields.io/badge/platform-static%20web-89ddff">
