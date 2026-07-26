@@ -1,9 +1,31 @@
 {
   "name": "lumos-core",
-  "version": "0.2.0",
+  "version": "3.0.4",
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test tests/*.test.js"
-  }
+    "test": "node scripts/run-tests.mjs",
+    "check:live": "node scripts/check-live-endpoints.mjs",
+    "freeze:nyc": "node scripts/freeze-nyc-heat.mjs",
+    "sensitivity:nyc": "node scripts/run-nyc-heat-sensitivity.mjs",
+    "paper:national": "node scripts/run-national-heat-paper-suite.mjs",
+    "build": "node scripts/build-static-site.mjs",
+    "check:release": "node scripts/release-check.mjs",
+    "verify": "node scripts/run-verification.mjs",
+    "paper:air": "node scripts/run-national-air-paper-suite.mjs",
+    "paper:soil": "node scripts/run-national-soil-evidence-suite.mjs",
+    "paper:water": "node scripts/run-national-water-evidence-suite.mjs",
+    "audit:domains": "node scripts/run-cross-domain-audit.mjs",
+    "allocate:domains": "node scripts/run-cross-domain-budget-allocation.mjs",
+    "reallocate:domains": "node scripts/run-sequential-reallocation.mjs",
+    "simulate:program": "node scripts/run-adaptive-program-simulation.mjs",
+    "robust:program": "node scripts/run-robust-policy-ensemble.mjs",
+    "deploy:spatial": "node scripts/run-spatial-deployment.mjs",
+    "review:hosts": "node scripts/run-host-feasibility-review.mjs",
+    "campaign:field": "node scripts/run-field-campaign-operations.mjs",
+    "track:campaign": "node scripts/run-live-campaign-tracking.mjs",
+    "commission:operations": "node scripts/run-commissioning-operations.mjs",
+    "audit:public": "node scripts/run-public-launch-readiness.mjs"
+  },
+  "description": "LUMOS: unified socially constrained Bayesian environmental-monitoring design from field reconstruction and robust allocation through verified deployment, live campaign tracking, commissioning, calibration, maintenance, and public documentation."
 }

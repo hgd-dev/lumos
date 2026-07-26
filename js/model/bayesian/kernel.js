@@ -48,10 +48,11 @@ function spatialDistance(a, b, domain, modelSettings = {}) {
       ?? domain.transportAngle
       ?? Math.PI * 0.3;
     const rotated = rotate(dx, dy, angle);
-    const along = lengthScale * (domain.gpAlongScale ?? 2.0);
-    const across = lengthScale * (domain.gpAcrossScale ?? 0.48);
+    const along = lengthScale * (modelSettings.gpAlongScale ?? domain.gpAlongScale ?? 2.0);
+    const across = lengthScale * (modelSettings.gpAcrossScale ?? domain.gpAcrossScale ?? 0.48);
     const branchDistance = Math.abs((a.networkBranch ?? 0) - (b.networkBranch ?? 0));
-    return Math.hypot(rotated.parallel / along, rotated.perpendicular / across, branchDistance * 0.72);
+    const branchPenalty = Math.max(0, modelSettings.branchPenalty ?? 0.72);
+    return Math.hypot(rotated.parallel / along, rotated.perpendicular / across, branchDistance * branchPenalty);
   }
 
   return Math.hypot(dx, dy) / lengthScale;

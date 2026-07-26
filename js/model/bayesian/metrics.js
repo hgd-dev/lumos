@@ -26,21 +26,28 @@ function fairnessMetrics(points, baselineVariance, posteriorVariance) {
     entry.remaining += weight * posteriorVariance[index];
   }
 
-  const groupLosses = [...groups.entries()].map(([group, values]) => ({
-    group,
-    loss: values.remaining / Math.max(EPSILON, values.baseline)
-  }));
+  const groupLosses = [...groups.entries()].map(([group, values]) => {
+    const loss = values.remaining / Math.max(EPSILON, values.baseline);
+    return {
+      group,
+      loss,
+      informationGain: Math.max(0, 1 - loss)
+    };
+  });
   const losses = groupLosses.map((entry) => entry.loss);
+  const gains = groupLosses.map((entry) => entry.informationGain);
   const worstLoss = losses.length ? Math.max(...losses) : 0;
   const bestLoss = losses.length ? Math.min(...losses) : 0;
   const meanLoss = losses.length
     ? losses.reduce((sum, value) => sum + value, 0) / losses.length
     : 0;
+  const minimumInformation = gains.length ? Math.min(...gains) : 0;
 
   return {
     gap: worstLoss - bestLoss,
     worstLoss,
     meanLoss,
+    minimumInformation,
     groupLosses
   };
 }
@@ -96,9 +103,8 @@ export function calculateBayesianMetrics({
   const reliability = selected.length
     ? selected.reduce((sum, site) => sum + site.reliability * site.feasibility, 0) / selected.length
     : 0;
-  const cost = selected.length
-    ? selected.reduce((sum, site) => sum + site.cost, 0) / (selected.length * 1.25)
-    : 0;
+  const totalCost = selected.reduce((sum, site) => sum + site.cost, 0);
+  const normalizedCost = selected.length ? totalCost / (selected.length * 1.25) : 0;
   const fairnessExcess = Math.max(0, fairness.gap - fairnessLimit);
   const fairnessPenalty = fairnessConstraint
     ? fairness.gap + 7.5 * fairnessExcess * fairnessExcess
@@ -115,7 +121,7 @@ export function calculateBayesianMetrics({
       + weights.reliability * reliability
       - weights.redundancy * redundancy
       - weights.fairness * fairnessPenalty
-      - weights.cost * cost;
+      - weights.cost * normalizedCost;
 
   return {
     score,
@@ -130,10 +136,12 @@ export function calculateBayesianMetrics({
     fairnessGap: fairness.gap,
     fairnessWorstLoss: fairness.worstLoss,
     fairnessMeanLoss: fairness.meanLoss,
+    minimumGroupInformation: fairness.minimumInformation,
     groupLosses: fairness.groupLosses,
     fairnessSatisfied: !fairnessConstraint || fairness.gap <= fairnessLimit + 1e-9,
     fairnessLimit,
-    cost,
+    cost: normalizedCost,
+    totalCost,
     posteriorVariance
   };
 }
@@ -146,6 +154,7 @@ export function summarizeMarginalContributions(before, after) {
     ["vulnerability-weighted information", after.equity - before.equity],
     ["community-priority information", after.community - before.community],
     ["ecological information", after.ecology - before.ecology],
+    ["worst-group information", after.minimumGroupInformation - before.minimumGroupInformation],
     ["group information parity", before.fairnessGap - after.fairnessGap]
   ]
     .sort((left, right) => right[1] - left[1])

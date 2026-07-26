@@ -1,0 +1,740 @@
+{
+  "schemaVersion": "1.0",
+  "architecture": "Cross-domain normalized program allocation",
+  "generatedAt": "2026-07-26T17:26:49.654Z",
+  "ready": true,
+  "claimBoundary": "Benefits are normalized within each domain and support program-level budget planning. They are not raw physical units, regulatory benefit-cost estimates, or a substitute for domain-specific placement optimization.",
+  "config": {
+    "totalBudget": 120000,
+    "reserveFraction": 0.05,
+    "requireAllDomains": true,
+    "domains": {
+      "heat": {
+        "enabled": true,
+        "priority": 1,
+        "unitCost": 3000,
+        "minimumUnits": 4,
+        "maximumUnits": 24
+      },
+      "air": {
+        "enabled": true,
+        "priority": 1,
+        "unitCost": 8000,
+        "minimumUnits": 3,
+        "maximumUnits": 16
+      },
+      "soil": {
+        "enabled": true,
+        "priority": 1,
+        "unitCost": 750,
+        "minimumUnits": 8,
+        "maximumUnits": 40
+      },
+      "water": {
+        "enabled": true,
+        "priority": 1,
+        "unitCost": 5000,
+        "minimumUnits": 4,
+        "maximumUnits": 20
+      }
+    }
+  },
+  "allocatableBudget": 114000,
+  "requiredMinimumCost": 62000,
+  "shortfall": 0,
+  "evaluatedAllocations": 5396,
+  "portfolio": [
+    {
+      "profileKey": "balanced",
+      "profile": {
+        "key": "balanced",
+        "label": "Balanced",
+        "description": "Balances normalized scientific value, exposure, equity, ecology, intervention readiness, reliability, and cross-domain parity.",
+        "weights": {
+          "information": 0.22,
+          "exposure": 0.18,
+          "equity": 0.18,
+          "ecology": 0.12,
+          "intervention": 0.12,
+          "reliability": 0.18
+        },
+        "worstDomainWeight": 0.24,
+        "balancePenalty": 0.12,
+        "reserveWeight": 0.01
+      },
+      "score": 0.6009457857573021,
+      "metrics": {
+        "programs": [
+          {
+            "domainKey": "heat",
+            "units": 9,
+            "unitLabel": "monitor package",
+            "unitCost": 3000,
+            "cost": 27000,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.5241176765171028,
+              "exposure": 0.6228858299346381,
+              "equity": 0.4917658547616438,
+              "ecology": 0.34903118804461153,
+              "intervention": 0.4671483638522003,
+              "reliability": 0.7285401415192078
+            },
+            "composite": 0.5305815091049008,
+            "minimumSatisfied": true
+          },
+          {
+            "domainKey": "air",
+            "units": 5,
+            "unitLabel": "calibrated station package",
+            "unitCost": 8000,
+            "cost": 40000,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.5407956812327832,
+              "exposure": 0.49417856890607204,
+              "equity": 0.403434675481128,
+              "ecology": 0.19116570466981203,
+              "intervention": 0.43184370008566897,
+              "reliability": 0.6247661213815293
+            },
+            "composite": 0.44769740862616564,
+            "minimumSatisfied": true
+          },
+          {
+            "domainKey": "soil",
+            "units": 22,
+            "unitLabel": "sample + laboratory package",
+            "unitCost": 750,
+            "cost": 16500,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.5302203586940141,
+              "exposure": 0.3746866818316182,
+              "equity": 0.4860251736615928,
+              "ecology": 0.6976112876732784,
+              "intervention": 0.5777432156140222,
+              "reliability": 0.8393834304431694
+            },
+            "composite": 0.5842783579862825,
+            "minimumSatisfied": true
+          },
+          {
+            "domainKey": "water",
+            "units": 6,
+            "unitLabel": "station or sampling package",
+            "unitCost": 5000,
+            "cost": 30000,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.45528952875638024,
+              "exposure": 0.37188176373860893,
+              "equity": 0.3584747681519963,
+              "ecology": 0.4621250127595658,
+              "intervention": 0.4605963544886659,
+              "reliability": 0.602933404843538
+            },
+            "composite": 0.4518834721231258,
+            "minimumSatisfied": true
+          }
+        ],
+        "dimensions": {
+          "information": 0.51260581130007,
+          "exposure": 0.46590821110273434,
+          "equity": 0.4349251180140903,
+          "ecology": 0.4249832982868169,
+          "intervention": 0.4843329085101394,
+          "reliability": 0.6989057745468611
+        },
+        "composite": 0.5036101869601187,
+        "worstDomainBenefit": 0.44769740862616564,
+        "balanceGap": 0.13658094936011683,
+        "committedCost": 113500,
+        "allocatableBudget": 114000,
+        "statutoryReserve": 6000,
+        "uncommitted": 500,
+        "totalUnspent": 6500,
+        "costRatio": 0.9956140350877193,
+        "valuePerBudget": 0.5058287340392382
+      },
+      "paretoOptimal": false
+    },
+    {
+      "profileKey": "information",
+      "profile": {
+        "key": "information",
+        "label": "Maximum Information",
+        "description": "Prioritizes normalized within-domain information gain while retaining minimum viable programs and reliability.",
+        "weights": {
+          "information": 0.52,
+          "exposure": 0.1,
+          "equity": 0.08,
+          "ecology": 0.06,
+          "intervention": 0.08,
+          "reliability": 0.16
+        },
+        "worstDomainWeight": 0.08,
+        "balancePenalty": 0.04,
+        "reserveWeight": 0
+      },
+      "score": 0.5544518824137994,
+      "metrics": {
+        "programs": [
+          {
+            "domainKey": "heat",
+            "units": 8,
+            "unitLabel": "monitor package",
+            "unitCost": 3000,
+            "cost": 24000,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.4863526588916699,
+              "exposure": 0.5813165142112084,
+              "equity": 0.45375118996336394,
+              "ecology": 0.3212273006076739,
+              "intervention": 0.4334882394469231,
+              "reliability": 0.6843659046430964
+            },
+            "composite": 0.493416967960656,
+            "minimumSatisfied": true
+          },
+          {
+            "domainKey": "air",
+            "units": 5,
+            "unitLabel": "calibrated station package",
+            "unitCost": 8000,
+            "cost": 40000,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.5407956812327832,
+              "exposure": 0.49417856890607204,
+              "equity": 0.403434675481128,
+              "ecology": 0.19116570466981203,
+              "intervention": 0.43184370008566897,
+              "reliability": 0.6247661213815293
+            },
+            "composite": 0.44769740862616564,
+            "minimumSatisfied": true
+          },
+          {
+            "domainKey": "soil",
+            "units": 26,
+            "unitLabel": "sample + laboratory package",
+            "unitCost": 750,
+            "cost": 19500,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.5771560699765781,
+              "exposure": 0.41148153833819745,
+              "equity": 0.5313837669113308,
+              "ecology": 0.7469808171735446,
+              "intervention": 0.6258166690347118,
+              "reliability": 0.885422812182351
+            },
+            "composite": 0.6297069456027856,
+            "minimumSatisfied": true
+          },
+          {
+            "domainKey": "water",
+            "units": 6,
+            "unitLabel": "station or sampling package",
+            "unitCost": 5000,
+            "cost": 30000,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.45528952875638024,
+              "exposure": 0.37188176373860893,
+              "equity": 0.3584747681519963,
+              "ecology": 0.4621250127595658,
+              "intervention": 0.4605963544886659,
+              "reliability": 0.602933404843538
+            },
+            "composite": 0.4518834721231258,
+            "minimumSatisfied": true
+          }
+        ],
+        "dimensions": {
+          "information": 0.5148984847143528,
+          "exposure": 0.46471459629852174,
+          "equity": 0.4367611001269548,
+          "ecology": 0.43037470880264905,
+          "intervention": 0.48793624076399245,
+          "reliability": 0.6993720607626287
+        },
+        "composite": 0.5056761985781832,
+        "worstDomainBenefit": 0.44769740862616564,
+        "balanceGap": 0.18200953697661998,
+        "committedCost": 113500,
+        "allocatableBudget": 114000,
+        "statutoryReserve": 6000,
+        "uncommitted": 500,
+        "totalUnspent": 6500,
+        "costRatio": 0.9956140350877193,
+        "valuePerBudget": 0.5079038470300695
+      },
+      "paretoOptimal": true
+    },
+    {
+      "profileKey": "exposure",
+      "profile": {
+        "key": "exposure",
+        "label": "Exposure Protection",
+        "description": "Emphasizes monitoring value at populated, mobile, and sensitive receptor locations.",
+        "weights": {
+          "information": 0.16,
+          "exposure": 0.42,
+          "equity": 0.16,
+          "ecology": 0.05,
+          "intervention": 0.08,
+          "reliability": 0.13
+        },
+        "worstDomainWeight": 0.14,
+        "balancePenalty": 0.08,
+        "reserveWeight": 0
+      },
+      "score": 0.5498911068985118,
+      "metrics": {
+        "programs": [
+          {
+            "domainKey": "heat",
+            "units": 9,
+            "unitLabel": "monitor package",
+            "unitCost": 3000,
+            "cost": 27000,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.5241176765171028,
+              "exposure": 0.6228858299346381,
+              "equity": 0.4917658547616438,
+              "ecology": 0.34903118804461153,
+              "intervention": 0.4671483638522003,
+              "reliability": 0.7285401415192078
+            },
+            "composite": 0.5305815091049008,
+            "minimumSatisfied": true
+          },
+          {
+            "domainKey": "air",
+            "units": 5,
+            "unitLabel": "calibrated station package",
+            "unitCost": 8000,
+            "cost": 40000,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.5407956812327832,
+              "exposure": 0.49417856890607204,
+              "equity": 0.403434675481128,
+              "ecology": 0.19116570466981203,
+              "intervention": 0.43184370008566897,
+              "reliability": 0.6247661213815293
+            },
+            "composite": 0.44769740862616564,
+            "minimumSatisfied": true
+          },
+          {
+            "domainKey": "soil",
+            "units": 22,
+            "unitLabel": "sample + laboratory package",
+            "unitCost": 750,
+            "cost": 16500,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.5302203586940141,
+              "exposure": 0.3746866818316182,
+              "equity": 0.4860251736615928,
+              "ecology": 0.6976112876732784,
+              "intervention": 0.5777432156140222,
+              "reliability": 0.8393834304431694
+            },
+            "composite": 0.5842783579862825,
+            "minimumSatisfied": true
+          },
+          {
+            "domainKey": "water",
+            "units": 6,
+            "unitLabel": "station or sampling package",
+            "unitCost": 5000,
+            "cost": 30000,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.45528952875638024,
+              "exposure": 0.37188176373860893,
+              "equity": 0.3584747681519963,
+              "ecology": 0.4621250127595658,
+              "intervention": 0.4605963544886659,
+              "reliability": 0.602933404843538
+            },
+            "composite": 0.4518834721231258,
+            "minimumSatisfied": true
+          }
+        ],
+        "dimensions": {
+          "information": 0.51260581130007,
+          "exposure": 0.46590821110273434,
+          "equity": 0.4349251180140903,
+          "ecology": 0.4249832982868169,
+          "intervention": 0.4843329085101394,
+          "reliability": 0.6989057745468611
+        },
+        "composite": 0.5036101869601187,
+        "worstDomainBenefit": 0.44769740862616564,
+        "balanceGap": 0.13658094936011683,
+        "committedCost": 113500,
+        "allocatableBudget": 114000,
+        "statutoryReserve": 6000,
+        "uncommitted": 500,
+        "totalUnspent": 6500,
+        "costRatio": 0.9956140350877193,
+        "valuePerBudget": 0.5058287340392382
+      },
+      "paretoOptimal": false
+    },
+    {
+      "profileKey": "equity",
+      "profile": {
+        "key": "equity",
+        "label": "Equity First",
+        "description": "Maximizes vulnerable-group information quality and protects the least-served environmental domain.",
+        "weights": {
+          "information": 0.14,
+          "exposure": 0.16,
+          "equity": 0.4,
+          "ecology": 0.06,
+          "intervention": 0.08,
+          "reliability": 0.16
+        },
+        "worstDomainWeight": 0.3,
+        "balancePenalty": 0.16,
+        "reserveWeight": 0
+      },
+      "score": 0.6088069997598323,
+      "metrics": {
+        "programs": [
+          {
+            "domainKey": "heat",
+            "units": 9,
+            "unitLabel": "monitor package",
+            "unitCost": 3000,
+            "cost": 27000,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.5241176765171028,
+              "exposure": 0.6228858299346381,
+              "equity": 0.4917658547616438,
+              "ecology": 0.34903118804461153,
+              "intervention": 0.4671483638522003,
+              "reliability": 0.7285401415192078
+            },
+            "composite": 0.5305815091049008,
+            "minimumSatisfied": true
+          },
+          {
+            "domainKey": "air",
+            "units": 5,
+            "unitLabel": "calibrated station package",
+            "unitCost": 8000,
+            "cost": 40000,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.5407956812327832,
+              "exposure": 0.49417856890607204,
+              "equity": 0.403434675481128,
+              "ecology": 0.19116570466981203,
+              "intervention": 0.43184370008566897,
+              "reliability": 0.6247661213815293
+            },
+            "composite": 0.44769740862616564,
+            "minimumSatisfied": true
+          },
+          {
+            "domainKey": "soil",
+            "units": 22,
+            "unitLabel": "sample + laboratory package",
+            "unitCost": 750,
+            "cost": 16500,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.5302203586940141,
+              "exposure": 0.3746866818316182,
+              "equity": 0.4860251736615928,
+              "ecology": 0.6976112876732784,
+              "intervention": 0.5777432156140222,
+              "reliability": 0.8393834304431694
+            },
+            "composite": 0.5842783579862825,
+            "minimumSatisfied": true
+          },
+          {
+            "domainKey": "water",
+            "units": 6,
+            "unitLabel": "station or sampling package",
+            "unitCost": 5000,
+            "cost": 30000,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.45528952875638024,
+              "exposure": 0.37188176373860893,
+              "equity": 0.3584747681519963,
+              "ecology": 0.4621250127595658,
+              "intervention": 0.4605963544886659,
+              "reliability": 0.602933404843538
+            },
+            "composite": 0.4518834721231258,
+            "minimumSatisfied": true
+          }
+        ],
+        "dimensions": {
+          "information": 0.51260581130007,
+          "exposure": 0.46590821110273434,
+          "equity": 0.4349251180140903,
+          "ecology": 0.4249832982868169,
+          "intervention": 0.4843329085101394,
+          "reliability": 0.6989057745468611
+        },
+        "composite": 0.5036101869601187,
+        "worstDomainBenefit": 0.44769740862616564,
+        "balanceGap": 0.13658094936011683,
+        "committedCost": 113500,
+        "allocatableBudget": 114000,
+        "statutoryReserve": 6000,
+        "uncommitted": 500,
+        "totalUnspent": 6500,
+        "costRatio": 0.9956140350877193,
+        "valuePerBudget": 0.5058287340392382
+      },
+      "paretoOptimal": false
+    },
+    {
+      "profileKey": "resilience",
+      "profile": {
+        "key": "resilience",
+        "label": "Reliability and Intervention",
+        "description": "Favors dependable programs that can support longitudinal monitoring and intervention evaluation.",
+        "weights": {
+          "information": 0.14,
+          "exposure": 0.1,
+          "equity": 0.1,
+          "ecology": 0.08,
+          "intervention": 0.28,
+          "reliability": 0.3
+        },
+        "worstDomainWeight": 0.18,
+        "balancePenalty": 0.08,
+        "reserveWeight": 0.02
+      },
+      "score": 0.610878534005681,
+      "metrics": {
+        "programs": [
+          {
+            "domainKey": "heat",
+            "units": 9,
+            "unitLabel": "monitor package",
+            "unitCost": 3000,
+            "cost": 27000,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.5241176765171028,
+              "exposure": 0.6228858299346381,
+              "equity": 0.4917658547616438,
+              "ecology": 0.34903118804461153,
+              "intervention": 0.4671483638522003,
+              "reliability": 0.7285401415192078
+            },
+            "composite": 0.5305815091049008,
+            "minimumSatisfied": true
+          },
+          {
+            "domainKey": "air",
+            "units": 5,
+            "unitLabel": "calibrated station package",
+            "unitCost": 8000,
+            "cost": 40000,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.5407956812327832,
+              "exposure": 0.49417856890607204,
+              "equity": 0.403434675481128,
+              "ecology": 0.19116570466981203,
+              "intervention": 0.43184370008566897,
+              "reliability": 0.6247661213815293
+            },
+            "composite": 0.44769740862616564,
+            "minimumSatisfied": true
+          },
+          {
+            "domainKey": "soil",
+            "units": 22,
+            "unitLabel": "sample + laboratory package",
+            "unitCost": 750,
+            "cost": 16500,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.5302203586940141,
+              "exposure": 0.3746866818316182,
+              "equity": 0.4860251736615928,
+              "ecology": 0.6976112876732784,
+              "intervention": 0.5777432156140222,
+              "reliability": 0.8393834304431694
+            },
+            "composite": 0.5842783579862825,
+            "minimumSatisfied": true
+          },
+          {
+            "domainKey": "water",
+            "units": 6,
+            "unitLabel": "station or sampling package",
+            "unitCost": 5000,
+            "cost": 30000,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.45528952875638024,
+              "exposure": 0.37188176373860893,
+              "equity": 0.3584747681519963,
+              "ecology": 0.4621250127595658,
+              "intervention": 0.4605963544886659,
+              "reliability": 0.602933404843538
+            },
+            "composite": 0.4518834721231258,
+            "minimumSatisfied": true
+          }
+        ],
+        "dimensions": {
+          "information": 0.51260581130007,
+          "exposure": 0.46590821110273434,
+          "equity": 0.4349251180140903,
+          "ecology": 0.4249832982868169,
+          "intervention": 0.4843329085101394,
+          "reliability": 0.6989057745468611
+        },
+        "composite": 0.5036101869601187,
+        "worstDomainBenefit": 0.44769740862616564,
+        "balanceGap": 0.13658094936011683,
+        "committedCost": 113500,
+        "allocatableBudget": 114000,
+        "statutoryReserve": 6000,
+        "uncommitted": 500,
+        "totalUnspent": 6500,
+        "costRatio": 0.9956140350877193,
+        "valuePerBudget": 0.5058287340392382
+      },
+      "paretoOptimal": false
+    },
+    {
+      "profileKey": "cost",
+      "profile": {
+        "key": "cost",
+        "label": "Cost Efficient",
+        "description": "Seeks the strongest normalized program value per committed dollar after satisfying active minimum-program rules.",
+        "weights": {
+          "information": 0.22,
+          "exposure": 0.16,
+          "equity": 0.15,
+          "ecology": 0.1,
+          "intervention": 0.12,
+          "reliability": 0.25
+        },
+        "worstDomainWeight": 0.12,
+        "balancePenalty": 0.08,
+        "reserveWeight": 0.34,
+        "efficiencyWeight": 0.34
+      },
+      "score": 0.7504678149562357,
+      "metrics": {
+        "programs": [
+          {
+            "domainKey": "heat",
+            "units": 8,
+            "unitLabel": "monitor package",
+            "unitCost": 3000,
+            "cost": 24000,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.4863526588916699,
+              "exposure": 0.5813165142112084,
+              "equity": 0.45375118996336394,
+              "ecology": 0.3212273006076739,
+              "intervention": 0.4334882394469231,
+              "reliability": 0.6843659046430964
+            },
+            "composite": 0.493416967960656,
+            "minimumSatisfied": true
+          },
+          {
+            "domainKey": "air",
+            "units": 4,
+            "unitLabel": "calibrated station package",
+            "unitCost": 8000,
+            "cost": 32000,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.46672516474103737,
+              "exposure": 0.42400725362563085,
+              "equity": 0.34192082595064516,
+              "ecology": 0.16021497802888984,
+              "intervention": 0.3700327925826624,
+              "reliability": 0.5354821571149205
+            },
+            "composite": 0.3830638620072977,
+            "minimumSatisfied": true
+          },
+          {
+            "domainKey": "soil",
+            "units": 21,
+            "unitLabel": "sample + laboratory package",
+            "unitCost": 750,
+            "cost": 15750,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.5168981551241651,
+              "exposure": 0.36441962304632,
+              "equity": 0.4732614892820452,
+              "ecology": 0.6830894900126605,
+              "intervention": 0.5639607596139445,
+              "reliability": 0.8252267952761054
+            },
+            "composite": 0.5711427187258735,
+            "minimumSatisfied": true
+          },
+          {
+            "domainKey": "water",
+            "units": 5,
+            "unitLabel": "station or sampling package",
+            "unitCost": 5000,
+            "cost": 25000,
+            "priority": 1,
+            "dimensions": {
+              "information": 0.400359224852683,
+              "exposure": 0.3250766721230236,
+              "equity": 0.312291347842318,
+              "ecology": 0.40679528960772826,
+              "intervention": 0.40422533913981085,
+              "reliability": 0.5309002758942769
+            },
+            "composite": 0.39660802490997343,
+            "minimumSatisfied": true
+          }
+        ],
+        "dimensions": {
+          "information": 0.4675838009023889,
+          "exposure": 0.4237050157515457,
+          "equity": 0.3953062132595931,
+          "ecology": 0.39283176456423813,
+          "intervention": 0.4429267826958352,
+          "reliability": 0.6439937832320999
+        },
+        "composite": 0.4610578934009501,
+        "worstDomainBenefit": 0.3830638620072977,
+        "balanceGap": 0.18807885671857583,
+        "committedCost": 96750,
+        "allocatableBudget": 114000,
+        "statutoryReserve": 6000,
+        "uncommitted": 17250,
+        "totalUnspent": 23250,
+        "costRatio": 0.8486842105263158,
+        "valuePerBudget": 0.5432620139298017
+      },
+      "paretoOptimal": true
+    }
+  ],
+  "checksum": "6c496444"
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "lumos.heat.protocol.v1",
+  "release": "0.7.0",
+  "city": "New York City",
+  "domain": "heat",
+  "lockedTest": {
+    "fraction": 0.22,
+    "minimumSensors": 6,
+    "stratification": [
+      "four-by-four normalized spatial bands",
+      "three heat-vulnerability bands"
+    ],
+    "rule": "The locked test sensors are excluded from covariance tuning and development cross-validation."
+  },
+  "developmentValidation": {
+    "method": "spatial fold cross-validation",
+    "folds": 5,
+    "selectionCriterion": "RMSE + 0.35 * absolute 95 percent coverage gap"
+  },
+  "modelComparisons": [
+    "LUMOS covariate trend plus Gaussian-process residual",
+    "official source surface only",
+    "covariate trend only",
+    "inverse-distance weighting",
+    "nearest observed sensor"
+  ],
+  "interventionDesign": {
+    "framework": "BACI-inspired treatment, matched-control, boundary, and spillover allocation",
+    "warning": "Approximate power is a planning diagnostic and not causal proof."
+  }
+}

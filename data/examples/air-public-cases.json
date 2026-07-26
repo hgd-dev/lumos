@@ -1,0 +1,31 @@
+{
+  "version": "1.4.0",
+  "protocol": "lumos-air-public-evidence-v1",
+  "cases": [
+    {
+      "id": "los-angeles-pm25",
+      "label": "Los Angeles PM2.5",
+      "pollutant": "pm2_5",
+      "purpose": "Traffic, basin transport, and exposure screening"
+    },
+    {
+      "id": "houston-ozone",
+      "label": "Houston ozone",
+      "pollutant": "ozone",
+      "purpose": "Industrial sources, photochemistry, and coastal transport screening"
+    },
+    {
+      "id": "chicago-no2",
+      "label": "Chicago nitrogen dioxide",
+      "pollutant": "nitrogen_dioxide",
+      "purpose": "Urban transport-corridor screening"
+    },
+    {
+      "id": "new-york-pm25",
+      "label": "New York PM2.5",
+      "pollutant": "pm2_5",
+      "purpose": "Dense coastal exposure and network-design screening"
+    }
+  ],
+  "warning": "Cases are generated from live public inputs. Without compatible reference readings they are atmospheric-model screening experiments, not regulatory determinations."
+}

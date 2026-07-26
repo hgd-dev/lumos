@@ -126,6 +126,7 @@ export function prepareBayesianDesign({
     modelSettings,
     baselineVariance: Float64Array.from(conditioned.posteriorVariance),
     posteriorVariance: conditioned.posteriorVariance,
+    baseCandidateCovariance: conditioned.candidateCovariance.map((row) => Float64Array.from(row)),
     candidateCovariance: conditioned.candidateCovariance,
     evaluationCandidateCovariance: conditioned.evaluationCandidateCovariance,
     selectedIndices: []
@@ -137,9 +138,23 @@ export function cloneDesign(design) {
     ...design,
     baselineVariance: Float64Array.from(design.baselineVariance),
     posteriorVariance: Float64Array.from(design.baselineVariance),
-    candidateCovariance: design.candidateCovariance.map((row) => Float64Array.from(row)),
+    baseCandidateCovariance: design.baseCandidateCovariance.map((row) => Float64Array.from(row)),
+    candidateCovariance: design.baseCandidateCovariance.map((row) => Float64Array.from(row)),
     evaluationCandidateCovariance: design.evaluationCandidateCovariance.map((row) => Float64Array.from(row)),
     selectedIndices: []
+  };
+}
+
+
+export function forkDesign(design) {
+  return {
+    ...design,
+    baselineVariance: Float64Array.from(design.baselineVariance),
+    posteriorVariance: Float64Array.from(design.posteriorVariance),
+    baseCandidateCovariance: design.baseCandidateCovariance.map((row) => Float64Array.from(row)),
+    candidateCovariance: design.candidateCovariance.map((row) => Float64Array.from(row)),
+    evaluationCandidateCovariance: design.evaluationCandidateCovariance.map((row) => Float64Array.from(row)),
+    selectedIndices: [...design.selectedIndices]
   };
 }
 

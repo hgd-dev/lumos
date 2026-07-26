@@ -1,0 +1,209 @@
+record_type,profile,profile_label,pareto,complete,host_id,host_label,phase,scheduled,review_status,outcome,failure_probability,domains,reserve_id,replacement_host_id,campaign_cost,checksum
+inspection,balanced,Balanced campaign,true,true,reviewed-host-33,Park or recreation 33,,false,verified,accepted,0,soil|heat|water,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-06,Utility infrastructure 06,2,true,conditional,accepted,0.146775,water|soil,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-09,Watershed access 09,,false,verified,accepted,0,water|soil,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-12,School or childcare 12,2,true,conditional,accepted,0.1497,soil|heat,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-14,Transit or mobility 14,1,true,conditional,rejected,0.14385,air|heat,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-15,Community facility 15,1,true,conditional,accepted,0.16140000000000002,soil|heat,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-24,Transit or mobility 24,1,true,conditional,accepted,0.15555,air|heat,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-27,Treatment facility 27,1,true,conditional,accepted,0.167775,water|air,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-32,School or childcare 32,2,true,conditional,accepted,0.152625,soil|heat,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-35,Community facility 35,2,true,conditional,accepted,0.16485000000000002,soil|heat,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-39,Watershed access 39,1,true,conditional,accepted,0.152625,water|soil,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-42,School or childcare 42,1,true,conditional,accepted,0.14385,heat|air,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-45,Community facility 45,1,true,conditional,accepted,0.15555,soil|heat,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-02,School or childcare 02,3,true,conditional,accepted,0.158475,soil,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-03,Park or recreation 03,2,true,conditional,accepted,0.17655,soil,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-05,Community facility 05,3,true,conditional,accepted,0.1497,soil,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-07,Treatment facility 07,2,true,conditional,accepted,0.14385,water,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-08,Industrial-edge property 08,3,true,conditional,accepted,0.16140000000000002,soil,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-13,Park or recreation 13,3,true,conditional,accepted,0.146775,soil,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-18,Industrial-edge property 18,3,true,conditional,accepted,0.152625,soil,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-22,School or childcare 22,2,true,conditional,accepted,0.16140000000000002,soil,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-23,Park or recreation 23,3,true,conditional,accepted,0.158475,soil,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-25,Community facility 25,,false,verified,accepted,0,soil,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-28,Industrial-edge property 28,3,true,conditional,accepted,0.16485000000000002,soil,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-38,Industrial-edge property 38,3,true,conditional,accepted,0.15555,soil,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-41,Municipal facility 41,,false,verified,accepted,0,soil,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-43,Park or recreation 43,2,true,conditional,rejected,0.18239999999999998,soil,,,15050,9828a203
+inspection,balanced,Balanced campaign,true,true,reviewed-host-44,Transit or mobility 44,1,true,conditional,accepted,0.158475,air,,,15050,9828a203
+reserve,balanced,Balanced campaign,true,true,reviewed-host-35,Community facility 35,,,conditional,reserve-candidate,,heat,heat-reserve-1,reviewed-host-21,15050,9828a203
+reserve,balanced,Balanced campaign,true,true,reviewed-host-15,Community facility 15,,,conditional,reserve-candidate,,heat,heat-reserve-2,reviewed-host-04,15050,9828a203
+reserve,balanced,Balanced campaign,true,true,reviewed-host-24,Transit or mobility 24,,,conditional,reserve-candidate,,heat,heat-reserve-3,reviewed-host-34,15050,9828a203
+reserve,balanced,Balanced campaign,true,true,reviewed-host-45,Community facility 45,,,verified,reserve-candidate,,heat,heat-reserve-4,reviewed-host-01,15050,9828a203
+reserve,balanced,Balanced campaign,true,true,reviewed-host-32,School or childcare 32,,,conditional,reserve-candidate,,heat,heat-reserve-5,reviewed-host-10,15050,9828a203
+reserve,balanced,Balanced campaign,true,true,reviewed-host-27,Treatment facility 27,,,conditional,reserve-candidate,,air,air-reserve-1,reviewed-host-40,15050,9828a203
+reserve,balanced,Balanced campaign,true,true,reviewed-host-44,Transit or mobility 44,,,conditional,reserve-candidate,,air,air-reserve-2,reviewed-host-20,15050,9828a203
+reserve,balanced,Balanced campaign,true,true,reviewed-host-24,Transit or mobility 24,,,conditional,reserve-candidate,,air,air-reserve-3,reviewed-host-30,15050,9828a203
+reserve,balanced,Balanced campaign,true,true,reviewed-host-43,Park or recreation 43,,,conditional,reserve-candidate,,soil,soil-reserve-1,reviewed-host-19,15050,9828a203
+reserve,balanced,Balanced campaign,true,true,reviewed-host-03,Park or recreation 03,,,conditional,reserve-candidate,,soil,soil-reserve-2,reviewed-host-36,15050,9828a203
+reserve,balanced,Balanced campaign,true,true,reviewed-host-28,Industrial-edge property 28,,,verified,reserve-candidate,,soil,soil-reserve-3,reviewed-host-17,15050,9828a203
+reserve,balanced,Balanced campaign,true,true,reviewed-host-35,Community facility 35,,,conditional,reserve-candidate,,soil,soil-reserve-4,reviewed-host-29,15050,9828a203
+reserve,balanced,Balanced campaign,true,true,reviewed-host-08,Industrial-edge property 08,,,conditional,reserve-candidate,,soil,soil-reserve-5,reviewed-host-11,15050,9828a203
+reserve,balanced,Balanced campaign,true,true,reviewed-host-15,Community facility 15,,,conditional,reserve-candidate,,soil,soil-reserve-6,reviewed-host-26,15050,9828a203
+reserve,balanced,Balanced campaign,true,true,reviewed-host-22,School or childcare 22,,,conditional,reserve-candidate,,soil,soil-reserve-7,reviewed-host-31,15050,9828a203
+reserve,balanced,Balanced campaign,true,true,reviewed-host-02,School or childcare 02,,,conditional,reserve-candidate,,soil,soil-reserve-8,reviewed-host-37,15050,9828a203
+reserve,balanced,Balanced campaign,true,true,reviewed-host-23,Park or recreation 23,,,conditional,reserve-candidate,,soil,soil-reserve-9,reviewed-host-16,15050,9828a203
+replacement,balanced,Balanced campaign,true,true,reviewed-host-14,Transit or mobility 14,,true,conditional,replacement-activated,,air,air-reserve-1,reviewed-host-40,15050,9828a203
+replacement,balanced,Balanced campaign,true,true,reviewed-host-14,Transit or mobility 14,,true,conditional,replacement-activated,,heat,heat-reserve-1,reviewed-host-21,15050,9828a203
+replacement,balanced,Balanced campaign,true,true,reviewed-host-43,Park or recreation 43,,true,conditional,replacement-activated,,soil,soil-reserve-1,reviewed-host-19,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-33,Park or recreation 33,,false,verified,accepted,0,soil|heat|water,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-06,Utility infrastructure 06,2,true,conditional,accepted,0.146775,water|soil,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-09,Watershed access 09,,false,verified,accepted,0,water|soil,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-12,School or childcare 12,2,true,conditional,accepted,0.1497,soil|heat,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-14,Transit or mobility 14,1,true,conditional,accepted,0.14385,air|heat,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-15,Community facility 15,1,true,conditional,accepted,0.16140000000000002,soil|heat,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-24,Transit or mobility 24,1,true,conditional,accepted,0.15555,air|heat,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-27,Treatment facility 27,1,true,conditional,rejected,0.167775,water|air,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-32,School or childcare 32,2,true,conditional,rejected,0.152625,soil|heat,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-35,Community facility 35,1,true,conditional,accepted,0.16485000000000002,soil|heat,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-39,Watershed access 39,1,true,conditional,rejected,0.152625,water|soil,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-42,School or childcare 42,1,true,conditional,accepted,0.14385,heat|air,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-45,Community facility 45,1,true,conditional,accepted,0.15555,soil|heat,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-02,School or childcare 02,3,true,conditional,accepted,0.158475,soil,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-03,Park or recreation 03,2,true,conditional,rejected,0.17655,soil,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-05,Community facility 05,3,true,conditional,accepted,0.1497,soil,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-07,Treatment facility 07,2,true,conditional,accepted,0.14385,water,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-08,Industrial-edge property 08,3,true,conditional,accepted,0.16140000000000002,soil,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-13,Park or recreation 13,3,true,conditional,accepted,0.146775,soil,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-18,Industrial-edge property 18,3,true,conditional,accepted,0.152625,soil,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-22,School or childcare 22,2,true,conditional,accepted,0.16140000000000002,soil,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-23,Park or recreation 23,3,true,conditional,accepted,0.158475,soil,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-25,Community facility 25,,false,verified,accepted,0,soil,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-28,Industrial-edge property 28,3,true,conditional,rejected,0.16485000000000002,soil,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-38,Industrial-edge property 38,3,true,conditional,accepted,0.15555,soil,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-41,Municipal facility 41,,false,verified,accepted,0,soil,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-43,Park or recreation 43,2,true,conditional,accepted,0.18239999999999998,soil,,,15050,9828a203
+inspection,rapid,Rapid verification,false,false,reviewed-host-44,Transit or mobility 44,2,true,conditional,accepted,0.158475,air,,,15050,9828a203
+reserve,rapid,Rapid verification,false,false,reviewed-host-35,Community facility 35,,,conditional,reserve-candidate,,heat,heat-reserve-1,reviewed-host-21,15050,9828a203
+reserve,rapid,Rapid verification,false,false,reviewed-host-15,Community facility 15,,,conditional,reserve-candidate,,heat,heat-reserve-2,reviewed-host-04,15050,9828a203
+reserve,rapid,Rapid verification,false,false,reviewed-host-24,Transit or mobility 24,,,verified,reserve-candidate,,heat,heat-reserve-3,reviewed-host-01,15050,9828a203
+reserve,rapid,Rapid verification,false,false,reviewed-host-45,Community facility 45,,,conditional,reserve-candidate,,heat,heat-reserve-4,reviewed-host-34,15050,9828a203
+reserve,rapid,Rapid verification,false,false,reviewed-host-32,School or childcare 32,,,conditional,reserve-candidate,,heat,heat-reserve-5,reviewed-host-10,15050,9828a203
+reserve,rapid,Rapid verification,false,false,reviewed-host-27,Treatment facility 27,,,conditional,reserve-candidate,,air,air-reserve-1,reviewed-host-40,15050,9828a203
+reserve,rapid,Rapid verification,false,false,reviewed-host-44,Transit or mobility 44,,,conditional,reserve-candidate,,air,air-reserve-2,reviewed-host-20,15050,9828a203
+reserve,rapid,Rapid verification,false,false,reviewed-host-24,Transit or mobility 24,,,conditional,reserve-candidate,,air,air-reserve-3,reviewed-host-26,15050,9828a203
+reserve,rapid,Rapid verification,false,false,reviewed-host-43,Park or recreation 43,,,conditional,reserve-candidate,,soil,soil-reserve-1,reviewed-host-19,15050,9828a203
+reserve,rapid,Rapid verification,false,false,reviewed-host-03,Park or recreation 03,,,conditional,reserve-candidate,,soil,soil-reserve-2,reviewed-host-36,15050,9828a203
+reserve,rapid,Rapid verification,false,false,reviewed-host-28,Industrial-edge property 28,,,verified,reserve-candidate,,soil,soil-reserve-3,reviewed-host-17,15050,9828a203
+reserve,rapid,Rapid verification,false,false,reviewed-host-35,Community facility 35,,,conditional,reserve-candidate,,soil,soil-reserve-4,reviewed-host-29,15050,9828a203
+reserve,rapid,Rapid verification,false,false,reviewed-host-08,Industrial-edge property 08,,,conditional,reserve-candidate,,soil,soil-reserve-5,reviewed-host-30,15050,9828a203
+reserve,rapid,Rapid verification,false,false,reviewed-host-15,Community facility 15,,,conditional,reserve-candidate,,soil,soil-reserve-6,reviewed-host-37,15050,9828a203
+reserve,rapid,Rapid verification,false,false,reviewed-host-22,School or childcare 22,,,conditional,reserve-candidate,,soil,soil-reserve-7,reviewed-host-11,15050,9828a203
+reserve,rapid,Rapid verification,false,false,reviewed-host-02,School or childcare 02,,,conditional,reserve-candidate,,soil,soil-reserve-8,reviewed-host-31,15050,9828a203
+reserve,rapid,Rapid verification,false,false,reviewed-host-23,Park or recreation 23,,,conditional,reserve-candidate,,soil,soil-reserve-9,reviewed-host-16,15050,9828a203
+replacement,rapid,Rapid verification,false,false,reviewed-host-27,Treatment facility 27,,true,conditional,replacement-activated,,air,air-reserve-1,reviewed-host-40,15050,9828a203
+replacement,rapid,Rapid verification,false,false,reviewed-host-32,School or childcare 32,,true,conditional,replacement-activated,,soil,soil-reserve-1,reviewed-host-19,15050,9828a203
+replacement,rapid,Rapid verification,false,false,reviewed-host-32,School or childcare 32,,true,conditional,replacement-activated,,heat,heat-reserve-1,reviewed-host-21,15050,9828a203
+replacement,rapid,Rapid verification,false,false,reviewed-host-39,Watershed access 39,,true,conditional,replacement-activated,,soil,soil-reserve-2,reviewed-host-36,15050,9828a203
+replacement,rapid,Rapid verification,false,false,reviewed-host-03,Park or recreation 03,,true,verified,replacement-activated,,soil,soil-reserve-3,reviewed-host-17,15050,9828a203
+replacement,rapid,Rapid verification,false,false,reviewed-host-28,Industrial-edge property 28,,true,conditional,replacement-activated,,soil,soil-reserve-4,reviewed-host-29,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-33,Park or recreation 33,,false,verified,accepted,0,soil|heat|water,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-06,Utility infrastructure 06,2,true,conditional,rejected,0.146775,water|soil,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-09,Watershed access 09,,false,verified,accepted,0,water|soil,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-12,School or childcare 12,2,true,conditional,rejected,0.1497,soil|heat,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-14,Transit or mobility 14,1,true,conditional,accepted,0.14385,air|heat,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-15,Community facility 15,1,true,conditional,accepted,0.16140000000000002,soil|heat,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-24,Transit or mobility 24,1,true,conditional,accepted,0.15555,air|heat,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-27,Treatment facility 27,1,true,conditional,accepted,0.167775,water|air,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-32,School or childcare 32,2,true,conditional,accepted,0.152625,soil|heat,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-35,Community facility 35,2,true,conditional,accepted,0.16485000000000002,soil|heat,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-39,Watershed access 39,1,true,conditional,accepted,0.152625,water|soil,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-42,School or childcare 42,1,true,conditional,rejected,0.14385,heat|air,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-45,Community facility 45,1,true,conditional,rejected,0.15555,soil|heat,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-02,School or childcare 02,3,true,conditional,accepted,0.158475,soil,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-03,Park or recreation 03,2,true,conditional,rejected,0.17655,soil,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-05,Community facility 05,3,true,conditional,accepted,0.1497,soil,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-07,Treatment facility 07,2,true,conditional,rejected,0.14385,water,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-08,Industrial-edge property 08,3,true,conditional,rejected,0.16140000000000002,soil,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-13,Park or recreation 13,3,true,conditional,accepted,0.146775,soil,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-18,Industrial-edge property 18,3,true,conditional,rejected,0.152625,soil,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-22,School or childcare 22,2,true,conditional,rejected,0.16140000000000002,soil,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-23,Park or recreation 23,3,true,conditional,accepted,0.158475,soil,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-25,Community facility 25,,false,verified,accepted,0,soil,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-28,Industrial-edge property 28,3,true,conditional,accepted,0.16485000000000002,soil,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-38,Industrial-edge property 38,3,true,conditional,accepted,0.15555,soil,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-41,Municipal facility 41,,false,verified,accepted,0,soil,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-43,Park or recreation 43,2,true,conditional,rejected,0.18239999999999998,soil,,,15050,9828a203
+inspection,coverage,Coverage protection,false,false,reviewed-host-44,Transit or mobility 44,1,true,conditional,rejected,0.158475,air,,,15050,9828a203
+reserve,coverage,Coverage protection,false,false,reviewed-host-35,Community facility 35,,,conditional,reserve-candidate,,heat,heat-reserve-1,reviewed-host-21,15050,9828a203
+reserve,coverage,Coverage protection,false,false,reviewed-host-15,Community facility 15,,,conditional,reserve-candidate,,heat,heat-reserve-2,reviewed-host-04,15050,9828a203
+reserve,coverage,Coverage protection,false,false,reviewed-host-24,Transit or mobility 24,,,conditional,reserve-candidate,,heat,heat-reserve-3,reviewed-host-11,15050,9828a203
+reserve,coverage,Coverage protection,false,false,reviewed-host-45,Community facility 45,,,conditional,reserve-candidate,,heat,heat-reserve-4,reviewed-host-34,15050,9828a203
+reserve,coverage,Coverage protection,false,false,reviewed-host-32,School or childcare 32,,,conditional,reserve-candidate,,heat,heat-reserve-5,reviewed-host-10,15050,9828a203
+reserve,coverage,Coverage protection,false,false,reviewed-host-27,Treatment facility 27,,,conditional,reserve-candidate,,air,air-reserve-1,reviewed-host-40,15050,9828a203
+reserve,coverage,Coverage protection,false,false,reviewed-host-44,Transit or mobility 44,,,conditional,reserve-candidate,,air,air-reserve-2,reviewed-host-20,15050,9828a203
+reserve,coverage,Coverage protection,false,false,reviewed-host-24,Transit or mobility 24,,,conditional,reserve-candidate,,air,air-reserve-3,reviewed-host-30,15050,9828a203
+reserve,coverage,Coverage protection,false,false,reviewed-host-43,Park or recreation 43,,,conditional,reserve-candidate,,soil,soil-reserve-1,reviewed-host-19,15050,9828a203
+reserve,coverage,Coverage protection,false,false,reviewed-host-03,Park or recreation 03,,,conditional,reserve-candidate,,soil,soil-reserve-2,reviewed-host-36,15050,9828a203
+reserve,coverage,Coverage protection,false,false,reviewed-host-28,Industrial-edge property 28,,,verified,reserve-candidate,,soil,soil-reserve-3,reviewed-host-17,15050,9828a203
+reserve,coverage,Coverage protection,false,false,reviewed-host-35,Community facility 35,,,conditional,reserve-candidate,,soil,soil-reserve-4,reviewed-host-29,15050,9828a203
+reserve,coverage,Coverage protection,false,false,reviewed-host-08,Industrial-edge property 08,,,verified,reserve-candidate,,soil,soil-reserve-5,reviewed-host-01,15050,9828a203
+reserve,coverage,Coverage protection,false,false,reviewed-host-15,Community facility 15,,,conditional,reserve-candidate,,soil,soil-reserve-6,reviewed-host-26,15050,9828a203
+reserve,coverage,Coverage protection,false,false,reviewed-host-22,School or childcare 22,,,conditional,reserve-candidate,,soil,soil-reserve-7,reviewed-host-31,15050,9828a203
+reserve,coverage,Coverage protection,false,false,reviewed-host-02,School or childcare 02,,,conditional,reserve-candidate,,soil,soil-reserve-8,reviewed-host-37,15050,9828a203
+reserve,coverage,Coverage protection,false,false,reviewed-host-23,Park or recreation 23,,,conditional,reserve-candidate,,soil,soil-reserve-9,reviewed-host-16,15050,9828a203
+replacement,coverage,Coverage protection,false,false,reviewed-host-06,Utility infrastructure 06,,true,conditional,replacement-activated,,soil,soil-reserve-1,reviewed-host-19,15050,9828a203
+replacement,coverage,Coverage protection,false,false,reviewed-host-12,School or childcare 12,,true,conditional,replacement-activated,,soil,soil-reserve-2,reviewed-host-36,15050,9828a203
+replacement,coverage,Coverage protection,false,false,reviewed-host-12,School or childcare 12,,true,conditional,replacement-activated,,heat,heat-reserve-1,reviewed-host-21,15050,9828a203
+replacement,coverage,Coverage protection,false,false,reviewed-host-42,School or childcare 42,,true,conditional,replacement-activated,,heat,heat-reserve-2,reviewed-host-04,15050,9828a203
+replacement,coverage,Coverage protection,false,false,reviewed-host-42,School or childcare 42,,true,conditional,replacement-activated,,air,air-reserve-1,reviewed-host-40,15050,9828a203
+replacement,coverage,Coverage protection,false,false,reviewed-host-45,Community facility 45,,true,verified,replacement-activated,,soil,soil-reserve-3,reviewed-host-17,15050,9828a203
+replacement,coverage,Coverage protection,false,false,reviewed-host-45,Community facility 45,,true,conditional,replacement-activated,,heat,heat-reserve-3,reviewed-host-11,15050,9828a203
+replacement,coverage,Coverage protection,false,false,reviewed-host-03,Park or recreation 03,,true,conditional,replacement-activated,,soil,soil-reserve-4,reviewed-host-29,15050,9828a203
+replacement,coverage,Coverage protection,false,false,reviewed-host-08,Industrial-edge property 08,,true,verified,replacement-activated,,soil,soil-reserve-5,reviewed-host-01,15050,9828a203
+replacement,coverage,Coverage protection,false,false,reviewed-host-18,Industrial-edge property 18,,true,conditional,replacement-activated,,soil,soil-reserve-6,reviewed-host-26,15050,9828a203
+replacement,coverage,Coverage protection,false,false,reviewed-host-22,School or childcare 22,,true,conditional,replacement-activated,,soil,soil-reserve-7,reviewed-host-31,15050,9828a203
+replacement,coverage,Coverage protection,false,false,reviewed-host-43,Park or recreation 43,,true,conditional,replacement-activated,,soil,soil-reserve-8,reviewed-host-37,15050,9828a203
+replacement,coverage,Coverage protection,false,false,reviewed-host-44,Transit or mobility 44,,true,conditional,replacement-activated,,air,air-reserve-2,reviewed-host-20,15050,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-33,Park or recreation 33,,false,verified,accepted,0,soil|heat|water,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-06,Utility infrastructure 06,2,true,conditional,accepted,0.146775,water|soil,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-09,Watershed access 09,,false,verified,accepted,0,water|soil,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-12,School or childcare 12,2,true,conditional,rejected,0.1497,soil|heat,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-14,Transit or mobility 14,2,true,conditional,accepted,0.14385,air|heat,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-15,Community facility 15,1,true,conditional,accepted,0.16140000000000002,soil|heat,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-24,Transit or mobility 24,1,true,conditional,accepted,0.15555,air|heat,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-27,Treatment facility 27,1,true,conditional,rejected,0.167775,water|air,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-32,School or childcare 32,1,true,conditional,accepted,0.152625,soil|heat,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-35,Community facility 35,2,true,conditional,rejected,0.16485000000000002,soil|heat,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-39,Watershed access 39,1,true,conditional,accepted,0.152625,water|soil,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-42,School or childcare 42,1,true,conditional,accepted,0.14385,heat|air,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-45,Community facility 45,1,true,conditional,accepted,0.15555,soil|heat,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-02,School or childcare 02,3,true,conditional,rejected,0.158475,soil,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-03,Park or recreation 03,2,true,conditional,accepted,0.17655,soil,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-05,Community facility 05,3,true,conditional,accepted,0.1497,soil,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-07,Treatment facility 07,3,true,conditional,accepted,0.14385,water,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-08,Industrial-edge property 08,2,true,conditional,accepted,0.16140000000000002,soil,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-13,Park or recreation 13,3,true,conditional,accepted,0.146775,soil,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-18,Industrial-edge property 18,3,true,conditional,accepted,0.152625,soil,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-22,School or childcare 22,2,true,conditional,accepted,0.16140000000000002,soil,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-23,Park or recreation 23,3,true,conditional,accepted,0.158475,soil,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-25,Community facility 25,,false,verified,accepted,0,soil,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-28,Industrial-edge property 28,3,true,conditional,accepted,0.16485000000000002,soil,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-38,Industrial-edge property 38,3,true,conditional,accepted,0.15555,soil,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-41,Municipal facility 41,,false,verified,accepted,0,soil,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-43,Park or recreation 43,2,true,conditional,rejected,0.18239999999999998,soil,,,14800,9828a203
+inspection,resilient,Resilience first,true,false,reviewed-host-44,Transit or mobility 44,1,true,conditional,accepted,0.158475,air,,,14800,9828a203
+reserve,resilient,Resilience first,true,false,reviewed-host-35,Community facility 35,,,conditional,reserve-candidate,,heat,heat-reserve-1,reviewed-host-21,14800,9828a203
+reserve,resilient,Resilience first,true,false,reviewed-host-15,Community facility 15,,,conditional,reserve-candidate,,heat,heat-reserve-2,reviewed-host-34,14800,9828a203
+reserve,resilient,Resilience first,true,false,reviewed-host-24,Transit or mobility 24,,,conditional,reserve-candidate,,heat,heat-reserve-3,reviewed-host-11,14800,9828a203
+reserve,resilient,Resilience first,true,false,reviewed-host-45,Community facility 45,,,verified,reserve-candidate,,heat,heat-reserve-4,reviewed-host-01,14800,9828a203
+reserve,resilient,Resilience first,true,false,reviewed-host-32,School or childcare 32,,,conditional,reserve-candidate,,heat,heat-reserve-5,reviewed-host-20,14800,9828a203
+reserve,resilient,Resilience first,true,false,reviewed-host-27,Treatment facility 27,,,conditional,reserve-candidate,,air,air-reserve-1,reviewed-host-40,14800,9828a203
+reserve,resilient,Resilience first,true,false,reviewed-host-44,Transit or mobility 44,,,verified,reserve-candidate,,air,air-reserve-2,reviewed-host-17,14800,9828a203
+reserve,resilient,Resilience first,true,false,reviewed-host-24,Transit or mobility 24,,,conditional,reserve-candidate,,air,air-reserve-3,reviewed-host-26,14800,9828a203
+reserve,resilient,Resilience first,true,false,reviewed-host-43,Park or recreation 43,,,conditional,reserve-candidate,,soil,soil-reserve-1,reviewed-host-19,14800,9828a203
+reserve,resilient,Resilience first,true,false,reviewed-host-03,Park or recreation 03,,,conditional,reserve-candidate,,soil,soil-reserve-2,reviewed-host-29,14800,9828a203
+reserve,resilient,Resilience first,true,false,reviewed-host-28,Industrial-edge property 28,,,conditional,reserve-candidate,,soil,soil-reserve-3,reviewed-host-31,14800,9828a203
+reserve,resilient,Resilience first,true,false,reviewed-host-35,Community facility 35,,,conditional,reserve-candidate,,soil,soil-reserve-4,reviewed-host-30,14800,9828a203
+reserve,resilient,Resilience first,true,false,reviewed-host-08,Industrial-edge property 08,,,conditional,reserve-candidate,,soil,soil-reserve-5,reviewed-host-10,14800,9828a203
+reserve,resilient,Resilience first,true,false,reviewed-host-15,Community facility 15,,,conditional,reserve-candidate,,soil,soil-reserve-6,reviewed-host-37,14800,9828a203
+reserve,resilient,Resilience first,true,false,reviewed-host-22,School or childcare 22,,,conditional,reserve-candidate,,soil,soil-reserve-7,reviewed-host-36,14800,9828a203
+reserve,resilient,Resilience first,true,false,reviewed-host-02,School or childcare 02,,,conditional,reserve-candidate,,soil,soil-reserve-8,reviewed-host-16,14800,9828a203
+replacement,resilient,Resilience first,true,false,reviewed-host-12,School or childcare 12,,true,conditional,replacement-activated,,soil,soil-reserve-1,reviewed-host-19,14800,9828a203
+replacement,resilient,Resilience first,true,false,reviewed-host-12,School or childcare 12,,true,conditional,replacement-activated,,heat,heat-reserve-1,reviewed-host-21,14800,9828a203
+replacement,resilient,Resilience first,true,false,reviewed-host-27,Treatment facility 27,,true,conditional,replacement-activated,,air,air-reserve-1,reviewed-host-40,14800,9828a203
+replacement,resilient,Resilience first,true,false,reviewed-host-35,Community facility 35,,true,conditional,replacement-activated,,soil,soil-reserve-2,reviewed-host-29,14800,9828a203
+replacement,resilient,Resilience first,true,false,reviewed-host-35,Community facility 35,,true,conditional,replacement-activated,,heat,heat-reserve-2,reviewed-host-34,14800,9828a203
+replacement,resilient,Resilience first,true,false,reviewed-host-02,School or childcare 02,,true,conditional,replacement-activated,,soil,soil-reserve-3,reviewed-host-31,14800,9828a203
+replacement,resilient,Resilience first,true,false,reviewed-host-43,Park or recreation 43,,true,conditional,replacement-activated,,soil,soil-reserve-4,reviewed-host-30,14800,9828a203

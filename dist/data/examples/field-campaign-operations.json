@@ -1,0 +1,5841 @@
+{
+  "schemaVersion": "1.0",
+  "architecture": "field-campaign-operations-and-reserve-site-planning",
+  "generatedAt": "1970-01-01T00:00:00.000Z",
+  "ready": true,
+  "deploymentChecksum": "6feaa996",
+  "deploymentProfileKey": "coordinated",
+  "responseScenario": "central",
+  "responseScenarioLabel": "Central review response",
+  "config": {
+    "deploymentProfileKey": "coordinated",
+    "inspectionCapacityPerPhase": 8,
+    "maximumPhases": 3,
+    "reserveRatio": 0.5,
+    "responseScenario": "central",
+    "inspectionCostPerHost": 450,
+    "reserveMobilizationCost": 250,
+    "deterministicSeed": 270701,
+    "includeVerifiedAuditShare": 0.08
+  },
+  "hostPoolCount": 48,
+  "portfolio": [
+    {
+      "profileKey": "balanced",
+      "profile": {
+        "label": "Balanced campaign",
+        "description": "Balances inspection urgency, reserve coverage, operational reliability, and shared-host importance.",
+        "inspectionWeights": {
+          "reviewNeed": 0.34,
+          "sharedImportance": 0.22,
+          "reliabilityNeed": 0.18,
+          "domainCriticality": 0.16,
+          "equity": 0.1
+        },
+        "reserveWeights": {
+          "suitability": 0.34,
+          "reliability": 0.24,
+          "review": 0.18,
+          "proximity": 0.12,
+          "equity": 0.12
+        }
+      },
+      "complete": true,
+      "queue": [
+        {
+          "hostId": "reviewed-host-27",
+          "label": "Treatment facility 27",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "water",
+            "air"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.6201434666666666,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.91,
+          "equity": 0.665,
+          "verifiedAudit": false,
+          "queueRank": 1,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-24",
+          "label": "Transit or mobility 24",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "air",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.5989815466666668,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.8200000000000001,
+          "equity": 0.62,
+          "verifiedAudit": false,
+          "queueRank": 2,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-42",
+          "label": "School or childcare 42",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "heat",
+            "air"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.5875815466666668,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.94,
+          "equity": 0.722,
+          "verifiedAudit": false,
+          "queueRank": 3,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-15",
+          "label": "Community facility 15",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.5757092266666668,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.76,
+          "equity": 0.779,
+          "verifiedAudit": false,
+          "queueRank": 4,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-39",
+          "label": "Watershed access 39",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "water",
+            "soil"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.5648711466666668,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.85,
+          "equity": 0.6910000000000001,
+          "verifiedAudit": false,
+          "queueRank": 5,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-44",
+          "label": "Transit or mobility 44",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "air"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.5648317333333334,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.79,
+          "equity": 0.618,
+          "verifiedAudit": false,
+          "queueRank": 6,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-45",
+          "label": "Community facility 45",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.5637092266666668,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.8200000000000001,
+          "equity": 0.767,
+          "verifiedAudit": false,
+          "queueRank": 7,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-14",
+          "label": "Transit or mobility 14",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "air",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.5629815466666668,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.94,
+          "equity": 0.476,
+          "verifiedAudit": false,
+          "queueRank": 8,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-32",
+          "label": "School or childcare 32",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.5548092266666668,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.85,
+          "equity": 0.7320000000000001,
+          "verifiedAudit": false,
+          "queueRank": 9,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-12",
+          "label": "School or childcare 12",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.5496092266666668,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.88,
+          "equity": 0.734,
+          "verifiedAudit": false,
+          "queueRank": 10,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-35",
+          "label": "Community facility 35",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.5464092266666667,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.94,
+          "equity": 0.623,
+          "verifiedAudit": false,
+          "queueRank": 11,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-06",
+          "label": "Utility infrastructure 06",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "water",
+            "soil"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.5353711466666667,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.91,
+          "equity": 0.504,
+          "verifiedAudit": false,
+          "queueRank": 12,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-03",
+          "label": "Park or recreation 03",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.4776870933333333,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.8200000000000001,
+          "equity": 0.613,
+          "verifiedAudit": false,
+          "queueRank": 13,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-07",
+          "label": "Treatment facility 07",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "water"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.4740885333333334,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.94,
+          "equity": 0.377,
+          "verifiedAudit": false,
+          "queueRank": 14,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-43",
+          "label": "Park or recreation 43",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.4726870933333333,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.76,
+          "equity": 0.45499999999999996,
+          "verifiedAudit": false,
+          "queueRank": 15,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-22",
+          "label": "School or childcare 22",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.4672870933333334,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.76,
+          "equity": 0.5880000000000001,
+          "verifiedAudit": false,
+          "queueRank": 16,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-08",
+          "label": "Industrial-edge property 08",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.4624870933333334,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.76,
+          "equity": 0.54,
+          "verifiedAudit": false,
+          "queueRank": 17,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-02",
+          "label": "School or childcare 02",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.46208709333333337,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.79,
+          "equity": 0.5900000000000001,
+          "verifiedAudit": false,
+          "queueRank": 18,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-38",
+          "label": "Industrial-edge property 38",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.45048709333333337,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.8200000000000001,
+          "equity": 0.5279999999999999,
+          "verifiedAudit": false,
+          "queueRank": 19,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-05",
+          "label": "Community facility 05",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.4503870933333334,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.88,
+          "equity": 0.635,
+          "verifiedAudit": false,
+          "queueRank": 20,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-23",
+          "label": "Park or recreation 23",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.4487870933333334,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.79,
+          "equity": 0.45699999999999996,
+          "verifiedAudit": false,
+          "queueRank": 21,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-18",
+          "label": "Industrial-edge property 18",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.4452870933333334,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.85,
+          "equity": 0.53,
+          "verifiedAudit": false,
+          "queueRank": 22,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-28",
+          "label": "Industrial-edge property 28",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.43318709333333333,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.94,
+          "equity": 0.3839999999999999,
+          "verifiedAudit": false,
+          "queueRank": 23,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-13",
+          "label": "Park or recreation 13",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.41278709333333335,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.91,
+          "equity": 0.31299999999999994,
+          "verifiedAudit": false,
+          "queueRank": 24,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-09",
+          "label": "Watershed access 09",
+          "reviewStatus": "verified",
+          "assignments": [
+            "water",
+            "soil"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.3438711466666667,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.79,
+          "equity": 0.5489999999999999,
+          "verifiedAudit": true,
+          "queueRank": 25,
+          "scheduled": false,
+          "phase": null
+        }
+      ],
+      "inspections": [
+        {
+          "hostId": "reviewed-host-33",
+          "label": "Park or recreation 33",
+          "scheduled": false,
+          "phase": null,
+          "reviewStatus": "verified",
+          "outcome": "accepted",
+          "failureProbability": 0,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.96,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "canopy-gap",
+              "suitability": 0.94,
+              "savings": 98.496
+            },
+            {
+              "domainKey": "water",
+              "role": "reference",
+              "suitability": 0.69,
+              "savings": 117.80999999999999
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-06",
+          "label": "Utility infrastructure 06",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.146775,
+          "assignments": [
+            {
+              "domainKey": "water",
+              "role": "treatment-system",
+              "suitability": 0.91,
+              "savings": 0
+            },
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.58,
+              "savings": 11.529000000000002
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-09",
+          "label": "Watershed access 09",
+          "scheduled": false,
+          "phase": null,
+          "reviewStatus": "verified",
+          "outcome": "accepted",
+          "failureProbability": 0,
+          "assignments": [
+            {
+              "domainKey": "water",
+              "role": "upstream-source",
+              "suitability": 0.98,
+              "savings": 0
+            },
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.75,
+              "savings": 11.529000000000002
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-12",
+          "label": "School or childcare 12",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.1497,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.93,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.96,
+              "savings": 98.496
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-14",
+          "label": "Transit or mobility 14",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.14385,
+          "assignments": [
+            {
+              "domainKey": "air",
+              "role": "source-oriented",
+              "suitability": 0.96,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.84,
+              "savings": 114.048
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-15",
+          "label": "Community facility 15",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.16140000000000002,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.92,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "exposure",
+              "suitability": 0.91,
+              "savings": 98.496
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-24",
+          "label": "Transit or mobility 24",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.15555,
+          "assignments": [
+            {
+              "domainKey": "air",
+              "role": "source-oriented",
+              "suitability": 0.96,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.84,
+              "savings": 114.048
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-27",
+          "label": "Treatment facility 27",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.167775,
+          "assignments": [
+            {
+              "domainKey": "water",
+              "role": "treatment-system",
+              "suitability": 0.98,
+              "savings": 0
+            },
+            {
+              "domainKey": "air",
+              "role": "community",
+              "suitability": 0.72,
+              "savings": 198.71999999999997
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-32",
+          "label": "School or childcare 32",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.152625,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.93,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "exposure",
+              "suitability": 0.96,
+              "savings": 98.496
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-35",
+          "label": "Community facility 35",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.16485000000000002,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.92,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.91,
+              "savings": 98.496
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-39",
+          "label": "Watershed access 39",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.152625,
+          "assignments": [
+            {
+              "domainKey": "water",
+              "role": "downstream-receptor",
+              "suitability": 0.98,
+              "savings": 0
+            },
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.75,
+              "savings": 11.529000000000002
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-42",
+          "label": "School or childcare 42",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.14385,
+          "assignments": [
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.96,
+              "savings": 0
+            },
+            {
+              "domainKey": "air",
+              "role": "community",
+              "suitability": 0.72,
+              "savings": 253.44
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-45",
+          "label": "Community facility 45",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.15555,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.92,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.91,
+              "savings": 98.496
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-02",
+          "label": "School or childcare 02",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.158475,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.93,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-03",
+          "label": "Park or recreation 03",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.17655,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.96,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-05",
+          "label": "Community facility 05",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.1497,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.92,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-07",
+          "label": "Treatment facility 07",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.14385,
+          "assignments": [
+            {
+              "domainKey": "water",
+              "role": "treatment-system",
+              "suitability": 0.98,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-08",
+          "label": "Industrial-edge property 08",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.16140000000000002,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "disturbance",
+              "suitability": 0.95,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-13",
+          "label": "Park or recreation 13",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.146775,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.96,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-18",
+          "label": "Industrial-edge property 18",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.152625,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "disturbance",
+              "suitability": 0.95,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-22",
+          "label": "School or childcare 22",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.16140000000000002,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.93,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-23",
+          "label": "Park or recreation 23",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.158475,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.96,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-25",
+          "label": "Community facility 25",
+          "scheduled": false,
+          "phase": null,
+          "reviewStatus": "verified",
+          "outcome": "accepted",
+          "failureProbability": 0,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.92,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-28",
+          "label": "Industrial-edge property 28",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.16485000000000002,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "disturbance",
+              "suitability": 0.95,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-38",
+          "label": "Industrial-edge property 38",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.15555,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "disturbance",
+              "suitability": 0.95,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-41",
+          "label": "Municipal facility 41",
+          "scheduled": false,
+          "phase": null,
+          "reviewStatus": "verified",
+          "outcome": "accepted",
+          "failureProbability": 0,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.68,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-43",
+          "label": "Park or recreation 43",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.18239999999999998,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.96,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-44",
+          "label": "Transit or mobility 44",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.158475,
+          "assignments": [
+            {
+              "domainKey": "air",
+              "role": "source-oriented",
+              "suitability": 0.96,
+              "savings": 0
+            }
+          ]
+        }
+      ],
+      "reserves": [
+        {
+          "reserveId": "heat-reserve-1",
+          "domainKey": "heat",
+          "primaryHostId": "reviewed-host-35",
+          "primaryHostLabel": "Community facility 35",
+          "primaryAssignmentRole": "reference",
+          "hostId": "reviewed-host-21",
+          "label": "Municipal facility 21",
+          "category": "municipal",
+          "reviewStatus": "conditional",
+          "reliability": 0.94,
+          "suitability": 0.82,
+          "distanceKm": 7.6818784273767635,
+          "score": 0.7358897111204131,
+          "lat": 39.81351351351352,
+          "lng": -105.03414414414414,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "heat-reserve-2",
+          "domainKey": "heat",
+          "primaryHostId": "reviewed-host-15",
+          "primaryHostLabel": "Community facility 15",
+          "primaryAssignmentRole": "exposure",
+          "hostId": "reviewed-host-04",
+          "label": "Transit or mobility 04",
+          "category": "transit",
+          "reviewStatus": "conditional",
+          "reliability": 0.85,
+          "suitability": 0.84,
+          "distanceKm": 0.6802016836876138,
+          "score": 0.7359347173774864,
+          "lat": 39.760540540540546,
+          "lng": -105.09216216216215,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "heat-reserve-3",
+          "domainKey": "heat",
+          "primaryHostId": "reviewed-host-24",
+          "primaryHostLabel": "Transit or mobility 24",
+          "primaryAssignmentRole": "reference",
+          "hostId": "reviewed-host-34",
+          "label": "Transit or mobility 34",
+          "category": "transit",
+          "reviewStatus": "conditional",
+          "reliability": 0.91,
+          "suitability": 0.84,
+          "distanceKm": 13.172246634759942,
+          "score": 0.7111613685955631,
+          "lat": 39.64891891891892,
+          "lng": -105.09468468468468,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "heat-reserve-4",
+          "domainKey": "heat",
+          "primaryHostId": "reviewed-host-45",
+          "primaryHostLabel": "Community facility 45",
+          "primaryAssignmentRole": "reference",
+          "hostId": "reviewed-host-01",
+          "label": "Municipal facility 01",
+          "category": "municipal",
+          "reviewStatus": "verified",
+          "reliability": 0.76,
+          "suitability": 0.82,
+          "distanceKm": 2.724891931902414,
+          "score": 0.7582120819845188,
+          "lat": 39.64324324324325,
+          "lng": -105.11738738738738,
+          "requiresFieldVerification": false
+        },
+        {
+          "reserveId": "heat-reserve-5",
+          "domainKey": "heat",
+          "primaryHostId": "reviewed-host-32",
+          "primaryHostLabel": "School or childcare 32",
+          "primaryAssignmentRole": "exposure",
+          "hostId": "reviewed-host-10",
+          "label": "Background/reference site 10",
+          "category": "background",
+          "reviewStatus": "conditional",
+          "reliability": 0.8200000000000001,
+          "suitability": 0.7,
+          "distanceKm": 1.359473391895233,
+          "score": 0.7127615208553492,
+          "lat": 39.811621621621626,
+          "lng": -105.04171171171171,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "air-reserve-1",
+          "domainKey": "air",
+          "primaryHostId": "reviewed-host-27",
+          "primaryHostLabel": "Treatment facility 27",
+          "primaryAssignmentRole": "community",
+          "hostId": "reviewed-host-40",
+          "label": "Background/reference site 40",
+          "category": "background",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.9,
+          "distanceKm": 5.591019724132207,
+          "score": 0.7586232222890648,
+          "lat": 39.7,
+          "lng": -105.04423423423422,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "air-reserve-2",
+          "domainKey": "air",
+          "primaryHostId": "reviewed-host-44",
+          "primaryHostLabel": "Transit or mobility 44",
+          "primaryAssignmentRole": "source-oriented",
+          "hostId": "reviewed-host-20",
+          "label": "Background/reference site 20",
+          "category": "background",
+          "reviewStatus": "conditional",
+          "reliability": 0.91,
+          "suitability": 0.9,
+          "distanceKm": 5.087232143123316,
+          "score": 0.7903882801798379,
+          "lat": 39.71324324324325,
+          "lng": -104.8727027027027,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "air-reserve-3",
+          "domainKey": "air",
+          "primaryHostId": "reviewed-host-24",
+          "primaryHostLabel": "Transit or mobility 24",
+          "primaryAssignmentRole": "source-oriented",
+          "hostId": "reviewed-host-30",
+          "label": "Background/reference site 30",
+          "category": "background",
+          "reviewStatus": "conditional",
+          "reliability": 0.79,
+          "suitability": 0.9,
+          "distanceKm": 7.131072184823298,
+          "score": 0.7417963510797608,
+          "lat": 39.79837837837838,
+          "lng": -104.95846846846847,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-1",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-43",
+          "primaryHostLabel": "Park or recreation 43",
+          "primaryAssignmentRole": "ecological",
+          "hostId": "reviewed-host-19",
+          "label": "Watershed access 19",
+          "category": "watershed-access",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.75,
+          "distanceKm": 5.0823578641544485,
+          "score": 0.6725516426524526,
+          "lat": 39.79648648648649,
+          "lng": -104.96603603603603,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-2",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-03",
+          "primaryHostLabel": "Park or recreation 03",
+          "primaryAssignmentRole": "ecological",
+          "hostId": "reviewed-host-36",
+          "label": "Utility infrastructure 36",
+          "category": "utility",
+          "reviewStatus": "conditional",
+          "reliability": 0.76,
+          "suitability": 0.58,
+          "distanceKm": 2.0432389037632714,
+          "score": 0.6519867976358179,
+          "lat": 39.66594594594595,
+          "lng": -104.90801801801801,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-3",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-28",
+          "primaryHostLabel": "Industrial-edge property 28",
+          "primaryAssignmentRole": "disturbance",
+          "hostId": "reviewed-host-17",
+          "label": "Treatment facility 17",
+          "category": "treatment",
+          "reviewStatus": "verified",
+          "reliability": 0.8200000000000001,
+          "suitability": 0.55,
+          "distanceKm": 0.6800326523000316,
+          "score": 0.7150544347770336,
+          "lat": 39.77945945945946,
+          "lng": -104.89792792792792,
+          "requiresFieldVerification": false
+        },
+        {
+          "reserveId": "soil-reserve-4",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-35",
+          "primaryHostLabel": "Community facility 35",
+          "primaryAssignmentRole": "community-safety",
+          "hostId": "reviewed-host-29",
+          "label": "Watershed access 29",
+          "category": "watershed-access",
+          "reviewStatus": "conditional",
+          "reliability": 0.76,
+          "suitability": 0.75,
+          "distanceKm": 7.132934558109356,
+          "score": 0.6539045389038025,
+          "lat": 39.69810810810811,
+          "lng": -105.0518018018018,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-5",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-08",
+          "primaryHostLabel": "Industrial-edge property 08",
+          "primaryAssignmentRole": "disturbance",
+          "hostId": "reviewed-host-11",
+          "label": "Municipal facility 11",
+          "category": "municipal",
+          "reviewStatus": "conditional",
+          "reliability": 0.85,
+          "suitability": 0.68,
+          "distanceKm": 7.672125244690336,
+          "score": 0.6365430895588157,
+          "lat": 39.72837837837838,
+          "lng": -104.94837837837838,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-6",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-15",
+          "primaryHostLabel": "Community facility 15",
+          "primaryAssignmentRole": "community-safety",
+          "hostId": "reviewed-host-26",
+          "label": "Utility infrastructure 26",
+          "category": "utility",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.58,
+          "distanceKm": 0.6801847833666637,
+          "score": 0.6905839425383614,
+          "lat": 39.76432432432433,
+          "lng": -105.07702702702703,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-7",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-22",
+          "primaryHostLabel": "School or childcare 22",
+          "primaryAssignmentRole": "community-safety",
+          "hostId": "reviewed-host-31",
+          "label": "Municipal facility 31",
+          "category": "municipal",
+          "reviewStatus": "conditional",
+          "reliability": 0.8200000000000001,
+          "suitability": 0.68,
+          "distanceKm": 6.687404151188517,
+          "score": 0.6315213915401848,
+          "lat": 39.715135135135135,
+          "lng": -104.86513513513513,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-8",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-02",
+          "primaryHostLabel": "School or childcare 02",
+          "primaryAssignmentRole": "community-safety",
+          "hostId": "reviewed-host-37",
+          "label": "Treatment facility 37",
+          "category": "treatment",
+          "reviewStatus": "conditional",
+          "reliability": 0.79,
+          "suitability": 0.55,
+          "distanceKm": 4.630195926674516,
+          "score": 0.5808126713416413,
+          "lat": 39.76621621621622,
+          "lng": -105.06945945945945,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-9",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-23",
+          "primaryHostLabel": "Park or recreation 23",
+          "primaryAssignmentRole": "ecological",
+          "hostId": "reviewed-host-16",
+          "label": "Utility infrastructure 16",
+          "category": "utility",
+          "reviewStatus": "conditional",
+          "reliability": 0.79,
+          "suitability": 0.58,
+          "distanceKm": 10.151522707806373,
+          "score": 0.5753719310596732,
+          "lat": 39.679189189189195,
+          "lng": -104.99126126126126,
+          "requiresFieldVerification": true
+        }
+      ],
+      "replacements": [
+        {
+          "failedHostId": "reviewed-host-14",
+          "failedHostLabel": "Transit or mobility 14",
+          "domainKey": "air",
+          "role": "source-oriented",
+          "reserveId": "air-reserve-1",
+          "replacementHostId": "reviewed-host-40",
+          "replacementHostLabel": "Background/reference site 40",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.9,
+          "distanceKm": 5.591019724132207
+        },
+        {
+          "failedHostId": "reviewed-host-14",
+          "failedHostLabel": "Transit or mobility 14",
+          "domainKey": "heat",
+          "role": "reference",
+          "reserveId": "heat-reserve-1",
+          "replacementHostId": "reviewed-host-21",
+          "replacementHostLabel": "Municipal facility 21",
+          "reviewStatus": "conditional",
+          "reliability": 0.94,
+          "suitability": 0.82,
+          "distanceKm": 7.6818784273767635
+        },
+        {
+          "failedHostId": "reviewed-host-43",
+          "failedHostLabel": "Park or recreation 43",
+          "domainKey": "soil",
+          "role": "ecological",
+          "reserveId": "soil-reserve-1",
+          "replacementHostId": "reviewed-host-19",
+          "replacementHostLabel": "Watershed access 19",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.75,
+          "distanceKm": 5.0823578641544485
+        }
+      ],
+      "unresolvedAssignments": [],
+      "metrics": {
+        "requestedAssignments": 42,
+        "primaryHostCount": 28,
+        "queuedHosts": 25,
+        "scheduledInspections": 24,
+        "inspectionPhasesUsed": 3,
+        "acceptedHosts": 26,
+        "rejectedHosts": 2,
+        "notInspectedHosts": 0,
+        "reserveCount": 17,
+        "reserveCoverageRate": 0.40476190476190477,
+        "replacementDemand": 3,
+        "recoveredAssignments": 3,
+        "replacementRecoveryRate": 1,
+        "unresolvedAssignments": 0,
+        "operationalResilience": 1,
+        "inspectionCompletion": 0.96,
+        "meanReserveReliability": 0.8358823529411765,
+        "sharedFailureExposure": 0.2155555555555555,
+        "campaignCost": 15050,
+        "score": 0.9188646125116713
+      },
+      "paretoOptimal": true
+    },
+    {
+      "profileKey": "rapid",
+      "profile": {
+        "label": "Rapid verification",
+        "description": "Prioritizes the highest-uncertainty and most heavily shared primary hosts for early inspection.",
+        "inspectionWeights": {
+          "reviewNeed": 0.48,
+          "sharedImportance": 0.27,
+          "reliabilityNeed": 0.12,
+          "domainCriticality": 0.08,
+          "equity": 0.05
+        },
+        "reserveWeights": {
+          "suitability": 0.31,
+          "reliability": 0.19,
+          "review": 0.27,
+          "proximity": 0.17,
+          "equity": 0.06
+        }
+      },
+      "complete": false,
+      "queue": [
+        {
+          "hostId": "reviewed-host-27",
+          "label": "Treatment facility 27",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "water",
+            "air"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.6643384,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.91,
+          "equity": 0.665,
+          "verifiedAudit": false,
+          "queueRank": 1,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-24",
+          "label": "Transit or mobility 24",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "air",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.63940744,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.8200000000000001,
+          "equity": 0.62,
+          "verifiedAudit": false,
+          "queueRank": 2,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-42",
+          "label": "School or childcare 42",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "heat",
+            "air"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.6301074400000001,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.94,
+          "equity": 0.722,
+          "verifiedAudit": false,
+          "queueRank": 3,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-15",
+          "label": "Community facility 15",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.6295712800000002,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.76,
+          "equity": 0.779,
+          "verifiedAudit": false,
+          "queueRank": 4,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-35",
+          "label": "Community facility 35",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.62657128,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.94,
+          "equity": 0.623,
+          "verifiedAudit": false,
+          "queueRank": 5,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-45",
+          "label": "Community facility 45",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.62177128,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.8200000000000001,
+          "equity": 0.767,
+          "verifiedAudit": false,
+          "queueRank": 6,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-39",
+          "label": "Watershed access 39",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "water",
+            "soil"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.62145224,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.85,
+          "equity": 0.6910000000000001,
+          "verifiedAudit": false,
+          "queueRank": 7,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-14",
+          "label": "Transit or mobility 14",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "air",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.6178074400000001,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.94,
+          "equity": 0.476,
+          "verifiedAudit": false,
+          "queueRank": 8,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-32",
+          "label": "School or childcare 32",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.6164212800000001,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.85,
+          "equity": 0.7320000000000001,
+          "verifiedAudit": false,
+          "queueRank": 9,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-12",
+          "label": "School or childcare 12",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.61292128,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.88,
+          "equity": 0.734,
+          "verifiedAudit": false,
+          "queueRank": 10,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-06",
+          "label": "Utility infrastructure 06",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "water",
+            "soil"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.60490224,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.91,
+          "equity": 0.504,
+          "verifiedAudit": false,
+          "queueRank": 11,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-44",
+          "label": "Transit or mobility 44",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "air"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.5698992000000002,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.79,
+          "equity": 0.618,
+          "verifiedAudit": false,
+          "queueRank": 12,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-03",
+          "label": "Park or recreation 03",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.5424768799999999,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.8200000000000001,
+          "equity": 0.613,
+          "verifiedAudit": false,
+          "queueRank": 13,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-43",
+          "label": "Park or recreation 43",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.54177688,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.76,
+          "equity": 0.45499999999999996,
+          "verifiedAudit": false,
+          "queueRank": 14,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-22",
+          "label": "School or childcare 22",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.5220268800000001,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.76,
+          "equity": 0.5880000000000001,
+          "verifiedAudit": false,
+          "queueRank": 15,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-07",
+          "label": "Treatment facility 07",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "water"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.5200276000000001,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.94,
+          "equity": 0.377,
+          "verifiedAudit": false,
+          "queueRank": 16,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-08",
+          "label": "Industrial-edge property 08",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.5196268800000001,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.76,
+          "equity": 0.54,
+          "verifiedAudit": false,
+          "queueRank": 17,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-02",
+          "label": "School or childcare 02",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.51852688,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.79,
+          "equity": 0.5900000000000001,
+          "verifiedAudit": false,
+          "queueRank": 18,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-28",
+          "label": "Industrial-edge property 28",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.5166268799999999,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.94,
+          "equity": 0.3839999999999999,
+          "verifiedAudit": false,
+          "queueRank": 19,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-23",
+          "label": "Park or recreation 23",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.5118768800000001,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.79,
+          "equity": 0.45699999999999996,
+          "verifiedAudit": false,
+          "queueRank": 20,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-38",
+          "label": "Industrial-edge property 38",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.5118268800000001,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.8200000000000001,
+          "equity": 0.5279999999999999,
+          "verifiedAudit": false,
+          "queueRank": 21,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-05",
+          "label": "Community facility 05",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.5099768800000002,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.88,
+          "equity": 0.635,
+          "verifiedAudit": false,
+          "queueRank": 22,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-18",
+          "label": "Industrial-edge property 18",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.50832688,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.85,
+          "equity": 0.53,
+          "verifiedAudit": false,
+          "queueRank": 23,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-13",
+          "label": "Park or recreation 13",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.4902768800000001,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.91,
+          "equity": 0.31299999999999994,
+          "verifiedAudit": false,
+          "queueRank": 24,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-09",
+          "label": "Watershed access 09",
+          "reviewStatus": "verified",
+          "assignments": [
+            "water",
+            "soil"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.31435223999999995,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.79,
+          "equity": 0.5489999999999999,
+          "verifiedAudit": true,
+          "queueRank": 25,
+          "scheduled": false,
+          "phase": null
+        }
+      ],
+      "inspections": [
+        {
+          "hostId": "reviewed-host-33",
+          "label": "Park or recreation 33",
+          "scheduled": false,
+          "phase": null,
+          "reviewStatus": "verified",
+          "outcome": "accepted",
+          "failureProbability": 0,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.96,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "canopy-gap",
+              "suitability": 0.94,
+              "savings": 98.496
+            },
+            {
+              "domainKey": "water",
+              "role": "reference",
+              "suitability": 0.69,
+              "savings": 117.80999999999999
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-06",
+          "label": "Utility infrastructure 06",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.146775,
+          "assignments": [
+            {
+              "domainKey": "water",
+              "role": "treatment-system",
+              "suitability": 0.91,
+              "savings": 0
+            },
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.58,
+              "savings": 11.529000000000002
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-09",
+          "label": "Watershed access 09",
+          "scheduled": false,
+          "phase": null,
+          "reviewStatus": "verified",
+          "outcome": "accepted",
+          "failureProbability": 0,
+          "assignments": [
+            {
+              "domainKey": "water",
+              "role": "upstream-source",
+              "suitability": 0.98,
+              "savings": 0
+            },
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.75,
+              "savings": 11.529000000000002
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-12",
+          "label": "School or childcare 12",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.1497,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.93,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.96,
+              "savings": 98.496
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-14",
+          "label": "Transit or mobility 14",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.14385,
+          "assignments": [
+            {
+              "domainKey": "air",
+              "role": "source-oriented",
+              "suitability": 0.96,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.84,
+              "savings": 114.048
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-15",
+          "label": "Community facility 15",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.16140000000000002,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.92,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "exposure",
+              "suitability": 0.91,
+              "savings": 98.496
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-24",
+          "label": "Transit or mobility 24",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.15555,
+          "assignments": [
+            {
+              "domainKey": "air",
+              "role": "source-oriented",
+              "suitability": 0.96,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.84,
+              "savings": 114.048
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-27",
+          "label": "Treatment facility 27",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.167775,
+          "assignments": [
+            {
+              "domainKey": "water",
+              "role": "treatment-system",
+              "suitability": 0.98,
+              "savings": 0
+            },
+            {
+              "domainKey": "air",
+              "role": "community",
+              "suitability": 0.72,
+              "savings": 198.71999999999997
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-32",
+          "label": "School or childcare 32",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.152625,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.93,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "exposure",
+              "suitability": 0.96,
+              "savings": 98.496
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-35",
+          "label": "Community facility 35",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.16485000000000002,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.92,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.91,
+              "savings": 98.496
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-39",
+          "label": "Watershed access 39",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.152625,
+          "assignments": [
+            {
+              "domainKey": "water",
+              "role": "downstream-receptor",
+              "suitability": 0.98,
+              "savings": 0
+            },
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.75,
+              "savings": 11.529000000000002
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-42",
+          "label": "School or childcare 42",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.14385,
+          "assignments": [
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.96,
+              "savings": 0
+            },
+            {
+              "domainKey": "air",
+              "role": "community",
+              "suitability": 0.72,
+              "savings": 253.44
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-45",
+          "label": "Community facility 45",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.15555,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.92,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.91,
+              "savings": 98.496
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-02",
+          "label": "School or childcare 02",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.158475,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.93,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-03",
+          "label": "Park or recreation 03",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.17655,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.96,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-05",
+          "label": "Community facility 05",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.1497,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.92,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-07",
+          "label": "Treatment facility 07",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.14385,
+          "assignments": [
+            {
+              "domainKey": "water",
+              "role": "treatment-system",
+              "suitability": 0.98,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-08",
+          "label": "Industrial-edge property 08",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.16140000000000002,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "disturbance",
+              "suitability": 0.95,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-13",
+          "label": "Park or recreation 13",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.146775,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.96,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-18",
+          "label": "Industrial-edge property 18",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.152625,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "disturbance",
+              "suitability": 0.95,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-22",
+          "label": "School or childcare 22",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.16140000000000002,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.93,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-23",
+          "label": "Park or recreation 23",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.158475,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.96,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-25",
+          "label": "Community facility 25",
+          "scheduled": false,
+          "phase": null,
+          "reviewStatus": "verified",
+          "outcome": "accepted",
+          "failureProbability": 0,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.92,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-28",
+          "label": "Industrial-edge property 28",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.16485000000000002,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "disturbance",
+              "suitability": 0.95,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-38",
+          "label": "Industrial-edge property 38",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.15555,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "disturbance",
+              "suitability": 0.95,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-41",
+          "label": "Municipal facility 41",
+          "scheduled": false,
+          "phase": null,
+          "reviewStatus": "verified",
+          "outcome": "accepted",
+          "failureProbability": 0,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.68,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-43",
+          "label": "Park or recreation 43",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.18239999999999998,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.96,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-44",
+          "label": "Transit or mobility 44",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.158475,
+          "assignments": [
+            {
+              "domainKey": "air",
+              "role": "source-oriented",
+              "suitability": 0.96,
+              "savings": 0
+            }
+          ]
+        }
+      ],
+      "reserves": [
+        {
+          "reserveId": "heat-reserve-1",
+          "domainKey": "heat",
+          "primaryHostId": "reviewed-host-35",
+          "primaryHostLabel": "Community facility 35",
+          "primaryAssignmentRole": "reference",
+          "hostId": "reviewed-host-21",
+          "label": "Municipal facility 21",
+          "category": "municipal",
+          "reviewStatus": "conditional",
+          "reliability": 0.94,
+          "suitability": 0.82,
+          "distanceKm": 7.6818784273767635,
+          "score": 0.7085937574205854,
+          "lat": 39.81351351351352,
+          "lng": -105.03414414414414,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "heat-reserve-2",
+          "domainKey": "heat",
+          "primaryHostId": "reviewed-host-15",
+          "primaryHostLabel": "Community facility 15",
+          "primaryAssignmentRole": "exposure",
+          "hostId": "reviewed-host-04",
+          "label": "Transit or mobility 04",
+          "category": "transit",
+          "reviewStatus": "conditional",
+          "reliability": 0.85,
+          "suitability": 0.84,
+          "distanceKm": 0.6802016836876138,
+          "score": 0.7454541829514391,
+          "lat": 39.760540540540546,
+          "lng": -105.09216216216215,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "heat-reserve-3",
+          "domainKey": "heat",
+          "primaryHostId": "reviewed-host-24",
+          "primaryHostLabel": "Transit or mobility 24",
+          "primaryAssignmentRole": "reference",
+          "hostId": "reviewed-host-01",
+          "label": "Municipal facility 01",
+          "category": "municipal",
+          "reviewStatus": "verified",
+          "reliability": 0.76,
+          "suitability": 0.82,
+          "distanceKm": 14.832348665083405,
+          "score": 0.7073101906095536,
+          "lat": 39.64324324324325,
+          "lng": -105.11738738738738,
+          "requiresFieldVerification": false
+        },
+        {
+          "reserveId": "heat-reserve-4",
+          "domainKey": "heat",
+          "primaryHostId": "reviewed-host-45",
+          "primaryHostLabel": "Community facility 45",
+          "primaryAssignmentRole": "reference",
+          "hostId": "reviewed-host-34",
+          "label": "Transit or mobility 34",
+          "category": "transit",
+          "reviewStatus": "conditional",
+          "reliability": 0.91,
+          "suitability": 0.84,
+          "distanceKm": 0.6811976931863937,
+          "score": 0.7654078833407695,
+          "lat": 39.64891891891892,
+          "lng": -105.09468468468468,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "heat-reserve-5",
+          "domainKey": "heat",
+          "primaryHostId": "reviewed-host-32",
+          "primaryHostLabel": "School or childcare 32",
+          "primaryAssignmentRole": "exposure",
+          "hostId": "reviewed-host-10",
+          "label": "Background/reference site 10",
+          "category": "background",
+          "reviewStatus": "conditional",
+          "reliability": 0.8200000000000001,
+          "suitability": 0.7,
+          "distanceKm": 1.359473391895233,
+          "score": 0.7312588212117447,
+          "lat": 39.811621621621626,
+          "lng": -105.04171171171171,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "air-reserve-1",
+          "domainKey": "air",
+          "primaryHostId": "reviewed-host-27",
+          "primaryHostLabel": "Treatment facility 27",
+          "primaryAssignmentRole": "community",
+          "hostId": "reviewed-host-40",
+          "label": "Background/reference site 40",
+          "category": "background",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.9,
+          "distanceKm": 5.591019724132207,
+          "score": 0.7542162315761749,
+          "lat": 39.7,
+          "lng": -105.04423423423422,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "air-reserve-2",
+          "domainKey": "air",
+          "primaryHostId": "reviewed-host-44",
+          "primaryHostLabel": "Transit or mobility 44",
+          "primaryAssignmentRole": "source-oriented",
+          "hostId": "reviewed-host-20",
+          "label": "Background/reference site 20",
+          "category": "background",
+          "reviewStatus": "conditional",
+          "reliability": 0.91,
+          "suitability": 0.9,
+          "distanceKm": 5.087232143123316,
+          "score": 0.7775567302547702,
+          "lat": 39.71324324324325,
+          "lng": -104.8727027027027,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "air-reserve-3",
+          "domainKey": "air",
+          "primaryHostId": "reviewed-host-24",
+          "primaryHostLabel": "Transit or mobility 24",
+          "primaryAssignmentRole": "source-oriented",
+          "hostId": "reviewed-host-26",
+          "label": "Utility infrastructure 26",
+          "category": "utility",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.83,
+          "distanceKm": 6.122271234466641,
+          "score": 0.7307805502102077,
+          "lat": 39.76432432432433,
+          "lng": -105.07702702702703,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-1",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-43",
+          "primaryHostLabel": "Park or recreation 43",
+          "primaryAssignmentRole": "ecological",
+          "hostId": "reviewed-host-19",
+          "label": "Watershed access 19",
+          "category": "watershed-access",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.75,
+          "distanceKm": 5.0823578641544485,
+          "score": 0.6588014937576414,
+          "lat": 39.79648648648649,
+          "lng": -104.96603603603603,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-2",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-03",
+          "primaryHostLabel": "Park or recreation 03",
+          "primaryAssignmentRole": "ecological",
+          "hostId": "reviewed-host-36",
+          "label": "Utility infrastructure 36",
+          "category": "utility",
+          "reviewStatus": "conditional",
+          "reliability": 0.76,
+          "suitability": 0.58,
+          "distanceKm": 2.0432389037632714,
+          "score": 0.650121296650742,
+          "lat": 39.66594594594595,
+          "lng": -104.90801801801801,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-3",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-28",
+          "primaryHostLabel": "Industrial-edge property 28",
+          "primaryAssignmentRole": "disturbance",
+          "hostId": "reviewed-host-17",
+          "label": "Treatment facility 17",
+          "category": "treatment",
+          "reviewStatus": "verified",
+          "reliability": 0.8200000000000001,
+          "suitability": 0.55,
+          "distanceKm": 0.6800326523000316,
+          "score": 0.7532671159341308,
+          "lat": 39.77945945945946,
+          "lng": -104.89792792792792,
+          "requiresFieldVerification": false
+        },
+        {
+          "reserveId": "soil-reserve-4",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-35",
+          "primaryHostLabel": "Community facility 35",
+          "primaryAssignmentRole": "community-safety",
+          "hostId": "reviewed-host-29",
+          "label": "Watershed access 29",
+          "category": "watershed-access",
+          "reviewStatus": "conditional",
+          "reliability": 0.76,
+          "suitability": 0.75,
+          "distanceKm": 7.132934558109356,
+          "score": 0.6345447634470535,
+          "lat": 39.69810810810811,
+          "lng": -105.0518018018018,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-5",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-08",
+          "primaryHostLabel": "Industrial-edge property 08",
+          "primaryAssignmentRole": "disturbance",
+          "hostId": "reviewed-host-30",
+          "label": "Background/reference site 30",
+          "category": "background",
+          "reviewStatus": "conditional",
+          "reliability": 0.79,
+          "suitability": 0.65,
+          "distanceKm": 1.3597778511843006,
+          "score": 0.7160314424966807,
+          "lat": 39.79837837837838,
+          "lng": -104.95846846846847,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-6",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-15",
+          "primaryHostLabel": "Community facility 15",
+          "primaryAssignmentRole": "community-safety",
+          "hostId": "reviewed-host-37",
+          "label": "Treatment facility 37",
+          "category": "treatment",
+          "reviewStatus": "conditional",
+          "reliability": 0.79,
+          "suitability": 0.55,
+          "distanceKm": 1.360352664330353,
+          "score": 0.6735159741223196,
+          "lat": 39.76621621621622,
+          "lng": -105.06945945945945,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-7",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-22",
+          "primaryHostLabel": "School or childcare 22",
+          "primaryAssignmentRole": "community-safety",
+          "hostId": "reviewed-host-11",
+          "label": "Municipal facility 11",
+          "category": "municipal",
+          "reviewStatus": "conditional",
+          "reliability": 0.85,
+          "suitability": 0.68,
+          "distanceKm": 0.6804888933022415,
+          "score": 0.7237075190984935,
+          "lat": 39.72837837837838,
+          "lng": -104.94837837837838,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-8",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-02",
+          "primaryHostLabel": "School or childcare 02",
+          "primaryAssignmentRole": "community-safety",
+          "hostId": "reviewed-host-31",
+          "label": "Municipal facility 31",
+          "category": "municipal",
+          "reviewStatus": "conditional",
+          "reliability": 0.8200000000000001,
+          "suitability": 0.68,
+          "distanceKm": 13.951794835500174,
+          "score": 0.6049340528157574,
+          "lat": 39.715135135135135,
+          "lng": -104.86513513513513,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-9",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-23",
+          "primaryHostLabel": "Park or recreation 23",
+          "primaryAssignmentRole": "ecological",
+          "hostId": "reviewed-host-16",
+          "label": "Utility infrastructure 16",
+          "category": "utility",
+          "reviewStatus": "conditional",
+          "reliability": 0.79,
+          "suitability": 0.58,
+          "distanceKm": 10.151522707806373,
+          "score": 0.5687635690012036,
+          "lat": 39.679189189189195,
+          "lng": -104.99126126126126,
+          "requiresFieldVerification": true
+        }
+      ],
+      "replacements": [
+        {
+          "failedHostId": "reviewed-host-27",
+          "failedHostLabel": "Treatment facility 27",
+          "domainKey": "air",
+          "role": "community",
+          "reserveId": "air-reserve-1",
+          "replacementHostId": "reviewed-host-40",
+          "replacementHostLabel": "Background/reference site 40",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.9,
+          "distanceKm": 5.591019724132207
+        },
+        {
+          "failedHostId": "reviewed-host-32",
+          "failedHostLabel": "School or childcare 32",
+          "domainKey": "soil",
+          "role": "community-safety",
+          "reserveId": "soil-reserve-1",
+          "replacementHostId": "reviewed-host-19",
+          "replacementHostLabel": "Watershed access 19",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.75,
+          "distanceKm": 5.0823578641544485
+        },
+        {
+          "failedHostId": "reviewed-host-32",
+          "failedHostLabel": "School or childcare 32",
+          "domainKey": "heat",
+          "role": "exposure",
+          "reserveId": "heat-reserve-1",
+          "replacementHostId": "reviewed-host-21",
+          "replacementHostLabel": "Municipal facility 21",
+          "reviewStatus": "conditional",
+          "reliability": 0.94,
+          "suitability": 0.82,
+          "distanceKm": 7.6818784273767635
+        },
+        {
+          "failedHostId": "reviewed-host-39",
+          "failedHostLabel": "Watershed access 39",
+          "domainKey": "soil",
+          "role": "ecological",
+          "reserveId": "soil-reserve-2",
+          "replacementHostId": "reviewed-host-36",
+          "replacementHostLabel": "Utility infrastructure 36",
+          "reviewStatus": "conditional",
+          "reliability": 0.76,
+          "suitability": 0.58,
+          "distanceKm": 2.0432389037632714
+        },
+        {
+          "failedHostId": "reviewed-host-03",
+          "failedHostLabel": "Park or recreation 03",
+          "domainKey": "soil",
+          "role": "ecological",
+          "reserveId": "soil-reserve-3",
+          "replacementHostId": "reviewed-host-17",
+          "replacementHostLabel": "Treatment facility 17",
+          "reviewStatus": "verified",
+          "reliability": 0.8200000000000001,
+          "suitability": 0.55,
+          "distanceKm": 0.6800326523000316
+        },
+        {
+          "failedHostId": "reviewed-host-28",
+          "failedHostLabel": "Industrial-edge property 28",
+          "domainKey": "soil",
+          "role": "disturbance",
+          "reserveId": "soil-reserve-4",
+          "replacementHostId": "reviewed-host-29",
+          "replacementHostLabel": "Watershed access 29",
+          "reviewStatus": "conditional",
+          "reliability": 0.76,
+          "suitability": 0.75,
+          "distanceKm": 7.132934558109356
+        }
+      ],
+      "unresolvedAssignments": [
+        {
+          "hostId": "reviewed-host-27",
+          "domainKey": "water",
+          "reason": "No eligible reserve host was available."
+        },
+        {
+          "hostId": "reviewed-host-39",
+          "domainKey": "water",
+          "reason": "No eligible reserve host was available."
+        }
+      ],
+      "metrics": {
+        "requestedAssignments": 42,
+        "primaryHostCount": 28,
+        "queuedHosts": 25,
+        "scheduledInspections": 24,
+        "inspectionPhasesUsed": 3,
+        "acceptedHosts": 23,
+        "rejectedHosts": 5,
+        "notInspectedHosts": 0,
+        "reserveCount": 17,
+        "reserveCoverageRate": 0.40476190476190477,
+        "replacementDemand": 8,
+        "recoveredAssignments": 6,
+        "replacementRecoveryRate": 0.75,
+        "unresolvedAssignments": 2,
+        "operationalResilience": 0.9523809523809523,
+        "inspectionCompletion": 0.96,
+        "meanReserveReliability": 0.8358823529411765,
+        "sharedFailureExposure": 0.2155555555555555,
+        "campaignCost": 15050,
+        "score": 0.8564836601307189
+      },
+      "paretoOptimal": false
+    },
+    {
+      "profileKey": "coverage",
+      "profile": {
+        "label": "Coverage protection",
+        "description": "Emphasizes domain-complete reserve coverage and geographically useful replacement sites.",
+        "inspectionWeights": {
+          "reviewNeed": 0.26,
+          "sharedImportance": 0.14,
+          "reliabilityNeed": 0.16,
+          "domainCriticality": 0.31,
+          "equity": 0.13
+        },
+        "reserveWeights": {
+          "suitability": 0.39,
+          "reliability": 0.18,
+          "review": 0.14,
+          "proximity": 0.18,
+          "equity": 0.11
+        }
+      },
+      "complete": false,
+      "queue": [
+        {
+          "hostId": "reviewed-host-27",
+          "label": "Treatment facility 27",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "water",
+            "air"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.6363008833333333,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.91,
+          "equity": 0.665,
+          "verifiedAudit": false,
+          "queueRank": 1,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-44",
+          "label": "Transit or mobility 44",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "air"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.6268285666666666,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.79,
+          "equity": 0.618,
+          "verifiedAudit": false,
+          "queueRank": 2,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-24",
+          "label": "Transit or mobility 24",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "air",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.6031121633333334,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.8200000000000001,
+          "equity": 0.62,
+          "verifiedAudit": false,
+          "queueRank": 3,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-42",
+          "label": "School or childcare 42",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "heat",
+            "air"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.5971721633333333,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.94,
+          "equity": 0.722,
+          "verifiedAudit": false,
+          "queueRank": 4,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-14",
+          "label": "Transit or mobility 14",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "air",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.5651921633333333,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.94,
+          "equity": 0.476,
+          "verifiedAudit": false,
+          "queueRank": 5,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-39",
+          "label": "Watershed access 39",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "water",
+            "soil"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.5381595133333333,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.85,
+          "equity": 0.6910000000000001,
+          "verifiedAudit": false,
+          "queueRank": 6,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-15",
+          "label": "Community facility 15",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.5365607933333334,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.76,
+          "equity": 0.779,
+          "verifiedAudit": false,
+          "queueRank": 7,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-45",
+          "label": "Community facility 45",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.5254007933333333,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.8200000000000001,
+          "equity": 0.767,
+          "verifiedAudit": false,
+          "queueRank": 8,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-32",
+          "label": "School or childcare 32",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.5160507933333334,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.85,
+          "equity": 0.7320000000000001,
+          "verifiedAudit": false,
+          "queueRank": 9,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-12",
+          "label": "School or childcare 12",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.5115107933333334,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.88,
+          "equity": 0.734,
+          "verifiedAudit": false,
+          "queueRank": 10,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-06",
+          "label": "Utility infrastructure 06",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "water",
+            "soil"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.5042495133333333,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.91,
+          "equity": 0.504,
+          "verifiedAudit": false,
+          "queueRank": 11,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-35",
+          "label": "Community facility 35",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.5017807933333334,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.94,
+          "equity": 0.623,
+          "verifiedAudit": false,
+          "queueRank": 12,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-07",
+          "label": "Treatment facility 07",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "water"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.4946898666666667,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.94,
+          "equity": 0.377,
+          "verifiedAudit": false,
+          "queueRank": 13,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-03",
+          "label": "Park or recreation 03",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.4420358266666667,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.8200000000000001,
+          "equity": 0.613,
+          "verifiedAudit": false,
+          "queueRank": 14,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-22",
+          "label": "School or childcare 22",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.4340858266666667,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.76,
+          "equity": 0.5880000000000001,
+          "verifiedAudit": false,
+          "queueRank": 15,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-43",
+          "label": "Park or recreation 43",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.4310958266666667,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.76,
+          "equity": 0.45499999999999996,
+          "verifiedAudit": false,
+          "queueRank": 16,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-02",
+          "label": "School or childcare 02",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.42954582666666674,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.79,
+          "equity": 0.5900000000000001,
+          "verifiedAudit": false,
+          "queueRank": 17,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-08",
+          "label": "Industrial-edge property 08",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.4278458266666667,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.76,
+          "equity": 0.54,
+          "verifiedAudit": false,
+          "queueRank": 18,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-05",
+          "label": "Community facility 05",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.4209958266666667,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.88,
+          "equity": 0.635,
+          "verifiedAudit": false,
+          "queueRank": 19,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-38",
+          "label": "Industrial-edge property 38",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.41668582666666665,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.8200000000000001,
+          "equity": 0.5279999999999999,
+          "verifiedAudit": false,
+          "queueRank": 20,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-23",
+          "label": "Park or recreation 23",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.4122558266666667,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.79,
+          "equity": 0.45699999999999996,
+          "verifiedAudit": false,
+          "queueRank": 21,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-18",
+          "label": "Industrial-edge property 18",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.4121458266666667,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.85,
+          "equity": 0.53,
+          "verifiedAudit": false,
+          "queueRank": 22,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-28",
+          "label": "Industrial-edge property 28",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.3930658266666667,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.94,
+          "equity": 0.3839999999999999,
+          "verifiedAudit": false,
+          "queueRank": 23,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-13",
+          "label": "Park or recreation 13",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.37433582666666665,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.91,
+          "equity": 0.31299999999999994,
+          "verifiedAudit": false,
+          "queueRank": 24,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-09",
+          "label": "Watershed access 09",
+          "reviewStatus": "verified",
+          "assignments": [
+            "water",
+            "soil"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.3628995133333333,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.79,
+          "equity": 0.5489999999999999,
+          "verifiedAudit": true,
+          "queueRank": 25,
+          "scheduled": false,
+          "phase": null
+        }
+      ],
+      "inspections": [
+        {
+          "hostId": "reviewed-host-33",
+          "label": "Park or recreation 33",
+          "scheduled": false,
+          "phase": null,
+          "reviewStatus": "verified",
+          "outcome": "accepted",
+          "failureProbability": 0,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.96,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "canopy-gap",
+              "suitability": 0.94,
+              "savings": 98.496
+            },
+            {
+              "domainKey": "water",
+              "role": "reference",
+              "suitability": 0.69,
+              "savings": 117.80999999999999
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-06",
+          "label": "Utility infrastructure 06",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.146775,
+          "assignments": [
+            {
+              "domainKey": "water",
+              "role": "treatment-system",
+              "suitability": 0.91,
+              "savings": 0
+            },
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.58,
+              "savings": 11.529000000000002
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-09",
+          "label": "Watershed access 09",
+          "scheduled": false,
+          "phase": null,
+          "reviewStatus": "verified",
+          "outcome": "accepted",
+          "failureProbability": 0,
+          "assignments": [
+            {
+              "domainKey": "water",
+              "role": "upstream-source",
+              "suitability": 0.98,
+              "savings": 0
+            },
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.75,
+              "savings": 11.529000000000002
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-12",
+          "label": "School or childcare 12",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.1497,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.93,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.96,
+              "savings": 98.496
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-14",
+          "label": "Transit or mobility 14",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.14385,
+          "assignments": [
+            {
+              "domainKey": "air",
+              "role": "source-oriented",
+              "suitability": 0.96,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.84,
+              "savings": 114.048
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-15",
+          "label": "Community facility 15",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.16140000000000002,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.92,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "exposure",
+              "suitability": 0.91,
+              "savings": 98.496
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-24",
+          "label": "Transit or mobility 24",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.15555,
+          "assignments": [
+            {
+              "domainKey": "air",
+              "role": "source-oriented",
+              "suitability": 0.96,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.84,
+              "savings": 114.048
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-27",
+          "label": "Treatment facility 27",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.167775,
+          "assignments": [
+            {
+              "domainKey": "water",
+              "role": "treatment-system",
+              "suitability": 0.98,
+              "savings": 0
+            },
+            {
+              "domainKey": "air",
+              "role": "community",
+              "suitability": 0.72,
+              "savings": 198.71999999999997
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-32",
+          "label": "School or childcare 32",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.152625,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.93,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "exposure",
+              "suitability": 0.96,
+              "savings": 98.496
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-35",
+          "label": "Community facility 35",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.16485000000000002,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.92,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.91,
+              "savings": 98.496
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-39",
+          "label": "Watershed access 39",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.152625,
+          "assignments": [
+            {
+              "domainKey": "water",
+              "role": "downstream-receptor",
+              "suitability": 0.98,
+              "savings": 0
+            },
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.75,
+              "savings": 11.529000000000002
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-42",
+          "label": "School or childcare 42",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.14385,
+          "assignments": [
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.96,
+              "savings": 0
+            },
+            {
+              "domainKey": "air",
+              "role": "community",
+              "suitability": 0.72,
+              "savings": 253.44
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-45",
+          "label": "Community facility 45",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.15555,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.92,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.91,
+              "savings": 98.496
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-02",
+          "label": "School or childcare 02",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.158475,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.93,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-03",
+          "label": "Park or recreation 03",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.17655,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.96,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-05",
+          "label": "Community facility 05",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.1497,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.92,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-07",
+          "label": "Treatment facility 07",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.14385,
+          "assignments": [
+            {
+              "domainKey": "water",
+              "role": "treatment-system",
+              "suitability": 0.98,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-08",
+          "label": "Industrial-edge property 08",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.16140000000000002,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "disturbance",
+              "suitability": 0.95,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-13",
+          "label": "Park or recreation 13",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.146775,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.96,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-18",
+          "label": "Industrial-edge property 18",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.152625,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "disturbance",
+              "suitability": 0.95,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-22",
+          "label": "School or childcare 22",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.16140000000000002,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.93,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-23",
+          "label": "Park or recreation 23",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.158475,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.96,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-25",
+          "label": "Community facility 25",
+          "scheduled": false,
+          "phase": null,
+          "reviewStatus": "verified",
+          "outcome": "accepted",
+          "failureProbability": 0,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.92,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-28",
+          "label": "Industrial-edge property 28",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.16485000000000002,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "disturbance",
+              "suitability": 0.95,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-38",
+          "label": "Industrial-edge property 38",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.15555,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "disturbance",
+              "suitability": 0.95,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-41",
+          "label": "Municipal facility 41",
+          "scheduled": false,
+          "phase": null,
+          "reviewStatus": "verified",
+          "outcome": "accepted",
+          "failureProbability": 0,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.68,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-43",
+          "label": "Park or recreation 43",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.18239999999999998,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.96,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-44",
+          "label": "Transit or mobility 44",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.158475,
+          "assignments": [
+            {
+              "domainKey": "air",
+              "role": "source-oriented",
+              "suitability": 0.96,
+              "savings": 0
+            }
+          ]
+        }
+      ],
+      "reserves": [
+        {
+          "reserveId": "heat-reserve-1",
+          "domainKey": "heat",
+          "primaryHostId": "reviewed-host-35",
+          "primaryHostLabel": "Community facility 35",
+          "primaryAssignmentRole": "reference",
+          "hostId": "reviewed-host-21",
+          "label": "Municipal facility 21",
+          "category": "municipal",
+          "reviewStatus": "conditional",
+          "reliability": 0.94,
+          "suitability": 0.82,
+          "distanceKm": 7.6818784273767635,
+          "score": 0.69978456668062,
+          "lat": 39.81351351351352,
+          "lng": -105.03414414414414,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "heat-reserve-2",
+          "domainKey": "heat",
+          "primaryHostId": "reviewed-host-15",
+          "primaryHostLabel": "Community facility 15",
+          "primaryAssignmentRole": "exposure",
+          "hostId": "reviewed-host-04",
+          "label": "Transit or mobility 04",
+          "category": "transit",
+          "reviewStatus": "conditional",
+          "reliability": 0.85,
+          "suitability": 0.84,
+          "distanceKm": 0.6802016836876138,
+          "score": 0.7306620760662297,
+          "lat": 39.760540540540546,
+          "lng": -105.09216216216215,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "heat-reserve-3",
+          "domainKey": "heat",
+          "primaryHostId": "reviewed-host-24",
+          "primaryHostLabel": "Transit or mobility 24",
+          "primaryAssignmentRole": "reference",
+          "hostId": "reviewed-host-11",
+          "label": "Municipal facility 11",
+          "category": "municipal",
+          "reviewStatus": "conditional",
+          "reliability": 0.85,
+          "suitability": 0.82,
+          "distanceKm": 5.587730086129742,
+          "score": 0.6842101973606003,
+          "lat": 39.72837837837838,
+          "lng": -104.94837837837838,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "heat-reserve-4",
+          "domainKey": "heat",
+          "primaryHostId": "reviewed-host-45",
+          "primaryHostLabel": "Community facility 45",
+          "primaryAssignmentRole": "reference",
+          "hostId": "reviewed-host-34",
+          "label": "Transit or mobility 34",
+          "category": "transit",
+          "reviewStatus": "conditional",
+          "reliability": 0.91,
+          "suitability": 0.84,
+          "distanceKm": 0.6811976931863937,
+          "score": 0.757117758831403,
+          "lat": 39.64891891891892,
+          "lng": -105.09468468468468,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "heat-reserve-5",
+          "domainKey": "heat",
+          "primaryHostId": "reviewed-host-32",
+          "primaryHostLabel": "School or childcare 32",
+          "primaryAssignmentRole": "exposure",
+          "hostId": "reviewed-host-10",
+          "label": "Background/reference site 10",
+          "category": "background",
+          "reviewStatus": "conditional",
+          "reliability": 0.8200000000000001,
+          "suitability": 0.7,
+          "distanceKm": 1.359473391895233,
+          "score": 0.7118022812830238,
+          "lat": 39.811621621621626,
+          "lng": -105.04171171171171,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "air-reserve-1",
+          "domainKey": "air",
+          "primaryHostId": "reviewed-host-27",
+          "primaryHostLabel": "Treatment facility 27",
+          "primaryAssignmentRole": "community",
+          "hostId": "reviewed-host-40",
+          "label": "Background/reference site 40",
+          "category": "background",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.9,
+          "distanceKm": 5.591019724132207,
+          "score": 0.746634833433597,
+          "lat": 39.7,
+          "lng": -105.04423423423422,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "air-reserve-2",
+          "domainKey": "air",
+          "primaryHostId": "reviewed-host-44",
+          "primaryHostLabel": "Transit or mobility 44",
+          "primaryAssignmentRole": "source-oriented",
+          "hostId": "reviewed-host-20",
+          "label": "Background/reference site 20",
+          "category": "background",
+          "reviewStatus": "conditional",
+          "reliability": 0.91,
+          "suitability": 0.9,
+          "distanceKm": 5.087232143123316,
+          "score": 0.7779624202697567,
+          "lat": 39.71324324324325,
+          "lng": -104.8727027027027,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "air-reserve-3",
+          "domainKey": "air",
+          "primaryHostId": "reviewed-host-24",
+          "primaryHostLabel": "Transit or mobility 24",
+          "primaryAssignmentRole": "source-oriented",
+          "hostId": "reviewed-host-30",
+          "label": "Background/reference site 30",
+          "category": "background",
+          "reviewStatus": "conditional",
+          "reliability": 0.79,
+          "suitability": 0.9,
+          "distanceKm": 7.131072184823298,
+          "score": 0.7273745266196412,
+          "lat": 39.79837837837838,
+          "lng": -104.95846846846847,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-1",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-43",
+          "primaryHostLabel": "Park or recreation 43",
+          "primaryAssignmentRole": "ecological",
+          "hostId": "reviewed-host-19",
+          "label": "Watershed access 19",
+          "category": "watershed-access",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.75,
+          "distanceKm": 5.0823578641544485,
+          "score": 0.6360174639786791,
+          "lat": 39.79648648648649,
+          "lng": -104.96603603603603,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-2",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-03",
+          "primaryHostLabel": "Park or recreation 03",
+          "primaryAssignmentRole": "ecological",
+          "hostId": "reviewed-host-36",
+          "label": "Utility infrastructure 36",
+          "category": "utility",
+          "reviewStatus": "conditional",
+          "reliability": 0.76,
+          "suitability": 0.58,
+          "distanceKm": 2.0432389037632714,
+          "score": 0.6301601964537268,
+          "lat": 39.66594594594595,
+          "lng": -104.90801801801801,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-3",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-28",
+          "primaryHostLabel": "Industrial-edge property 28",
+          "primaryAssignmentRole": "disturbance",
+          "hostId": "reviewed-host-17",
+          "label": "Treatment facility 17",
+          "category": "treatment",
+          "reviewStatus": "verified",
+          "reliability": 0.8200000000000001,
+          "suitability": 0.55,
+          "distanceKm": 0.6800326523000316,
+          "score": 0.6925116521655501,
+          "lat": 39.77945945945946,
+          "lng": -104.89792792792792,
+          "requiresFieldVerification": false
+        },
+        {
+          "reserveId": "soil-reserve-4",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-35",
+          "primaryHostLabel": "Community facility 35",
+          "primaryAssignmentRole": "community-safety",
+          "hostId": "reviewed-host-29",
+          "label": "Watershed access 29",
+          "category": "watershed-access",
+          "reviewStatus": "conditional",
+          "reliability": 0.76,
+          "suitability": 0.75,
+          "distanceKm": 7.132934558109356,
+          "score": 0.6195668083557038,
+          "lat": 39.69810810810811,
+          "lng": -105.0518018018018,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-5",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-08",
+          "primaryHostLabel": "Industrial-edge property 08",
+          "primaryAssignmentRole": "disturbance",
+          "hostId": "reviewed-host-01",
+          "label": "Municipal facility 01",
+          "category": "municipal",
+          "reviewStatus": "verified",
+          "reliability": 0.76,
+          "suitability": 0.68,
+          "distanceKm": 20.843894456914704,
+          "score": 0.5826374034255294,
+          "lat": 39.64324324324325,
+          "lng": -105.11738738738738,
+          "requiresFieldVerification": false
+        },
+        {
+          "reserveId": "soil-reserve-6",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-15",
+          "primaryHostLabel": "Community facility 15",
+          "primaryAssignmentRole": "community-safety",
+          "hostId": "reviewed-host-26",
+          "label": "Utility infrastructure 26",
+          "category": "utility",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.58,
+          "distanceKm": 0.6801847833666637,
+          "score": 0.6765359138075422,
+          "lat": 39.76432432432433,
+          "lng": -105.07702702702703,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-7",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-22",
+          "primaryHostLabel": "School or childcare 22",
+          "primaryAssignmentRole": "community-safety",
+          "hostId": "reviewed-host-31",
+          "label": "Municipal facility 31",
+          "category": "municipal",
+          "reviewStatus": "conditional",
+          "reliability": 0.8200000000000001,
+          "suitability": 0.68,
+          "distanceKm": 6.687404151188517,
+          "score": 0.5918520873102773,
+          "lat": 39.715135135135135,
+          "lng": -104.86513513513513,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-8",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-02",
+          "primaryHostLabel": "School or childcare 02",
+          "primaryAssignmentRole": "community-safety",
+          "hostId": "reviewed-host-37",
+          "label": "Treatment facility 37",
+          "category": "treatment",
+          "reviewStatus": "conditional",
+          "reliability": 0.79,
+          "suitability": 0.55,
+          "distanceKm": 4.630195926674516,
+          "score": 0.5412690070124621,
+          "lat": 39.76621621621622,
+          "lng": -105.06945945945945,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-9",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-23",
+          "primaryHostLabel": "Park or recreation 23",
+          "primaryAssignmentRole": "ecological",
+          "hostId": "reviewed-host-16",
+          "label": "Utility infrastructure 16",
+          "category": "utility",
+          "reviewStatus": "conditional",
+          "reliability": 0.79,
+          "suitability": 0.58,
+          "distanceKm": 10.151522707806373,
+          "score": 0.5299978965895098,
+          "lat": 39.679189189189195,
+          "lng": -104.99126126126126,
+          "requiresFieldVerification": true
+        }
+      ],
+      "replacements": [
+        {
+          "failedHostId": "reviewed-host-06",
+          "failedHostLabel": "Utility infrastructure 06",
+          "domainKey": "soil",
+          "role": "ecological",
+          "reserveId": "soil-reserve-1",
+          "replacementHostId": "reviewed-host-19",
+          "replacementHostLabel": "Watershed access 19",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.75,
+          "distanceKm": 5.0823578641544485
+        },
+        {
+          "failedHostId": "reviewed-host-12",
+          "failedHostLabel": "School or childcare 12",
+          "domainKey": "soil",
+          "role": "community-safety",
+          "reserveId": "soil-reserve-2",
+          "replacementHostId": "reviewed-host-36",
+          "replacementHostLabel": "Utility infrastructure 36",
+          "reviewStatus": "conditional",
+          "reliability": 0.76,
+          "suitability": 0.58,
+          "distanceKm": 2.0432389037632714
+        },
+        {
+          "failedHostId": "reviewed-host-12",
+          "failedHostLabel": "School or childcare 12",
+          "domainKey": "heat",
+          "role": "reference",
+          "reserveId": "heat-reserve-1",
+          "replacementHostId": "reviewed-host-21",
+          "replacementHostLabel": "Municipal facility 21",
+          "reviewStatus": "conditional",
+          "reliability": 0.94,
+          "suitability": 0.82,
+          "distanceKm": 7.6818784273767635
+        },
+        {
+          "failedHostId": "reviewed-host-42",
+          "failedHostLabel": "School or childcare 42",
+          "domainKey": "heat",
+          "role": "reference",
+          "reserveId": "heat-reserve-2",
+          "replacementHostId": "reviewed-host-04",
+          "replacementHostLabel": "Transit or mobility 04",
+          "reviewStatus": "conditional",
+          "reliability": 0.85,
+          "suitability": 0.84,
+          "distanceKm": 0.6802016836876138
+        },
+        {
+          "failedHostId": "reviewed-host-42",
+          "failedHostLabel": "School or childcare 42",
+          "domainKey": "air",
+          "role": "community",
+          "reserveId": "air-reserve-1",
+          "replacementHostId": "reviewed-host-40",
+          "replacementHostLabel": "Background/reference site 40",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.9,
+          "distanceKm": 5.591019724132207
+        },
+        {
+          "failedHostId": "reviewed-host-45",
+          "failedHostLabel": "Community facility 45",
+          "domainKey": "soil",
+          "role": "community-safety",
+          "reserveId": "soil-reserve-3",
+          "replacementHostId": "reviewed-host-17",
+          "replacementHostLabel": "Treatment facility 17",
+          "reviewStatus": "verified",
+          "reliability": 0.8200000000000001,
+          "suitability": 0.55,
+          "distanceKm": 0.6800326523000316
+        },
+        {
+          "failedHostId": "reviewed-host-45",
+          "failedHostLabel": "Community facility 45",
+          "domainKey": "heat",
+          "role": "reference",
+          "reserveId": "heat-reserve-3",
+          "replacementHostId": "reviewed-host-11",
+          "replacementHostLabel": "Municipal facility 11",
+          "reviewStatus": "conditional",
+          "reliability": 0.85,
+          "suitability": 0.82,
+          "distanceKm": 5.587730086129742
+        },
+        {
+          "failedHostId": "reviewed-host-03",
+          "failedHostLabel": "Park or recreation 03",
+          "domainKey": "soil",
+          "role": "ecological",
+          "reserveId": "soil-reserve-4",
+          "replacementHostId": "reviewed-host-29",
+          "replacementHostLabel": "Watershed access 29",
+          "reviewStatus": "conditional",
+          "reliability": 0.76,
+          "suitability": 0.75,
+          "distanceKm": 7.132934558109356
+        },
+        {
+          "failedHostId": "reviewed-host-08",
+          "failedHostLabel": "Industrial-edge property 08",
+          "domainKey": "soil",
+          "role": "disturbance",
+          "reserveId": "soil-reserve-5",
+          "replacementHostId": "reviewed-host-01",
+          "replacementHostLabel": "Municipal facility 01",
+          "reviewStatus": "verified",
+          "reliability": 0.76,
+          "suitability": 0.68,
+          "distanceKm": 20.843894456914704
+        },
+        {
+          "failedHostId": "reviewed-host-18",
+          "failedHostLabel": "Industrial-edge property 18",
+          "domainKey": "soil",
+          "role": "disturbance",
+          "reserveId": "soil-reserve-6",
+          "replacementHostId": "reviewed-host-26",
+          "replacementHostLabel": "Utility infrastructure 26",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.58,
+          "distanceKm": 0.6801847833666637
+        },
+        {
+          "failedHostId": "reviewed-host-22",
+          "failedHostLabel": "School or childcare 22",
+          "domainKey": "soil",
+          "role": "community-safety",
+          "reserveId": "soil-reserve-7",
+          "replacementHostId": "reviewed-host-31",
+          "replacementHostLabel": "Municipal facility 31",
+          "reviewStatus": "conditional",
+          "reliability": 0.8200000000000001,
+          "suitability": 0.68,
+          "distanceKm": 6.687404151188517
+        },
+        {
+          "failedHostId": "reviewed-host-43",
+          "failedHostLabel": "Park or recreation 43",
+          "domainKey": "soil",
+          "role": "ecological",
+          "reserveId": "soil-reserve-8",
+          "replacementHostId": "reviewed-host-37",
+          "replacementHostLabel": "Treatment facility 37",
+          "reviewStatus": "conditional",
+          "reliability": 0.79,
+          "suitability": 0.55,
+          "distanceKm": 4.630195926674516
+        },
+        {
+          "failedHostId": "reviewed-host-44",
+          "failedHostLabel": "Transit or mobility 44",
+          "domainKey": "air",
+          "role": "source-oriented",
+          "reserveId": "air-reserve-2",
+          "replacementHostId": "reviewed-host-20",
+          "replacementHostLabel": "Background/reference site 20",
+          "reviewStatus": "conditional",
+          "reliability": 0.91,
+          "suitability": 0.9,
+          "distanceKm": 5.087232143123316
+        }
+      ],
+      "unresolvedAssignments": [
+        {
+          "hostId": "reviewed-host-06",
+          "domainKey": "water",
+          "reason": "No eligible reserve host was available."
+        },
+        {
+          "hostId": "reviewed-host-07",
+          "domainKey": "water",
+          "reason": "No eligible reserve host was available."
+        }
+      ],
+      "metrics": {
+        "requestedAssignments": 42,
+        "primaryHostCount": 28,
+        "queuedHosts": 25,
+        "scheduledInspections": 24,
+        "inspectionPhasesUsed": 3,
+        "acceptedHosts": 17,
+        "rejectedHosts": 11,
+        "notInspectedHosts": 0,
+        "reserveCount": 17,
+        "reserveCoverageRate": 0.40476190476190477,
+        "replacementDemand": 15,
+        "recoveredAssignments": 13,
+        "replacementRecoveryRate": 0.8666666666666667,
+        "unresolvedAssignments": 2,
+        "operationalResilience": 0.9523809523809523,
+        "inspectionCompletion": 0.96,
+        "meanReserveReliability": 0.8358823529411765,
+        "sharedFailureExposure": 0.2155555555555555,
+        "campaignCost": 15050,
+        "score": 0.8798169934640523
+      },
+      "paretoOptimal": false
+    },
+    {
+      "profileKey": "resilient",
+      "profile": {
+        "label": "Resilience first",
+        "description": "Favors reliable independent backups and reduces dependence on shared-host failure points.",
+        "inspectionWeights": {
+          "reviewNeed": 0.27,
+          "sharedImportance": 0.24,
+          "reliabilityNeed": 0.31,
+          "domainCriticality": 0.12,
+          "equity": 0.06
+        },
+        "reserveWeights": {
+          "suitability": 0.25,
+          "reliability": 0.39,
+          "review": 0.2,
+          "proximity": 0.06,
+          "equity": 0.1
+        }
+      },
+      "complete": false,
+      "queue": [
+        {
+          "hostId": "reviewed-host-27",
+          "label": "Treatment facility 27",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "water",
+            "air"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.5327326,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.91,
+          "equity": 0.665,
+          "verifiedAudit": false,
+          "queueRank": 1,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-24",
+          "label": "Transit or mobility 24",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "air",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.53246116,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.8200000000000001,
+          "equity": 0.62,
+          "verifiedAudit": false,
+          "queueRank": 2,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-15",
+          "label": "Community facility 15",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.52312192,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.76,
+          "equity": 0.779,
+          "verifiedAudit": false,
+          "queueRank": 3,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-45",
+          "label": "Community facility 45",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.50380192,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.8200000000000001,
+          "equity": 0.767,
+          "verifiedAudit": false,
+          "queueRank": 4,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-42",
+          "label": "School or childcare 42",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "heat",
+            "air"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.50138116,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.94,
+          "equity": 0.722,
+          "verifiedAudit": false,
+          "queueRank": 5,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-39",
+          "label": "Watershed access 39",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "water",
+            "soil"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.50056336,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.85,
+          "equity": 0.6910000000000001,
+          "verifiedAudit": false,
+          "queueRank": 6,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-32",
+          "label": "School or childcare 32",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.49240192000000005,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.85,
+          "equity": 0.7320000000000001,
+          "verifiedAudit": false,
+          "queueRank": 7,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-44",
+          "label": "Transit or mobility 44",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "air"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.48712880000000003,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.79,
+          "equity": 0.618,
+          "verifiedAudit": false,
+          "queueRank": 8,
+          "scheduled": true,
+          "phase": 1
+        },
+        {
+          "hostId": "reviewed-host-14",
+          "label": "Transit or mobility 14",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "air",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.48662116,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.94,
+          "equity": 0.476,
+          "verifiedAudit": false,
+          "queueRank": 9,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-12",
+          "label": "School or childcare 12",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.4832219200000001,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.88,
+          "equity": 0.734,
+          "verifiedAudit": false,
+          "queueRank": 10,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-35",
+          "label": "Community facility 35",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil",
+            "heat"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.47281191999999994,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.94,
+          "equity": 0.623,
+          "verifiedAudit": false,
+          "queueRank": 11,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-06",
+          "label": "Utility infrastructure 06",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "water",
+            "soil"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.47074336,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.91,
+          "equity": 0.504,
+          "verifiedAudit": false,
+          "queueRank": 12,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-43",
+          "label": "Park or recreation 43",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.42654032000000003,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.76,
+          "equity": 0.45499999999999996,
+          "verifiedAudit": false,
+          "queueRank": 13,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-22",
+          "label": "School or childcare 22",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.41967032000000004,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.76,
+          "equity": 0.5880000000000001,
+          "verifiedAudit": false,
+          "queueRank": 14,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-03",
+          "label": "Park or recreation 03",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.41742031999999996,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.8200000000000001,
+          "equity": 0.613,
+          "verifiedAudit": false,
+          "queueRank": 15,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-08",
+          "label": "Industrial-edge property 08",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.41679032,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.76,
+          "equity": 0.54,
+          "verifiedAudit": false,
+          "queueRank": 16,
+          "scheduled": true,
+          "phase": 2
+        },
+        {
+          "hostId": "reviewed-host-02",
+          "label": "School or childcare 02",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.41049032,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.79,
+          "equity": 0.5900000000000001,
+          "verifiedAudit": false,
+          "queueRank": 17,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-23",
+          "label": "Park or recreation 23",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.40251032000000003,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.79,
+          "equity": 0.45699999999999996,
+          "verifiedAudit": false,
+          "queueRank": 18,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-38",
+          "label": "Industrial-edge property 38",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.39747032,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.8200000000000001,
+          "equity": 0.5279999999999999,
+          "verifiedAudit": false,
+          "queueRank": 19,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-07",
+          "label": "Treatment facility 07",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "water"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.3964364,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.94,
+          "equity": 0.377,
+          "verifiedAudit": false,
+          "queueRank": 20,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-18",
+          "label": "Industrial-edge property 18",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.38829032,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.85,
+          "equity": 0.53,
+          "verifiedAudit": false,
+          "queueRank": 21,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-05",
+          "label": "Community facility 05",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.3852903200000001,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.88,
+          "equity": 0.635,
+          "verifiedAudit": false,
+          "queueRank": 22,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-28",
+          "label": "Industrial-edge property 28",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.36648032,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.94,
+          "equity": 0.3839999999999999,
+          "verifiedAudit": false,
+          "queueRank": 23,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-13",
+          "label": "Park or recreation 13",
+          "reviewStatus": "conditional",
+          "assignments": [
+            "soil"
+          ],
+          "assignmentCount": 1,
+          "priority": 0.35667032000000004,
+          "sharedImportance": 0.3333333333333333,
+          "reliability": 0.91,
+          "equity": 0.31299999999999994,
+          "verifiedAudit": false,
+          "queueRank": 24,
+          "scheduled": true,
+          "phase": 3
+        },
+        {
+          "hostId": "reviewed-host-09",
+          "label": "Watershed access 09",
+          "reviewStatus": "verified",
+          "assignments": [
+            "water",
+            "soil"
+          ],
+          "assignmentCount": 2,
+          "priority": 0.3378433599999999,
+          "sharedImportance": 0.6666666666666666,
+          "reliability": 0.79,
+          "equity": 0.5489999999999999,
+          "verifiedAudit": true,
+          "queueRank": 25,
+          "scheduled": false,
+          "phase": null
+        }
+      ],
+      "inspections": [
+        {
+          "hostId": "reviewed-host-33",
+          "label": "Park or recreation 33",
+          "scheduled": false,
+          "phase": null,
+          "reviewStatus": "verified",
+          "outcome": "accepted",
+          "failureProbability": 0,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.96,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "canopy-gap",
+              "suitability": 0.94,
+              "savings": 98.496
+            },
+            {
+              "domainKey": "water",
+              "role": "reference",
+              "suitability": 0.69,
+              "savings": 117.80999999999999
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-06",
+          "label": "Utility infrastructure 06",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.146775,
+          "assignments": [
+            {
+              "domainKey": "water",
+              "role": "treatment-system",
+              "suitability": 0.91,
+              "savings": 0
+            },
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.58,
+              "savings": 11.529000000000002
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-09",
+          "label": "Watershed access 09",
+          "scheduled": false,
+          "phase": null,
+          "reviewStatus": "verified",
+          "outcome": "accepted",
+          "failureProbability": 0,
+          "assignments": [
+            {
+              "domainKey": "water",
+              "role": "upstream-source",
+              "suitability": 0.98,
+              "savings": 0
+            },
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.75,
+              "savings": 11.529000000000002
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-12",
+          "label": "School or childcare 12",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.1497,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.93,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.96,
+              "savings": 98.496
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-14",
+          "label": "Transit or mobility 14",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.14385,
+          "assignments": [
+            {
+              "domainKey": "air",
+              "role": "source-oriented",
+              "suitability": 0.96,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.84,
+              "savings": 114.048
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-15",
+          "label": "Community facility 15",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.16140000000000002,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.92,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "exposure",
+              "suitability": 0.91,
+              "savings": 98.496
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-24",
+          "label": "Transit or mobility 24",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.15555,
+          "assignments": [
+            {
+              "domainKey": "air",
+              "role": "source-oriented",
+              "suitability": 0.96,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.84,
+              "savings": 114.048
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-27",
+          "label": "Treatment facility 27",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.167775,
+          "assignments": [
+            {
+              "domainKey": "water",
+              "role": "treatment-system",
+              "suitability": 0.98,
+              "savings": 0
+            },
+            {
+              "domainKey": "air",
+              "role": "community",
+              "suitability": 0.72,
+              "savings": 198.71999999999997
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-32",
+          "label": "School or childcare 32",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.152625,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.93,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "exposure",
+              "suitability": 0.96,
+              "savings": 98.496
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-35",
+          "label": "Community facility 35",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.16485000000000002,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.92,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.91,
+              "savings": 98.496
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-39",
+          "label": "Watershed access 39",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.152625,
+          "assignments": [
+            {
+              "domainKey": "water",
+              "role": "downstream-receptor",
+              "suitability": 0.98,
+              "savings": 0
+            },
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.75,
+              "savings": 11.529000000000002
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-42",
+          "label": "School or childcare 42",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.14385,
+          "assignments": [
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.96,
+              "savings": 0
+            },
+            {
+              "domainKey": "air",
+              "role": "community",
+              "suitability": 0.72,
+              "savings": 253.44
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-45",
+          "label": "Community facility 45",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.15555,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.92,
+              "savings": 0
+            },
+            {
+              "domainKey": "heat",
+              "role": "reference",
+              "suitability": 0.91,
+              "savings": 98.496
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-02",
+          "label": "School or childcare 02",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.158475,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.93,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-03",
+          "label": "Park or recreation 03",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.17655,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.96,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-05",
+          "label": "Community facility 05",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.1497,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.92,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-07",
+          "label": "Treatment facility 07",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.14385,
+          "assignments": [
+            {
+              "domainKey": "water",
+              "role": "treatment-system",
+              "suitability": 0.98,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-08",
+          "label": "Industrial-edge property 08",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.16140000000000002,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "disturbance",
+              "suitability": 0.95,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-13",
+          "label": "Park or recreation 13",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.146775,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.96,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-18",
+          "label": "Industrial-edge property 18",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.152625,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "disturbance",
+              "suitability": 0.95,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-22",
+          "label": "School or childcare 22",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.16140000000000002,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.93,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-23",
+          "label": "Park or recreation 23",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.158475,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.96,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-25",
+          "label": "Community facility 25",
+          "scheduled": false,
+          "phase": null,
+          "reviewStatus": "verified",
+          "outcome": "accepted",
+          "failureProbability": 0,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "community-safety",
+              "suitability": 0.92,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-28",
+          "label": "Industrial-edge property 28",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.16485000000000002,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "disturbance",
+              "suitability": 0.95,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-38",
+          "label": "Industrial-edge property 38",
+          "scheduled": true,
+          "phase": 3,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.15555,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "disturbance",
+              "suitability": 0.95,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-41",
+          "label": "Municipal facility 41",
+          "scheduled": false,
+          "phase": null,
+          "reviewStatus": "verified",
+          "outcome": "accepted",
+          "failureProbability": 0,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.68,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-43",
+          "label": "Park or recreation 43",
+          "scheduled": true,
+          "phase": 2,
+          "reviewStatus": "conditional",
+          "outcome": "rejected",
+          "failureProbability": 0.18239999999999998,
+          "assignments": [
+            {
+              "domainKey": "soil",
+              "role": "ecological",
+              "suitability": 0.96,
+              "savings": 0
+            }
+          ]
+        },
+        {
+          "hostId": "reviewed-host-44",
+          "label": "Transit or mobility 44",
+          "scheduled": true,
+          "phase": 1,
+          "reviewStatus": "conditional",
+          "outcome": "accepted",
+          "failureProbability": 0.158475,
+          "assignments": [
+            {
+              "domainKey": "air",
+              "role": "source-oriented",
+              "suitability": 0.96,
+              "savings": 0
+            }
+          ]
+        }
+      ],
+      "reserves": [
+        {
+          "reserveId": "heat-reserve-1",
+          "domainKey": "heat",
+          "primaryHostId": "reviewed-host-35",
+          "primaryHostLabel": "Community facility 35",
+          "primaryAssignmentRole": "reference",
+          "hostId": "reviewed-host-21",
+          "label": "Municipal facility 21",
+          "category": "municipal",
+          "reviewStatus": "conditional",
+          "reliability": 0.94,
+          "suitability": 0.82,
+          "distanceKm": 7.6818784273767635,
+          "score": 0.7917448555602067,
+          "lat": 39.81351351351352,
+          "lng": -105.03414414414414,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "heat-reserve-2",
+          "domainKey": "heat",
+          "primaryHostId": "reviewed-host-15",
+          "primaryHostLabel": "Community facility 15",
+          "primaryAssignmentRole": "exposure",
+          "hostId": "reviewed-host-34",
+          "label": "Transit or mobility 34",
+          "category": "transit",
+          "reviewStatus": "conditional",
+          "reliability": 0.91,
+          "suitability": 0.84,
+          "distanceKm": 12.651606478450944,
+          "score": 0.7691921513794804,
+          "lat": 39.64891891891892,
+          "lng": -105.09468468468468,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "heat-reserve-3",
+          "domainKey": "heat",
+          "primaryHostId": "reviewed-host-24",
+          "primaryHostLabel": "Transit or mobility 24",
+          "primaryAssignmentRole": "reference",
+          "hostId": "reviewed-host-11",
+          "label": "Municipal facility 11",
+          "category": "municipal",
+          "reviewStatus": "conditional",
+          "reliability": 0.85,
+          "suitability": 0.82,
+          "distanceKm": 5.587730086129742,
+          "score": 0.7477333991202001,
+          "lat": 39.72837837837838,
+          "lng": -104.94837837837838,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "heat-reserve-4",
+          "domainKey": "heat",
+          "primaryHostId": "reviewed-host-45",
+          "primaryHostLabel": "Community facility 45",
+          "primaryAssignmentRole": "reference",
+          "hostId": "reviewed-host-01",
+          "label": "Municipal facility 01",
+          "category": "municipal",
+          "reviewStatus": "verified",
+          "reliability": 0.76,
+          "suitability": 0.82,
+          "distanceKm": 2.724891931902414,
+          "score": 0.7713860409922594,
+          "lat": 39.64324324324325,
+          "lng": -105.11738738738738,
+          "requiresFieldVerification": false
+        },
+        {
+          "reserveId": "heat-reserve-5",
+          "domainKey": "heat",
+          "primaryHostId": "reviewed-host-32",
+          "primaryHostLabel": "School or childcare 32",
+          "primaryAssignmentRole": "exposure",
+          "hostId": "reviewed-host-20",
+          "label": "Background/reference site 20",
+          "category": "background",
+          "reviewStatus": "conditional",
+          "reliability": 0.91,
+          "suitability": 0.7,
+          "distanceKm": 17.37890517707252,
+          "score": 0.7409733652007273,
+          "lat": 39.71324324324325,
+          "lng": -104.8727027027027,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "air-reserve-1",
+          "domainKey": "air",
+          "primaryHostId": "reviewed-host-27",
+          "primaryHostLabel": "Treatment facility 27",
+          "primaryAssignmentRole": "community",
+          "hostId": "reviewed-host-40",
+          "label": "Background/reference site 40",
+          "category": "background",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.9,
+          "distanceKm": 5.591019724132207,
+          "score": 0.7867116111445324,
+          "lat": 39.7,
+          "lng": -105.04423423423422,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "air-reserve-2",
+          "domainKey": "air",
+          "primaryHostId": "reviewed-host-44",
+          "primaryHostLabel": "Transit or mobility 44",
+          "primaryAssignmentRole": "source-oriented",
+          "hostId": "reviewed-host-17",
+          "label": "Treatment facility 17",
+          "category": "treatment",
+          "reviewStatus": "verified",
+          "reliability": 0.8200000000000001,
+          "suitability": 0.72,
+          "distanceKm": 5.578268597088577,
+          "score": 0.7814790704818547,
+          "lat": 39.77945945945946,
+          "lng": -104.89792792792792,
+          "requiresFieldVerification": false
+        },
+        {
+          "reserveId": "air-reserve-3",
+          "domainKey": "air",
+          "primaryHostId": "reviewed-host-24",
+          "primaryHostLabel": "Transit or mobility 24",
+          "primaryAssignmentRole": "source-oriented",
+          "hostId": "reviewed-host-26",
+          "label": "Utility infrastructure 26",
+          "category": "utility",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.83,
+          "distanceKm": 6.122271234466641,
+          "score": 0.7758507824271321,
+          "lat": 39.76432432432433,
+          "lng": -105.07702702702703,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-1",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-43",
+          "primaryHostLabel": "Park or recreation 43",
+          "primaryAssignmentRole": "ecological",
+          "hostId": "reviewed-host-19",
+          "label": "Watershed access 19",
+          "category": "watershed-access",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.75,
+          "distanceKm": 5.0823578641544485,
+          "score": 0.7313958213262264,
+          "lat": 39.79648648648649,
+          "lng": -104.96603603603603,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-2",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-03",
+          "primaryHostLabel": "Park or recreation 03",
+          "primaryAssignmentRole": "ecological",
+          "hostId": "reviewed-host-29",
+          "label": "Watershed access 29",
+          "category": "watershed-access",
+          "reviewStatus": "conditional",
+          "reliability": 0.76,
+          "suitability": 0.75,
+          "distanceKm": 11.18361664915411,
+          "score": 0.6922332402993056,
+          "lat": 39.69810810810811,
+          "lng": -105.0518018018018,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-3",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-28",
+          "primaryHostLabel": "Industrial-edge property 28",
+          "primaryAssignmentRole": "disturbance",
+          "hostId": "reviewed-host-31",
+          "label": "Municipal facility 31",
+          "category": "municipal",
+          "reviewStatus": "conditional",
+          "reliability": 0.8200000000000001,
+          "suitability": 0.68,
+          "distanceKm": 7.672241776012515,
+          "score": 0.6889114200567781,
+          "lat": 39.715135135135135,
+          "lng": -104.86513513513513,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-4",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-35",
+          "primaryHostLabel": "Community facility 35",
+          "primaryAssignmentRole": "community-safety",
+          "hostId": "reviewed-host-30",
+          "label": "Background/reference site 30",
+          "category": "background",
+          "reviewStatus": "conditional",
+          "reliability": 0.79,
+          "suitability": 0.65,
+          "distanceKm": 6.583882074686052,
+          "score": 0.6837688226619709,
+          "lat": 39.79837837837838,
+          "lng": -104.95846846846847,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-5",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-08",
+          "primaryHostLabel": "Industrial-edge property 08",
+          "primaryAssignmentRole": "disturbance",
+          "hostId": "reviewed-host-10",
+          "label": "Background/reference site 10",
+          "category": "background",
+          "reviewStatus": "conditional",
+          "reliability": 0.8200000000000001,
+          "suitability": 0.65,
+          "distanceKm": 6.118467394214552,
+          "score": 0.6827966962052575,
+          "lat": 39.811621621621626,
+          "lng": -105.04171171171171,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-6",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-15",
+          "primaryHostLabel": "Community facility 15",
+          "primaryAssignmentRole": "community-safety",
+          "hostId": "reviewed-host-37",
+          "label": "Treatment facility 37",
+          "category": "treatment",
+          "reviewStatus": "conditional",
+          "reliability": 0.79,
+          "suitability": 0.55,
+          "distanceKm": 1.360352664330353,
+          "score": 0.6764115202784657,
+          "lat": 39.76621621621622,
+          "lng": -105.06945945945945,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-7",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-22",
+          "primaryHostLabel": "School or childcare 22",
+          "primaryAssignmentRole": "community-safety",
+          "hostId": "reviewed-host-36",
+          "label": "Utility infrastructure 36",
+          "category": "utility",
+          "reviewStatus": "conditional",
+          "reliability": 0.76,
+          "suitability": 0.58,
+          "distanceKm": 7.683114539674787,
+          "score": 0.66219979966128,
+          "lat": 39.66594594594595,
+          "lng": -104.90801801801801,
+          "requiresFieldVerification": true
+        },
+        {
+          "reserveId": "soil-reserve-8",
+          "domainKey": "soil",
+          "primaryHostId": "reviewed-host-02",
+          "primaryHostLabel": "School or childcare 02",
+          "primaryAssignmentRole": "community-safety",
+          "hostId": "reviewed-host-16",
+          "label": "Utility infrastructure 16",
+          "category": "utility",
+          "reviewStatus": "conditional",
+          "reliability": 0.79,
+          "suitability": 0.58,
+          "distanceKm": 7.682917943445156,
+          "score": 0.6451000094838641,
+          "lat": 39.679189189189195,
+          "lng": -104.99126126126126,
+          "requiresFieldVerification": true
+        }
+      ],
+      "replacements": [
+        {
+          "failedHostId": "reviewed-host-12",
+          "failedHostLabel": "School or childcare 12",
+          "domainKey": "soil",
+          "role": "community-safety",
+          "reserveId": "soil-reserve-1",
+          "replacementHostId": "reviewed-host-19",
+          "replacementHostLabel": "Watershed access 19",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.75,
+          "distanceKm": 5.0823578641544485
+        },
+        {
+          "failedHostId": "reviewed-host-12",
+          "failedHostLabel": "School or childcare 12",
+          "domainKey": "heat",
+          "role": "reference",
+          "reserveId": "heat-reserve-1",
+          "replacementHostId": "reviewed-host-21",
+          "replacementHostLabel": "Municipal facility 21",
+          "reviewStatus": "conditional",
+          "reliability": 0.94,
+          "suitability": 0.82,
+          "distanceKm": 7.6818784273767635
+        },
+        {
+          "failedHostId": "reviewed-host-27",
+          "failedHostLabel": "Treatment facility 27",
+          "domainKey": "air",
+          "role": "community",
+          "reserveId": "air-reserve-1",
+          "replacementHostId": "reviewed-host-40",
+          "replacementHostLabel": "Background/reference site 40",
+          "reviewStatus": "conditional",
+          "reliability": 0.88,
+          "suitability": 0.9,
+          "distanceKm": 5.591019724132207
+        },
+        {
+          "failedHostId": "reviewed-host-35",
+          "failedHostLabel": "Community facility 35",
+          "domainKey": "soil",
+          "role": "community-safety",
+          "reserveId": "soil-reserve-2",
+          "replacementHostId": "reviewed-host-29",
+          "replacementHostLabel": "Watershed access 29",
+          "reviewStatus": "conditional",
+          "reliability": 0.76,
+          "suitability": 0.75,
+          "distanceKm": 11.18361664915411
+        },
+        {
+          "failedHostId": "reviewed-host-35",
+          "failedHostLabel": "Community facility 35",
+          "domainKey": "heat",
+          "role": "reference",
+          "reserveId": "heat-reserve-2",
+          "replacementHostId": "reviewed-host-34",
+          "replacementHostLabel": "Transit or mobility 34",
+          "reviewStatus": "conditional",
+          "reliability": 0.91,
+          "suitability": 0.84,
+          "distanceKm": 12.651606478450944
+        },
+        {
+          "failedHostId": "reviewed-host-02",
+          "failedHostLabel": "School or childcare 02",
+          "domainKey": "soil",
+          "role": "community-safety",
+          "reserveId": "soil-reserve-3",
+          "replacementHostId": "reviewed-host-31",
+          "replacementHostLabel": "Municipal facility 31",
+          "reviewStatus": "conditional",
+          "reliability": 0.8200000000000001,
+          "suitability": 0.68,
+          "distanceKm": 7.672241776012515
+        },
+        {
+          "failedHostId": "reviewed-host-43",
+          "failedHostLabel": "Park or recreation 43",
+          "domainKey": "soil",
+          "role": "ecological",
+          "reserveId": "soil-reserve-4",
+          "replacementHostId": "reviewed-host-30",
+          "replacementHostLabel": "Background/reference site 30",
+          "reviewStatus": "conditional",
+          "reliability": 0.79,
+          "suitability": 0.65,
+          "distanceKm": 6.583882074686052
+        }
+      ],
+      "unresolvedAssignments": [
+        {
+          "hostId": "reviewed-host-27",
+          "domainKey": "water",
+          "reason": "No eligible reserve host was available."
+        }
+      ],
+      "metrics": {
+        "requestedAssignments": 42,
+        "primaryHostCount": 28,
+        "queuedHosts": 25,
+        "scheduledInspections": 24,
+        "inspectionPhasesUsed": 3,
+        "acceptedHosts": 23,
+        "rejectedHosts": 5,
+        "notInspectedHosts": 0,
+        "reserveCount": 16,
+        "reserveCoverageRate": 0.38095238095238093,
+        "replacementDemand": 8,
+        "recoveredAssignments": 7,
+        "replacementRecoveryRate": 0.875,
+        "unresolvedAssignments": 1,
+        "operationalResilience": 0.9761904761904762,
+        "inspectionCompletion": 0.96,
+        "meanReserveReliability": 0.835,
+        "sharedFailureExposure": 0.2155555555555555,
+        "campaignCost": 14800,
+        "score": 0.8789968253968254
+      },
+      "paretoOptimal": true
+    }
+  ],
+  "claimBoundary": "Inspection outcomes and reserve activation are deterministic planning scenarios under declared response assumptions. They do not authenticate host reviews, replace site visits, grant permission, establish safety, or guarantee that a reserve property can accept a domain-specific monitor or sample.",
+  "checksum": "9828a203"
+}

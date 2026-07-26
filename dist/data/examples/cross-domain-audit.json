@@ -1,0 +1,1338 @@
+{
+  "schemaVersion": "1.0",
+  "architecture": "Socially Constrained Sequential Bayesian Environmental Monitoring Design",
+  "generatedAt": "2026-07-26T17:26:49.529Z",
+  "publicDomains": [
+    "heat",
+    "air",
+    "soil",
+    "water"
+  ],
+  "domains": [
+    {
+      "domainKey": "heat",
+      "label": "Heat",
+      "releaseVersion": "1.0",
+      "ready": true,
+      "counts": {
+        "pass": 18,
+        "warn": 0,
+        "fail": 0
+      },
+      "checks": [
+        {
+          "id": "heat-model",
+          "domainKey": "heat",
+          "category": "model",
+          "label": "Shared model configuration",
+          "status": "pass",
+          "detail": "heat kernel with declared GP scale."
+        },
+        {
+          "id": "heat-objectives",
+          "domainKey": "heat",
+          "category": "model",
+          "label": "Complete objective vector",
+          "status": "pass",
+          "detail": "10 shared objective terms are configured."
+        },
+        {
+          "id": "heat-capabilities",
+          "domainKey": "heat",
+          "category": "capabilities",
+          "label": "Public scientific workflow",
+          "status": "pass",
+          "detail": "11 required workflow capabilities are declared."
+        },
+        {
+          "id": "heat-budget-contract",
+          "domainKey": "heat",
+          "category": "allocation",
+          "label": "Cross-domain budget contract",
+          "status": "pass",
+          "detail": "monitor package: $3,000 per planning unit; 4-24 units; normalized diminishing-return curve declared."
+        },
+        {
+          "id": "heat-evidence-calibration",
+          "domainKey": "heat",
+          "category": "sequential",
+          "label": "Sequential evidence-calibration contract",
+          "status": "pass",
+          "detail": "20 observations target full support; prior residual need 60%."
+        },
+        {
+          "id": "heat-simulation-transition",
+          "domainKey": "heat",
+          "category": "adaptive",
+          "label": "Multi-round evidence-transition contract",
+          "status": "pass",
+          "detail": "Learning rate 0.60; residual response 0.88."
+        },
+        {
+          "id": "heat-trajectory-uncertainty",
+          "domainKey": "heat",
+          "category": "robust-policy",
+          "label": "Trajectory-uncertainty calibration contract",
+          "status": "pass",
+          "detail": "Cost scale 0.90; failure sensitivity 0.85; environmental sensitivity 1.05."
+        },
+        {
+          "id": "heat-spatial-deployment",
+          "domainKey": "heat",
+          "category": "spatial-deployment",
+          "label": "Domain-specific spatial deployment contract",
+          "status": "pass",
+          "detail": "0.75 km spacing; 24% shareable infrastructure; 72% co-location failure sensitivity."
+        },
+        {
+          "id": "heat-field-campaign",
+          "domainKey": "heat",
+          "category": "field-campaign",
+          "label": "Inspection and reserve-site contract",
+          "status": "pass",
+          "detail": "Inspection priority 0.82; reserve reliability floor 0.70; replacement criticality 0.78."
+        },
+        {
+          "id": "heat-live-campaign",
+          "domainKey": "heat",
+          "category": "live-campaign",
+          "label": "Live outcome and adaptive replacement contract",
+          "status": "pass",
+          "detail": "Conditional operational credit 0.78; live-outcome reliability floor 0.68."
+        },
+        {
+          "id": "heat-commissioning-operations",
+          "domainKey": "heat",
+          "category": "commissioning",
+          "label": "Commissioning, calibration, maintenance, and asset-replacement contract",
+          "status": "pass",
+          "detail": "continuous-monitor; 80% data-completeness floor; 72% replacement reliability floor."
+        },
+        {
+          "id": "heat-scenarios",
+          "domainKey": "heat",
+          "category": "adapter",
+          "label": "Domain scenario contract",
+          "status": "pass",
+          "detail": "live-city, live-national, synthetic"
+        },
+        {
+          "id": "heat-presets",
+          "domainKey": "heat",
+          "category": "interface",
+          "label": "Public case-study presets",
+          "status": "pass",
+          "detail": "4 domain-matched presets registered."
+        },
+        {
+          "id": "heat-onboarding",
+          "domainKey": "heat",
+          "category": "interface",
+          "label": "Domain-aware onboarding",
+          "status": "pass",
+          "detail": "9 ordered walkthrough steps with 9 unique identifiers."
+        },
+        {
+          "id": "heat-health",
+          "domainKey": "heat",
+          "category": "release",
+          "label": "Required-source health coverage",
+          "status": "pass",
+          "detail": "2 required services are domain-scoped."
+        },
+        {
+          "id": "heat-fallback",
+          "domainKey": "heat",
+          "category": "reliability",
+          "label": "Explicit scientific fallback",
+          "status": "pass",
+          "detail": "Systematic candidate mesh with explicit modeled/proxy labels"
+        },
+        {
+          "id": "heat-intervention",
+          "domainKey": "heat",
+          "category": "intervention",
+          "label": "Pre/post-intervention roles",
+          "status": "pass",
+          "detail": "treatment, control, boundary, spillover, supplemental"
+        },
+        {
+          "id": "heat-claims",
+          "domainKey": "heat",
+          "category": "claims",
+          "label": "Field and transport claim boundary",
+          "status": "pass",
+          "detail": "Weather and land-surface trend + spatial GP residual; Continuous surface covariance."
+        }
+      ]
+    },
+    {
+      "domainKey": "air",
+      "label": "Air",
+      "releaseVersion": "1.4",
+      "ready": true,
+      "counts": {
+        "pass": 18,
+        "warn": 0,
+        "fail": 0
+      },
+      "checks": [
+        {
+          "id": "air-model",
+          "domainKey": "air",
+          "category": "model",
+          "label": "Shared model configuration",
+          "status": "pass",
+          "detail": "air kernel with declared GP scale."
+        },
+        {
+          "id": "air-objectives",
+          "domainKey": "air",
+          "category": "model",
+          "label": "Complete objective vector",
+          "status": "pass",
+          "detail": "10 shared objective terms are configured."
+        },
+        {
+          "id": "air-capabilities",
+          "domainKey": "air",
+          "category": "capabilities",
+          "label": "Public scientific workflow",
+          "status": "pass",
+          "detail": "11 required workflow capabilities are declared."
+        },
+        {
+          "id": "air-budget-contract",
+          "domainKey": "air",
+          "category": "allocation",
+          "label": "Cross-domain budget contract",
+          "status": "pass",
+          "detail": "calibrated station package: $8,000 per planning unit; 3-16 units; normalized diminishing-return curve declared."
+        },
+        {
+          "id": "air-evidence-calibration",
+          "domainKey": "air",
+          "category": "sequential",
+          "label": "Sequential evidence-calibration contract",
+          "status": "pass",
+          "detail": "8 observations target full support; prior residual need 68%."
+        },
+        {
+          "id": "air-simulation-transition",
+          "domainKey": "air",
+          "category": "adaptive",
+          "label": "Multi-round evidence-transition contract",
+          "status": "pass",
+          "detail": "Learning rate 0.54; residual response 0.82."
+        },
+        {
+          "id": "air-trajectory-uncertainty",
+          "domainKey": "air",
+          "category": "robust-policy",
+          "label": "Trajectory-uncertainty calibration contract",
+          "status": "pass",
+          "detail": "Cost scale 1.15; failure sensitivity 1.10; environmental sensitivity 1.18."
+        },
+        {
+          "id": "air-spatial-deployment",
+          "domainKey": "air",
+          "category": "spatial-deployment",
+          "label": "Domain-specific spatial deployment contract",
+          "status": "pass",
+          "detail": "1.10 km spacing; 20% shareable infrastructure; 82% co-location failure sensitivity."
+        },
+        {
+          "id": "air-field-campaign",
+          "domainKey": "air",
+          "category": "field-campaign",
+          "label": "Inspection and reserve-site contract",
+          "status": "pass",
+          "detail": "Inspection priority 0.96; reserve reliability floor 0.78; replacement criticality 0.95."
+        },
+        {
+          "id": "air-live-campaign",
+          "domainKey": "air",
+          "category": "live-campaign",
+          "label": "Live outcome and adaptive replacement contract",
+          "status": "pass",
+          "detail": "Conditional operational credit 0.66; live-outcome reliability floor 0.78."
+        },
+        {
+          "id": "air-commissioning-operations",
+          "domainKey": "air",
+          "category": "commissioning",
+          "label": "Commissioning, calibration, maintenance, and asset-replacement contract",
+          "status": "pass",
+          "detail": "calibrated-station; 85% data-completeness floor; 80% replacement reliability floor."
+        },
+        {
+          "id": "air-scenarios",
+          "domainKey": "air",
+          "category": "adapter",
+          "label": "Domain scenario contract",
+          "status": "pass",
+          "detail": "live-national-air, synthetic"
+        },
+        {
+          "id": "air-presets",
+          "domainKey": "air",
+          "category": "interface",
+          "label": "Public case-study presets",
+          "status": "pass",
+          "detail": "4 domain-matched presets registered."
+        },
+        {
+          "id": "air-onboarding",
+          "domainKey": "air",
+          "category": "interface",
+          "label": "Domain-aware onboarding",
+          "status": "pass",
+          "detail": "10 ordered walkthrough steps with 10 unique identifiers."
+        },
+        {
+          "id": "air-health",
+          "domainKey": "air",
+          "category": "release",
+          "label": "Required-source health coverage",
+          "status": "pass",
+          "detail": "3 required services are domain-scoped."
+        },
+        {
+          "id": "air-fallback",
+          "domainKey": "air",
+          "category": "reliability",
+          "label": "Explicit scientific fallback",
+          "status": "pass",
+          "detail": "Regional atmospheric prior + systematic candidates when optional monitors or hosts fail"
+        },
+        {
+          "id": "air-intervention",
+          "domainKey": "air",
+          "category": "intervention",
+          "label": "Pre/post-intervention roles",
+          "status": "pass",
+          "detail": "treatment, control, boundary, spillover, background, collocation"
+        },
+        {
+          "id": "air-claims",
+          "domainKey": "air",
+          "category": "claims",
+          "label": "Field and transport claim boundary",
+          "status": "pass",
+          "detail": "Atmospheric/source trend + anisotropic GP residual; Meteorological downwind anisotropy."
+        }
+      ]
+    },
+    {
+      "domainKey": "soil",
+      "label": "Soil",
+      "releaseVersion": "1.7",
+      "ready": true,
+      "counts": {
+        "pass": 18,
+        "warn": 0,
+        "fail": 0
+      },
+      "checks": [
+        {
+          "id": "soil-model",
+          "domainKey": "soil",
+          "category": "model",
+          "label": "Shared model configuration",
+          "status": "pass",
+          "detail": "soil kernel with declared GP scale."
+        },
+        {
+          "id": "soil-objectives",
+          "domainKey": "soil",
+          "category": "model",
+          "label": "Complete objective vector",
+          "status": "pass",
+          "detail": "10 shared objective terms are configured."
+        },
+        {
+          "id": "soil-capabilities",
+          "domainKey": "soil",
+          "category": "capabilities",
+          "label": "Public scientific workflow",
+          "status": "pass",
+          "detail": "11 required workflow capabilities are declared."
+        },
+        {
+          "id": "soil-budget-contract",
+          "domainKey": "soil",
+          "category": "allocation",
+          "label": "Cross-domain budget contract",
+          "status": "pass",
+          "detail": "sample + laboratory package: $750 per planning unit; 8-40 units; normalized diminishing-return curve declared."
+        },
+        {
+          "id": "soil-evidence-calibration",
+          "domainKey": "soil",
+          "category": "sequential",
+          "label": "Sequential evidence-calibration contract",
+          "status": "pass",
+          "detail": "12 observations target full support; prior residual need 56%."
+        },
+        {
+          "id": "soil-simulation-transition",
+          "domainKey": "soil",
+          "category": "adaptive",
+          "label": "Multi-round evidence-transition contract",
+          "status": "pass",
+          "detail": "Learning rate 0.50; residual response 0.76."
+        },
+        {
+          "id": "soil-trajectory-uncertainty",
+          "domainKey": "soil",
+          "category": "robust-policy",
+          "label": "Trajectory-uncertainty calibration contract",
+          "status": "pass",
+          "detail": "Cost scale 0.78; failure sensitivity 0.70; environmental sensitivity 0.92."
+        },
+        {
+          "id": "soil-spatial-deployment",
+          "domainKey": "soil",
+          "category": "spatial-deployment",
+          "label": "Domain-specific spatial deployment contract",
+          "status": "pass",
+          "detail": "0.42 km spacing; 14% shareable infrastructure; 48% co-location failure sensitivity."
+        },
+        {
+          "id": "soil-field-campaign",
+          "domainKey": "soil",
+          "category": "field-campaign",
+          "label": "Inspection and reserve-site contract",
+          "status": "pass",
+          "detail": "Inspection priority 0.70; reserve reliability floor 0.68; replacement criticality 0.72."
+        },
+        {
+          "id": "soil-live-campaign",
+          "domainKey": "soil",
+          "category": "live-campaign",
+          "label": "Live outcome and adaptive replacement contract",
+          "status": "pass",
+          "detail": "Conditional operational credit 0.74; live-outcome reliability floor 0.66."
+        },
+        {
+          "id": "soil-commissioning-operations",
+          "domainKey": "soil",
+          "category": "commissioning",
+          "label": "Commissioning, calibration, maintenance, and asset-replacement contract",
+          "status": "pass",
+          "detail": "sample-program; 90% data-completeness floor; 68% replacement reliability floor."
+        },
+        {
+          "id": "soil-scenarios",
+          "domainKey": "soil",
+          "category": "adapter",
+          "label": "Domain scenario contract",
+          "status": "pass",
+          "detail": "live-national-soil, synthetic"
+        },
+        {
+          "id": "soil-presets",
+          "domainKey": "soil",
+          "category": "interface",
+          "label": "Public case-study presets",
+          "status": "pass",
+          "detail": "4 domain-matched presets registered."
+        },
+        {
+          "id": "soil-onboarding",
+          "domainKey": "soil",
+          "category": "interface",
+          "label": "Domain-aware onboarding",
+          "status": "pass",
+          "detail": "11 ordered walkthrough steps with 11 unique identifiers."
+        },
+        {
+          "id": "soil-health",
+          "domainKey": "soil",
+          "category": "release",
+          "label": "Required-source health coverage",
+          "status": "pass",
+          "detail": "2 required services are domain-scoped."
+        },
+        {
+          "id": "soil-fallback",
+          "domainKey": "soil",
+          "category": "reliability",
+          "label": "Explicit scientific fallback",
+          "status": "pass",
+          "detail": "Systematic sample mesh; contaminants remain observation-dependent"
+        },
+        {
+          "id": "soil-intervention",
+          "domainKey": "soil",
+          "category": "intervention",
+          "label": "Pre/post-intervention roles",
+          "status": "pass",
+          "detail": "treatment, control, boundary, supplemental"
+        },
+        {
+          "id": "soil-claims",
+          "domainKey": "soil",
+          "category": "claims",
+          "label": "Field and transport claim boundary",
+          "status": "pass",
+          "detail": "SSURGO/source trend + localized GP residual; Short-range persistent spatial covariance."
+        }
+      ]
+    },
+    {
+      "domainKey": "water",
+      "label": "Water",
+      "releaseVersion": "1.9",
+      "ready": true,
+      "counts": {
+        "pass": 18,
+        "warn": 0,
+        "fail": 0
+      },
+      "checks": [
+        {
+          "id": "water-model",
+          "domainKey": "water",
+          "category": "model",
+          "label": "Shared model configuration",
+          "status": "pass",
+          "detail": "water kernel with declared GP scale."
+        },
+        {
+          "id": "water-objectives",
+          "domainKey": "water",
+          "category": "model",
+          "label": "Complete objective vector",
+          "status": "pass",
+          "detail": "10 shared objective terms are configured."
+        },
+        {
+          "id": "water-capabilities",
+          "domainKey": "water",
+          "category": "capabilities",
+          "label": "Public scientific workflow",
+          "status": "pass",
+          "detail": "11 required workflow capabilities are declared."
+        },
+        {
+          "id": "water-budget-contract",
+          "domainKey": "water",
+          "category": "allocation",
+          "label": "Cross-domain budget contract",
+          "status": "pass",
+          "detail": "station or sampling package: $5,000 per planning unit; 4-20 units; normalized diminishing-return curve declared."
+        },
+        {
+          "id": "water-evidence-calibration",
+          "domainKey": "water",
+          "category": "sequential",
+          "label": "Sequential evidence-calibration contract",
+          "status": "pass",
+          "detail": "10 observations target full support; prior residual need 66%."
+        },
+        {
+          "id": "water-simulation-transition",
+          "domainKey": "water",
+          "category": "adaptive",
+          "label": "Multi-round evidence-transition contract",
+          "status": "pass",
+          "detail": "Learning rate 0.56; residual response 0.84."
+        },
+        {
+          "id": "water-trajectory-uncertainty",
+          "domainKey": "water",
+          "category": "robust-policy",
+          "label": "Trajectory-uncertainty calibration contract",
+          "status": "pass",
+          "detail": "Cost scale 1.05; failure sensitivity 1.00; environmental sensitivity 1.12."
+        },
+        {
+          "id": "water-spatial-deployment",
+          "domainKey": "water",
+          "category": "spatial-deployment",
+          "label": "Domain-specific spatial deployment contract",
+          "status": "pass",
+          "detail": "0.90 km spacing; 22% shareable infrastructure; 68% co-location failure sensitivity."
+        },
+        {
+          "id": "water-field-campaign",
+          "domainKey": "water",
+          "category": "field-campaign",
+          "label": "Inspection and reserve-site contract",
+          "status": "pass",
+          "detail": "Inspection priority 0.90; reserve reliability floor 0.74; replacement criticality 0.90."
+        },
+        {
+          "id": "water-live-campaign",
+          "domainKey": "water",
+          "category": "live-campaign",
+          "label": "Live outcome and adaptive replacement contract",
+          "status": "pass",
+          "detail": "Conditional operational credit 0.69; live-outcome reliability floor 0.74."
+        },
+        {
+          "id": "water-commissioning-operations",
+          "domainKey": "water",
+          "category": "commissioning",
+          "label": "Commissioning, calibration, maintenance, and asset-replacement contract",
+          "status": "pass",
+          "detail": "water-station-or-sampling-program; 82% data-completeness floor; 76% replacement reliability floor."
+        },
+        {
+          "id": "water-scenarios",
+          "domainKey": "water",
+          "category": "adapter",
+          "label": "Domain scenario contract",
+          "status": "pass",
+          "detail": "live-national-water, synthetic"
+        },
+        {
+          "id": "water-presets",
+          "domainKey": "water",
+          "category": "interface",
+          "label": "Public case-study presets",
+          "status": "pass",
+          "detail": "4 domain-matched presets registered."
+        },
+        {
+          "id": "water-onboarding",
+          "domainKey": "water",
+          "category": "interface",
+          "label": "Domain-aware onboarding",
+          "status": "pass",
+          "detail": "9 ordered walkthrough steps with 9 unique identifiers."
+        },
+        {
+          "id": "water-health",
+          "domainKey": "water",
+          "category": "release",
+          "label": "Required-source health coverage",
+          "status": "pass",
+          "detail": "3 required services are domain-scoped."
+        },
+        {
+          "id": "water-fallback",
+          "domainKey": "water",
+          "category": "reliability",
+          "label": "Explicit scientific fallback",
+          "status": "pass",
+          "detail": "Systematic sampling mesh + explicitly labeled geometric flow proxy"
+        },
+        {
+          "id": "water-intervention",
+          "domainKey": "water",
+          "category": "intervention",
+          "label": "Pre/post-intervention roles",
+          "status": "pass",
+          "detail": "treatment, control, upstream, downstream, supplemental"
+        },
+        {
+          "id": "water-claims",
+          "domainKey": "water",
+          "category": "claims",
+          "label": "Field and transport claim boundary",
+          "status": "pass",
+          "detail": "Source/flow trend + directional GP residual; Flow-axis and branch-aware covariance approximation."
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "shared-domain-parity",
+      "domainKey": "shared",
+      "category": "architecture",
+      "label": "Registry/model domain parity",
+      "status": "pass",
+      "detail": "Registry: heat, air, soil, water; model configs: air, heat, soil, water."
+    },
+    {
+      "id": "shared-release-parity",
+      "domainKey": "shared",
+      "category": "release",
+      "label": "Release metadata domain parity",
+      "status": "pass",
+      "detail": "Release supports heat, air, soil, water."
+    },
+    {
+      "id": "shared-budget-allocator",
+      "domainKey": "shared",
+      "category": "allocation",
+      "label": "Unified budget-allocation release contract",
+      "status": "pass",
+      "detail": "Allocator: js/model/unified/budget-allocation.js."
+    },
+    {
+      "id": "shared-sequential-reallocator",
+      "domainKey": "shared",
+      "category": "sequential",
+      "label": "Sequential evidence-reallocation release contract",
+      "status": "pass",
+      "detail": "Sequential reallocator: js/model/unified/sequential-reallocation.js."
+    },
+    {
+      "id": "shared-adaptive-simulator",
+      "domainKey": "shared",
+      "category": "adaptive",
+      "label": "Multi-round adaptive-simulation release contract",
+      "status": "pass",
+      "detail": "Adaptive simulator: js/model/unified/adaptive-program-simulation.js."
+    },
+    {
+      "id": "shared-robust-policy-ensemble",
+      "domainKey": "shared",
+      "category": "robust-policy",
+      "label": "Trajectory-uncertainty ensemble release contract",
+      "status": "pass",
+      "detail": "Robust evaluator: js/model/unified/robust-policy-ensemble.js."
+    },
+    {
+      "id": "shared-spatial-deployment",
+      "domainKey": "shared",
+      "category": "spatial-deployment",
+      "label": "Spatially coupled deployment release contract",
+      "status": "pass",
+      "detail": "Spatial planner: js/model/unified/spatial-deployment.js."
+    },
+    {
+      "id": "shared-host-inventory-review",
+      "domainKey": "shared",
+      "category": "field-feasibility",
+      "label": "Verified-host ingestion release contract",
+      "status": "pass",
+      "detail": "Host inventory reviewer: js/model/unified/host-inventory.js."
+    },
+    {
+      "id": "shared-field-campaign-operations",
+      "domainKey": "shared",
+      "category": "field-campaign",
+      "label": "Field-campaign and reserve-site release contract",
+      "status": "pass",
+      "detail": "Field-campaign planner: js/model/unified/field-campaign.js."
+    },
+    {
+      "id": "shared-live-campaign-tracking",
+      "domainKey": "shared",
+      "category": "live-campaign",
+      "label": "Live campaign tracking release contract",
+      "status": "pass",
+      "detail": "Live campaign tracker: js/model/unified/campaign-tracking.js."
+    },
+    {
+      "id": "shared-commissioning-operations",
+      "domainKey": "shared",
+      "category": "commissioning",
+      "label": "Commissioning and maintenance release contract",
+      "status": "pass",
+      "detail": "Commissioning operations: js/model/unified/commissioning-operations.js."
+    },
+    {
+      "id": "shared-release-quality",
+      "domainKey": "shared",
+      "category": "release",
+      "label": "Internal release-quality contract",
+      "status": "pass",
+      "detail": "Internal release-quality auditor: js/release/public-readiness.js."
+    },
+    {
+      "id": "shared-stable-v3-status",
+      "domainKey": "shared",
+      "category": "release",
+      "label": "Stable public v3 release status",
+      "status": "pass",
+      "detail": "Release status: stable-public-v3."
+    },
+    {
+      "id": "shared-research-positioning",
+      "domainKey": "shared",
+      "category": "research",
+      "label": "Research positioning",
+      "status": "pass",
+      "detail": "The audit treats Bayesian placement, validation, robustness, and intervention methods as established components; LUMOS contributes their socially constrained cross-domain integration."
+    },
+    {
+      "id": "heat-model",
+      "domainKey": "heat",
+      "category": "model",
+      "label": "Shared model configuration",
+      "status": "pass",
+      "detail": "heat kernel with declared GP scale."
+    },
+    {
+      "id": "heat-objectives",
+      "domainKey": "heat",
+      "category": "model",
+      "label": "Complete objective vector",
+      "status": "pass",
+      "detail": "10 shared objective terms are configured."
+    },
+    {
+      "id": "heat-capabilities",
+      "domainKey": "heat",
+      "category": "capabilities",
+      "label": "Public scientific workflow",
+      "status": "pass",
+      "detail": "11 required workflow capabilities are declared."
+    },
+    {
+      "id": "heat-budget-contract",
+      "domainKey": "heat",
+      "category": "allocation",
+      "label": "Cross-domain budget contract",
+      "status": "pass",
+      "detail": "monitor package: $3,000 per planning unit; 4-24 units; normalized diminishing-return curve declared."
+    },
+    {
+      "id": "heat-evidence-calibration",
+      "domainKey": "heat",
+      "category": "sequential",
+      "label": "Sequential evidence-calibration contract",
+      "status": "pass",
+      "detail": "20 observations target full support; prior residual need 60%."
+    },
+    {
+      "id": "heat-simulation-transition",
+      "domainKey": "heat",
+      "category": "adaptive",
+      "label": "Multi-round evidence-transition contract",
+      "status": "pass",
+      "detail": "Learning rate 0.60; residual response 0.88."
+    },
+    {
+      "id": "heat-trajectory-uncertainty",
+      "domainKey": "heat",
+      "category": "robust-policy",
+      "label": "Trajectory-uncertainty calibration contract",
+      "status": "pass",
+      "detail": "Cost scale 0.90; failure sensitivity 0.85; environmental sensitivity 1.05."
+    },
+    {
+      "id": "heat-spatial-deployment",
+      "domainKey": "heat",
+      "category": "spatial-deployment",
+      "label": "Domain-specific spatial deployment contract",
+      "status": "pass",
+      "detail": "0.75 km spacing; 24% shareable infrastructure; 72% co-location failure sensitivity."
+    },
+    {
+      "id": "heat-field-campaign",
+      "domainKey": "heat",
+      "category": "field-campaign",
+      "label": "Inspection and reserve-site contract",
+      "status": "pass",
+      "detail": "Inspection priority 0.82; reserve reliability floor 0.70; replacement criticality 0.78."
+    },
+    {
+      "id": "heat-live-campaign",
+      "domainKey": "heat",
+      "category": "live-campaign",
+      "label": "Live outcome and adaptive replacement contract",
+      "status": "pass",
+      "detail": "Conditional operational credit 0.78; live-outcome reliability floor 0.68."
+    },
+    {
+      "id": "heat-commissioning-operations",
+      "domainKey": "heat",
+      "category": "commissioning",
+      "label": "Commissioning, calibration, maintenance, and asset-replacement contract",
+      "status": "pass",
+      "detail": "continuous-monitor; 80% data-completeness floor; 72% replacement reliability floor."
+    },
+    {
+      "id": "heat-scenarios",
+      "domainKey": "heat",
+      "category": "adapter",
+      "label": "Domain scenario contract",
+      "status": "pass",
+      "detail": "live-city, live-national, synthetic"
+    },
+    {
+      "id": "heat-presets",
+      "domainKey": "heat",
+      "category": "interface",
+      "label": "Public case-study presets",
+      "status": "pass",
+      "detail": "4 domain-matched presets registered."
+    },
+    {
+      "id": "heat-onboarding",
+      "domainKey": "heat",
+      "category": "interface",
+      "label": "Domain-aware onboarding",
+      "status": "pass",
+      "detail": "9 ordered walkthrough steps with 9 unique identifiers."
+    },
+    {
+      "id": "heat-health",
+      "domainKey": "heat",
+      "category": "release",
+      "label": "Required-source health coverage",
+      "status": "pass",
+      "detail": "2 required services are domain-scoped."
+    },
+    {
+      "id": "heat-fallback",
+      "domainKey": "heat",
+      "category": "reliability",
+      "label": "Explicit scientific fallback",
+      "status": "pass",
+      "detail": "Systematic candidate mesh with explicit modeled/proxy labels"
+    },
+    {
+      "id": "heat-intervention",
+      "domainKey": "heat",
+      "category": "intervention",
+      "label": "Pre/post-intervention roles",
+      "status": "pass",
+      "detail": "treatment, control, boundary, spillover, supplemental"
+    },
+    {
+      "id": "heat-claims",
+      "domainKey": "heat",
+      "category": "claims",
+      "label": "Field and transport claim boundary",
+      "status": "pass",
+      "detail": "Weather and land-surface trend + spatial GP residual; Continuous surface covariance."
+    },
+    {
+      "id": "air-model",
+      "domainKey": "air",
+      "category": "model",
+      "label": "Shared model configuration",
+      "status": "pass",
+      "detail": "air kernel with declared GP scale."
+    },
+    {
+      "id": "air-objectives",
+      "domainKey": "air",
+      "category": "model",
+      "label": "Complete objective vector",
+      "status": "pass",
+      "detail": "10 shared objective terms are configured."
+    },
+    {
+      "id": "air-capabilities",
+      "domainKey": "air",
+      "category": "capabilities",
+      "label": "Public scientific workflow",
+      "status": "pass",
+      "detail": "11 required workflow capabilities are declared."
+    },
+    {
+      "id": "air-budget-contract",
+      "domainKey": "air",
+      "category": "allocation",
+      "label": "Cross-domain budget contract",
+      "status": "pass",
+      "detail": "calibrated station package: $8,000 per planning unit; 3-16 units; normalized diminishing-return curve declared."
+    },
+    {
+      "id": "air-evidence-calibration",
+      "domainKey": "air",
+      "category": "sequential",
+      "label": "Sequential evidence-calibration contract",
+      "status": "pass",
+      "detail": "8 observations target full support; prior residual need 68%."
+    },
+    {
+      "id": "air-simulation-transition",
+      "domainKey": "air",
+      "category": "adaptive",
+      "label": "Multi-round evidence-transition contract",
+      "status": "pass",
+      "detail": "Learning rate 0.54; residual response 0.82."
+    },
+    {
+      "id": "air-trajectory-uncertainty",
+      "domainKey": "air",
+      "category": "robust-policy",
+      "label": "Trajectory-uncertainty calibration contract",
+      "status": "pass",
+      "detail": "Cost scale 1.15; failure sensitivity 1.10; environmental sensitivity 1.18."
+    },
+    {
+      "id": "air-spatial-deployment",
+      "domainKey": "air",
+      "category": "spatial-deployment",
+      "label": "Domain-specific spatial deployment contract",
+      "status": "pass",
+      "detail": "1.10 km spacing; 20% shareable infrastructure; 82% co-location failure sensitivity."
+    },
+    {
+      "id": "air-field-campaign",
+      "domainKey": "air",
+      "category": "field-campaign",
+      "label": "Inspection and reserve-site contract",
+      "status": "pass",
+      "detail": "Inspection priority 0.96; reserve reliability floor 0.78; replacement criticality 0.95."
+    },
+    {
+      "id": "air-live-campaign",
+      "domainKey": "air",
+      "category": "live-campaign",
+      "label": "Live outcome and adaptive replacement contract",
+      "status": "pass",
+      "detail": "Conditional operational credit 0.66; live-outcome reliability floor 0.78."
+    },
+    {
+      "id": "air-commissioning-operations",
+      "domainKey": "air",
+      "category": "commissioning",
+      "label": "Commissioning, calibration, maintenance, and asset-replacement contract",
+      "status": "pass",
+      "detail": "calibrated-station; 85% data-completeness floor; 80% replacement reliability floor."
+    },
+    {
+      "id": "air-scenarios",
+      "domainKey": "air",
+      "category": "adapter",
+      "label": "Domain scenario contract",
+      "status": "pass",
+      "detail": "live-national-air, synthetic"
+    },
+    {
+      "id": "air-presets",
+      "domainKey": "air",
+      "category": "interface",
+      "label": "Public case-study presets",
+      "status": "pass",
+      "detail": "4 domain-matched presets registered."
+    },
+    {
+      "id": "air-onboarding",
+      "domainKey": "air",
+      "category": "interface",
+      "label": "Domain-aware onboarding",
+      "status": "pass",
+      "detail": "10 ordered walkthrough steps with 10 unique identifiers."
+    },
+    {
+      "id": "air-health",
+      "domainKey": "air",
+      "category": "release",
+      "label": "Required-source health coverage",
+      "status": "pass",
+      "detail": "3 required services are domain-scoped."
+    },
+    {
+      "id": "air-fallback",
+      "domainKey": "air",
+      "category": "reliability",
+      "label": "Explicit scientific fallback",
+      "status": "pass",
+      "detail": "Regional atmospheric prior + systematic candidates when optional monitors or hosts fail"
+    },
+    {
+      "id": "air-intervention",
+      "domainKey": "air",
+      "category": "intervention",
+      "label": "Pre/post-intervention roles",
+      "status": "pass",
+      "detail": "treatment, control, boundary, spillover, background, collocation"
+    },
+    {
+      "id": "air-claims",
+      "domainKey": "air",
+      "category": "claims",
+      "label": "Field and transport claim boundary",
+      "status": "pass",
+      "detail": "Atmospheric/source trend + anisotropic GP residual; Meteorological downwind anisotropy."
+    },
+    {
+      "id": "soil-model",
+      "domainKey": "soil",
+      "category": "model",
+      "label": "Shared model configuration",
+      "status": "pass",
+      "detail": "soil kernel with declared GP scale."
+    },
+    {
+      "id": "soil-objectives",
+      "domainKey": "soil",
+      "category": "model",
+      "label": "Complete objective vector",
+      "status": "pass",
+      "detail": "10 shared objective terms are configured."
+    },
+    {
+      "id": "soil-capabilities",
+      "domainKey": "soil",
+      "category": "capabilities",
+      "label": "Public scientific workflow",
+      "status": "pass",
+      "detail": "11 required workflow capabilities are declared."
+    },
+    {
+      "id": "soil-budget-contract",
+      "domainKey": "soil",
+      "category": "allocation",
+      "label": "Cross-domain budget contract",
+      "status": "pass",
+      "detail": "sample + laboratory package: $750 per planning unit; 8-40 units; normalized diminishing-return curve declared."
+    },
+    {
+      "id": "soil-evidence-calibration",
+      "domainKey": "soil",
+      "category": "sequential",
+      "label": "Sequential evidence-calibration contract",
+      "status": "pass",
+      "detail": "12 observations target full support; prior residual need 56%."
+    },
+    {
+      "id": "soil-simulation-transition",
+      "domainKey": "soil",
+      "category": "adaptive",
+      "label": "Multi-round evidence-transition contract",
+      "status": "pass",
+      "detail": "Learning rate 0.50; residual response 0.76."
+    },
+    {
+      "id": "soil-trajectory-uncertainty",
+      "domainKey": "soil",
+      "category": "robust-policy",
+      "label": "Trajectory-uncertainty calibration contract",
+      "status": "pass",
+      "detail": "Cost scale 0.78; failure sensitivity 0.70; environmental sensitivity 0.92."
+    },
+    {
+      "id": "soil-spatial-deployment",
+      "domainKey": "soil",
+      "category": "spatial-deployment",
+      "label": "Domain-specific spatial deployment contract",
+      "status": "pass",
+      "detail": "0.42 km spacing; 14% shareable infrastructure; 48% co-location failure sensitivity."
+    },
+    {
+      "id": "soil-field-campaign",
+      "domainKey": "soil",
+      "category": "field-campaign",
+      "label": "Inspection and reserve-site contract",
+      "status": "pass",
+      "detail": "Inspection priority 0.70; reserve reliability floor 0.68; replacement criticality 0.72."
+    },
+    {
+      "id": "soil-live-campaign",
+      "domainKey": "soil",
+      "category": "live-campaign",
+      "label": "Live outcome and adaptive replacement contract",
+      "status": "pass",
+      "detail": "Conditional operational credit 0.74; live-outcome reliability floor 0.66."
+    },
+    {
+      "id": "soil-commissioning-operations",
+      "domainKey": "soil",
+      "category": "commissioning",
+      "label": "Commissioning, calibration, maintenance, and asset-replacement contract",
+      "status": "pass",
+      "detail": "sample-program; 90% data-completeness floor; 68% replacement reliability floor."
+    },
+    {
+      "id": "soil-scenarios",
+      "domainKey": "soil",
+      "category": "adapter",
+      "label": "Domain scenario contract",
+      "status": "pass",
+      "detail": "live-national-soil, synthetic"
+    },
+    {
+      "id": "soil-presets",
+      "domainKey": "soil",
+      "category": "interface",
+      "label": "Public case-study presets",
+      "status": "pass",
+      "detail": "4 domain-matched presets registered."
+    },
+    {
+      "id": "soil-onboarding",
+      "domainKey": "soil",
+      "category": "interface",
+      "label": "Domain-aware onboarding",
+      "status": "pass",
+      "detail": "11 ordered walkthrough steps with 11 unique identifiers."
+    },
+    {
+      "id": "soil-health",
+      "domainKey": "soil",
+      "category": "release",
+      "label": "Required-source health coverage",
+      "status": "pass",
+      "detail": "2 required services are domain-scoped."
+    },
+    {
+      "id": "soil-fallback",
+      "domainKey": "soil",
+      "category": "reliability",
+      "label": "Explicit scientific fallback",
+      "status": "pass",
+      "detail": "Systematic sample mesh; contaminants remain observation-dependent"
+    },
+    {
+      "id": "soil-intervention",
+      "domainKey": "soil",
+      "category": "intervention",
+      "label": "Pre/post-intervention roles",
+      "status": "pass",
+      "detail": "treatment, control, boundary, supplemental"
+    },
+    {
+      "id": "soil-claims",
+      "domainKey": "soil",
+      "category": "claims",
+      "label": "Field and transport claim boundary",
+      "status": "pass",
+      "detail": "SSURGO/source trend + localized GP residual; Short-range persistent spatial covariance."
+    },
+    {
+      "id": "water-model",
+      "domainKey": "water",
+      "category": "model",
+      "label": "Shared model configuration",
+      "status": "pass",
+      "detail": "water kernel with declared GP scale."
+    },
+    {
+      "id": "water-objectives",
+      "domainKey": "water",
+      "category": "model",
+      "label": "Complete objective vector",
+      "status": "pass",
+      "detail": "10 shared objective terms are configured."
+    },
+    {
+      "id": "water-capabilities",
+      "domainKey": "water",
+      "category": "capabilities",
+      "label": "Public scientific workflow",
+      "status": "pass",
+      "detail": "11 required workflow capabilities are declared."
+    },
+    {
+      "id": "water-budget-contract",
+      "domainKey": "water",
+      "category": "allocation",
+      "label": "Cross-domain budget contract",
+      "status": "pass",
+      "detail": "station or sampling package: $5,000 per planning unit; 4-20 units; normalized diminishing-return curve declared."
+    },
+    {
+      "id": "water-evidence-calibration",
+      "domainKey": "water",
+      "category": "sequential",
+      "label": "Sequential evidence-calibration contract",
+      "status": "pass",
+      "detail": "10 observations target full support; prior residual need 66%."
+    },
+    {
+      "id": "water-simulation-transition",
+      "domainKey": "water",
+      "category": "adaptive",
+      "label": "Multi-round evidence-transition contract",
+      "status": "pass",
+      "detail": "Learning rate 0.56; residual response 0.84."
+    },
+    {
+      "id": "water-trajectory-uncertainty",
+      "domainKey": "water",
+      "category": "robust-policy",
+      "label": "Trajectory-uncertainty calibration contract",
+      "status": "pass",
+      "detail": "Cost scale 1.05; failure sensitivity 1.00; environmental sensitivity 1.12."
+    },
+    {
+      "id": "water-spatial-deployment",
+      "domainKey": "water",
+      "category": "spatial-deployment",
+      "label": "Domain-specific spatial deployment contract",
+      "status": "pass",
+      "detail": "0.90 km spacing; 22% shareable infrastructure; 68% co-location failure sensitivity."
+    },
+    {
+      "id": "water-field-campaign",
+      "domainKey": "water",
+      "category": "field-campaign",
+      "label": "Inspection and reserve-site contract",
+      "status": "pass",
+      "detail": "Inspection priority 0.90; reserve reliability floor 0.74; replacement criticality 0.90."
+    },
+    {
+      "id": "water-live-campaign",
+      "domainKey": "water",
+      "category": "live-campaign",
+      "label": "Live outcome and adaptive replacement contract",
+      "status": "pass",
+      "detail": "Conditional operational credit 0.69; live-outcome reliability floor 0.74."
+    },
+    {
+      "id": "water-commissioning-operations",
+      "domainKey": "water",
+      "category": "commissioning",
+      "label": "Commissioning, calibration, maintenance, and asset-replacement contract",
+      "status": "pass",
+      "detail": "water-station-or-sampling-program; 82% data-completeness floor; 76% replacement reliability floor."
+    },
+    {
+      "id": "water-scenarios",
+      "domainKey": "water",
+      "category": "adapter",
+      "label": "Domain scenario contract",
+      "status": "pass",
+      "detail": "live-national-water, synthetic"
+    },
+    {
+      "id": "water-presets",
+      "domainKey": "water",
+      "category": "interface",
+      "label": "Public case-study presets",
+      "status": "pass",
+      "detail": "4 domain-matched presets registered."
+    },
+    {
+      "id": "water-onboarding",
+      "domainKey": "water",
+      "category": "interface",
+      "label": "Domain-aware onboarding",
+      "status": "pass",
+      "detail": "9 ordered walkthrough steps with 9 unique identifiers."
+    },
+    {
+      "id": "water-health",
+      "domainKey": "water",
+      "category": "release",
+      "label": "Required-source health coverage",
+      "status": "pass",
+      "detail": "3 required services are domain-scoped."
+    },
+    {
+      "id": "water-fallback",
+      "domainKey": "water",
+      "category": "reliability",
+      "label": "Explicit scientific fallback",
+      "status": "pass",
+      "detail": "Systematic sampling mesh + explicitly labeled geometric flow proxy"
+    },
+    {
+      "id": "water-intervention",
+      "domainKey": "water",
+      "category": "intervention",
+      "label": "Pre/post-intervention roles",
+      "status": "pass",
+      "detail": "treatment, control, upstream, downstream, supplemental"
+    },
+    {
+      "id": "water-claims",
+      "domainKey": "water",
+      "category": "claims",
+      "label": "Field and transport claim boundary",
+      "status": "pass",
+      "detail": "Source/flow trend + directional GP residual; Flow-axis and branch-aware covariance approximation."
+    }
+  ],
+  "counts": {
+    "pass": 86,
+    "warn": 0,
+    "fail": 0
+  },
+  "ready": true,
+  "checksum": "6be571eb"
+}

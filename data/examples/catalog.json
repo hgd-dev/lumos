@@ -1,0 +1,77 @@
+{
+  "version": "1.4.0",
+  "examples": [
+    {
+      "id": "phoenix",
+      "domain": "heat",
+      "label": "Phoenix",
+      "description": "Desert metropolitan heat screening",
+      "workspace": "nationwide",
+      "validation": "screening"
+    },
+    {
+      "id": "denver",
+      "domain": "heat",
+      "label": "Denver",
+      "description": "High-elevation urban heat screening",
+      "workspace": "nationwide",
+      "validation": "screening"
+    },
+    {
+      "id": "atlanta",
+      "domain": "heat",
+      "label": "Atlanta",
+      "description": "Humid, canopy-sensitive heat screening",
+      "workspace": "nationwide",
+      "validation": "screening"
+    },
+    {
+      "id": "newyork",
+      "domain": "heat",
+      "label": "New York",
+      "description": "Dense coastal heat screening; validated NYC case study available separately",
+      "workspace": "nationwide",
+      "validation": "screening"
+    },
+    {
+      "id": "nyc-validated",
+      "domain": "heat",
+      "label": "NYC validated case study",
+      "description": "Locked-test heat inference and intervention-design case study",
+      "workspace": "nyc",
+      "validation": "held-out"
+    },
+    {
+      "id": "los-angeles-pm25",
+      "domain": "air",
+      "label": "Los Angeles PM2.5",
+      "description": "Basin transport, traffic, and exposure screening",
+      "workspace": "nationwide",
+      "validation": "screening-or-reference-conditioned"
+    },
+    {
+      "id": "houston-ozone",
+      "domain": "air",
+      "label": "Houston ozone",
+      "description": "Industrial, photochemical, and coastal-transport screening",
+      "workspace": "nationwide",
+      "validation": "screening-or-reference-conditioned"
+    },
+    {
+      "id": "chicago-no2",
+      "domain": "air",
+      "label": "Chicago NO2",
+      "description": "Urban transport-corridor screening",
+      "workspace": "nationwide",
+      "validation": "screening-or-reference-conditioned"
+    },
+    {
+      "id": "new-york-pm25",
+      "domain": "air",
+      "label": "New York PM2.5",
+      "description": "Dense coastal exposure and monitoring-design screening",
+      "workspace": "nationwide",
+      "validation": "screening-or-reference-conditioned"
+    }
+  ]
+}

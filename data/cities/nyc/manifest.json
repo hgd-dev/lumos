@@ -1,0 +1,53 @@
+{
+  "cityKey": "nyc",
+  "cityLabel": "New York City",
+  "domain": "heat",
+  "release": "LUMOS v0.7",
+  "delivery": "Live browser APIs, exportable frozen experiment packages, and deterministic synthetic fallback",
+  "requiredSources": [
+    {
+      "dataset": "2020 Neighborhood Tabulation Areas - Mapped",
+      "id": "4hft-v355",
+      "provider": "NYC Department of City Planning"
+    },
+    {
+      "dataset": "NYC Climate Budgeting Report: Resiliency Exposure Forecast - Outdoor Heat",
+      "id": "95zn-7w5f",
+      "provider": "NYC Office of Management and Budget"
+    }
+  ],
+  "optionalSources": [
+    {
+      "dataset": "Hyperlocal Temperature Monitoring",
+      "id": "qdq3-9eqn",
+      "provider": "NYC Department of Health and Mental Hygiene"
+    },
+    {
+      "dataset": "Heat Vulnerability Index Rankings",
+      "id": "4mhf-duep",
+      "provider": "NYC Department of Health and Mental Hygiene"
+    },
+    {
+      "dataset": "2020 Census ZIP Code Tabulation Areas",
+      "id": "Census2020-ZCTA",
+      "provider": "U.S. Census Bureau TIGERweb"
+    },
+    {
+      "dataset": "Cool It! NYC 2020 - Cooling Sites",
+      "id": "h2bn-gu9k",
+      "provider": "NYC Department of Parks and Recreation"
+    },
+    {
+      "dataset": "Library",
+      "id": "p4pf-fyc4",
+      "provider": "NYC Open Data"
+    },
+    {
+      "dataset": "Universal Pre-K School Locations",
+      "id": "kiyv-ks3f",
+      "provider": "NYC Department of Education"
+    }
+  ],
+  "experimentProtocol": "data/cities/nyc/experiment-protocol.json",
+  "frozenOutput": "data/cities/nyc/frozen/nyc-heat-v0.7.json"
+}

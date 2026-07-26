@@ -1,0 +1,71 @@
+record_type,completed_phase,event_id,previous_hash,event_hash,host_id,phase,outcome,occurred_at,reviewer,notes,domain,role,primary_host_id,current_host_id,operational_state,checksum
+event,3,illustrative-003,00000000,5e1aca91,reviewed-host-14,1,rejected,2026-07-26T12:02:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-004,5e1aca91,146c33bd,reviewed-host-15,1,accepted,2026-07-26T12:03:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-005,146c33bd,e86829d4,reviewed-host-24,1,conditional,2026-07-26T12:04:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-006,e86829d4,e0cdf548,reviewed-host-27,1,accepted,2026-07-26T12:05:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-009,e0cdf548,d80ae640,reviewed-host-39,1,accepted,2026-07-26T12:08:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-010,d80ae640,90da0cf8,reviewed-host-42,1,accepted,2026-07-26T12:09:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-011,90da0cf8,a995fad3,reviewed-host-45,1,accepted,2026-07-26T12:10:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-024,a995fad3,d03b7555,reviewed-host-44,1,accepted,2026-07-26T12:23:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-001,d03b7555,f674e154,reviewed-host-06,2,accepted,2026-07-27T12:00:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-002,f674e154,c3e8ba9c,reviewed-host-12,2,accepted,2026-07-27T12:01:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-007,c3e8ba9c,e80b8c3c,reviewed-host-32,2,accepted,2026-07-27T12:06:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-008,e80b8c3c,ceadbebb,reviewed-host-35,2,accepted,2026-07-27T12:07:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-013,ceadbebb,74a40338,reviewed-host-03,2,accepted,2026-07-27T12:12:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-015,74a40338,76e9b410,reviewed-host-07,2,accepted,2026-07-27T12:14:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-019,76e9b410,efe6fae0,reviewed-host-22,2,conditional,2026-07-27T12:18:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-023,efe6fae0,52e0da5b,reviewed-host-43,2,rejected,2026-07-27T12:22:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-012,52e0da5b,34b1dc82,reviewed-host-02,3,conditional,2026-07-28T12:11:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-014,34b1dc82,2bfc0a03,reviewed-host-05,3,accepted,2026-07-28T12:13:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-016,2bfc0a03,63a58a88,reviewed-host-08,3,accepted,2026-07-28T12:15:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-017,63a58a88,e0b1c429,reviewed-host-13,3,accepted,2026-07-28T12:16:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-018,e0b1c429,4e419b3c,reviewed-host-18,3,accepted,2026-07-28T12:17:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-020,4e419b3c,4680be42,reviewed-host-23,3,accepted,2026-07-28T12:19:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-021,4680be42,2b1ef20c,reviewed-host-28,3,accepted,2026-07-28T12:20:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+event,3,illustrative-022,2b1ef20c,3fbcc8db,reviewed-host-38,3,accepted,2026-07-28T12:21:00.000Z,Controlled v2.8 example,Synthetic outcome for deterministic live-campaign tracking; not an observed field inspection.,,,,,,85a2e887
+assignment,3,,,,reviewed-host-33,,,,,,soil,ecological,reviewed-host-33,reviewed-host-33,active-primary,85a2e887
+assignment,3,,,,reviewed-host-33,,,,,,heat,canopy-gap,reviewed-host-33,reviewed-host-33,active-primary,85a2e887
+assignment,3,,,,reviewed-host-33,,,,,,water,reference,reviewed-host-33,reviewed-host-33,active-primary,85a2e887
+assignment,3,illustrative-001,,,reviewed-host-06,2,accepted,,,,water,treatment-system,reviewed-host-06,reviewed-host-06,active-primary,85a2e887
+assignment,3,illustrative-001,,,reviewed-host-06,2,accepted,,,,soil,ecological,reviewed-host-06,reviewed-host-06,active-primary,85a2e887
+assignment,3,,,,reviewed-host-09,,,,,,water,upstream-source,reviewed-host-09,reviewed-host-09,active-primary,85a2e887
+assignment,3,,,,reviewed-host-09,,,,,,soil,ecological,reviewed-host-09,reviewed-host-09,active-primary,85a2e887
+assignment,3,illustrative-002,,,reviewed-host-12,2,accepted,,,,soil,community-safety,reviewed-host-12,reviewed-host-12,active-primary,85a2e887
+assignment,3,illustrative-002,,,reviewed-host-12,2,accepted,,,,heat,reference,reviewed-host-12,reviewed-host-12,active-primary,85a2e887
+assignment,3,illustrative-003,,,reviewed-host-40,1,rejected,,,,air,source-oriented,reviewed-host-14,reviewed-host-40,replacement-provisional,85a2e887
+assignment,3,illustrative-003,,,reviewed-host-21,1,rejected,,,,heat,reference,reviewed-host-14,reviewed-host-21,replacement-provisional,85a2e887
+assignment,3,illustrative-004,,,reviewed-host-15,1,accepted,,,,soil,community-safety,reviewed-host-15,reviewed-host-15,active-primary,85a2e887
+assignment,3,illustrative-004,,,reviewed-host-15,1,accepted,,,,heat,exposure,reviewed-host-15,reviewed-host-15,active-primary,85a2e887
+assignment,3,illustrative-005,,,reviewed-host-24,1,conditional,,,,air,source-oriented,reviewed-host-24,reviewed-host-24,provisional-primary,85a2e887
+assignment,3,illustrative-005,,,reviewed-host-24,1,conditional,,,,heat,reference,reviewed-host-24,reviewed-host-24,provisional-primary,85a2e887
+assignment,3,illustrative-006,,,reviewed-host-27,1,accepted,,,,water,treatment-system,reviewed-host-27,reviewed-host-27,active-primary,85a2e887
+assignment,3,illustrative-006,,,reviewed-host-27,1,accepted,,,,air,community,reviewed-host-27,reviewed-host-27,active-primary,85a2e887
+assignment,3,illustrative-007,,,reviewed-host-32,2,accepted,,,,soil,community-safety,reviewed-host-32,reviewed-host-32,active-primary,85a2e887
+assignment,3,illustrative-007,,,reviewed-host-32,2,accepted,,,,heat,exposure,reviewed-host-32,reviewed-host-32,active-primary,85a2e887
+assignment,3,illustrative-008,,,reviewed-host-35,2,accepted,,,,soil,community-safety,reviewed-host-35,reviewed-host-35,active-primary,85a2e887
+assignment,3,illustrative-008,,,reviewed-host-35,2,accepted,,,,heat,reference,reviewed-host-35,reviewed-host-35,active-primary,85a2e887
+assignment,3,illustrative-009,,,reviewed-host-39,1,accepted,,,,water,downstream-receptor,reviewed-host-39,reviewed-host-39,active-primary,85a2e887
+assignment,3,illustrative-009,,,reviewed-host-39,1,accepted,,,,soil,ecological,reviewed-host-39,reviewed-host-39,active-primary,85a2e887
+assignment,3,illustrative-010,,,reviewed-host-42,1,accepted,,,,heat,reference,reviewed-host-42,reviewed-host-42,active-primary,85a2e887
+assignment,3,illustrative-010,,,reviewed-host-42,1,accepted,,,,air,community,reviewed-host-42,reviewed-host-42,active-primary,85a2e887
+assignment,3,illustrative-011,,,reviewed-host-45,1,accepted,,,,soil,community-safety,reviewed-host-45,reviewed-host-45,active-primary,85a2e887
+assignment,3,illustrative-011,,,reviewed-host-45,1,accepted,,,,heat,reference,reviewed-host-45,reviewed-host-45,active-primary,85a2e887
+assignment,3,illustrative-012,,,reviewed-host-02,3,conditional,,,,soil,community-safety,reviewed-host-02,reviewed-host-02,provisional-primary,85a2e887
+assignment,3,illustrative-013,,,reviewed-host-03,2,accepted,,,,soil,ecological,reviewed-host-03,reviewed-host-03,active-primary,85a2e887
+assignment,3,illustrative-014,,,reviewed-host-05,3,accepted,,,,soil,community-safety,reviewed-host-05,reviewed-host-05,active-primary,85a2e887
+assignment,3,illustrative-015,,,reviewed-host-07,2,accepted,,,,water,treatment-system,reviewed-host-07,reviewed-host-07,active-primary,85a2e887
+assignment,3,illustrative-016,,,reviewed-host-08,3,accepted,,,,soil,disturbance,reviewed-host-08,reviewed-host-08,active-primary,85a2e887
+assignment,3,illustrative-017,,,reviewed-host-13,3,accepted,,,,soil,ecological,reviewed-host-13,reviewed-host-13,active-primary,85a2e887
+assignment,3,illustrative-018,,,reviewed-host-18,3,accepted,,,,soil,disturbance,reviewed-host-18,reviewed-host-18,active-primary,85a2e887
+assignment,3,illustrative-019,,,reviewed-host-22,2,conditional,,,,soil,community-safety,reviewed-host-22,reviewed-host-22,provisional-primary,85a2e887
+assignment,3,illustrative-020,,,reviewed-host-23,3,accepted,,,,soil,ecological,reviewed-host-23,reviewed-host-23,active-primary,85a2e887
+assignment,3,,,,reviewed-host-25,,,,,,soil,community-safety,reviewed-host-25,reviewed-host-25,active-primary,85a2e887
+assignment,3,illustrative-021,,,reviewed-host-28,3,accepted,,,,soil,disturbance,reviewed-host-28,reviewed-host-28,active-primary,85a2e887
+assignment,3,illustrative-022,,,reviewed-host-38,3,accepted,,,,soil,disturbance,reviewed-host-38,reviewed-host-38,active-primary,85a2e887
+assignment,3,,,,reviewed-host-41,,,,,,soil,ecological,reviewed-host-41,reviewed-host-41,active-primary,85a2e887
+assignment,3,illustrative-023,,,reviewed-host-19,2,rejected,,,,soil,ecological,reviewed-host-43,reviewed-host-19,replacement-provisional,85a2e887
+assignment,3,illustrative-024,,,reviewed-host-44,1,accepted,,,,air,source-oriented,reviewed-host-44,reviewed-host-44,active-primary,85a2e887
+phase_snapshot,0,,,,,0,,,,operational=7; pending=35; gaps=0,,,,,protected,85a2e887
+phase_snapshot,1,,,,,1,,,,operational=22; pending=20; gaps=0,,,,,protected,85a2e887
+phase_snapshot,2,,,,,2,,,,operational=34; pending=8; gaps=0,,,,,protected,85a2e887
+phase_snapshot,3,,,,,3,,,,operational=42; pending=0; gaps=0,,,,,protected,85a2e887

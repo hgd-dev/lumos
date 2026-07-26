@@ -1,8 +1,8 @@
 export const DOMAINS = {
   core: {
-    label: "Core optimization",
-    status: "Shared engine",
-    description: "A domain-independent continuous-field scenario used to test information, exposure, equity, reliability, cost, and redundancy objectives before real environmental data are attached.",
+    label: "Unified LUMOS architecture",
+    status: "Shared engine + adapter audit",
+    description: "A unified architecture view that audits the shared Bayesian, social, optimization, persistence, and export engine across four domain-specific scientific adapters while retaining a controlled synthetic benchmark.",
     kernel: "radial",
     kernelSigma: 0.105,
     gpLengthScale: 0.115,
@@ -21,9 +21,9 @@ export const DOMAINS = {
     }
   },
   heat: {
-    label: "Urban heat mode",
-    status: "Surface field",
-    description: "Prioritizes fine-scale heat burden, pedestrian and residential exposure, vulnerable populations, canopy deficits, and intervention-ready public locations.",
+    label: "Heat monitoring mode",
+    status: "Nationwide workspace + NYC validation",
+    description: "Builds a socially informed Heat monitoring scenario for any fitted U.S. map area using current weather, Census tract indicators, and public candidate-host proxies, while retaining New York City as the independently validated research case study.",
     kernel: "heat",
     kernelSigma: 0.09,
     gpLengthScale: 0.10,
@@ -67,8 +67,8 @@ export const DOMAINS = {
   },
   soil: {
     label: "Soil health mode",
-    status: "Local sampling",
-    description: "Uses short-range spatial similarity and prioritizes contamination uncertainty, land-use history, sensitive public sites, ecological value, and representative sampling.",
+    status: "Public survey + laboratory inference",
+    description: "Uses short-range spatial similarity, survey priors, optional laboratory-sample conditioning, locked validation, contamination uncertainty, sensitive public sites, ecological value, and representative sampling.",
     kernel: "soil",
     kernelSigma: 0.055,
     gpLengthScale: 0.062,
@@ -88,8 +88,8 @@ export const DOMAINS = {
   },
   water: {
     label: "Water monitoring mode",
-    status: "Network proxy",
-    description: "Demonstrates a flow-oriented network proxy. The final adapter will replace geometric distance with pipe, watershed, service-zone, and upstream/downstream connectivity.",
+    status: "Public observation-informed flow inference",
+    description: "Builds a nationwide Water screening and sampling workspace from recent USGS observations, mapped waterways and source proxies, social and ecological exposure, and an explicitly labeled flow-network approximation. Local watershed, utility, or pipe topology should replace the proxy when available.",
     kernel: "water",
     kernelSigma: 0.07,
     gpLengthScale: 0.078,

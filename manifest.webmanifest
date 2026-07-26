@@ -1,0 +1,36 @@
+{
+  "name": "LUMOS Environmental Monitoring",
+  "short_name": "LUMOS",
+  "description": "Public socially constrained Bayesian monitoring design, robust cross-domain funding, verified deployment, live field operations, commissioning, calibration, and maintenance across Heat, Air, Soil, and Water.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07100f",
+  "theme_color": "#07100f",
+  "categories": [
+    "education",
+    "weather",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "assets/lumos-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/lumos-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/lumos-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

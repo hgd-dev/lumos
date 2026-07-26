@@ -1,0 +1,156 @@
+{
+  "schemaVersion": "1.0",
+  "architecture": "LUMOS-v3-internal-release-quality-audit",
+  "generatedAt": "1970-01-01T00:00:00.000Z",
+  "version": "3.0.4",
+  "checks": [
+    {
+      "id": "release-version",
+      "category": "release",
+      "label": "Release metadata identity",
+      "status": "pass",
+      "detail": "Release metadata, citation, and packaged assets identify one consistent release."
+    },
+    {
+      "id": "release-status",
+      "category": "release",
+      "label": "Stable public release channel",
+      "status": "pass",
+      "detail": "Release status: stable-public-v3."
+    },
+    {
+      "id": "domain-coverage",
+      "category": "architecture",
+      "label": "Four public scientific adapters",
+      "status": "pass",
+      "detail": "Declared domains: heat, air, soil, water."
+    },
+    {
+      "id": "workspace-coverage",
+      "category": "architecture",
+      "label": "Complete unified decision lifecycle",
+      "status": "pass",
+      "detail": "10/10 required unified workspaces declared."
+    },
+    {
+      "id": "domain-audit",
+      "category": "science",
+      "label": "Cross-domain scientific audit",
+      "status": "pass",
+      "detail": "86 passes, 0 warnings, 0 failures; checksum 6be571eb."
+    },
+    {
+      "id": "commissioning-example",
+      "category": "operations",
+      "label": "Commissioning and maintenance evidence",
+      "status": "pass",
+      "detail": "35/42 commissioned; 3 protected failures; 0 unresolved; checksum 6318a385."
+    },
+    {
+      "id": "capability-contract",
+      "category": "science",
+      "label": "Required public capabilities",
+      "status": "pass",
+      "detail": "11 mandatory public-adapter capabilities are registered."
+    },
+    {
+      "id": "evidence-manifest",
+      "category": "reproducibility",
+      "label": "Frozen evidence artifact manifest",
+      "status": "pass",
+      "detail": "11/11 required evidence artifacts declared."
+    },
+    {
+      "id": "governance-docs",
+      "category": "governance",
+      "label": "Limitations, privacy, security, citation, and license",
+      "status": "pass",
+      "detail": "5/5 governance documents declared."
+    },
+    {
+      "id": "limitations-scope",
+      "category": "governance",
+      "label": "Limitations and intended-use guidance",
+      "status": "pass",
+      "detail": "Release metadata requires a centralized limitations and intended-use record."
+    },
+    {
+      "id": "accessibility-contract",
+      "category": "accessibility",
+      "label": "Public accessibility contract",
+      "status": "pass",
+      "detail": "10/10 required accessibility features declared."
+    },
+    {
+      "id": "runtime-layout",
+      "category": "accessibility",
+      "label": "Runtime map-expansion controls",
+      "status": "pass",
+      "detail": "Header collapse available; panel collapse available; map focus available."
+    },
+    {
+      "id": "runtime-a11y",
+      "category": "accessibility",
+      "label": "Runtime keyboard and motion controls",
+      "status": "pass",
+      "detail": "Skip navigation, visible focus, reduced-motion, and color-vision-safe controls are required in the application shell."
+    },
+    {
+      "id": "runtime-home",
+      "category": "accessibility",
+      "label": "Dedicated public Home navigation",
+      "status": "pass",
+      "detail": "A dedicated Home entry point introduces the system and routes users into each scientific workspace."
+    },
+    {
+      "id": "runtime-documentation",
+      "category": "governance",
+      "label": "In-application documentation center",
+      "status": "pass",
+      "detail": "Core public documentation is available inside an accessible application dialog."
+    },
+    {
+      "id": "runtime-about",
+      "category": "governance",
+      "label": "About Us and team attribution",
+      "status": "pass",
+      "detail": "The in-application About Us page and team attribution are declared."
+    },
+    {
+      "id": "static-hosting",
+      "category": "deployment",
+      "label": "Static public deployment",
+      "status": "pass",
+      "detail": "Hosting contract: static-github-pages."
+    },
+    {
+      "id": "offline-shell",
+      "category": "deployment",
+      "label": "Offline application shell",
+      "status": "pass",
+      "detail": "Versioned service-worker application shell declared."
+    },
+    {
+      "id": "credential-boundary",
+      "category": "security",
+      "label": "Frontend credential boundary",
+      "status": "pass",
+      "detail": "No permanent API credentials are permitted in the public application bundle."
+    },
+    {
+      "id": "license",
+      "category": "governance",
+      "label": "Open-source license",
+      "status": "pass",
+      "detail": "Declared license: MIT."
+    }
+  ],
+  "counts": {
+    "pass": 20,
+    "warn": 0,
+    "fail": 0
+  },
+  "ready": true,
+  "claimBoundary": "This readiness audit verifies declared software, evidence, accessibility, governance, and release contracts. It does not certify environmental accuracy, cybersecurity, regulatory compliance, accessibility conformance, field deployment, or institutional approval.",
+  "checksum": "eb216b23"
+}

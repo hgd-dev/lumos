@@ -1,0 +1,35 @@
+{
+  "format": "lumos-soil-public-cases-v1",
+  "version": "1.7.0",
+  "evidenceBoundary": "These cases use public survey and social context with deterministic controlled benchmark observations. They are not field measurements or regulatory findings.",
+  "cases": [
+    {
+      "key": "fresno-organic-matter",
+      "label": "Fresno, California",
+      "property": "organic_matter",
+      "depth": "0-15",
+      "bounds": { "south": 36.60, "north": 36.92, "west": -119.98, "east": -119.55 }
+    },
+    {
+      "key": "phoenix-salinity",
+      "label": "Phoenix, Arizona",
+      "property": "salinity",
+      "depth": "0-15",
+      "bounds": { "south": 33.28, "north": 33.66, "west": -112.32, "east": -111.78 }
+    },
+    {
+      "key": "des-moines-water-capacity",
+      "label": "Des Moines, Iowa",
+      "property": "available_water",
+      "depth": "15-30",
+      "bounds": { "south": 41.42, "north": 41.75, "west": -93.86, "east": -93.42 }
+    },
+    {
+      "key": "atlanta-soil-ph",
+      "label": "Atlanta, Georgia",
+      "property": "ph",
+      "depth": "0-15",
+      "bounds": { "south": 33.56, "north": 33.94, "west": -84.62, "east": -84.12 }
+    }
+  ]
+}

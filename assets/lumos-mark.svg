@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">LUMOS Heat</title>
+  <desc id="desc">A luminous monitoring node surrounded by four orbiting environmental points.</desc>
+  <rect width="128" height="128" rx="28" fill="#07100f"/>
+  <circle cx="64" cy="64" r="19" fill="#bdfc6b"/>
+  <circle cx="64" cy="64" r="35" fill="none" stroke="#89ddff" stroke-width="4" stroke-dasharray="9 7"/>
+  <circle cx="64" cy="22" r="7" fill="#ff9d8f"/>
+  <circle cx="106" cy="64" r="7" fill="#ffd88a"/>
+  <circle cx="64" cy="106" r="7" fill="#89ddff"/>
+  <circle cx="22" cy="64" r="7" fill="#9ee5ba"/>
+</svg>

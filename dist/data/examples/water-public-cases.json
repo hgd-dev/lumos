@@ -1,0 +1,55 @@
+{
+  "format": "lumos-water-public-cases-v1",
+  "version": "1.9.1",
+  "evidenceBoundary": "These cases use public Water, hydrologic-proxy, and Census context with deterministic controlled benchmark observations. They are not local measurements, hydraulic findings, compliance determinations, or safety evidence.",
+  "cases": [
+    {
+      "key": "denver-temperature",
+      "label": "Denver, Colorado",
+      "indicator": "temperature",
+      "systemType": "surface",
+      "bounds": {
+        "south": 39.55,
+        "north": 39.95,
+        "west": -105.25,
+        "east": -104.7
+      }
+    },
+    {
+      "key": "houston-turbidity",
+      "label": "Houston, Texas",
+      "indicator": "turbidity",
+      "systemType": "surface",
+      "bounds": {
+        "south": 29.45,
+        "north": 30.1,
+        "west": -95.75,
+        "east": -95.05
+      }
+    },
+    {
+      "key": "pittsburgh-conductance",
+      "label": "Pittsburgh, Pennsylvania",
+      "indicator": "specific_conductance",
+      "systemType": "surface",
+      "bounds": {
+        "south": 40.28,
+        "north": 40.58,
+        "west": -80.18,
+        "east": -79.78
+      }
+    },
+    {
+      "key": "portland-discharge",
+      "label": "Portland, Oregon",
+      "indicator": "discharge",
+      "systemType": "surface",
+      "bounds": {
+        "south": 45.35,
+        "north": 45.68,
+        "west": -122.88,
+        "east": -122.45
+      }
+    }
+  ]
+}
