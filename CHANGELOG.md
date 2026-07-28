@@ -1,5 +1,16 @@
 # Changelog
 
+
+## [3.1.2] - 2026-07-28
+
+### Public information architecture
+- Separated About Us into a permanent page beside Home.
+- Split the former Information menu into Documentation and Research & Process dropdowns.
+- Added permanent Documentation and Research & Process pages with stable section URLs.
+- Added a paper and conference placeholder for manuscript, venue, author, preprint, supplement, and presentation status.
+- Added a Contact & Feedback page with GitHub issue links and placeholder email, feedback-form, Instagram, and LinkedIn destinations.
+- Preserved the shared model engine, domain workspaces, public creator credit, team attribution, system check, and social footer.
+
 ## 3.1.1 — Navigation and map-control refinement
 
 - Corrected top-menu chevron alignment and raised dropdown stacking so menus remain visible above workspace content.

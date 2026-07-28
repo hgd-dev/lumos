@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Orbitron:wght@500;600;700&amp;family=Tektur:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css">
-  <link rel="stylesheet" href="css/styles.css?build=multi-page-2">
+  <link rel="stylesheet" href="css/styles.css?build=multi-page-3">
 </head>
 <body class="workspace-entry-page" data-lumos-page="workspace" data-lumos-domain="soil" data-lumos-label="Soil">
   <a class="skip-link" href="#map">Skip to interactive map</a>
@@ -31,15 +31,21 @@
     </a>
     <nav class="site-navigation" aria-label="Primary navigation">
       <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
       <a href="unified.html">Unified</a>
       <details class="workspace-menu site-menu active">
-        <summary>Workspaces</summary>
-        <div class="workspace-menu-panel"><a href="heat.html"><span>Heat</span><small>LUMOS—Heat</small></a><a href="air.html"><span>Air</span><small>LUMOS—Air</small></a><a href="soil.html" aria-current="page" class="active"><span>Soil</span><small>LUMOS—Soil</small></a><a href="water.html"><span>Water</span><small>LUMOS—Water</small></a></div>
+        <summary aria-current="page">Workspaces</summary>
+        <div class="workspace-menu-panel"><a href="heat.html"><span>Heat</span><small>LUMOS—Heat</small></a><a href="air.html"><span>Air</span><small>LUMOS—Air</small></a><a href="soil.html" class="active" aria-current="page"><span>Soil</span><small>LUMOS—Soil</small></a><a href="water.html"><span>Water</span><small>LUMOS—Water</small></a></div>
       </details>
-      <details class="workspace-menu site-menu information-menu">
-        <summary>Information</summary>
-        <div class="workspace-menu-panel information-menu-panel"><a href="about.html#about"><span>About LUMOS</span><small>Mission, creator, and team</small></a><a href="about.html#quickstart"><span>Quickstart</span><small>From map area to export</small></a><a href="about.html#methodology"><span>Methodology</span><small>Scientific framework and model</small></a><a href="about.html#data-sources"><span>Data sources</span><small>Provenance and fallback behavior</small></a><a href="about.html#limitations"><span>Limitations</span><small>Scope and intended use</small></a><a href="about.html#privacy"><span>Privacy</span><small>Local-first data governance</small></a><a href="about.html#release-notes"><span>Release notes</span><small>Public version history</small></a><a href="about.html#citation"><span>Cite LUMOS</span><small>Recommended attribution</small></a></div>
+      <details class="workspace-menu site-menu documentation-menu">
+        <summary>Documentation</summary>
+        <div class="workspace-menu-panel documentation-menu-panel"><a href="documentation.html#quickstart"><span>Quickstart</span><small>From study area to export</small></a><a href="documentation.html#user-guide"><span>User guide</span><small>Core workflow and controls</small></a><a href="documentation.html#interface-guide"><span>Interface guide</span><small>Navigation, maps, and workspaces</small></a><a href="documentation.html#limitations"><span>Limitations</span><small>Scope and intended use</small></a><a href="documentation.html#privacy"><span>Privacy</span><small>Local-first data governance</small></a><a href="documentation.html#release-notes"><span>Release notes</span><small>Current public release</small></a><a href="documentation.html#changelog"><span>Changelog</span><small>Complete version history</small></a></div>
       </details>
+      <details class="workspace-menu site-menu research-menu">
+        <summary>Research &amp; Process</summary>
+        <div class="workspace-menu-panel research-menu-panel"><a href="research.html#methodology"><span>Methodology</span><small>Scientific framework and objectives</small></a><a href="research.html#architecture"><span>Model architecture</span><small>Shared engine and domain adapters</small></a><a href="research.html#data-sources"><span>Data sources</span><small>Provenance and fallback behavior</small></a><a href="research.html#validation"><span>Validation & benchmarking</span><small>Evidence and comparator design</small></a><a href="research.html#reproducibility"><span>Reproducibility</span><small>Frozen evidence and verification</small></a><a href="research.html#lifecycle"><span>Monitoring lifecycle</span><small>Planning through maintenance</small></a><a href="research.html#paper"><span>Paper & conference</span><small>Manuscript and submission status</small></a><a href="research.html#citation"><span>Citation</span><small>Recommended scholarly attribution</small></a></div>
+      </details>
+      <a href="contact.html">Contact</a>
     </nav>
     <div class="header-actions site-header-actions">
       <a class="icon-link header-icon-link" href="https://github.com/hgd-dev/lumos" target="_blank" rel="noopener noreferrer" aria-label="Open the LUMOS GitHub repository" title="GitHub repository"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .7a11.3 11.3 0 0 0-3.57 22.02c.57.1.78-.25.78-.55v-2.16c-3.18.69-3.85-1.35-3.85-1.35-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.73-1.53-2.54-.29-5.21-1.27-5.21-5.65 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.13 1.17A10.87 10.87 0 0 1 12 6.94c.97 0 1.94.13 2.85.38 2.17-1.48 3.13-1.17 3.13-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.39-2.68 5.35-5.22 5.64.41.36.77 1.06.77 2.14v3.17c0 .3.21.66.79.55A11.3 11.3 0 0 0 12 .7Z"/></svg></a>
@@ -56,13 +62,13 @@
       </p>
       <nav class="footer-socials" aria-label="LUMOS social links">
         <a class="icon-link" href="https://github.com/hgd-dev/lumos" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .7a11.3 11.3 0 0 0-3.57 22.02c.57.1.78-.25.78-.55v-2.16c-3.18.69-3.85-1.35-3.85-1.35-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.73-1.53-2.54-.29-5.21-1.27-5.21-5.65 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.13 1.17A10.87 10.87 0 0 1 12 6.94c.97 0 1.94.13 2.85.38 2.17-1.48 3.13-1.17 3.13-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.39-2.68 5.35-5.22 5.64.41.36.77 1.06.77 2.14v3.17c0 .3.21.66.79.55A11.3 11.3 0 0 0 12 .7Z"/></svg></a>
-        <a class="icon-link placeholder-social-link" href="mailto:replace-with-your-email@example.com" aria-label="Gmail placeholder" title="Gmail — replace placeholder address"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3.5 5.25h17A2.5 2.5 0 0 1 23 7.75v8.5a2.5 2.5 0 0 1-2.5 2.5h-17A2.5 2.5 0 0 1 1 16.25v-8.5a2.5 2.5 0 0 1 2.5-2.5Zm0 1.8v.28L12 13.1l8.5-5.77v-.28h-17Zm17 9.9c.39 0 .7-.31.7-.7V9.5l-8.7 5.9a.9.9 0 0 1-1 0L2.8 9.5v6.75c0 .39.31.7.7.7h17Z"/></svg></a>
-        <a class="icon-link placeholder-social-link" href="https://www.instagram.com/replace-with-your-handle/" target="_blank" rel="noopener noreferrer" aria-label="Instagram placeholder" title="Instagram — replace placeholder profile"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.3 2h9.4A5.3 5.3 0 0 1 22 7.3v9.4a5.3 5.3 0 0 1-5.3 5.3H7.3A5.3 5.3 0 0 1 2 16.7V7.3A5.3 5.3 0 0 1 7.3 2Zm0 1.8a3.5 3.5 0 0 0-3.5 3.5v9.4a3.5 3.5 0 0 0 3.5 3.5h9.4a3.5 3.5 0 0 0 3.5-3.5V7.3a3.5 3.5 0 0 0-3.5-3.5H7.3Zm9.9 1.35a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 6.85A5.15 5.15 0 1 1 12 17.15 5.15 5.15 0 0 1 12 6.85Zm0 1.8A3.35 3.35 0 1 0 12 15.35 3.35 3.35 0 0 0 12 8.65Z"/></svg></a>
-        <a class="icon-link placeholder-social-link" href="https://www.linkedin.com/in/replace-with-your-profile/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn placeholder" title="LinkedIn — replace placeholder profile"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5.35 3.5A2.15 2.15 0 1 1 5.35 7.8a2.15 2.15 0 0 1 0-4.3ZM3.5 9.25h3.7V20.5H3.5V9.25Zm5.85 0h3.55v1.54h.05c.49-.94 1.7-1.94 3.5-1.94 3.75 0 4.45 2.47 4.45 5.68v5.97h-3.7v-5.29c0-1.26-.02-2.88-1.75-2.88-1.76 0-2.03 1.37-2.03 2.79v5.38h-3.7V9.25Z"/></svg></a>
+        <a class="icon-link" href="mailto:Lumosystem.team@gmail.com" aria-label="Email the LUMOS team" title="Email the LUMOS team"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3.5 5.25h17A2.5 2.5 0 0 1 23 7.75v8.5a2.5 2.5 0 0 1-2.5 2.5h-17A2.5 2.5 0 0 1 1 16.25v-8.5a2.5 2.5 0 0 1 2.5-2.5Zm0 1.8v.28L12 13.1l8.5-5.77v-.28h-17Zm17 9.9c.39 0 .7-.31.7-.7V9.5l-8.7 5.9a.9.9 0 0 1-1 0L2.8 9.5v6.75c0 .39.31.7.7.7h17Z"/></svg></a>
+        <a class="icon-link" href="https://www.instagram.com/lumos_optimization/" target="_blank" rel="noopener noreferrer" aria-label="LUMOS on Instagram" title="LUMOS on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.3 2h9.4A5.3 5.3 0 0 1 22 7.3v9.4a5.3 5.3 0 0 1-5.3 5.3H7.3A5.3 5.3 0 0 1 2 16.7V7.3A5.3 5.3 0 0 1 7.3 2Zm0 1.8a3.5 3.5 0 0 0-3.5 3.5v9.4a3.5 3.5 0 0 0 3.5 3.5h9.4a3.5 3.5 0 0 0 3.5-3.5V7.3a3.5 3.5 0 0 0-3.5-3.5H7.3Zm9.9 1.35a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 6.85A5.15 5.15 0 1 1 12 17.15 5.15 5.15 0 0 1 12 6.85Zm0 1.8A3.35 3.35 0 1 0 12 15.35 3.35 3.35 0 0 0 12 8.65Z"/></svg></a>
+        <a class="icon-link" href="https://www.linkedin.com/in/lumos-team-7786b2425/" target="_blank" rel="noopener noreferrer" aria-label="LUMOS on LinkedIn" title="LUMOS on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5.35 3.5A2.15 2.15 0 1 1 5.35 7.8a2.15 2.15 0 0 1 0-4.3ZM3.5 9.25h3.7V20.5H3.5V9.25Zm5.85 0h3.55v1.54h.05c.49-.94 1.7-1.94 3.5-1.94 3.75 0 4.45 2.47 4.45 5.68v5.97h-3.7v-5.29c0-1.26-.02-2.88-1.75-2.88-1.76 0-2.03 1.37-2.03 2.79v5.38h-3.7V9.25Z"/></svg></a>
       </nav>
     </div>
   </footer>
   <script src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
-  <script type="module" src="js/workspace-bootstrap.js?build=multi-page-2"></script>
+  <script type="module" src="js/workspace-bootstrap.js?build=multi-page-3"></script>
 </body>
 </html>

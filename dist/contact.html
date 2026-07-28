@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Pollutant-specific field reconstruction, wind-aware network design, calibration roles, intervention evaluation, and operations.">
+  <meta name="description" content="Contact the LUMOS team, report issues, suggest features, discuss research collaborations, and find official project social links.">
   <meta name="robots" content="index,follow">
-  <meta property="og:title" content="LUMOS—Air · Environmental Monitoring Workspace">
-  <meta property="og:description" content="Pollutant-specific field reconstruction, wind-aware network design, calibration roles, intervention evaluation, and operations.">
+  <meta property="og:title" content="Contact & Feedback · LUMOS">
+  <meta property="og:description" content="Contact the LUMOS team, report issues, suggest features, discuss research collaborations, and find official project social links.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#07100f">
   <meta name="application-name" content="LUMOS">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>LUMOS—Air · Environmental Monitoring Workspace</title>
+  <title>Contact & Feedback · LUMOS</title>
   <link rel="icon" href="assets/lumos-mark.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,9 +21,9 @@
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css">
   <link rel="stylesheet" href="css/styles.css?build=multi-page-3">
 </head>
-<body class="workspace-entry-page" data-lumos-page="workspace" data-lumos-domain="air" data-lumos-label="Air">
-  <a class="skip-link" href="#map">Skip to interactive map</a>
-  <div id="offlineBanner" class="offline-banner" hidden role="status">Offline mode: saved workspaces and the application shell remain available, but live maps and public APIs require a connection.</div>
+<body class="site-page info-active" data-lumos-page="contact">
+  <a class="skip-link" href="#contactTitle">Skip to contact options</a>
+  <div id="offlineBanner" class="offline-banner" hidden role="status">Offline mode: contact information remains available, but external links require a connection.</div>
   <header id="appHeader" class="app-header site-header">
     <a class="brand-lockup site-brand" href="index.html" aria-label="LUMOS Home">
       <img class="brand-mark" src="assets/lumos-mark.svg" alt="" width="48" height="48">
@@ -33,9 +33,9 @@
       <a href="index.html">Home</a>
       <a href="about.html">About Us</a>
       <a href="unified.html">Unified</a>
-      <details class="workspace-menu site-menu active">
-        <summary aria-current="page">Workspaces</summary>
-        <div class="workspace-menu-panel"><a href="heat.html"><span>Heat</span><small>LUMOS—Heat</small></a><a href="air.html" class="active" aria-current="page"><span>Air</span><small>LUMOS—Air</small></a><a href="soil.html"><span>Soil</span><small>LUMOS—Soil</small></a><a href="water.html"><span>Water</span><small>LUMOS—Water</small></a></div>
+      <details class="workspace-menu site-menu">
+        <summary>Workspaces</summary>
+        <div class="workspace-menu-panel"><a href="heat.html"><span>Heat</span><small>LUMOS—Heat</small></a><a href="air.html"><span>Air</span><small>LUMOS—Air</small></a><a href="soil.html"><span>Soil</span><small>LUMOS—Soil</small></a><a href="water.html"><span>Water</span><small>LUMOS—Water</small></a></div>
       </details>
       <details class="workspace-menu site-menu documentation-menu">
         <summary>Documentation</summary>
@@ -45,15 +45,47 @@
         <summary>Research &amp; Process</summary>
         <div class="workspace-menu-panel research-menu-panel"><a href="research.html#methodology"><span>Methodology</span><small>Scientific framework and objectives</small></a><a href="research.html#architecture"><span>Model architecture</span><small>Shared engine and domain adapters</small></a><a href="research.html#data-sources"><span>Data sources</span><small>Provenance and fallback behavior</small></a><a href="research.html#validation"><span>Validation & benchmarking</span><small>Evidence and comparator design</small></a><a href="research.html#reproducibility"><span>Reproducibility</span><small>Frozen evidence and verification</small></a><a href="research.html#lifecycle"><span>Monitoring lifecycle</span><small>Planning through maintenance</small></a><a href="research.html#paper"><span>Paper & conference</span><small>Manuscript and submission status</small></a><a href="research.html#citation"><span>Citation</span><small>Recommended scholarly attribution</small></a></div>
       </details>
-      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="active" aria-current="page">Contact</a>
     </nav>
     <div class="header-actions site-header-actions">
       <a class="icon-link header-icon-link" href="https://github.com/hgd-dev/lumos" target="_blank" rel="noopener noreferrer" aria-label="Open the LUMOS GitHub repository" title="GitHub repository"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .7a11.3 11.3 0 0 0-3.57 22.02c.57.1.78-.25.78-.55v-2.16c-3.18.69-3.85-1.35-3.85-1.35-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.73-1.53-2.54-.29-5.21-1.27-5.21-5.65 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.13 1.17A10.87 10.87 0 0 1 12 6.94c.97 0 1.94.13 2.85.38 2.17-1.48 3.13-1.17 3.13-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.39-2.68 5.35-5.22 5.64.41.36.77 1.06.77 2.14v3.17c0 .3.21.66.79.55A11.3 11.3 0 0 0 12 .7Z"/></svg></a>
       <button id="systemCheckButton" class="secondary-button" type="button">System check</button>
     </div>
   </header>
-  <button id="toggleHeader" class="header-collapse-toggle" type="button" aria-controls="appHeader" aria-expanded="true" title="Collapse site header"><span aria-hidden="true">⌃</span><span class="sr-only">Collapse site header</span></button>
-  <div id="workspaceMount" class="workspace-mount" aria-live="polite"><section class="workspace-loading"><div class="loading-spinner" aria-hidden="true"></div><p>Loading LUMOS—Air…</p></section></div>
+  <main class="info-page contact-page" aria-labelledby="contactTitle">
+    <section class="info-hero">
+      <p class="eyebrow">Contact &amp; feedback</p>
+      <h1 id="contactTitle">Help shape the public LUMOS platform.</h1>
+      <p>Use the channels below for software feedback, research discussion, environmental partnerships, conference inquiries, or general contact. The email, Instagram, LinkedIn, and GitHub destinations are the official public LUMOS channels.</p>
+    </section>
+    <section class="contact-grid" aria-label="Contact options">
+      <article class="contact-card"><p class="section-kicker">General email</p><h2>Email the team</h2><p>Questions, partnerships, city or school use, and general project inquiries.</p><a href="mailto:Lumosystem.team@gmail.com?subject=LUMOS%20inquiry">Lumosystem.team@gmail.com</a></article>
+      <article class="contact-card"><p class="section-kicker">Software feedback</p><h2>Report a bug</h2><p>Describe a reproducible issue, affected workspace, browser, and expected behavior.</p><a href="https://github.com/hgd-dev/lumos/issues/new" target="_blank" rel="noopener noreferrer">Open a GitHub issue</a></article>
+      <article class="contact-card"><p class="section-kicker">Product ideas</p><h2>Suggest a feature</h2><p>Share a workflow, dataset, accessibility improvement, or environmental use case.</p><a href="https://github.com/hgd-dev/lumos/issues/new?labels=enhancement&amp;title=Feature%20request%3A%20" target="_blank" rel="noopener noreferrer">Submit a feature request</a></article>
+      <article class="contact-card"><p class="section-kicker">Structured feedback</p><h2>Feedback form</h2><p>A public feedback form will be linked here before outreach and conference release.</p><a class="placeholder-contact-link" href="https://forms.gle/replace-with-feedback-form" target="_blank" rel="noopener noreferrer">Feedback form placeholder</a></article>
+    </section>
+    <section class="social-directory" aria-labelledby="socialTitle">
+      <div class="profile-heading"><p class="section-kicker">Official channels</p><h2 id="socialTitle">Follow and contact LUMOS</h2><p>These official channels are used for project updates, research communication, partnerships, and public feedback.</p></div>
+      <div class="social-directory-grid">
+        <a href="https://github.com/hgd-dev/lumos" target="_blank" rel="noopener noreferrer"><strong>GitHub</strong><small>Source, releases, issues, and technical updates</small><span>github.com/hgd-dev/lumos</span></a>
+        <a href="mailto:Lumosystem.team@gmail.com"><strong>Gmail</strong><small>General contact and partnership inquiries</small><span>Lumosystem.team@gmail.com</span></a>
+        <a href="https://www.instagram.com/lumos_optimization/" target="_blank" rel="noopener noreferrer"><strong>Instagram</strong><small>Public updates, visuals, and project announcements</small><span>@lumos_optimization</span></a>
+        <a href="https://www.linkedin.com/in/lumos-team-7786b2425/" target="_blank" rel="noopener noreferrer"><strong>LinkedIn</strong><small>Research, professional, and partnership updates</small><span>LUMOS Team</span></a>
+      </div>
+    </section>
+    <section class="contact-note"><strong>Team profiles are coming next.</strong><p>Individual names, roles, email addresses, and social links can be added to About Us and this page without changing the navigation structure.</p></section>
+  </main>
+  <dialog id="systemCheckDialog" class="release-dialog">
+    <form method="dialog" class="release-dialog-card">
+      <div class="release-dialog-heading">
+        <div><p class="section-kicker">Application services</p><h2>System check</h2></div>
+        <button class="text-button" value="cancel" aria-label="Close system check">Close</button>
+      </div>
+      <p id="systemCheckSummary" class="section-help">Run a check to verify browser capabilities and public-data services.</p>
+      <ul id="systemCheckList" class="system-check-list"></ul>
+      <div class="release-dialog-actions"><button id="runSystemCheckButton" class="primary-button" type="button">Run system check</button></div>
+    </form>
+  </dialog>
   <footer class="app-footer site-footer">
     <div class="footer-identity">
       <p class="footer-credit">
@@ -68,7 +100,6 @@
       </nav>
     </div>
   </footer>
-  <script src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
-  <script type="module" src="js/workspace-bootstrap.js?build=multi-page-3"></script>
+  <script type="module" src="js/site.js?build=multi-page-3"></script>
 </body>
 </html>

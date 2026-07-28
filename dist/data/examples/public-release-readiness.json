@@ -2,7 +2,7 @@
   "schemaVersion": "1.0",
   "architecture": "LUMOS-v3-internal-release-quality-audit",
   "generatedAt": "1970-01-01T00:00:00.000Z",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "checks": [
     {
       "id": "release-version",
@@ -152,5 +152,5 @@
   },
   "ready": true,
   "claimBoundary": "This readiness audit verifies declared software, evidence, accessibility, governance, and release contracts. It does not certify environmental accuracy, cybersecurity, regulatory compliance, accessibility conformance, field deployment, or institutional approval.",
-  "checksum": "1d07de03"
+  "checksum": "b38317da"
 }

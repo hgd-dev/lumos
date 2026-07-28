@@ -114,10 +114,10 @@ export const DOCUMENTATION_PAGES = Object.freeze({
   }),
   "release-notes": Object.freeze({
     title: "Release notes",
-    kicker: "Current public release: 3.1.1",
+    kicker: "Current public release: 3.1.2",
     summary: "Navigation, dropdown, map-control, basemap, and footer refinements for the multi-page public site.",
     html: `
-      <p><strong>LUMOS 3.1.1</strong> refines the public brand and Home experience while preserving the full 3.0 scientific and operational architecture.</p>
+      <p><strong>LUMOS 3.1.2</strong> separates About Us, Documentation, Research &amp; Process, and Contact &amp; Feedback into permanent public pages while preserving the complete scientific and operational architecture.</p>
       <h3>Public interface changes</h3>
       <ul>
         <li>Reorganized LUMOS as a multi-page public site with dedicated Home, documentation, Unified, Heat, Air, Soil, and Water URLs.</li>

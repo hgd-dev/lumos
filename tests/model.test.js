@@ -2160,14 +2160,17 @@ test("multi-page Unified interface exposes commissioning and full-map controls",
   assert.match(html, /id="documentationDialog"/);
   assert.match(html, /Full creation including ideation, website, code, and interface by Hudson Dong/);
   assert.match(html, /The LUMOS Team/);
-  assert.match(entry, /href="about.html#about"/);
+  assert.match(entry, /href="about.html"/);
+  assert.match(entry, /href="documentation.html#quickstart"/);
+  assert.match(entry, /href="research.html#paper"/);
+  assert.match(entry, /href="contact.html"/);
   assert.match(entry, /data-lumos-domain="core"/);
   assert.match(entry, /LUMOS—Unified/);
 });
 
 test("cross-domain consistency audit passes and exports reproducible tidy rows", () => {
   const releaseMetadata = {
-    version: "3.1.1",
+    version: "3.1.2",
     status: "stable-public-v3",
     supportedDomains: ["heat", "air", "soil", "water"],
     supportedWorkspaces: [
@@ -2351,7 +2354,7 @@ test("v3 release metadata is internally consistent", async () => {
   const release = JSON.parse(await readFile(new URL("../release.json", import.meta.url), "utf8"));
   const manifest = JSON.parse(await readFile(new URL("../manifest.webmanifest", import.meta.url), "utf8"));
   assert.equal(APP_NAME, "LUMOS");
-  assert.equal(APP_VERSION, "3.1.1");
+  assert.equal(APP_VERSION, "3.1.2");
   assert.equal(RELEASE_CHANNEL, "stable-public");
   assert.equal(packageJson.version, APP_VERSION);
   assert.equal(packageJson.scripts.verify, "node scripts/run-verification.mjs");
@@ -2394,9 +2397,12 @@ test("v3 release metadata is internally consistent", async () => {
 test("v3 service worker preserves the complete same-origin application shell", async () => {
   const { readFile } = await import("node:fs/promises");
   const worker = await readFile(new URL("../service-worker.js", import.meta.url), "utf8");
-  assert.match(worker, /lumos-v3\.1\.1/);
+  assert.match(worker, /lumos-v3\.1\.2/);
   assert.match(worker, /\.\/index\.html/);
   assert.match(worker, /\.\/about\.html/);
+  assert.match(worker, /\.\/documentation\.html/);
+  assert.match(worker, /\.\/research\.html/);
+  assert.match(worker, /\.\/contact\.html/);
   assert.match(worker, /\.\/unified\.html/);
   assert.match(worker, /\.\/heat\.html/);
   assert.match(worker, /\.\/air\.html/);
@@ -2404,6 +2410,7 @@ test("v3 service worker preserves the complete same-origin application shell", a
   assert.match(worker, /\.\/water\.html/);
   assert.match(worker, /\.\/workspace-shell\.html/);
   assert.match(worker, /\.\/js\/workspace-bootstrap\.js/);
+  assert.match(worker, /\.\/js\/content-page\.js/);
   assert.match(worker, /\.\/js\/model\/optimizer\.js/);
   assert.match(worker, /\.\/js\/config\/domain-registry\.js/);
   assert.match(worker, /\.\/js\/release\/domain-audit\.js/);
@@ -2445,11 +2452,15 @@ test("public Home and permanent documentation page keep release metadata out of 
   const { readFile } = await import("node:fs/promises");
   const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
   const about = await readFile(new URL("../about.html", import.meta.url), "utf8");
+  const documentation = await readFile(new URL("../documentation.html", import.meta.url), "utf8");
+  const research = await readFile(new URL("../research.html", import.meta.url), "utf8");
+  const contact = await readFile(new URL("../contact.html", import.meta.url), "utf8");
+  const contentSource = await readFile(new URL("../js/content-page.js", import.meta.url), "utf8");
   const siteSource = await readFile(new URL("../js/site.js", import.meta.url), "utf8");
   assert.equal(DEFAULT_DOCUMENTATION_PAGE, "quickstart");
   assert.equal(DOCUMENTATION_ORDER.length, 8);
   assert.ok(DOCUMENTATION_ORDER.every((key) => DOCUMENTATION_PAGES[key]?.title && DOCUMENTATION_PAGES[key]?.html));
-  assert.match(DOCUMENTATION_PAGES["release-notes"].html, /3\.1\.1/);
+  assert.match(DOCUMENTATION_PAGES["release-notes"].html, /3\.1\.2/);
   assert.equal(DOCUMENTATION_PAGES.about.title, "About Us");
   assert.match(DOCUMENTATION_PAGES.about.html, /The LUMOS Team/);
   assert.match(html, /id="homePage"/);
@@ -2466,9 +2477,9 @@ test("public Home and permanent documentation page keep release metadata out of 
   assert.match(html, /family=Tektur/);
   assert.match(html, /class="home-install-mark"[^>]*lumos-mark\.svg/);
   assert.match(html, /https:\/\/github\.com\/hgd-dev\/lumos/);
-  assert.match(html, /mailto:replace-with-your-email@example\.com/);
-  assert.match(html, /instagram\.com\/replace-with-your-handle/);
-  assert.match(html, /linkedin\.com\/in\/replace-with-your-profile/);
+  assert.match(html, /mailto:Lumosystem\.team@gmail\.com/);
+  assert.match(html, /instagram\.com\/lumos_optimization/);
+  assert.match(html, /linkedin\.com\/in\/lumos-team-7786b2425/);
   assert.match(html, /<strong>Unified<\/strong>/);
   assert.match(html, /<strong>Heat<\/strong>/);
   assert.match(siteSource, /TYPE_WORDS/);
@@ -2476,9 +2487,20 @@ test("public Home and permanent documentation page keep release metadata out of 
   assert.match(siteSource, /prefersReducedMotion/);
   assert.match(html, /The LUMOS Team/);
   assert.doesNotMatch(html, /and the LUMOS team/);
-  assert.match(html, /href="about.html#quickstart"/);
-  assert.match(about, /id="infoNavigation"/);
-  assert.match(about, /id="infoContent"/);
+  assert.match(html, /href="documentation.html#quickstart"/);
+  assert.match(html, /href="about.html"/);
+  assert.match(html, /href="research.html#methodology"/);
+  assert.match(html, /href="contact.html"/);
+  assert.match(about, /id="aboutTitle"/);
+  assert.match(about, /Hudson Dong/);
+  assert.match(about, /The LUMOS Team/);
+  assert.match(documentation, /data-content-group="documentation"/);
+  assert.match(documentation, /id="infoNavigation"/);
+  assert.match(research, /data-content-group="research"/);
+  assert.match(contentSource, /Manuscript in preparation/);
+  assert.match(contentSource, /replace-with-paper-url/);
+  assert.match(contact, /id="contactTitle"/);
+  assert.match(contact, /replace-with-feedback-form/);
   assert.doesNotMatch(html, /id="documentationDialog"/);
   assert.match(html, /class="footer-credit"/);
   assert.doesNotMatch(html, /href="docs\//);
@@ -2498,7 +2520,7 @@ test("multi-page navigation exposes dedicated Unified, Heat, Air, Soil, and Wate
   const air = await readFile(new URL("../air.html", import.meta.url), "utf8");
   const soil = await readFile(new URL("../soil.html", import.meta.url), "utf8");
   const water = await readFile(new URL("../water.html", import.meta.url), "utf8");
-  assert.doesNotMatch(home, />[^<]*v?3\.1\.1[^<]*</i);
+  assert.doesNotMatch(home, />[^<]*v?3\.1\.2[^<]*</i);
   assert.match(home, /href="unified.html"/);
   assert.match(home, /href="heat.html"/);
   assert.match(home, /href="air.html"/);
@@ -2538,7 +2560,10 @@ test("multi-page navigation exposes dedicated Unified, Heat, Air, Soil, and Wate
   assert.match(shell, /id="toggleLocationPanelButton"/);
   assert.match(shell, /id="locationPanelDragHandle"/);
   assert.match(shell, /<option value="positron" selected>Positron<\/option>/);
-  assert.match(home, /<summary>Information<\/summary>/);
+  assert.match(home, /<summary>Documentation<\/summary>/);
+  assert.match(home, /<summary>Research &amp; Process<\/summary>/);
+  assert.match(home, /href="about.html"/);
+  assert.match(home, /href="contact.html"/);
   assert.doesNotMatch(home, /class="footer-documentation"/);
 });
 

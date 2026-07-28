@@ -1,4 +1,4 @@
-const CACHE_NAME = "lumos-v3.1.1";
+const CACHE_NAME = "lumos-v3.1.2";
 const LIBRARY_ASSETS = [
   "https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css",
   "https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"
@@ -7,6 +7,9 @@ const APP_SHELL = [
   "./",
   "./index.html",
   "./about.html",
+  "./documentation.html",
+  "./research.html",
+  "./contact.html",
   "./unified.html",
   "./heat.html",
   "./air.html",
@@ -19,6 +22,7 @@ const APP_SHELL = [
   "./js/app.js",
   "./js/site.js",
   "./js/info-page.js",
+  "./js/content-page.js",
   "./js/workspace-bootstrap.js",
   "./js/config/domains.js",
   "./js/config/domain-registry.js",
