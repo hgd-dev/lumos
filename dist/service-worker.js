@@ -1,4 +1,4 @@
-const CACHE_NAME = "lumos-v3.1.2";
+const CACHE_NAME = "lumos-v3.1.3";
 const LIBRARY_ASSETS = [
   "https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css",
   "https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"

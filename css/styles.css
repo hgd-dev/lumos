@@ -2546,6 +2546,35 @@ body.reduced-motion .hero-title-cursor { animation: none; opacity: 1; }
   line-height: 1.02;
   letter-spacing: -0.045em;
 }
+.home-brand-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(14px, 1.8vw, 22px);
+  max-width: 100%;
+  margin: 0 0 clamp(12px, 1.8vw, 20px);
+}
+.home-brand-hero-mark {
+  width: clamp(76px, 7.4vw, 104px);
+  height: clamp(76px, 7.4vw, 104px);
+  flex: 0 0 auto;
+  filter: drop-shadow(0 16px 34px rgba(189, 252, 107, 0.18));
+}
+.home-brand-hero-wordmark {
+  color: var(--text);
+  font-family: "Orbitron", var(--font-display);
+  font-size: clamp(2.55rem, 5vw, 4.65rem);
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: 0.075em;
+  text-shadow: 0 0 26px rgba(137, 221, 255, 0.10);
+}
+.home-system-name {
+  max-width: 900px;
+  margin-bottom: 8px;
+  font-size: clamp(0.82rem, 1.1vw, 1rem);
+  line-height: 1.45;
+  letter-spacing: 0.115em;
+}
 .home-domain-card { text-decoration: none; }
 .home-domain-card:hover { color: var(--text); }
 .home-principles h2,
@@ -2709,6 +2738,10 @@ body.reduced-motion .hero-title-cursor { animation: none; opacity: 1; }
   .workspace-entry-page .control-panel,
   .workspace-entry-page .results-panel { max-height: none; }
   .home-hero-copy h1 { font-size: clamp(2.35rem, 13vw, 3.8rem); }
+  .home-brand-hero { gap: 12px; margin-bottom: 14px; }
+  .home-brand-hero-mark { width: 66px; height: 66px; }
+  .home-brand-hero-wordmark { font-size: clamp(2rem, 12vw, 3rem); letter-spacing: 0.055em; }
+  .home-system-name { font-size: 0.76rem; letter-spacing: 0.09em; }
   .info-page { padding: 26px 14px 40px; }
   .info-document-section { padding: 22px 17px; }
 }

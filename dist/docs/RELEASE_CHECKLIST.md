@@ -2,9 +2,9 @@
 
 ## Version and package
 
-- [ ] `package.json`, `release.json`, `js/release/version.js`, service worker, citation metadata, release notes, and changelog identify `3.1.2`. The public masthead, browser title, footer, manifest name, README title, and model-specification title remain version-neutral.
+- [ ] `package.json`, `release.json`, `js/release/version.js`, service worker, citation metadata, release notes, and changelog identify `3.1.3`. The public masthead, browser title, footer, manifest name, README title, and model-specification title remain version-neutral.
 - [ ] Release status is `stable-public-v3`.
-- [ ] Service-worker cache is `lumos-v3.1.2` and contains every public entry page, the shared workspace shell, all public domain modules, unified operations, and documentation scripts.
+- [ ] Service-worker cache is `lumos-v3.1.3` and contains every public entry page, the shared workspace shell, all public domain modules, unified operations, and documentation scripts.
 - [ ] No permanent credential is embedded in public assets.
 
 ## Automated verification

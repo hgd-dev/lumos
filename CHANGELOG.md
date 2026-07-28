@@ -1,6 +1,15 @@
 # Changelog
 
 
+## [3.1.3] - 2026-07-28
+
+### Homepage brand hierarchy
+- Added a prominent LUMOS mark-and-wordmark lockup at the start of the Home hero.
+- Increased the visual weight and size of the expanded “Localized Unified Monitoring Optimization System” name.
+- Preserved the animated environmental-design heading, responsive layout, accessibility text, and all scientific workspace behavior.
+- Updated release metadata and the service-worker cache for the branding release.
+
+
 ## [3.1.2] - 2026-07-28
 
 ### Public information architecture

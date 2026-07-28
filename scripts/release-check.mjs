@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const expectedVersion = "3.1.2";
+const expectedVersion = "3.1.3";
 const required = [
   "index.html", "about.html", "documentation.html", "research.html", "contact.html", "unified.html", "heat.html", "air.html", "soil.html", "water.html", "workspace-shell.html",
   "package.json", "release.json", "manifest.webmanifest", "service-worker.js", "404.html",
@@ -62,6 +62,7 @@ if (/Claim boundaries|claim boundaries/.test(workspaceShell)) failures.push("wor
 if (!publicShell.includes("https://github.com/hgd-dev/lumos")) failures.push("index.html is missing the public GitHub repository link");
 if (!publicShell.includes('id="heroTypeText"')) failures.push("index.html is missing the animated environmental-design phrase");
 if (!publicShell.includes('class="home-install-mark"')) failures.push("index.html is missing the install-card LUMOS mark");
+if (!publicShell.includes('class="home-brand-hero"') || !publicShell.includes('class="home-brand-hero-wordmark"') || !publicShell.includes('home-system-name')) failures.push("index.html is missing the prominent Home brand lockup");
 if (publicShell.includes("From uncertainty to action")) failures.push("index.html still exposes the removed masthead slogan");
 if (!publicShell.includes("fonts.googleapis.com/css2?family=Inter")) failures.push("index.html is missing the technical public font stylesheet");
 if (!publicShell.includes("Lumosystem.team@gmail.com") || !publicShell.includes("lumos_optimization") || !publicShell.includes("lumos-team-7786b2425")) failures.push("index.html is missing one or more official LUMOS social destinations");

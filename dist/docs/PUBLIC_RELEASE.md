@@ -1,4 +1,8 @@
-# LUMOS 3.1.2 Multi-Page Public Release
+# LUMOS 3.1.3 Multi-Page Public Release
+
+## v3.1.3 homepage branding
+
+The Home hero now begins with a prominent LUMOS logo and wordmark, followed by a larger expanded system name. This strengthens immediate product recognition without changing the animated design statement, navigation, model workspaces, scientific contracts, or release architecture.
 
 ## Public presentation and navigation
 
@@ -51,9 +55,9 @@ See `docs/COMMISSIONING_AND_MAINTENANCE.md`, `docs/LIMITATIONS.md`, and `docs/PR
 
 ## Brand and Home refinement
 
-The 3.1.2 public architecture uses separate static entry pages for Home, About Us, Documentation, Research & Process, Contact & Feedback, Unified, Heat, Air, Soil, and Water. A shared workspace shell and shared JavaScript model preserve one scientific implementation across every workspace URL, while lightweight informational pages keep public navigation clear. New sessions open at the full United States extent, while saved workspaces are restored only by explicit user action.
+The 3.1.3 public architecture uses separate static entry pages for Home, About Us, Documentation, Research & Process, Contact & Feedback, Unified, Heat, Air, Soil, and Water. A shared workspace shell and shared JavaScript model preserve one scientific implementation across every workspace URL, while lightweight informational pages keep public navigation clear. New sessions open at the full United States extent, while saved workspaces are restored only by explicit user action.
 
 
-## v3.1.2 information architecture
+## v3.1.3 information architecture
 
 The public site now separates About Us, Documentation, Research & Process, and Contact & Feedback into permanent pages. Research includes a manuscript and conference-status placeholder for the forthcoming LUMOS paper.

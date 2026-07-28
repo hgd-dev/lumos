@@ -2170,7 +2170,7 @@ test("multi-page Unified interface exposes commissioning and full-map controls",
 
 test("cross-domain consistency audit passes and exports reproducible tidy rows", () => {
   const releaseMetadata = {
-    version: "3.1.2",
+    version: "3.1.3",
     status: "stable-public-v3",
     supportedDomains: ["heat", "air", "soil", "water"],
     supportedWorkspaces: [
@@ -2354,7 +2354,7 @@ test("v3 release metadata is internally consistent", async () => {
   const release = JSON.parse(await readFile(new URL("../release.json", import.meta.url), "utf8"));
   const manifest = JSON.parse(await readFile(new URL("../manifest.webmanifest", import.meta.url), "utf8"));
   assert.equal(APP_NAME, "LUMOS");
-  assert.equal(APP_VERSION, "3.1.2");
+  assert.equal(APP_VERSION, "3.1.3");
   assert.equal(RELEASE_CHANNEL, "stable-public");
   assert.equal(packageJson.version, APP_VERSION);
   assert.equal(packageJson.scripts.verify, "node scripts/run-verification.mjs");
@@ -2397,7 +2397,7 @@ test("v3 release metadata is internally consistent", async () => {
 test("v3 service worker preserves the complete same-origin application shell", async () => {
   const { readFile } = await import("node:fs/promises");
   const worker = await readFile(new URL("../service-worker.js", import.meta.url), "utf8");
-  assert.match(worker, /lumos-v3\.1\.2/);
+  assert.match(worker, /lumos-v3\.1\.3/);
   assert.match(worker, /\.\/index\.html/);
   assert.match(worker, /\.\/about\.html/);
   assert.match(worker, /\.\/documentation\.html/);
@@ -2460,7 +2460,7 @@ test("public Home and permanent documentation page keep release metadata out of 
   assert.equal(DEFAULT_DOCUMENTATION_PAGE, "quickstart");
   assert.equal(DOCUMENTATION_ORDER.length, 8);
   assert.ok(DOCUMENTATION_ORDER.every((key) => DOCUMENTATION_PAGES[key]?.title && DOCUMENTATION_PAGES[key]?.html));
-  assert.match(DOCUMENTATION_PAGES["release-notes"].html, /3\.1\.2/);
+  assert.match(DOCUMENTATION_PAGES["release-notes"].html, /3\.1\.3/);
   assert.equal(DOCUMENTATION_PAGES.about.title, "About Us");
   assert.match(DOCUMENTATION_PAGES.about.html, /The LUMOS Team/);
   assert.match(html, /id="homePage"/);
@@ -2476,6 +2476,9 @@ test("public Home and permanent documentation page keep release metadata out of 
   assert.match(html, /family=Orbitron/);
   assert.match(html, /family=Tektur/);
   assert.match(html, /class="home-install-mark"[^>]*lumos-mark\.svg/);
+  assert.match(html, /class="home-brand-hero"/);
+  assert.match(html, /class="home-brand-hero-wordmark">LUMOS/);
+  assert.match(html, /class="eyebrow home-system-name">Localized Unified Monitoring Optimization System/);
   assert.match(html, /https:\/\/github\.com\/hgd-dev\/lumos/);
   assert.match(html, /mailto:Lumosystem\.team@gmail\.com/);
   assert.match(html, /instagram\.com\/lumos_optimization/);
