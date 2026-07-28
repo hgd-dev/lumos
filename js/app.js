@@ -155,14 +155,18 @@ import {
   serializeScenario
 } from "./workspace/persistence.js";
 
+const PAGE_DOMAIN = document.body.dataset.lumosDomain && DOMAINS[document.body.dataset.lumosDomain]
+  ? document.body.dataset.lumosDomain
+  : "core";
+
 const state = {
-  domainKey: "core",
+  domainKey: PAGE_DOMAIN,
   seed: 20260721,
   scenario: null,
   result: null,
   activeProfile: "balanced",
   layer: "risk",
-  weights: { ...DOMAINS.core.weights },
+  weights: { ...DOMAINS[PAGE_DOMAIN].weights },
   dataMode: "live",
   heatWorkspace: "national",
   heatScenario: "baseline",
@@ -789,6 +793,10 @@ const elements = {
   overlayOpacity: document.querySelector("#overlayOpacity"),
   colorPalette: document.querySelector("#colorPalette"),
   reducedMotion: document.querySelector("#reducedMotion"),
+  locationPanel: document.querySelector("#locationPanel"),
+  locationPanelDragHandle: document.querySelector("#locationPanelDragHandle"),
+  toggleLocationPanelButton: document.querySelector("#toggleLocationPanelButton"),
+  closeLocationPanelButton: document.querySelector("#closeLocationPanelButton"),
   locationSearchForm: document.querySelector("#locationSearchForm"),
   locationSearchInput: document.querySelector("#locationSearchInput"),
   locationSearchStatus: document.querySelector("#locationSearchStatus"),
@@ -826,6 +834,7 @@ const elements = {
 const map = new LumosMap("map");
 
 const ACCESSIBILITY_STORAGE_KEY = "lumos-accessibility-v1";
+const MAP_SEARCH_STORAGE_KEY = "lumos-map-search-panel-v1";
 const ONBOARDING_STORAGE_KEY = "lumos-onboarding-v2.5";
 const HERO_TYPE_WORDS = Object.freeze([
   "monitoring",
@@ -4883,6 +4892,22 @@ async function loadScenario() {
   stopLiveRefreshTimers();
   renderPaperExperiment();
 
+  if (state.domainKey === "core") {
+    state.scenario = null;
+    state.heatCalibration = null;
+    state.heatExperiment = null;
+    map.setScenario(null, { fit: false });
+    map.showUnitedStates();
+    renderDataProvenance();
+    renderPlanningStage();
+    elements.runStatus.textContent = "Unified planning workspace ready · full United States view";
+    elements.optimizeButton.disabled = false;
+    elements.newScenarioButton.disabled = false;
+    elements.modelExtentButton.disabled = true;
+    hideLoading();
+    return;
+  }
+
   const waitingForNationalFit = state.dataMode === "live" && (
     state.domainKey === "air" || state.domainKey === "soil" || state.domainKey === "water" || (state.domainKey === "heat" && state.heatWorkspace === "national")
   );
@@ -5040,7 +5065,7 @@ function applyDomain(domainKey) {
   elements.standardPortfolioSection.hidden = isUnified;
   elements.standardMetricGrid.hidden = isUnified;
   elements.optimizeButton.textContent = isUnified ? "Allocate budget" : "Generate portfolio";
-  elements.newScenarioButton.hidden = isUnified;
+  elements.newScenarioButton.hidden = false;
   loadScenario();
 }
 
@@ -5955,6 +5980,102 @@ function initializePanelState() {
   }
 }
 
+function mapSearchState() {
+  const panel = elements.locationPanel;
+  return {
+    visible: panel ? !panel.hidden : true,
+    left: panel ? Number.parseFloat(panel.style.left) : 44,
+    top: panel ? Number.parseFloat(panel.style.top) : 14
+  };
+}
+
+function saveMapSearchState() {
+  try { localStorage.setItem(MAP_SEARCH_STORAGE_KEY, JSON.stringify(mapSearchState())); } catch {}
+}
+
+function syncMapSearchButton() {
+  if (!elements.toggleLocationPanelButton || !elements.locationPanel) return;
+  const visible = !elements.locationPanel.hidden;
+  elements.toggleLocationPanelButton.setAttribute("aria-expanded", String(visible));
+  elements.toggleLocationPanelButton.textContent = visible ? "Hide map search" : "Show map search";
+}
+
+function clampMapSearchPanel() {
+  const panel = elements.locationPanel;
+  const mapElement = document.querySelector("#map");
+  if (!panel || !mapElement || panel.hidden) return;
+  const mapRect = mapElement.getBoundingClientRect();
+  const panelRect = panel.getBoundingClientRect();
+  const maxLeft = Math.max(8, mapRect.width - panelRect.width - 8);
+  const maxTop = Math.max(8, mapRect.height - panelRect.height - 8);
+  const left = Math.min(maxLeft, Math.max(8, Number.parseFloat(panel.style.left) || 44));
+  const top = Math.min(maxTop, Math.max(8, Number.parseFloat(panel.style.top) || 14));
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+  panel.style.right = "auto";
+}
+
+function setMapSearchVisible(visible, { save = true } = {}) {
+  if (!elements.locationPanel) return;
+  elements.locationPanel.hidden = !visible;
+  if (visible) window.requestAnimationFrame(clampMapSearchPanel);
+  syncMapSearchButton();
+  if (save) saveMapSearchState();
+}
+
+function initializeMapSearchPanel() {
+  const panel = elements.locationPanel;
+  const handle = elements.locationPanelDragHandle;
+  const mapElement = document.querySelector("#map");
+  if (!panel || !handle || !mapElement) return;
+
+  let saved = { visible: true, left: 44, top: 14 };
+  try {
+    const parsed = JSON.parse(localStorage.getItem(MAP_SEARCH_STORAGE_KEY) || "null");
+    if (parsed && typeof parsed === "object") saved = { ...saved, ...parsed };
+  } catch {}
+  panel.style.left = `${Number.isFinite(Number(saved.left)) ? Number(saved.left) : 44}px`;
+  panel.style.top = `${Number.isFinite(Number(saved.top)) ? Number(saved.top) : 14}px`;
+  setMapSearchVisible(saved.visible !== false, { save: false });
+
+  let drag = null;
+  handle.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0 || event.target.closest("button, input, a")) return;
+    const mapRect = mapElement.getBoundingClientRect();
+    const panelRect = panel.getBoundingClientRect();
+    drag = {
+      pointerId: event.pointerId,
+      offsetX: event.clientX - panelRect.left,
+      offsetY: event.clientY - panelRect.top,
+      mapLeft: mapRect.left,
+      mapTop: mapRect.top
+    };
+    handle.setPointerCapture?.(event.pointerId);
+    panel.classList.add("is-dragging");
+    event.preventDefault();
+  });
+  handle.addEventListener("pointermove", (event) => {
+    if (!drag || event.pointerId !== drag.pointerId) return;
+    const mapRect = mapElement.getBoundingClientRect();
+    const panelRect = panel.getBoundingClientRect();
+    const maxLeft = Math.max(8, mapRect.width - panelRect.width - 8);
+    const maxTop = Math.max(8, mapRect.height - panelRect.height - 8);
+    panel.style.left = `${Math.min(maxLeft, Math.max(8, event.clientX - mapRect.left - drag.offsetX))}px`;
+    panel.style.top = `${Math.min(maxTop, Math.max(8, event.clientY - mapRect.top - drag.offsetY))}px`;
+    panel.style.right = "auto";
+  });
+  const finishDrag = (event) => {
+    if (!drag || event.pointerId !== drag.pointerId) return;
+    drag = null;
+    panel.classList.remove("is-dragging");
+    saveMapSearchState();
+  };
+  handle.addEventListener("pointerup", finishDrag);
+  handle.addEventListener("pointercancel", finishDrag);
+  window.addEventListener("resize", () => window.requestAnimationFrame(clampMapSearchPanel));
+  syncMapSearchButton();
+}
+
 function clearLocationResults() {
   elements.locationSearchResults.hidden = true;
   elements.locationSearchResults.innerHTML = "";
@@ -6300,6 +6421,8 @@ document.querySelectorAll("input[data-map-feature]").forEach((input) => {
   input.addEventListener("change", () => map.setFeatureVisible(input.dataset.mapFeature, input.checked));
 });
 elements.toggleHeader.addEventListener("click", () => setHeaderCollapsed(!document.body.classList.contains("header-collapsed")));
+elements.toggleLocationPanelButton?.addEventListener("click", () => setMapSearchVisible(elements.locationPanel?.hidden === true));
+elements.closeLocationPanelButton?.addEventListener("click", () => setMapSearchVisible(false));
 elements.toggleLeftPanel.addEventListener("click", () => setPanelCollapsed("left", !panelCollapsed("left")));
 elements.toggleRightPanel.addEventListener("click", () => setPanelCollapsed("right", !panelCollapsed("right")));
 elements.focusMapButton.addEventListener("click", toggleMapFocus);
@@ -6597,10 +6720,50 @@ elements.exportExperimentButton.addEventListener("click", () => {
   if (!experiment) return;
   downloadJson(`${experiment.experimentId}.json`, experiment);
 });
-elements.newScenarioButton.addEventListener("click", () => {
-  state.seed += 137;
-  loadScenario();
-});
+function resetWorkspaceDefaults() {
+  state.seed = 20260721;
+  state.dataMode = "live";
+  state.heatWorkspace = "national";
+  state.heatScenario = "baseline";
+  state.airPollutant = "pm2_5";
+  state.soilProperty = "composite";
+  state.soilDepth = "0-15";
+  state.waterIndicator = "temperature";
+  state.waterSystemType = "surface";
+  state.planningStage = "intervention";
+  state.candidateStrategy = "hybrid";
+  state.activeProfile = "balanced";
+  state.selectedLocationLabel = null;
+  state.scenario = null;
+  state.result = null;
+  state.interventionResult = null;
+  state.viewportHeatActive = false;
+  state.viewportHeatScenario = null;
+  state.crossDomainAllocation = null;
+  state.sequentialReallocation = null;
+  state.adaptiveProgramSimulation = null;
+  state.robustPolicyEnsemble = null;
+  state.spatialDeployment = null;
+  state.fieldCampaign = null;
+  state.campaignTracking = null;
+  state.commissioningOperations = null;
+  elements.dataMode.value = state.dataMode;
+  elements.citySelector.value = state.heatWorkspace;
+  elements.heatScenario.value = state.heatScenario;
+  elements.airPollutant.value = state.airPollutant;
+  elements.soilProperty.value = state.soilProperty;
+  elements.soilDepth.value = state.soilDepth;
+  elements.waterIndicator.value = state.waterIndicator;
+  elements.waterSystemType.value = state.waterSystemType;
+  elements.planningStage.value = state.planningStage;
+  elements.candidateStrategy.value = state.candidateStrategy;
+  clearLocationResults();
+  map.setScenario(null, { fit: false });
+  map.showUnitedStates();
+  applyDomain(PAGE_DOMAIN);
+}
+
+elements.newScenarioButton.addEventListener("click", resetWorkspaceDefaults);
 elements.citySelector.addEventListener("change", () => {
   state.heatWorkspace = elements.citySelector.value;
   state.selectedLocationLabel = null;
@@ -6798,23 +6961,26 @@ async function initializeApplication() {
   updateConnectivityStatus();
   void registerApplicationServiceWorker();
   loadAccessibilityPreferences();
-  syncHeroTypewriter();
   initializeHeaderState();
   initializePanelState();
+  initializeMapSearchPanel();
   updateViewportHeatButton();
   renderUnifiedDomainMatrix();
   renderCrossDomainBudgetControls();
   renderSequentialDomainControls();
   renderSequentialEvidence();
   await renderSavedWorkspaces();
-  const restored = await tryRestoreLastWorkspace();
-  if (!restored) showHomePage();
-  if (restored && state.domainKey === "core") {
+  renderDocumentationPage(DEFAULT_DOCUMENTATION_PAGE);
+  applyDomain(PAGE_DOMAIN);
+  map.showUnitedStates();
+  if (PAGE_DOMAIN === "core") {
     void runCrossDomainAudit();
     runCrossDomainBudgetAllocation();
     runSequentialReallocation();
   }
-  renderDocumentationPage(DEFAULT_DOCUMENTATION_PAGE);
+  if (new URLSearchParams(window.location.search).get("tour") === "1") {
+    window.setTimeout(() => openOnboarding(0), 350);
+  }
 }
 
 initializeApplication();

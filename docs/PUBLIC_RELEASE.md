@@ -1,10 +1,10 @@
-# LUMOS 3.0.4 Public Presentation Release
+# LUMOS 3.1.1 Multi-Page Public Release
 
 ## Public presentation and navigation
 
 - Removed release-number branding from the masthead, browser title, footer, installation metadata, and routine status messages.
-- Added a dedicated Home tab with product introduction, scientific positioning, domain entry points, lifecycle overview, guided tour, installation action, and documentation access.
-- Replaced direct Markdown footer links with accessible in-application documentation pages.
+- Added a dedicated Home page with product introduction, scientific positioning, domain entry points, lifecycle overview, guided tour, installation action, and documentation access.
+- Replaced direct Markdown footer links and modal documentation with a permanent About & Methodology page.
 - Expanded the footer and added Hudson Dong and LUMOS team attribution.
 - Added an in-application About Us page, centralized scope guidance in Limitations, and preserved the complete scientific and operational model, reproducibility artifacts, collapsible layout, and map-focus mode.
 
@@ -51,4 +51,4 @@ See `docs/COMMISSIONING_AND_MAINTENANCE.md`, `docs/LIMITATIONS.md`, and `docs/PR
 
 ## Brand and Home refinement
 
-The 3.0.4 public shell uses a clean mark-and-wordmark masthead, an animated “Design environmental …” Home statement, Tektur and Orbitron display typography, a logo-bearing installation card, one-row workspace navigation, direct repository access, and footer social links. The Google-hosted display fonts use swap behavior and local system fallbacks when unavailable or offline.
+The 3.1.1 public architecture uses separate static entry pages for Home, About & Methodology, Unified, Heat, Air, Soil, and Water. A shared workspace shell and shared JavaScript model preserve one scientific implementation across every workspace URL. New sessions open at the full United States extent, while saved workspaces are restored only by explicit user action.

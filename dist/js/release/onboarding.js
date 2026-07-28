@@ -340,7 +340,7 @@ export const UNIFIED_ONBOARDING_STEPS = Object.freeze([
     id: "domains",
     title: "Open a scientific domain",
     body: "Choose Heat, Air, Soil, or Water above. The same map-centered workflow remains available, but each domain loads and validates its own scientific adapter.",
-    target: ".domain-tabs"
+    target: ".workspace-page-header"
   }
 ]);
 

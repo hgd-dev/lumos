@@ -5,13 +5,14 @@ import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const expectedVersion = "3.0.4";
+const expectedVersion = "3.1.1";
 const required = [
-  "index.html", "package.json", "release.json", "manifest.webmanifest", "service-worker.js", "404.html",
+  "index.html", "about.html", "unified.html", "heat.html", "air.html", "soil.html", "water.html", "workspace-shell.html",
+  "package.json", "release.json", "manifest.webmanifest", "service-worker.js", "404.html",
   "README.md", "MODEL_SPECIFICATION.md", "CITATION.cff", "LICENSE", ".nojekyll",
   ".github/workflows/deploy-pages.yml", ".github/workflows/release-quality.yml",
   "docs/PUBLIC_RELEASE.md", "docs/PUBLIC_LAUNCH_READINESS.md", "docs/UNIFIED_ARCHITECTURE.md", "docs/LIVE_CAMPAIGN_TRACKING.md", "docs/COMMISSIONING_AND_MAINTENANCE.md", "docs/CROSS_DOMAIN_BUDGET_ALLOCATION.md", "docs/SEQUENTIAL_REALLOCATION.md", "docs/ADAPTIVE_PROGRAM_SIMULATION.md", "docs/ROBUST_POLICY_SELECTION.md", "docs/SPATIAL_DEPLOYMENT.md", "docs/HOST_INVENTORY_AND_FIELD_REVIEW.md", "docs/FIELD_CAMPAIGN_OPERATIONS.md", "docs/AIR_PUBLIC_RELEASE.md", "docs/SOIL_PREVIEW.md", "docs/SOIL_INFERENCE.md", "docs/SOIL_PUBLIC_RELEASE.md", "docs/WATER_PREVIEW.md", "docs/WATER_INFERENCE.md", "docs/WATER_PUBLIC_RELEASE.md", "docs/RELEASE_CHECKLIST.md", "SECURITY.md",
-  "assets/lumos-192.png", "js/config/domain-registry.js", "js/release/domain-audit.js", "js/model/unified/budget-allocation.js", "js/model/unified/sequential-reallocation.js", "js/model/unified/adaptive-program-simulation.js", "js/model/unified/robust-policy-ensemble.js", "js/model/unified/spatial-deployment.js", "js/model/unified/host-inventory.js", "js/model/unified/field-campaign.js", "js/model/unified/campaign-tracking.js", "js/model/unified/commissioning-operations.js", "js/release/public-readiness.js", "js/release/documentation.js", "scripts/run-tests.mjs", "scripts/run-verification.mjs", "scripts/run-cross-domain-audit.mjs", "scripts/run-cross-domain-budget-allocation.mjs", "scripts/run-sequential-reallocation.mjs", "scripts/run-adaptive-program-simulation.mjs", "scripts/run-robust-policy-ensemble.mjs", "scripts/run-spatial-deployment.mjs", "scripts/run-host-feasibility-review.mjs", "scripts/run-field-campaign-operations.mjs", "scripts/run-live-campaign-tracking.mjs", "scripts/run-commissioning-operations.mjs", "scripts/run-public-launch-readiness.mjs", "data/examples/cross-domain-audit.json", "data/examples/cross-domain-audit.csv", "data/examples/cross-domain-budget-allocation.json", "data/examples/cross-domain-budget-allocation.csv", "data/examples/sequential-evidence-example.json", "data/examples/sequential-reallocation.json", "data/examples/sequential-reallocation.csv", "data/examples/adaptive-program-simulation.json", "data/examples/adaptive-program-simulation.csv", "data/examples/robust-policy-ensemble.json", "data/examples/robust-policy-ensemble.csv", "data/examples/spatial-deployment.json", "data/examples/spatial-deployment.csv", "data/examples/verified-host-inventory.json", "data/examples/verified-host-inventory.csv", "data/examples/field-feasibility-deployment.json", "data/examples/field-feasibility-deployment.csv", "data/examples/field-campaign-operations.json", "data/examples/field-campaign-operations.csv", "data/examples/live-campaign-outcomes.json", "data/examples/live-campaign-tracking.json", "data/examples/live-campaign-tracking.csv", "data/examples/commissioning-events.json", "data/examples/commissioning-operations.json", "data/examples/commissioning-operations.csv", "data/examples/public-release-readiness.json", "data/examples/public-release-readiness.csv", "assets/lumos-512.png", "data/examples/soil-public-cases.json", "data/examples/water-public-cases.json", "js/model/soil/evidence-runner.js", "scripts/run-national-soil-evidence-suite.mjs", "js/data/water/national.js", "js/model/water/intervention.js", "js/model/water/inference.js", "js/model/water/sensitivity.js", "js/model/water/paper-runner.js", "js/model/water/evidence-runner.js", "scripts/run-national-water-evidence-suite.mjs"
+  "assets/lumos-192.png", "js/site.js", "js/info-page.js", "js/workspace-bootstrap.js", "js/config/domain-registry.js", "js/release/domain-audit.js", "js/model/unified/budget-allocation.js", "js/model/unified/sequential-reallocation.js", "js/model/unified/adaptive-program-simulation.js", "js/model/unified/robust-policy-ensemble.js", "js/model/unified/spatial-deployment.js", "js/model/unified/host-inventory.js", "js/model/unified/field-campaign.js", "js/model/unified/campaign-tracking.js", "js/model/unified/commissioning-operations.js", "js/release/public-readiness.js", "js/release/documentation.js", "scripts/run-tests.mjs", "scripts/run-verification.mjs", "scripts/run-cross-domain-audit.mjs", "scripts/run-cross-domain-budget-allocation.mjs", "scripts/run-sequential-reallocation.mjs", "scripts/run-adaptive-program-simulation.mjs", "scripts/run-robust-policy-ensemble.mjs", "scripts/run-spatial-deployment.mjs", "scripts/run-host-feasibility-review.mjs", "scripts/run-field-campaign-operations.mjs", "scripts/run-live-campaign-tracking.mjs", "scripts/run-commissioning-operations.mjs", "scripts/run-public-launch-readiness.mjs", "data/examples/cross-domain-audit.json", "data/examples/cross-domain-audit.csv", "data/examples/cross-domain-budget-allocation.json", "data/examples/cross-domain-budget-allocation.csv", "data/examples/sequential-evidence-example.json", "data/examples/sequential-reallocation.json", "data/examples/sequential-reallocation.csv", "data/examples/adaptive-program-simulation.json", "data/examples/adaptive-program-simulation.csv", "data/examples/robust-policy-ensemble.json", "data/examples/robust-policy-ensemble.csv", "data/examples/spatial-deployment.json", "data/examples/spatial-deployment.csv", "data/examples/verified-host-inventory.json", "data/examples/verified-host-inventory.csv", "data/examples/field-feasibility-deployment.json", "data/examples/field-feasibility-deployment.csv", "data/examples/field-campaign-operations.json", "data/examples/field-campaign-operations.csv", "data/examples/live-campaign-outcomes.json", "data/examples/live-campaign-tracking.json", "data/examples/live-campaign-tracking.csv", "data/examples/commissioning-events.json", "data/examples/commissioning-operations.json", "data/examples/commissioning-operations.csv", "data/examples/public-release-readiness.json", "data/examples/public-release-readiness.csv", "assets/lumos-512.png", "data/examples/soil-public-cases.json", "data/examples/water-public-cases.json", "js/model/soil/evidence-runner.js", "scripts/run-national-soil-evidence-suite.mjs", "js/data/water/national.js", "js/model/water/intervention.js", "js/model/water/inference.js", "js/model/water/sensitivity.js", "js/model/water/paper-runner.js", "js/model/water/evidence-runner.js", "scripts/run-national-water-evidence-suite.mjs"
 ];
 const failures = [];
 for (const file of required) if (!existsSync(path.join(root, file))) failures.push(`Missing required release file: ${file}`);
@@ -30,23 +31,41 @@ for (const file of versionedReleaseFiles) {
   if (!text.includes(expectedVersion)) failures.push(`${file} does not identify release ${expectedVersion}`);
 }
 const publicShell = await readFile(path.join(root, "index.html"), "utf8");
-if (publicShell.includes(expectedVersion)) failures.push("index.html exposes the release number in the public product interface");
-if (!publicShell.includes('data-domain="home"')) failures.push("index.html is missing the dedicated Home navigation tab");
-if (!publicShell.includes('id="documentationDialog"')) failures.push("index.html is missing the in-application documentation center");
+const aboutPage = await readFile(path.join(root, "about.html"), "utf8");
+const workspaceShell = await readFile(path.join(root, "workspace-shell.html"), "utf8");
+const entryPages = Object.fromEntries(await Promise.all(["unified", "heat", "air", "soil", "water"].map(async (key) => [key, await readFile(path.join(root, `${key}.html`), "utf8")])));
+for (const [label, html] of [["index.html", publicShell], ["about.html", aboutPage], ...Object.entries(entryPages)]) {
+  if (html.includes(expectedVersion)) failures.push(`${label} exposes the release number in routine public chrome`);
+}
+if (!publicShell.includes('href="unified.html"')) failures.push("index.html is missing the Unified page link");
+for (const domain of ["heat", "air", "soil", "water"]) {
+  if (!publicShell.includes(`href="${domain}.html"`)) failures.push(`index.html is missing the ${domain} workspace link`);
+  if (!entryPages[domain].includes(`data-lumos-domain="${domain}"`)) failures.push(`${domain}.html is missing its fixed domain entry contract`);
+}
+if (!entryPages.unified.includes('data-lumos-domain="core"')) failures.push("unified.html is missing its fixed Unified entry contract");
+if (!workspaceShell.includes('id="workspace"')) failures.push("workspace-shell.html is missing the shared workspace interface");
+if (!workspaceShell.includes('id="newScenarioButton"') || !workspaceShell.includes('id="optimizeButton"')) failures.push("workspace-shell.html is missing page-local reset or generation controls");
+if (!aboutPage.includes('id="infoNavigation"') || !aboutPage.includes('id="infoContent"')) failures.push("about.html is missing the permanent documentation layout");
 if (!publicShell.includes("Full creation including ideation, website, code, and interface by Hudson Dong")) failures.push("index.html is missing the required creator attribution");
 if (!publicShell.includes("The LUMOS Team")) failures.push("index.html is missing the LUMOS team attribution");
 if (publicShell.includes("and the LUMOS team")) failures.push("index.html incorrectly joins creator and team attribution");
-if (!publicShell.includes('data-documentation-page="about"')) failures.push("index.html is missing the in-application About Us page");
 if (publicShell.includes("Scientific monitoring design and operations · not regulatory or emergency guidance")) failures.push("index.html still exposes the removed disclaimer tagline");
 if (publicShell.includes("Scientific position")) failures.push("index.html still uses the retired Scientific position heading");
-if (publicShell.includes('id="publicReadinessSection"') || publicShell.includes('id="publicReadinessResultSection"')) failures.push("index.html still exposes the internal public-readiness audit");
-if (/Claim boundaries|claim boundaries/.test(publicShell)) failures.push("index.html still exposes dedicated claim-boundary copy instead of centralized limitations");
+if (workspaceShell.includes('id="publicReadinessSection"') || workspaceShell.includes('id="publicReadinessResultSection"')) failures.push("workspace-shell.html exposes the internal public-readiness audit");
+if (/Claim boundaries|claim boundaries/.test(workspaceShell)) failures.push("workspace-shell.html exposes dedicated claim-boundary copy instead of centralized limitations");
 if (!publicShell.includes("https://github.com/hgd-dev/lumos")) failures.push("index.html is missing the public GitHub repository link");
 if (!publicShell.includes('id="heroTypeText"')) failures.push("index.html is missing the animated environmental-design phrase");
 if (!publicShell.includes('class="home-install-mark"')) failures.push("index.html is missing the install-card LUMOS mark");
 if (publicShell.includes("From uncertainty to action")) failures.push("index.html still exposes the removed masthead slogan");
 if (!publicShell.includes("fonts.googleapis.com/css2?family=Inter")) failures.push("index.html is missing the technical public font stylesheet");
 if (!publicShell.includes("replace-with-your-email@example.com") || !publicShell.includes("replace-with-your-handle") || !publicShell.includes("replace-with-your-profile")) failures.push("index.html is missing one or more declared placeholder social destinations");
+if (!entryPages.unified.includes('href="about.html#about"') || !entryPages.heat.includes('href="unified.html"')) failures.push("workspace top navigation is incomplete");
+if (!entryPages.unified.includes('js/workspace-bootstrap.js')) failures.push("workspace pages are not loading the shared workspace bootstrap");
+if (!publicShell.includes('<summary>Information</summary>')) failures.push("global header is missing the Information menu");
+if (publicShell.includes('class="footer-documentation"')) failures.push("footer still duplicates documentation navigation");
+if (!workspaceShell.includes('id="toggleLocationPanelButton"') || !workspaceShell.includes('id="locationPanelDragHandle"')) failures.push("workspace shell is missing toggleable draggable map search controls");
+if (!workspaceShell.includes('<option value="positron" selected>Positron</option>')) failures.push("workspace shell does not default to the Positron basemap");
+
 
 async function walk(dir) {
   const out = [];
@@ -70,7 +89,7 @@ for (const file of files.filter((file) => /\.(?:js|mjs|json|html|md|yml|yaml)$/.
   if (secretPatterns.some((pattern) => pattern.test(text))) failures.push(`Potential embedded credential in ${path.relative(root, file)}`);
 }
 let publicBytes = 0;
-for (const entry of ["index.html", "404.html", "manifest.webmanifest", "service-worker.js", "release.json", "assets", "css", "js", "docs", "data"]) {
+for (const entry of ["index.html", "about.html", "unified.html", "heat.html", "air.html", "soil.html", "water.html", "workspace-shell.html", "404.html", "manifest.webmanifest", "service-worker.js", "release.json", "assets", "css", "js", "docs", "data"]) {
   const full = path.join(root, entry);
   if (!existsSync(full)) continue;
   const info = await stat(full);

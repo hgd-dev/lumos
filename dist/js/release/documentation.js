@@ -114,12 +114,18 @@ export const DOCUMENTATION_PAGES = Object.freeze({
   }),
   "release-notes": Object.freeze({
     title: "Release notes",
-    kicker: "Current public release: 3.0.4",
-    summary: "Animated Home messaging, technical typography, repository access, and social-link polish.",
+    kicker: "Current public release: 3.1.1",
+    summary: "Navigation, dropdown, map-control, basemap, and footer refinements for the multi-page public site.",
     html: `
-      <p><strong>LUMOS 3.0.4</strong> refines the public brand and Home experience while preserving the full 3.0 scientific and operational architecture.</p>
+      <p><strong>LUMOS 3.1.1</strong> refines the public brand and Home experience while preserving the full 3.0 scientific and operational architecture.</p>
       <h3>Public interface changes</h3>
       <ul>
+        <li>Reorganized LUMOS as a multi-page public site with dedicated Home, documentation, Unified, Heat, Air, Soil, and Water URLs.</li>
+        <li>Added a persistent top navigation bar and a four-workspace dropdown while keeping the scientific engine shared.</li>
+        <li>Corrected dropdown stacking and chevron alignment across the multi-page header.</li>
+        <li>Added a toggleable, draggable map-search panel and changed the default basemap to Positron.</li>
+        <li>Separated the environmental legend from the map distance scale and simplified the footer by moving information links into the header.</li>
+        <li>Moved reset and generation controls into each workspace page and reset new sessions to the full United States view.</li>
         <li>Removed release-number branding from the masthead, browser title, footer, installation metadata, and routine status messages.</li>
         <li>Added a dedicated Home tab with a professional introduction, domain entry points, lifecycle overview, guided-tour action, installation action, and documentation access.</li>
         <li>Moved the guided tour and install controls out of the operational header.</li>

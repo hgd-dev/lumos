@@ -1,5 +1,28 @@
 # Changelog
 
+## 3.1.1 — Navigation and map-control refinement
+
+- Corrected top-menu chevron alignment and raised dropdown stacking so menus remain visible above workspace content.
+- Consolidated documentation links into an Information menu in the global header and simplified the footer to creator/team attribution plus social links.
+- Redesigned the header-collapse handle as a more visible edge control.
+- Added a toolbar control for showing or hiding the map-search panel.
+- Made the map-search panel draggable within the map and preserved its visibility and position locally.
+- Changed the default basemap from Dark to Positron.
+- Separated the environmental-field legend from the MapLibre distance scale.
+
+## v3.1.1 — Multi-page public architecture and dedicated workspaces
+
+- Reorganized the public site into dedicated Home, About & Methodology, Unified, Heat, Air, Soil, and Water HTML entry pages.
+- Added a persistent top navigation bar with direct Home and Unified links plus a dropdown for the four environmental workspaces.
+- Kept one shared scientific application shell and one shared model engine so workspace pages do not duplicate or diverge in scientific behavior.
+- Added page-specific product identities: LUMOS—Unified, LUMOS—Heat, LUMOS—Air, LUMOS—Soil, and LUMOS—Water.
+- Moved Reset workspace and Generate/Allocate controls into each workspace page while retaining GitHub and System check in the global header.
+- Replaced in-dialog documentation navigation with a permanent About & Methodology page containing Quickstart, Methodology, Data Sources, Limitations, Privacy, Release Notes, About Us, and Citation sections.
+- Reset new workspace sessions to a clean full-United-States map rather than automatically reopening a previous or Colorado-centered validation session.
+- Preserved manual saved-workspace loading while removing automatic last-workspace restoration across page entry points.
+- Simplified visible mode labels by removing public-release and validation-status phrases from the workspace identity.
+- Updated offline caching, static build packaging, release checks, onboarding targets, documentation, and regression tests for the multi-page architecture.
+
 ## v3.0.4 — Animated environmental design identity and social access
 
 - Added a reduced-motion-aware typing and deleting loop after “Design environmental” across monitoring, intervention, planning, optimization, deployment, and evaluation.

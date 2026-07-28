@@ -1,21 +1,21 @@
 version,checksum,category,check_id,label,status,detail
-3.0.4,eb216b23,release,release-version,Release metadata identity,pass,"Release metadata, citation, and packaged assets identify one consistent release."
-3.0.4,eb216b23,release,release-status,Stable public release channel,pass,Release status: stable-public-v3.
-3.0.4,eb216b23,architecture,domain-coverage,Four public scientific adapters,pass,"Declared domains: heat, air, soil, water."
-3.0.4,eb216b23,architecture,workspace-coverage,Complete unified decision lifecycle,pass,10/10 required unified workspaces declared.
-3.0.4,eb216b23,science,domain-audit,Cross-domain scientific audit,pass,"86 passes, 0 warnings, 0 failures; checksum 6be571eb."
-3.0.4,eb216b23,operations,commissioning-example,Commissioning and maintenance evidence,pass,35/42 commissioned; 3 protected failures; 0 unresolved; checksum 6318a385.
-3.0.4,eb216b23,science,capability-contract,Required public capabilities,pass,11 mandatory public-adapter capabilities are registered.
-3.0.4,eb216b23,reproducibility,evidence-manifest,Frozen evidence artifact manifest,pass,11/11 required evidence artifacts declared.
-3.0.4,eb216b23,governance,governance-docs,"Limitations, privacy, security, citation, and license",pass,5/5 governance documents declared.
-3.0.4,eb216b23,governance,limitations-scope,Limitations and intended-use guidance,pass,Release metadata requires a centralized limitations and intended-use record.
-3.0.4,eb216b23,accessibility,accessibility-contract,Public accessibility contract,pass,10/10 required accessibility features declared.
-3.0.4,eb216b23,accessibility,runtime-layout,Runtime map-expansion controls,pass,Header collapse available; panel collapse available; map focus available.
-3.0.4,eb216b23,accessibility,runtime-a11y,Runtime keyboard and motion controls,pass,"Skip navigation, visible focus, reduced-motion, and color-vision-safe controls are required in the application shell."
-3.0.4,eb216b23,accessibility,runtime-home,Dedicated public Home navigation,pass,A dedicated Home entry point introduces the system and routes users into each scientific workspace.
-3.0.4,eb216b23,governance,runtime-documentation,In-application documentation center,pass,Core public documentation is available inside an accessible application dialog.
-3.0.4,eb216b23,governance,runtime-about,About Us and team attribution,pass,The in-application About Us page and team attribution are declared.
-3.0.4,eb216b23,deployment,static-hosting,Static public deployment,pass,Hosting contract: static-github-pages.
-3.0.4,eb216b23,deployment,offline-shell,Offline application shell,pass,Versioned service-worker application shell declared.
-3.0.4,eb216b23,security,credential-boundary,Frontend credential boundary,pass,No permanent API credentials are permitted in the public application bundle.
-3.0.4,eb216b23,governance,license,Open-source license,pass,Declared license: MIT.
+3.1.1,1d07de03,release,release-version,Release metadata identity,pass,"Release metadata, citation, and packaged assets identify one consistent release."
+3.1.1,1d07de03,release,release-status,Stable public release channel,pass,Release status: stable-public-v3.
+3.1.1,1d07de03,architecture,domain-coverage,Four public scientific adapters,pass,"Declared domains: heat, air, soil, water."
+3.1.1,1d07de03,architecture,workspace-coverage,Complete unified decision lifecycle,pass,10/10 required unified workspaces declared.
+3.1.1,1d07de03,science,domain-audit,Cross-domain scientific audit,pass,"86 passes, 0 warnings, 0 failures; checksum 6be571eb."
+3.1.1,1d07de03,operations,commissioning-example,Commissioning and maintenance evidence,pass,35/42 commissioned; 3 protected failures; 0 unresolved; checksum 6318a385.
+3.1.1,1d07de03,science,capability-contract,Required public capabilities,pass,11 mandatory public-adapter capabilities are registered.
+3.1.1,1d07de03,reproducibility,evidence-manifest,Frozen evidence artifact manifest,pass,11/11 required evidence artifacts declared.
+3.1.1,1d07de03,governance,governance-docs,"Limitations, privacy, security, citation, and license",pass,5/5 governance documents declared.
+3.1.1,1d07de03,governance,limitations-scope,Limitations and intended-use guidance,pass,Release metadata requires a centralized limitations and intended-use record.
+3.1.1,1d07de03,accessibility,accessibility-contract,Public accessibility contract,pass,10/10 required accessibility features declared.
+3.1.1,1d07de03,accessibility,runtime-layout,Runtime map-expansion controls,pass,Header collapse available; panel collapse available; map focus available.
+3.1.1,1d07de03,accessibility,runtime-a11y,Runtime keyboard and motion controls,pass,"Skip navigation, visible focus, reduced-motion, and color-vision-safe controls are required in the application shell."
+3.1.1,1d07de03,accessibility,runtime-home,Dedicated public Home navigation,pass,A dedicated Home entry point introduces the system and routes users into each scientific workspace.
+3.1.1,1d07de03,governance,runtime-documentation,In-application documentation center,pass,Core public documentation is available inside an accessible application dialog.
+3.1.1,1d07de03,governance,runtime-about,About Us and team attribution,pass,The in-application About Us page and team attribution are declared.
+3.1.1,1d07de03,deployment,static-hosting,Static public deployment,pass,Hosting contract: static-github-pages.
+3.1.1,1d07de03,deployment,offline-shell,Offline application shell,pass,Versioned service-worker application shell declared.
+3.1.1,1d07de03,security,credential-boundary,Frontend credential boundary,pass,No permanent API credentials are permitted in the public application bundle.
+3.1.1,1d07de03,governance,license,Open-source license,pass,Declared license: MIT.

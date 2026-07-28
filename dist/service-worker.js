@@ -1,4 +1,4 @@
-const CACHE_NAME = "lumos-v3.0.4";
+const CACHE_NAME = "lumos-v3.1.1";
 const LIBRARY_ASSETS = [
   "https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css",
   "https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"
@@ -6,10 +6,20 @@ const LIBRARY_ASSETS = [
 const APP_SHELL = [
   "./",
   "./index.html",
+  "./about.html",
+  "./unified.html",
+  "./heat.html",
+  "./air.html",
+  "./soil.html",
+  "./water.html",
+  "./workspace-shell.html",
   "./css/styles.css",
   "./manifest.webmanifest",
   "./assets/lumos-mark.svg",
   "./js/app.js",
+  "./js/site.js",
+  "./js/info-page.js",
+  "./js/workspace-bootstrap.js",
   "./js/config/domains.js",
   "./js/config/domain-registry.js",
   "./js/data/heat/live.js",
@@ -111,11 +121,13 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
       fetch(request)
         .then((response) => {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put("./index.html", copy));
+          if (response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+          }
           return response;
         })
-        .catch(() => caches.match("./index.html"))
+        .catch(async () => (await caches.match(request)) || caches.match("./index.html"))
     );
     return;
   }

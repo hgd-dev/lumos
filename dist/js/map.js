@@ -212,7 +212,7 @@ export class LumosMap {
     try {
       this.baseMap = new window.maplibregl.Map({
         container: "baseMap",
-        style: BASEMAP_STYLES.dark,
+        style: BASEMAP_STYLES.positron,
         center: [-98.6, 39.5],
         zoom: 3.15,
         minZoom: 1.5,
@@ -397,7 +397,7 @@ export class LumosMap {
 
   setBasemapStyle(styleKey) {
     if (!this.baseMap) return;
-    const style = BASEMAP_STYLES[styleKey] ?? BASEMAP_STYLES.dark;
+    const style = BASEMAP_STYLES[styleKey] ?? BASEMAP_STYLES.positron;
     this.originalLayerVisibility.clear();
     this.baseMap.setStyle(style);
   }

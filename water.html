@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Flow-aware water inference, upstream/downstream network design, intervention evaluation, and operational planning.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="LUMOS—Water · Environmental Monitoring Workspace">
+  <meta property="og:description" content="Flow-aware water inference, upstream/downstream network design, intervention evaluation, and operational planning.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#07100f">
+  <meta name="application-name" content="LUMOS">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>LUMOS—Water · Environmental Monitoring Workspace</title>
+  <link rel="icon" href="assets/lumos-mark.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Orbitron:wght@500;600;700&amp;family=Tektur:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css">
+  <link rel="stylesheet" href="css/styles.css?build=multi-page-2">
+</head>
+<body class="workspace-entry-page" data-lumos-page="workspace" data-lumos-domain="water" data-lumos-label="Water">
+  <a class="skip-link" href="#map">Skip to interactive map</a>
+  <div id="offlineBanner" class="offline-banner" hidden role="status">Offline mode: saved workspaces and the application shell remain available, but live maps and public APIs require a connection.</div>
+  <header id="appHeader" class="app-header site-header">
+    <a class="brand-lockup site-brand" href="index.html" aria-label="LUMOS Home">
+      <img class="brand-mark" src="assets/lumos-mark.svg" alt="" width="48" height="48">
+      <span class="brand-copy"><strong>LUMOS</strong></span>
+    </a>
+    <nav class="site-navigation" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="unified.html">Unified</a>
+      <details class="workspace-menu site-menu active">
+        <summary>Workspaces</summary>
+        <div class="workspace-menu-panel"><a href="heat.html"><span>Heat</span><small>LUMOS—Heat</small></a><a href="air.html"><span>Air</span><small>LUMOS—Air</small></a><a href="soil.html"><span>Soil</span><small>LUMOS—Soil</small></a><a href="water.html" aria-current="page" class="active"><span>Water</span><small>LUMOS—Water</small></a></div>
+      </details>
+      <details class="workspace-menu site-menu information-menu">
+        <summary>Information</summary>
+        <div class="workspace-menu-panel information-menu-panel"><a href="about.html#about"><span>About LUMOS</span><small>Mission, creator, and team</small></a><a href="about.html#quickstart"><span>Quickstart</span><small>From map area to export</small></a><a href="about.html#methodology"><span>Methodology</span><small>Scientific framework and model</small></a><a href="about.html#data-sources"><span>Data sources</span><small>Provenance and fallback behavior</small></a><a href="about.html#limitations"><span>Limitations</span><small>Scope and intended use</small></a><a href="about.html#privacy"><span>Privacy</span><small>Local-first data governance</small></a><a href="about.html#release-notes"><span>Release notes</span><small>Public version history</small></a><a href="about.html#citation"><span>Cite LUMOS</span><small>Recommended attribution</small></a></div>
+      </details>
+    </nav>
+    <div class="header-actions site-header-actions">
+      <a class="icon-link header-icon-link" href="https://github.com/hgd-dev/lumos" target="_blank" rel="noopener noreferrer" aria-label="Open the LUMOS GitHub repository" title="GitHub repository"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .7a11.3 11.3 0 0 0-3.57 22.02c.57.1.78-.25.78-.55v-2.16c-3.18.69-3.85-1.35-3.85-1.35-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.73-1.53-2.54-.29-5.21-1.27-5.21-5.65 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.13 1.17A10.87 10.87 0 0 1 12 6.94c.97 0 1.94.13 2.85.38 2.17-1.48 3.13-1.17 3.13-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.39-2.68 5.35-5.22 5.64.41.36.77 1.06.77 2.14v3.17c0 .3.21.66.79.55A11.3 11.3 0 0 0 12 .7Z"/></svg></a>
+      <button id="systemCheckButton" class="secondary-button" type="button">System check</button>
+    </div>
+  </header>
+  <button id="toggleHeader" class="header-collapse-toggle" type="button" aria-controls="appHeader" aria-expanded="true" title="Collapse site header"><span aria-hidden="true">⌃</span><span class="sr-only">Collapse site header</span></button>
+  <div id="workspaceMount" class="workspace-mount" aria-live="polite"><section class="workspace-loading"><div class="loading-spinner" aria-hidden="true"></div><p>Loading LUMOS—Water…</p></section></div>
+  <footer class="app-footer site-footer">
+    <div class="footer-identity">
+      <p class="footer-credit">
+        <span>Full creation including ideation, website, code, and interface by Hudson Dong, Class of 2027, Stuyvesant High School, New York City.</span>
+        <strong>The LUMOS Team</strong>
+      </p>
+      <nav class="footer-socials" aria-label="LUMOS social links">
+        <a class="icon-link" href="https://github.com/hgd-dev/lumos" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .7a11.3 11.3 0 0 0-3.57 22.02c.57.1.78-.25.78-.55v-2.16c-3.18.69-3.85-1.35-3.85-1.35-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.73-1.53-2.54-.29-5.21-1.27-5.21-5.65 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.13 1.17A10.87 10.87 0 0 1 12 6.94c.97 0 1.94.13 2.85.38 2.17-1.48 3.13-1.17 3.13-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.39-2.68 5.35-5.22 5.64.41.36.77 1.06.77 2.14v3.17c0 .3.21.66.79.55A11.3 11.3 0 0 0 12 .7Z"/></svg></a>
+        <a class="icon-link placeholder-social-link" href="mailto:replace-with-your-email@example.com" aria-label="Gmail placeholder" title="Gmail — replace placeholder address"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3.5 5.25h17A2.5 2.5 0 0 1 23 7.75v8.5a2.5 2.5 0 0 1-2.5 2.5h-17A2.5 2.5 0 0 1 1 16.25v-8.5a2.5 2.5 0 0 1 2.5-2.5Zm0 1.8v.28L12 13.1l8.5-5.77v-.28h-17Zm17 9.9c.39 0 .7-.31.7-.7V9.5l-8.7 5.9a.9.9 0 0 1-1 0L2.8 9.5v6.75c0 .39.31.7.7.7h17Z"/></svg></a>
+        <a class="icon-link placeholder-social-link" href="https://www.instagram.com/replace-with-your-handle/" target="_blank" rel="noopener noreferrer" aria-label="Instagram placeholder" title="Instagram — replace placeholder profile"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.3 2h9.4A5.3 5.3 0 0 1 22 7.3v9.4a5.3 5.3 0 0 1-5.3 5.3H7.3A5.3 5.3 0 0 1 2 16.7V7.3A5.3 5.3 0 0 1 7.3 2Zm0 1.8a3.5 3.5 0 0 0-3.5 3.5v9.4a3.5 3.5 0 0 0 3.5 3.5h9.4a3.5 3.5 0 0 0 3.5-3.5V7.3a3.5 3.5 0 0 0-3.5-3.5H7.3Zm9.9 1.35a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 6.85A5.15 5.15 0 1 1 12 17.15 5.15 5.15 0 0 1 12 6.85Zm0 1.8A3.35 3.35 0 1 0 12 15.35 3.35 3.35 0 0 0 12 8.65Z"/></svg></a>
+        <a class="icon-link placeholder-social-link" href="https://www.linkedin.com/in/replace-with-your-profile/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn placeholder" title="LinkedIn — replace placeholder profile"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5.35 3.5A2.15 2.15 0 1 1 5.35 7.8a2.15 2.15 0 0 1 0-4.3ZM3.5 9.25h3.7V20.5H3.5V9.25Zm5.85 0h3.55v1.54h.05c.49-.94 1.7-1.94 3.5-1.94 3.75 0 4.45 2.47 4.45 5.68v5.97h-3.7v-5.29c0-1.26-.02-2.88-1.75-2.88-1.76 0-2.03 1.37-2.03 2.79v5.38h-3.7V9.25Z"/></svg></a>
+      </nav>
+    </div>
+  </footer>
+  <script src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
+  <script type="module" src="js/workspace-bootstrap.js?build=multi-page-2"></script>
+</body>
+</html>

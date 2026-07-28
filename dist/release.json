@@ -1,7 +1,7 @@
 {
   "name": "LUMOS",
-  "version": "3.0.4",
-  "releaseDate": "2026-07-26",
+  "version": "3.1.1",
+  "releaseDate": "2026-07-28",
   "status": "stable-public-v3",
   "primaryDomain": "multi-domain",
   "supportedWorkspaces": [
@@ -79,7 +79,9 @@
       "map-focus-mode",
       "skip-link",
       "home-navigation",
-      "in-app-documentation"
+      "in-app-documentation",
+      "toggleable-map-search",
+      "draggable-map-search"
     ],
     "governanceDocuments": [
       "docs/LIMITATIONS.md",
@@ -101,8 +103,18 @@
       "live-campaign-tracking",
       "commissioning-operations"
     ],
-    "presentation": "version-neutral-product-interface-with-home-about-and-in-app-documentation",
+    "presentation": "multi-page-site-with-layered-navigation-draggable-map-search-and-compact-footer",
     "limitationsAndScope": true,
     "aboutPage": true
-  }
+  },
+  "publicArchitecture": "multi-page-static-site",
+  "publicEntryPoints": [
+    "index.html",
+    "about.html",
+    "unified.html",
+    "heat.html",
+    "air.html",
+    "soil.html",
+    "water.html"
+  ]
 }
