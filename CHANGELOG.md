@@ -4,7 +4,7 @@
 
 ### Promoted
 
-- Promoted the refined editorial motion experience to the official public `index.html` Home while retaining `home-spiral.html` as a noindex compatibility preview.
+- Promoted the refined editorial motion experience to the sole official public `index.html` Home.
 - Added a brief load-safe black hold, an extruded three-dimensional LUMOS title assembly, chromatic slice passes, and a seamless morph into the first scene.
 - Preserved the six-scene Unified, Heat, Air, Water, and Soil presentation, hover-driven desktop navigation, bounded scroll snapping, and reduced-motion fallback.
 - Reworked the end-of-sequence handoff so the axial triangle and construction lines fade away while the starfield and softened cosmic glow persist behind conventional Home content.

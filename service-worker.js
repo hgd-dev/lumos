@@ -8,7 +8,6 @@ const APP_SHELL = [
   "./",
   "./index.html",
   "./home-3d.html",
-  "./home-spiral.html",
   "./about.html",
   "./documentation.html",
   "./research.html",

@@ -7,7 +7,7 @@ import { spawnSync } from "node:child_process";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const expectedVersion = "3.3.0";
 const required = [
-  "index.html", "home-3d.html", "home-spiral.html", "about.html", "documentation.html", "research.html", "contact.html", "unified.html", "heat.html", "air.html", "soil.html", "water.html", "workspace-shell.html",
+  "index.html", "home-3d.html", "about.html", "documentation.html", "research.html", "contact.html", "unified.html", "heat.html", "air.html", "soil.html", "water.html", "workspace-shell.html",
   "package.json", "release.json", "manifest.webmanifest", "service-worker.js", "404.html",
   "README.md", "MODEL_SPECIFICATION.md", "CITATION.cff", "LICENSE", ".nojekyll",
   ".github/workflows/deploy-pages.yml", ".github/workflows/release-quality.yml",
@@ -32,23 +32,20 @@ for (const file of versionedReleaseFiles) {
 }
 const publicShell = await readFile(path.join(root, "index.html"), "utf8");
 const experimentalHome = await readFile(path.join(root, "home-3d.html"), "utf8");
-const spiralHome = await readFile(path.join(root, "home-spiral.html"), "utf8");
 const aboutPage = await readFile(path.join(root, "about.html"), "utf8");
 const documentationPage = await readFile(path.join(root, "documentation.html"), "utf8");
 const researchPage = await readFile(path.join(root, "research.html"), "utf8");
 const contactPage = await readFile(path.join(root, "contact.html"), "utf8");
 const workspaceShell = await readFile(path.join(root, "workspace-shell.html"), "utf8");
 const entryPages = Object.fromEntries(await Promise.all(["unified", "heat", "air", "soil", "water"].map(async (key) => [key, await readFile(path.join(root, `${key}.html`), "utf8")])));
-for (const [label, html] of [["index.html", publicShell], ["home-3d.html", experimentalHome], ["home-spiral.html", spiralHome], ["about.html", aboutPage], ["documentation.html", documentationPage], ["research.html", researchPage], ["contact.html", contactPage], ...Object.entries(entryPages)]) {
+for (const [label, html] of [["index.html", publicShell], ["home-3d.html", experimentalHome], ["about.html", aboutPage], ["documentation.html", documentationPage], ["research.html", researchPage], ["contact.html", contactPage], ...Object.entries(entryPages)]) {
   if (html.includes(expectedVersion)) failures.push(`${label} exposes the release number in routine public chrome`);
 }
 if (publicShell.includes('href="home-3d.html"') || publicShell.includes('href="home-spiral.html"')) failures.push("index.html must not link experimental Home routes");
-if (experimentalHome.includes('href="home-spiral.html"')) failures.push("home-3d.html must not link the spiral experiment");
+if (existsSync(path.join(root, "home-spiral.html"))) failures.push("retired home-spiral.html compatibility route must not be packaged");
+if (experimentalHome.includes('href="home-spiral.html"')) failures.push("home-3d.html must not link the retired spiral route");
 if (!experimentalHome.includes('name="robots" content="noindex,nofollow,noarchive"') || !experimentalHome.includes('id="lumos3dCanvas"') || !experimentalHome.includes('js/home-3d.js') || !experimentalHome.includes('href="index.html"')) failures.push("home-3d.html is missing the unlinked experimental-page contract");
 if (!experimentalHome.includes("Choose the decision scale that matches your work") || !experimentalHome.includes("Move from uncertainty to a maintained operational network") || !experimentalHome.includes("Every recommendation carries its evidence and its limits")) failures.push("home-3d.html does not preserve the current Home content");
-if (!spiralHome.includes('name="robots" content="noindex,nofollow,noarchive"') || !spiralHome.includes('id="spiralSequence"') || !spiralHome.includes('id="spiralOrbit"') || !spiralHome.includes('js/home-spiral.js') || !spiralHome.includes('href="index.html"')) failures.push("home-spiral.html is missing the unlinked spiral-scroll experimental-page contract");
-if (!spiralHome.includes("Choose the decision scale that matches your work") || !spiralHome.includes("Move from uncertainty to a maintained operational network") || !spiralHome.includes("Every recommendation carries its evidence and its limits")) failures.push("home-spiral.html does not preserve the current Home content");
-if (!spiralHome.includes("sticky-pinned") && !spiralHome.includes("spiral-scroll-track")) failures.push("home-spiral.html is missing its pinned-scroll sequence");
 if (!publicShell.includes('href="unified.html"')) failures.push("index.html is missing the Unified page link");
 for (const domain of ["heat", "air", "soil", "water"]) {
   if (!publicShell.includes(`href="${domain}.html"`)) failures.push(`index.html is missing the ${domain} workspace link`);
@@ -113,7 +110,7 @@ for (const file of files.filter((file) => /\.(?:js|mjs|json|html|md|yml|yaml)$/.
   if (secretPatterns.some((pattern) => pattern.test(text))) failures.push(`Potential embedded credential in ${path.relative(root, file)}`);
 }
 let publicBytes = 0;
-for (const entry of ["index.html", "home-3d.html", "home-spiral.html", "about.html", "documentation.html", "research.html", "contact.html", "unified.html", "heat.html", "air.html", "soil.html", "water.html", "workspace-shell.html", "404.html", "manifest.webmanifest", "service-worker.js", "release.json", "assets", "css", "js", "docs", "data"]) {
+for (const entry of ["index.html", "home-3d.html", "about.html", "documentation.html", "research.html", "contact.html", "unified.html", "heat.html", "air.html", "soil.html", "water.html", "workspace-shell.html", "404.html", "manifest.webmanifest", "service-worker.js", "release.json", "assets", "css", "js", "docs", "data"]) {
   const full = path.join(root, entry);
   if (!existsSync(full)) continue;
   const info = await stat(full);

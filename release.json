@@ -146,32 +146,6 @@
         "desktop-hover-navigation-with-keyboard-and-touch-fallback",
         "reduced-motion-linear-fallback"
       ]
-    },
-    "compatibilityMotionPreview": {
-      "entry": "home-spiral.html",
-      "linkedFromPrimaryNavigation": false,
-      "indexing": "noindex-nofollow",
-      "renderer": "optimized-native-css-editorial-motion-canvas-with-clean-geometric-background-cached-scroll-metrics-and-hover-navigation",
-      "interaction": [
-        "sticky-pinned-continuous-motion-stage",
-        "first-frame-lumos-hero-without-empty-lead-in",
-        "enlarged-two-line-environmental-design-typing-identity",
-        "six-scene-editorial-typography-system-with-separated-unified-overview",
-        "custom-technical-heat-air-water-and-soil-glyphs",
-        "persistent-blueprint-grid-and-wireframe-core",
-        "depth-separated-domain-visual-planes",
-        "steep-diagonal-inertial-scene-transitions",
-        "foreground-free-ambient-gaps-between-scenes",
-        "expanded-near-scene-scroll-release-snap",
-        "full-background-fade-before-standard-content",
-        "pointer-reactive-stage-parallax",
-        "reduced-motion-linear-fallback",
-        "watermark-free-ambient-geometric-background",
-        "cached-scroll-metrics-and-visible-scene-only-rendering",
-        "tighter-six-scene-scroll-sequence",
-        "desktop-hover-navigation-with-keyboard-and-touch-fallback"
-      ],
-      "role": "noindex-compatibility-preview-of-the-official-motion-home"
     }
   },
   "publicArchitecture": "multi-page-static-site",
@@ -185,7 +159,6 @@
     "water.html"
   ],
   "experimentalEntryPoints": [
-    "home-3d.html",
-    "home-spiral.html"
+    "home-3d.html"
   ]
 }

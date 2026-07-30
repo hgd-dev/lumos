@@ -126,7 +126,7 @@ export const DOCUMENTATION_PAGES = Object.freeze({
         <li>Morphs directly into the first editorial scene rather than cutting between independent overlays.</li>
         <li>Preserves the six-scene Unified, Heat, Air, Water, and Soil sequence with faster motion, wider snap behavior, and hover-driven desktop navigation.</li>
         <li>Fades the axial geometry after the scene sequence while retaining the starfield and softened cosmic glow behind conventional Home content.</li>
-        <li>Keeps <code>home-spiral.html</code> as a noindex compatibility preview and retains <code>home-3d.html</code> as the separate unlinked Three.js experiment.</li>
+        <li>Removes the retired <code>home-spiral.html</code> compatibility route now that the cinematic experience is the official Home, while retaining <code>home-3d.html</code> as the separate unlinked Three.js experiment.</li>
       </ul>
       <h3>Scientific scope</h3>
       <p>No model, objective, constraint, adapter, evidence generator, validation protocol, or public claim boundary changed.</p>

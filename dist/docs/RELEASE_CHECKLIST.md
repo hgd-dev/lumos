@@ -4,7 +4,7 @@
 
 - [ ] `package.json`, `release.json`, `js/release/version.js`, service worker, citation metadata, release notes, and changelog identify `3.3.0`. The public masthead, browser title, footer, manifest name, README title, and model-specification title remain version-neutral.
 - [ ] Release status is `stable-public-v3`.
-- [ ] Service-worker cache is `lumos-v3.3.0` and contains every standard public entry page, the official cinematic Home assets, the unlinked `home-3d.html` experiment, the noindex `home-spiral.html` compatibility preview, the shared workspace shell, all public domain modules, unified operations, and documentation scripts.
+- [ ] Service-worker cache is `lumos-v3.3.0` and contains every standard public entry page, the official cinematic Home assets, the unlinked `home-3d.html` experiment, the shared workspace shell, all public domain modules, unified operations, and documentation scripts.
 - [ ] No permanent credential is embedded in public assets.
 
 ## Automated verification
@@ -31,7 +31,7 @@
 - [ ] Saved workspace persistence and import/export remain functional.
 - [ ] Offline application shell loads after one successful online visit.
 - [ ] `home-3d.html` remains absent from standard Home navigation, declares `noindex,nofollow`, preserves every Home content section, and falls back cleanly when WebGL or the pinned Three.js module is unavailable.
-- [ ] `index.html` is the indexable cinematic motion Home; `home-spiral.html` remains a noindex compatibility preview; both preserve the sticky native-scroll sequence, persistent cosmic content background, and reduced-motion linear fallback.
+- [ ] `index.html` is the sole cinematic motion Home and preserves the sticky native-scroll sequence, persistent cosmic content background, and reduced-motion linear fallback; the retired `home-spiral.html` route is absent from source and build output.
 
 ## Scientific and operational review
 

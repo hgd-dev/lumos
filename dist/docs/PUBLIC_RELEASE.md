@@ -6,7 +6,7 @@ The refined native-CSS editorial motion experience is now the official public `i
 
 The public Home preserves the six-scene Unified, Heat, Air, Water, and Soil narrative; cached scroll geometry; visible-scene-only rendering; hover-driven desktop menus; keyboard and touch fallbacks; bounded near-scene snapping; and reduced-motion linear flow. After the final scene, the axial triangle and foreground construction system fade away while the deterministic starfield, blueprint atmosphere, and softened LUMOS glow continue behind the conventional Home sections.
 
-`home-spiral.html` remains available as a noindex compatibility preview, while `home-3d.html` remains the separate unlinked Three.js experiment. No scientific model, objective, constraint, adapter, evidence generator, validation protocol, workspace, or public claim boundary changed.
+The retired `home-spiral.html` compatibility route has been removed now that the cinematic experience is the sole official Home. `home-3d.html` remains the separate unlinked Three.js experiment. No scientific model, objective, constraint, adapter, evidence generator, validation protocol, workspace, or public claim boundary changed.
 
 
 ## v3.2.7 watermark-free stage, faster pacing, and hover navigation
