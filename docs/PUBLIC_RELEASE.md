@@ -1,4 +1,38 @@
-# LUMOS 3.1.3 Multi-Page Public Release
+# LUMOS 3.2.6 Multi-Page Public Release
+
+## v3.2.6 simplified cosmic stage and tighter editorial motion
+
+The unlinked `home-spiral.html` route no longer includes the three-dimensional film-strip history. Removing that background system simplifies the composition and eliminates its per-frame transform, opacity, filter, and depth calculations.
+
+The persistent environment is stronger instead: brighter construction axes, a more visible triangular core, clearer guide and signal lines, stronger node glow, a brighter blueprint grid, and larger scene-reactive chromatic fields. Particle count is reduced while the static nebula treatment is stronger, producing a fuller space-and-technology atmosphere at lower runtime cost.
+
+Scene centers and the total pinned scroll distance are slightly closer together, so transitions feel more connected while retaining a foreground-free ambient gap.
+
+No scientific model, objective, constraint, evidence generator, stable public page, or workspace behavior changed.
+
+## v3.2.1 immediate identity, domain glyphs, and orbital scene history
+
+The unlinked `home-spiral.html` route now opens directly on the complete LUMOS scene rather than using an empty lead-in. Its two-line “Design environmental …” identity has been restored with a reserved second line so the typing loop does not reflow the layout. Heat, Air, Water, and Soil use custom inline technical glyphs in the unified network and experiment-specific workspace selector.
+
+Completed scenes now remain visible as compact, low-opacity film frames orbiting the central triangular geometry. The treatment preserves visual continuity after a foreground scene exits while keeping the detailed foreground DOM inactive. Visible restart and skip controls were removed; keyboard-accessible document navigation and reduced-motion behavior remain available. The former SCSEMD acronym was replaced with readable social-Bayesian and local-first microcopy.
+
+No scientific model, objective, constraint, evidence generator, stable public page, or workspace behavior changed.
+
+## v3.2.0 editorial motion-canvas experiment
+
+The unlinked `home-spiral.html` route has been rebuilt as one continuous editorial motion environment rather than a sequence of visible cards. Five large-format scenes—LUMOS, Heat, Air, Water, and Soil—share a persistent blueprint grid, geometric construction axes, rotating wireframe system core, faint outlined background language, compact technical micro-interface details, and domain-specific depth planes.
+
+Scroll moves each scene through a steep diagonal depth path. Complete foregrounds fade away before the next scene enters, leaving the persistent geometric environment active between chapters. A narrow debounced snap activates only when scrolling stops very close to a scene center. After Soil clears, the stage reaches a pure-background interval before conventional Home content appears. Pointer parallax is restrained, particle rendering is rasterized only on load and resize, and reduced-motion preferences receive a linear document flow.
+
+The stable `index.html` and the existing full-viewport `home-3d.html` tunnel experiment remain unchanged and unlinked from one another. No scientific model, objective, constraint, evidence generator, or workspace behavior changed.
+
+## v3.1.5 unlinked full-page 3D Home experiment
+
+An experimental route at `home-3d.html` reinterprets the complete current Home experience as a full-viewport, scroll-reactive three-dimensional environmental field. The standard `index.html` page remains unchanged and does not link to the experiment. The experimental page declares `noindex,nofollow,noarchive`, preserves the real navigation and every current Home content section, and includes motion, quality, mobile, reduced-motion, offline, and renderer-failure fallbacks. The scientific model and all workspace behavior are unchanged.
+
+## v3.1.4 stable Home animation and illuminated introduction
+
+The Home hero now reserves a permanent second row for its animated environmental-design term, so deleting a word no longer collapses or reflows the heading. The complete brand introduction—from the LUMOS mark and wordmark through the project summary—now sits within a restrained translucent panel with green and blue ambient glow. The future three-dimensional spiral concept is not part of this release.
 
 ## v3.1.3 homepage branding
 
@@ -55,9 +89,9 @@ See `docs/COMMISSIONING_AND_MAINTENANCE.md`, `docs/LIMITATIONS.md`, and `docs/PR
 
 ## Brand and Home refinement
 
-The 3.1.3 public architecture uses separate static entry pages for Home, About Us, Documentation, Research & Process, Contact & Feedback, Unified, Heat, Air, Soil, and Water. A shared workspace shell and shared JavaScript model preserve one scientific implementation across every workspace URL, while lightweight informational pages keep public navigation clear. New sessions open at the full United States extent, while saved workspaces are restored only by explicit user action.
+The 3.2.6 public architecture uses separate static entry pages for Home, About Us, Documentation, Research & Process, Contact & Feedback, Unified, Heat, Air, Soil, and Water. A shared workspace shell and shared JavaScript model preserve one scientific implementation across every workspace URL, while lightweight informational pages keep public navigation clear. New sessions open at the full United States extent, while saved workspaces are restored only by explicit user action.
 
 
-## v3.1.3 information architecture
+## v3.1.4 information architecture
 
 The public site now separates About Us, Documentation, Research & Process, and Contact & Feedback into permanent pages. Research includes a manuscript and conference-status placeholder for the forthcoming LUMOS paper.

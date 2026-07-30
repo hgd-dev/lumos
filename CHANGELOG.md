@@ -1,5 +1,135 @@
 # Changelog
 
+## [3.2.6] - 2026-07-29
+
+### Refined
+
+- Removed the three-dimensional film-strip history from the experimental `home-spiral.html` stage to simplify the composition and eliminate an unnecessary source of rendering cost.
+- Further brightened the ambient background, blueprint grid, chromatic glow, construction axes, and triangular core so the spatial scientific geometry reads more clearly on every scene.
+- Reduced motion overhead again by removing the film-orbit renderer, lowering filter intensity on moving elements, tightening pointer follow-up frames, and simplifying particle density while preserving the brighter cosmic atmosphere.
+- Shortened the spacing between scene centers and reduced the pinned travel distance so transitions feel slightly quicker and more connected.
+- Preserved the stable public Home, the separate `home-3d.html` experiment, all workspaces, and all scientific behavior.
+
+## [3.2.5] - 2026-07-29
+
+### Refined
+
+- Expanded and brightened the persistent triangular orbital core so the scientific geometry remains legible behind every scene.
+- Added a denser starfield, brighter particles, subtle nebula glows, and slow parallax drift for a more spatial technology atmosphere.
+- Reduced the pinned scroll distance and increased scene travel, core rotation, film-ribbon rotation, grid motion, and pointer interpolation for faster interaction.
+- Rebalanced the opening identity by reducing the LUMOS wordmark while enlarging the full acronym expansion and two-line environmental-design animation.
+- Preserved the six-scene sequence, three-dimensional film ribbon, stable public Home, and all scientific behavior.
+
+## [3.2.2] - 2026-07-28
+
+### Refined
+
+- Enlarged the opening two-line “Design environmental …” typing identity and kept the first scene focused on the LUMOS brand rather than combining it with the complete product explanation.
+- Added a dedicated Unified scene before Heat and moved the shared-system summary, actions, metrics, and unified visual planes into that separate chapter.
+- Rebuilt the completed-scene history as brighter three-dimensional film frames that travel along a left-shifted ribbon, wrap behind the triangular system core, and retain depth-dependent blur instead of appearing as flat overlay echoes.
+- Added paired film rails and visible sprocket treatment so the history reads as one continuous tape path while keeping completed foreground scenes inactive.
+- Expanded the debounced near-scene scroll-release snap radius while preserving unsnapped movement through the larger transition intervals.
+- Preserved the stable Home, separate Three.js experiment, scientific engine, workspaces, evidence generators, and public claim boundaries.
+
+## [3.2.1] - 2026-07-28
+
+### Refined
+
+- Started the experimental editorial-motion Home directly on the complete LUMOS hero instead of using an empty lead-in interval.
+- Restored the stable two-line “Design environmental …” typing identity inside the LUMOS scene with a permanently reserved second-line width.
+- Replaced the Heat, Air, Water, and Soil letter markers with custom inline technical glyphs in the unified network and the lower workspace selector.
+- Added a lightweight blurred film-ribbon history: completed scenes persist as small orbital frames rotating around the central triangular geometry rather than disappearing completely.
+- Removed the visible Restart, Skip motion, and Standard Home stage actions while retaining keyboard-accessible document navigation.
+- Replaced the cryptic SCSEMD corner acronym with readable “Social Bayesian design” and “Public / local-first system” microcopy.
+
+## [3.2.0] - 2026-07-28
+
+### Rebuilt
+
+- Rebuilt the unlinked `home-spiral.html` experiment as one continuous editorial motion canvas rather than a visible sequence of cards or slides.
+- Replaced eight chapter panels with five large-format LUMOS, Heat, Air, Water, and Soil scenes using oversized typography, concise scientific copy, and domain-specific visual planes.
+- Added a persistent blueprint grid, geometric construction axes, rotating wireframe system core, outlined background language, restrained chromatic lighting, and technical micro-interface details.
+- Added steep diagonal depth transitions, complete foreground-free gaps between scenes, a pure-background handoff before conventional content, pointer parallax, and narrow near-scene scroll-release snapping.
+- Preserved the stable `index.html`, the separate `home-3d.html` experiment, every scientific workspace, the shared model, validation, objectives, constraints, evidence definitions, and public claim boundaries.
+
+## [3.1.9] - 2026-07-28
+
+### Refined
+
+- Removed the remaining scene surfaces from the unlinked `home-spiral.html` experiment so each chapter is presented as floating typography rather than an interface card.
+- Steepened the diagonal helix with stronger vertical travel and rotation.
+- Extended the pinned scroll track and separated foreground fade-out from the next scene fade-in, creating a deliberate ambient-only interval between chapters.
+- Added faint rotating ghost language behind the foreground sequence so transitions retain spatial continuity without overlapping complete scenes or falling to black.
+- Reworked the final handoff so the last chapter clears to the ambient background before standard Home content appears.
+- Added a narrow debounced near-scene scroll snap that activates only after scrolling stops close to a chapter center.
+
+## [3.1.8] - 2026-07-28
+
+### Refined
+
+- Removed the outer borders and expensive active-card backdrop filtering from the unlinked `home-spiral.html` experiment.
+- Reworked every spiral panel to fit without internal scrolling across desktop, short-window, tablet, and mobile layouts.
+- Removed the final launch/continue card so the evidence chapter flows directly into the page handoff.
+- Replaced the bordered transition panel with a text-and-ambient-glow introduction that fades naturally into standard page content.
+- Reduced residual input latency with faster adaptive scroll interpolation, cached visibility changes, simplified glow compositing, and detail rendering only on nearby cards.
+
+## [3.1.7] - 2026-07-28
+
+### Changed
+
+- Refined the unlinked `home-spiral.html` experiment into a wider, more visible diagonal helix with smaller cards and stronger vertical movement.
+- Added a lightweight static particle canvas, scroll parallax, animated star pulse, and restrained nebula glow inspired by the separate immersive 3D experiment.
+- Added a one-viewport crossfade handoff: the final card settles, the pinned stage fades out, and conventional homepage content fades in before normal scrolling continues.
+- Removed per-frame CSS blur from orbiting cards, cached scroll geometry, limited active glass blur to the foreground card, paused ambient animation offscreen, and capped particle raster density for smoother interaction without reducing card or scene count.
+
+
+## [3.1.6] - 2026-07-28
+
+### Added
+
+- Added an unlinked `home-spiral.html` experiment with a full-viewport pinned scroll stage inspired by modern Framer-style spiral and card transitions.
+- Added nine interface cards that rotate through a native CSS three-dimensional helix before the document releases into conventional scrolling.
+- Added scene progress controls, restart and skip actions, active-scene accessibility announcements, pointer-responsive stage tilt, and a linear reduced-motion fallback.
+- Added a complete post-sequence Home section preserving workspace, lifecycle, evidence, installation, attribution, and social content.
+
+### Changed
+
+- Extended the deterministic Pages build, service-worker shell, release metadata, documentation, and verification contract to package a second secret Home experiment without linking it from the stable Home or the existing `home-3d.html` route.
+- Kept the experiment dependency-free by using native HTML, CSS 3D transforms, and JavaScript rather than a hosted layout-builder runtime.
+
+### Scientific scope
+
+- No model, objective, constraint, data adapter, evidence generator, workspace, or operational workflow changed.
+
+
+## [3.1.5] - 2026-07-28
+
+### Added
+
+- Added an unlinked experimental `home-3d.html` route that preserves the complete current Home content in a full-viewport immersive presentation.
+- Added a procedural four-domain spiral tunnel with scroll-reactive camera movement, pointer-responsive tilt, depth fog, domain strands, environmental particles, and a static CSS fallback.
+- Added motion and quality controls, mobile detail reduction, page-visibility throttling, reduced-motion behavior, and a renderer-failure accessibility status.
+- Added experimental route checks ensuring the standard Home does not link the page and search engines receive `noindex,nofollow,noarchive`.
+
+### Changed
+
+- Extended the deterministic Pages build, service-worker shell, release metadata, documentation, and verification contract to package the experimental page without replacing `index.html`.
+- Pinned the experimental Three.js module to version 0.185.1 while preserving a functional page when the module cannot load.
+
+### Scientific scope
+
+- No model, objective, constraint, data adapter, evidence generator, workspace, or operational workflow changed.
+
+## [3.1.4] - 2026-07-28
+
+### Stable Home animation and illuminated introduction
+- Reserved a permanent second line for the animated environmental-design term, including while the word is fully erased.
+- Added a hidden longest-word width reserve and absolutely positioned animation layer to prevent heading reflow and vertical page movement.
+- Added a restrained translucent Home introduction card with green/blue ambient glow around the logo, wordmark, expanded name, animated statement, supporting line, and project summary.
+- Left the proposed future 3D spiral homepage treatment unimplemented for separate review.
+- Preserved all workspaces, navigation, model logic, accessibility behavior, and the existing README.
+
+
 
 ## [3.1.3] - 2026-07-28
 

@@ -1,7 +1,7 @@
 {
   "name": "LUMOS",
-  "version": "3.1.3",
-  "releaseDate": "2026-07-28",
+  "version": "3.2.6",
+  "releaseDate": "2026-07-29",
   "status": "stable-public-v3",
   "primaryDomain": "multi-domain",
   "supportedWorkspaces": [
@@ -103,7 +103,7 @@
       "live-campaign-tracking",
       "commissioning-operations"
     ],
-    "presentation": "multi-page-site-with-prominent-home-brand-lockup-layered-navigation-draggable-map-search-and-compact-footer",
+    "presentation": "multi-page-site-with-stable-standard-home-two-unlinked-three-dimensional-presentation-experiments-layered-navigation-draggable-map-search-and-compact-footer",
     "limitationsAndScope": true,
     "aboutPage": true,
     "informationArchitecture": [
@@ -112,7 +112,41 @@
       "research-process-dropdown-and-page",
       "paper-conference-placeholder",
       "contact-feedback-page"
-    ]
+    ],
+    "experimentalPresentation": {
+      "entry": "home-3d.html",
+      "linkedFromPrimaryNavigation": false,
+      "indexing": "noindex-nofollow",
+      "renderer": "three-js-webgl-with-static-css-fallback",
+      "interaction": [
+        "scroll-reactive-camera",
+        "pointer-reactive-tilt",
+        "motion-toggle",
+        "quality-toggle",
+        "reduced-motion-fallback"
+      ]
+    },
+    "experimentalScrollPresentation": {
+      "entry": "home-spiral.html",
+      "linkedFromPrimaryNavigation": false,
+      "indexing": "noindex-nofollow",
+      "renderer": "optimized-native-css-editorial-motion-canvas-with-split-identity-and-unified-scenes-custom-domain-glyphs-and-brightened-ambient-geometric-background",
+      "interaction": [
+        "sticky-pinned-continuous-motion-stage",
+        "first-frame-lumos-hero-without-empty-lead-in",
+        "enlarged-two-line-environmental-design-typing-identity",
+        "six-scene-editorial-typography-system-with-separated-unified-overview",
+        "custom-technical-heat-air-water-and-soil-glyphs",
+        "persistent-blueprint-grid-and-wireframe-core",
+        "depth-separated-domain-visual-planes",
+        "steep-diagonal-inertial-scene-transitions",
+        "foreground-free-ambient-gaps-between-scenes",
+        "expanded-near-scene-scroll-release-snap",
+        "full-background-fade-before-standard-content",
+        "pointer-reactive-stage-parallax",
+        "reduced-motion-linear-fallback"
+      ]
+    }
   },
   "publicArchitecture": "multi-page-static-site",
   "publicEntryPoints": [
@@ -123,5 +157,9 @@
     "air.html",
     "soil.html",
     "water.html"
+  ],
+  "experimentalEntryPoints": [
+    "home-3d.html",
+    "home-spiral.html"
   ]
 }

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Experimental three-dimensional LUMOS homepage concept for environmental monitoring design.">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="theme-color" content="#020706">
+  <meta name="application-name" content="LUMOS">
+  <title>LUMOS · Experimental 3D Home</title>
+  <link rel="icon" href="assets/lumos-mark.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Orbitron:wght@500;600;700&amp;family=Tektur:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?build=multi-page-6">
+  <link rel="stylesheet" href="css/home-3d.css?build=3d-experiment-1">
+</head>
+<body class="site-page home-active home-3d-page" data-lumos-page="home-3d">
+  <a class="skip-link" href="#home3dTitle">Skip to main content</a>
+  <div id="offlineBanner" class="offline-banner" hidden role="status">Offline mode: the 3D experiment uses a controlled visual fallback until its rendering library is available.</div>
+
+  <div class="home-3d-stage" aria-hidden="true">
+    <canvas id="lumos3dCanvas"></canvas>
+    <div class="home-3d-fallback-field"></div>
+    <div class="home-3d-vignette"></div>
+    <div class="home-3d-noise"></div>
+  </div>
+
+  <header id="appHeader" class="app-header site-header home-3d-header">
+    <a class="brand-lockup site-brand" href="index.html" aria-label="Return to the standard LUMOS Home">
+      <img class="brand-mark" src="assets/lumos-mark.svg" alt="" width="48" height="48">
+      <span class="brand-copy"><strong>LUMOS</strong></span>
+    </a>
+    <span class="home-3d-experiment-chip">3D experiment</span>
+    <nav class="site-navigation" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="unified.html">Unified</a>
+      <details class="workspace-menu site-menu">
+        <summary>Workspaces</summary>
+        <div class="workspace-menu-panel"><a href="heat.html"><span>Heat</span><small>LUMOS—Heat</small></a><a href="air.html"><span>Air</span><small>LUMOS—Air</small></a><a href="soil.html"><span>Soil</span><small>LUMOS—Soil</small></a><a href="water.html"><span>Water</span><small>LUMOS—Water</small></a></div>
+      </details>
+      <details class="workspace-menu site-menu documentation-menu">
+        <summary>Documentation</summary>
+        <div class="workspace-menu-panel documentation-menu-panel"><a href="documentation.html#quickstart"><span>Quickstart</span><small>From study area to export</small></a><a href="documentation.html#user-guide"><span>User guide</span><small>Core workflow and controls</small></a><a href="documentation.html#interface-guide"><span>Interface guide</span><small>Navigation, maps, and workspaces</small></a><a href="documentation.html#limitations"><span>Limitations</span><small>Scope and intended use</small></a><a href="documentation.html#privacy"><span>Privacy</span><small>Local-first data governance</small></a><a href="documentation.html#release-notes"><span>Release notes</span><small>Current public release</small></a><a href="documentation.html#changelog"><span>Changelog</span><small>Complete version history</small></a></div>
+      </details>
+      <details class="workspace-menu site-menu research-menu">
+        <summary>Research &amp; Process</summary>
+        <div class="workspace-menu-panel research-menu-panel"><a href="research.html#methodology"><span>Methodology</span><small>Scientific framework and objectives</small></a><a href="research.html#architecture"><span>Model architecture</span><small>Shared engine and domain adapters</small></a><a href="research.html#data-sources"><span>Data sources</span><small>Provenance and fallback behavior</small></a><a href="research.html#validation"><span>Validation &amp; benchmarking</span><small>Evidence and comparator design</small></a><a href="research.html#reproducibility"><span>Reproducibility</span><small>Frozen evidence and verification</small></a><a href="research.html#lifecycle"><span>Monitoring lifecycle</span><small>Planning through maintenance</small></a><a href="research.html#paper"><span>Paper &amp; conference</span><small>Manuscript and submission status</small></a><a href="research.html#citation"><span>Citation</span><small>Recommended scholarly attribution</small></a></div>
+      </details>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-actions site-header-actions">
+      <a class="icon-link header-icon-link" href="https://github.com/hgd-dev/lumos" target="_blank" rel="noopener noreferrer" aria-label="Open the LUMOS GitHub repository" title="GitHub repository"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .7a11.3 11.3 0 0 0-3.57 22.02c.57.1.78-.25.78-.55v-2.16c-3.18.69-3.85-1.35-3.85-1.35-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.73-1.53-2.54-.29-5.21-1.27-5.21-5.65 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.13 1.17A10.87 10.87 0 0 1 12 6.94c.97 0 1.94.13 2.85.38 2.17-1.48 3.13-1.17 3.13-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.39-2.68 5.35-5.22 5.64.41.36.77 1.06.77 2.14v3.17c0 .3.21.66.79.55A11.3 11.3 0 0 0 12 .7Z"/></svg></a>
+      <button id="systemCheckButton" class="secondary-button" type="button">System check</button>
+    </div>
+  </header>
+
+  <div class="home-3d-controls" aria-label="3D display controls">
+    <button id="home3dMotionButton" type="button" aria-pressed="false">Pause motion</button>
+    <button id="home3dQualityButton" type="button" aria-pressed="false">Lower detail</button>
+    <a href="index.html">Standard Home</a>
+  </div>
+  <nav class="home-3d-progress" aria-label="Experimental page sections">
+    <a href="#home3dHero" class="active" aria-label="Introduction"><span></span></a>
+    <a href="#home3dScience" aria-label="Scientific workspaces"><span></span></a>
+    <a href="#home3dLifecycle" aria-label="Monitoring lifecycle"><span></span></a>
+    <a href="#home3dTrust" aria-label="Evidence and access"><span></span></a>
+  </nav>
+
+  <main id="home3dPage" class="home-3d-main" aria-labelledby="home3dTitle">
+    <section id="home3dHero" class="home-3d-panel home-3d-hero" data-scene="hero">
+      <div class="home-3d-hero-copy">
+        <p class="home-3d-kicker">Experimental immersive homepage</p>
+        <div class="home-3d-brand" aria-label="LUMOS">
+          <img src="assets/lumos-mark.svg" alt="" width="118" height="118">
+          <span>LUMOS</span>
+        </div>
+        <p class="home-3d-system-name">Localized Unified Monitoring Optimization System</p>
+        <h1 id="home3dTitle" class="home-3d-title">
+          <span class="sr-only">Design environmental monitoring, intervention, planning, optimization, deployment, and evaluation.</span>
+          <span class="home-3d-title-visual" aria-hidden="true">
+            <span>Design environmental</span>
+            <span class="home-3d-type-line"><span class="home-3d-type-reserve">optimization</span><span class="home-3d-type-live"><span id="heroTypeText">monitoring</span><i></i></span></span>
+          </span>
+        </h1>
+        <p class="home-3d-subtitle">Informative, equitable, and operationally realistic.</p>
+        <p class="home-3d-lead">LUMOS connects probabilistic field reconstruction, uncertainty-aware monitor placement, intervention evaluation, field deployment, commissioning, and maintenance in one public environmental-planning system.</p>
+        <div class="home-3d-actions" aria-label="Home actions">
+          <a class="primary-button button-link" href="unified.html">Open Unified</a>
+          <a class="secondary-button button-link" href="unified.html?tour=1">Take guided tour</a>
+          <a class="secondary-button button-link" href="documentation.html#quickstart">Read quickstart</a>
+          <a class="secondary-button button-link" href="about.html">About us</a>
+        </div>
+      </div>
+      <aside class="home-3d-principles home-3d-glass" aria-label="LUMOS principles">
+        <p class="section-kicker">Based on professional research</p>
+        <h2>One shared framework, four distinct environmental sciences</h2>
+        <ul>
+          <li>Continuous probabilistic fields rather than uniform administrative cells</li>
+          <li>Epistemic-uncertainty reduction with serious optimal-design baselines</li>
+          <li>Group-level information quality and visible fairness tradeoffs</li>
+          <li>Domain-specific transport, persistence, sampling, and intervention roles</li>
+          <li>Field verification, reliability, budget, maintenance, and failure constraints</li>
+        </ul>
+        <a class="text-button" href="research.html#methodology">Read the methodology</a>
+      </aside>
+      <a class="home-3d-scroll-cue" href="#home3dScience"><span>Scroll through the field</span><i aria-hidden="true"></i></a>
+    </section>
+
+    <section id="home3dScience" class="home-3d-panel home-3d-science" data-scene="science" aria-labelledby="home3dDomainsTitle">
+      <div class="home-3d-section-heading home-3d-glass">
+        <p class="section-kicker">Scientific workspaces</p>
+        <h2 id="home3dDomainsTitle">Choose the decision scale that matches your work</h2>
+        <p>Use Unified for cross-domain planning, or open a dedicated scientific workspace for field reconstruction and site-level network design.</p>
+      </div>
+      <div class="home-3d-domain-grid">
+        <a class="home-3d-domain-card unified" href="unified.html"><span class="home-3d-domain-code">U</span><span><strong>Unified</strong><small>Allocate budgets, compare trajectories, coordinate shared hosts, review feasibility, and manage operations across domains.</small></span></a>
+        <a class="home-3d-domain-card heat" href="heat.html"><span class="home-3d-domain-code">H</span><span><strong>Heat</strong><small>Model heat risk, apparent temperature, canopy and surface effects, exposure, vulnerability, and interventions.</small></span></a>
+        <a class="home-3d-domain-card air" href="air.html"><span class="home-3d-domain-code">A</span><span><strong>Air</strong><small>Plan pollutant-specific networks using wind-aware transport, source structure, reference monitors, and calibration roles.</small></span></a>
+        <a class="home-3d-domain-card soil" href="soil.html"><span class="home-3d-domain-code">S</span><span><strong>Soil</strong><small>Combine survey properties, depth intervals, laboratory samples, localized covariance, and field-access constraints.</small></span></a>
+        <a class="home-3d-domain-card water" href="water.html"><span class="home-3d-domain-code">W</span><span><strong>Water</strong><small>Use indicator-specific observations, directional flow structure, upstream/downstream reasoning, and receptor roles.</small></span></a>
+      </div>
+    </section>
+
+    <section id="home3dLifecycle" class="home-3d-panel home-3d-lifecycle" data-scene="lifecycle" aria-labelledby="home3dLifecycleTitle">
+      <div class="home-3d-section-heading home-3d-glass">
+        <p class="section-kicker">Complete monitoring lifecycle</p>
+        <h2 id="home3dLifecycleTitle">Move from uncertainty to a maintained operational network</h2>
+      </div>
+      <ol class="home-3d-lifecycle-grid">
+        <li><span>01</span><div><strong>Reconstruct</strong><small>Estimate the field and distinguish reducible epistemic uncertainty from irreducible variation.</small></div></li>
+        <li><span>02</span><div><strong>Optimize</strong><small>Generate networks under information, exposure, fairness, reliability, spacing, and budget constraints.</small></div></li>
+        <li><span>03</span><div><strong>Evaluate</strong><small>Plan treatment, control, boundary, spillover, upstream, downstream, and longitudinal monitoring.</small></div></li>
+        <li><span>04</span><div><strong>Deploy</strong><small>Coordinate hosts, verify permissions and infrastructure, inspect sites, and activate reserves.</small></div></li>
+        <li><span>05</span><div><strong>Operate</strong><small>Track installation, calibration, uptime, maintenance, failures, and replacement readiness.</small></div></li>
+      </ol>
+    </section>
+
+    <section id="home3dTrust" class="home-3d-panel home-3d-trust" data-scene="trust" aria-labelledby="home3dTrustTitle">
+      <div class="home-3d-trust-copy home-3d-glass">
+        <p class="section-kicker">Transparent by design</p>
+        <h2 id="home3dTrustTitle">Every recommendation carries its evidence and its limits.</h2>
+        <p>LUMOS labels observed, modeled, derived, proxied, synthetic, and fallback inputs; compares against serious baselines; reports infeasibility honestly; and preserves reproducible exports.</p>
+        <div class="home-3d-trust-actions"><a class="secondary-button button-link" href="research.html#data-sources">Data sources</a><a class="secondary-button button-link" href="documentation.html#limitations">Limitations</a><a class="secondary-button button-link" href="documentation.html#privacy">Privacy</a><a class="secondary-button button-link" href="research.html#citation">Citation</a></div>
+      </div>
+      <div class="home-3d-install home-3d-glass" aria-label="Install LUMOS">
+        <img src="assets/lumos-mark.svg" alt="" width="64" height="64">
+        <div><p class="section-kicker">Installable web app</p><h2>Use LUMOS as a standalone application</h2><p id="homeInstallStatus">LUMOS runs directly in the browser. Installation is offered when supported by your browser.</p></div>
+        <button id="installAppButton" class="primary-button" type="button" hidden>Install LUMOS</button>
+      </div>
+      <footer class="home-3d-footer home-3d-glass">
+        <p><span>Full creation including ideation, website, code, and interface by Hudson Dong, Class of 2027, Stuyvesant High School, New York City.</span><strong>The LUMOS Team</strong></p>
+        <nav aria-label="LUMOS social links"><a href="https://github.com/hgd-dev/lumos" target="_blank" rel="noopener noreferrer">GitHub</a><a href="mailto:Lumosystem.team@gmail.com">Email</a><a href="https://www.instagram.com/lumos_optimization/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.linkedin.com/in/lumos-team-7786b2425/" target="_blank" rel="noopener noreferrer">LinkedIn</a></nav>
+      </footer>
+    </section>
+  </main>
+
+  <p id="home3dStatus" class="sr-only" role="status" aria-live="polite">Loading the experimental three-dimensional environmental field.</p>
+  <dialog id="systemCheckDialog" class="release-dialog">
+    <form method="dialog" class="release-dialog-card">
+      <div class="release-dialog-heading"><div><p class="section-kicker">Application services</p><h2>System check</h2></div><button class="text-button" value="cancel" aria-label="Close system check">Close</button></div>
+      <p id="systemCheckSummary" class="section-help">Run a check to verify browser capabilities and public-data services.</p>
+      <ul id="systemCheckList" class="system-check-list"></ul>
+      <div class="release-dialog-actions"><button id="runSystemCheckButton" class="primary-button" type="button">Run system check</button></div>
+    </form>
+  </dialog>
+  <script type="module" src="js/site.js?build=multi-page-6"></script>
+  <script type="module" src="js/home-3d.js?build=3d-experiment-1"></script>
+</body>
+</html>

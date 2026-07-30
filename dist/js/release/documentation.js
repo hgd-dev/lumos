@@ -43,6 +43,8 @@ export const DOCUMENTATION_PAGES = Object.freeze({
       <p>Equity is not reduced to a population-density weight. LUMOS evaluates information quality for defined social groups and can constrain worst-group information gain or the gap between best- and worst-served groups.</p>
       <h3>Domain-specific adapters</h3>
       <ul>
+        <li>Reserved a permanent second-line layout for the animated monitoring, intervention, planning, optimization, deployment, and evaluation words.</li>
+        <li>Added an illuminated introductory card around the LUMOS brand lockup, expanded system name, animated statement, supporting line, and project summary.</li>
         <li><strong>Heat:</strong> temperature and apparent-heat surfaces, canopy, imperviousness, land cover, dynamic exposure, and intervention benefit.</li>
         <li><strong>Air:</strong> pollutant-specific fields, wind-aware anisotropy, traffic and industrial source structure, background sites, and calibration roles.</li>
         <li><strong>Soil:</strong> persistent localized variation, survey properties, depth intervals, laboratory observations, contamination QA, and access constraints.</li>
@@ -114,35 +116,21 @@ export const DOCUMENTATION_PAGES = Object.freeze({
   }),
   "release-notes": Object.freeze({
     title: "Release notes",
-    kicker: "Current public release: 3.1.3",
-    summary: "Navigation, dropdown, map-control, basemap, and footer refinements for the multi-page public site.",
+    kicker: "Current public release: 3.2.6",
+    summary: "No film strip, stronger ambient geometry, lower runtime overhead, and tighter scene spacing.",
     html: `
-      <p><strong>LUMOS 3.1.3</strong> adds a prominent Home-page LUMOS mark and wordmark while preserving the permanent About Us, Documentation, Research &amp; Process, Contact &amp; Feedback, and scientific workspace architecture.</p>
-      <h3>Public interface changes</h3>
+      <p><strong>LUMOS 3.2.6</strong> further refines the unlinked <code>home-spiral.html</code> experiment by removing the film-strip history, strengthening the luminous geometric background, reducing motion overhead, and tightening scene spacing.</p>
+      <h3>Experimental presentation</h3>
       <ul>
-        <li>Reorganized LUMOS as a multi-page public site with dedicated Home, documentation, Unified, Heat, Air, Soil, and Water URLs.</li>
-        <li>Added a persistent top navigation bar and a four-workspace dropdown while keeping the scientific engine shared.</li>
-        <li>Corrected dropdown stacking and chevron alignment across the multi-page header.</li>
-        <li>Added a toggleable, draggable map-search panel and changed the default basemap to Positron.</li>
-        <li>Separated the environmental legend from the map distance scale and simplified the footer by moving information links into the header.</li>
-        <li>Moved reset and generation controls into each workspace page and reset new sessions to the full United States view.</li>
-        <li>Removed release-number branding from the masthead, browser title, footer, installation metadata, and routine status messages.</li>
-        <li>Added a dedicated Home tab with a professional introduction, domain entry points, lifecycle overview, guided-tour action, installation action, and documentation access.</li>
-        <li>Moved the guided tour and install controls out of the operational header.</li>
-        <li>Replaced direct Markdown footer links with accessible in-application documentation pages.</li>
-        <li>Expanded the footer and added creator and team attribution.</li>
-        <li>Preserved header, panel, and one-action map-focus controls.</li>
-        <li>Added an About Us page and simplified visitor-facing scientific-scope language.</li>
-        <li>Moved public release auditing fully into internal release verification rather than the visitor interface.</li>
-        <li>Added the LUMOS mark to the masthead and installation card while removing the secondary masthead slogan.</li>
-        <li>Added a reduced-motion-aware typing loop for monitoring, intervention, planning, optimization, deployment, and evaluation.</li>
-        <li>Added Tektur and Orbitron display typography with Inter body text and local system fallbacks.</li>
-        <li>Added direct GitHub access in the masthead and GitHub, Gmail, Instagram, and LinkedIn icons in the footer; non-GitHub social destinations remain clearly marked placeholders until replaced.</li>
-        <li>Restored standard capitalization across Home navigation, workspace cards, and environmental-domain prose.</li>
+        <li>Removed the three-dimensional film-strip history and its per-frame renderer.</li>
+        <li>Brightened the starfield, chromatic glow, blueprint grid, axes, triangular core, guide lines, signal strokes, and nodes.</li>
+        <li>Reduced runtime filter work, pointer follow-up frames, and particle cost while preserving a stronger cosmic atmosphere.</li>
+        <li>Shortened scene-center spacing and the pinned scroll distance for a more connected sequence.</li>
+        <li>Kept the stable Home and every scientific workspace unchanged.</li>
       </ul>
       <h3>Scientific scope</h3>
-      <p>The release retains the complete Heat, Air, Soil, Water, cross-domain allocation, robust simulation, spatial deployment, field review, campaign, commissioning, and maintenance workflows. No scientific objective or constraint was removed for presentation polish.</p>
-      <p>The full source history remains in <code>CHANGELOG.md</code>. Release metadata and reproducibility evidence continue to identify the exact packaged version even though the public interface uses the stable product name “LUMOS.”</p>
+      <p>No model, objective, constraint, adapter, evidence generator, validation protocol, or public claim boundary changed.</p>
+      <p>The stable public Home remains the default entry point, and the complete release history remains in <code>CHANGELOG.md</code>.</p>
     `
   }),
   about: Object.freeze({

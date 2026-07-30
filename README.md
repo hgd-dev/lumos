@@ -11,10 +11,12 @@
 
 <p align="center">
   <a href="https://hgd-dev.github.io/lumos/"><strong>Launch LUMOS</strong></a>
-  .
+  ·
   <a href="https://hgd-dev.github.io/lumos/unified.html">Unified</a>
   ·
-  <a href="https://hgd-dev.github.io/lumos/about.html">About &amp; Methodology</a>
+  <a href="https://hgd-dev.github.io/lumos/about.html">About Us</a>
+  ·
+  <a href="https://hgd-dev.github.io/lumos/research.html">Research</a>
   ·
   <a href="MODEL_SPECIFICATION.md">Model specification</a>
 </p>
@@ -95,23 +97,14 @@ Serious baselines and reduced-instance exact benchmarks are included so LUMOS re
 
 The public application includes:
 
-<<<<<<< HEAD
-- a dedicated Home experience and guided tour;
-- animated environmental-design branding;
-- a unified map interface with five workspaces;
-- multiple portfolio recommendations rather than one hidden score;
-- map, table, diagnostic, and explainability views;
-- in-application Quickstart, Methodology, Data Sources, Limitations, Privacy, Release Notes, About Us, and Citation pages;
-=======
-- dedicated Home and About & Methodology pages;
+- dedicated Home, About Us, Documentation, Research & Process, and Contact & Feedback pages;
 - separate Unified, Heat, Air, Soil, and Water workspace URLs;
 - one shared workspace shell and model engine across every scientific page;
-- a persistent top navigation bar and four-workspace dropdown;
+- a persistent top navigation bar with separate Workspaces, Documentation, and Research & Process menus;
 - animated environmental-design branding;
 - multiple portfolio recommendations rather than one hidden score;
 - map, table, diagnostic, and explainability views;
-- a permanent documentation page for Quickstart, Methodology, Data Sources, Limitations, Privacy, Release Notes, About Us, and Citation;
->>>>>>> 80b3efc (v.3.1.0 Public Release 2, Subpage format)
+- permanent documentation and research pages with stable section URLs, including a paper and conference-status area;
 - browser-local workspace persistence;
 - JSON and CSV evidence exports;
 - an installable progressive web app shell;
@@ -120,31 +113,27 @@ The public application includes:
 - collapsible controls and a near-full-window Focus Map mode; and
 - responsive desktop and mobile layouts.
 
-<<<<<<< HEAD
-## Data and provenance
-
-Depending on domain, location, and availability, LUMOS can use or derive context from public sources including weather and atmospheric products, U.S. Census geography and social indicators, OpenStreetMap context, USDA soil surveys, USGS water observations, official case-study datasets, and user-imported field records.
-
-=======
 ## Public page architecture
 
 | Page | URL | Purpose |
 | --- | --- | --- |
 | Home | [`index.html`](index.html) | Project introduction, installation, guided-tour entry, and workspace selection |
-| About & Methodology | [`about.html`](about.html) | Quickstart, methodology, data sources, limitations, privacy, release notes, project information, and citation |
+| About Us | [`about.html`](about.html) | Mission, project origin, creator credit, team profiles, values, and current work |
+| Documentation | [`documentation.html`](documentation.html) | Quickstart, user guide, interface guide, limitations, privacy, release notes, and changelog |
+| Research & Process | [`research.html`](research.html) | Methodology, architecture, data sources, validation, reproducibility, monitoring lifecycle, paper/conference status, and citation |
+| Contact & Feedback | [`contact.html`](contact.html) | General contact, GitHub issues, feature requests, feedback form, and official social links |
 | Unified | [`unified.html`](unified.html) | Cross-domain allocation, simulation, deployment, campaigns, commissioning, and maintenance |
 | Heat | [`heat.html`](heat.html) | LUMOS—Heat scientific workspace |
 | Air | [`air.html`](air.html) | LUMOS—Air scientific workspace |
 | Soil | [`soil.html`](soil.html) | LUMOS—Soil scientific workspace |
 | Water | [`water.html`](water.html) | LUMOS—Water scientific workspace |
 
-All five scientific entry pages load the same `workspace-shell.html` and `js/app.js`. This keeps navigation modular without creating separate or inconsistent model implementations.
+All five scientific entry pages load the same `workspace-shell.html` and `js/app.js`. The informational pages remain lightweight and do not initialize the map or model engine. This keeps navigation modular without creating separate or inconsistent model implementations.
 
 ## Data and provenance
 
 Depending on domain, location, and availability, LUMOS can use or derive context from public sources including weather and atmospheric products, U.S. Census geography and social indicators, OpenStreetMap context, USDA soil surveys, USGS water observations, official case-study datasets, and user-imported field records.
 
->>>>>>> 80b3efc (v.3.1.0 Public Release 2, Subpage format)
 Every input is labeled by evidentiary role—such as observed, modeled, derived, proxied, synthetic, or fallback. Optional-source failure is recorded rather than silently converted into observed evidence.
 
 See:
@@ -247,6 +236,15 @@ docs/                           methodology, operations, governance, and limitat
 - [Reproducibility](docs/REPRODUCIBILITY.md)
 - [Privacy and data governance](docs/PRIVACY_AND_DATA_GOVERNANCE.md)
 - [Limitations](docs/LIMITATIONS.md)
+
+## Contact and official channels
+
+- **Email:** [Lumosystem.team@gmail.com](mailto:Lumosystem.team@gmail.com)
+- **Instagram:** [@lumos_optimization](https://www.instagram.com/lumos_optimization/)
+- **LinkedIn:** [LUMOS Team](https://www.linkedin.com/in/lumos-team-7786b2425/)
+- **GitHub:** [hgd-dev/lumos](https://github.com/hgd-dev/lumos)
+
+Bug reports and feature requests can be submitted through [GitHub Issues](https://github.com/hgd-dev/lumos/issues). A structured feedback-form link will be added before the conference and outreach release.
 
 ## Attribution
 

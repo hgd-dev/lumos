@@ -2,7 +2,7 @@
   "schema": "lumos-adaptive-program-simulation-v1",
   "schemaVersion": "1.0",
   "architecture": "Multi-round adaptive cross-domain monitoring program simulation",
-  "generatedAt": "2026-07-28T19:10:26.400Z",
+  "generatedAt": "2026-07-30T00:11:46.749Z",
   "ready": true,
   "config": {
     "rounds": 4,

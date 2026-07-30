@@ -1,11 +1,14 @@
-const CACHE_NAME = "lumos-v3.1.3";
+const CACHE_NAME = "lumos-v3.2.6";
 const LIBRARY_ASSETS = [
   "https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css",
-  "https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"
+  "https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js",
+  "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.185.1/three.module.min.js"
 ];
 const APP_SHELL = [
   "./",
   "./index.html",
+  "./home-3d.html",
+  "./home-spiral.html",
   "./about.html",
   "./documentation.html",
   "./research.html",
@@ -17,10 +20,14 @@ const APP_SHELL = [
   "./water.html",
   "./workspace-shell.html",
   "./css/styles.css",
+  "./css/home-3d.css",
+  "./css/home-spiral.css",
   "./manifest.webmanifest",
   "./assets/lumos-mark.svg",
   "./js/app.js",
   "./js/site.js",
+  "./js/home-3d.js",
+  "./js/home-spiral.js",
   "./js/info-page.js",
   "./js/content-page.js",
   "./js/workspace-bootstrap.js",
@@ -115,7 +122,9 @@ self.addEventListener("fetch", (event) => {
   if (request.method !== "GET") return;
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) {
-    if (url.hostname === "unpkg.com" && url.pathname.includes("/maplibre-gl@5.6.0/")) {
+    const isMapLibreAsset = url.hostname === "unpkg.com" && url.pathname.includes("/maplibre-gl@5.6.0/");
+    const isThreeAsset = url.hostname === "cdnjs.cloudflare.com" && url.pathname === "/ajax/libs/three.js/0.185.1/three.module.min.js";
+    if (isMapLibreAsset || isThreeAsset) {
       event.respondWith(caches.match(request).then((cached) => cached || fetch(request)));
     }
     return;
