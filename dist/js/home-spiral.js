@@ -32,10 +32,12 @@ const SNAP_VISUAL_STRENGTH = 0.94;
 const SNAP_SETTLE_DELAY = 34;
 const SNAP_DURATION = 230;
 const MOBILE_SCENE_INTERVAL = 0.135;
-const MOBILE_SNAP_RADIUS = 0.06;
-const MOBILE_SNAP_INNER_LOCK = 0.014;
-const MOBILE_SNAP_SETTLE_DELAY = 72;
-const MOBILE_SNAP_DURATION = 260;
+const MOBILE_SNAP_RADIUS = 0.071;
+const MOBILE_SNAP_INNER_LOCK = 0.021;
+const MOBILE_SNAP_SETTLE_DELAY = 96;
+const MOBILE_SNAP_QUIET_WINDOW = 135;
+const MOBILE_SNAP_DURATION = 205;
+const MOBILE_SNAP_VISUAL_STRENGTH = 0.985;
 const MOBILE_GEOMETRY_FADE_START = 0.75;
 const MOBILE_GEOMETRY_FADE_END = 0.855;
 const MOBILE_CONTENT_REVEAL_START = 0.805;
@@ -78,6 +80,7 @@ let typingTimer = 0;
 let titleIntroTimer = 0;
 let titleIntroHandoffTimer = 0;
 let titleIntroDelayTimer = 0;
+let lastScrollAt = performance.now();
 let typingWordIndex = 0;
 let typingCharacterIndex = TYPING_WORDS[0].length;
 let typingPhase = "hold";
@@ -95,6 +98,7 @@ function snapRadius() { return mobileLayout ? MOBILE_SNAP_RADIUS : SNAP_RADIUS; 
 function snapInnerLock() { return mobileLayout ? MOBILE_SNAP_INNER_LOCK : SNAP_INNER_LOCK; }
 function snapSettleDelay() { return mobileLayout ? MOBILE_SNAP_SETTLE_DELAY : SNAP_SETTLE_DELAY; }
 function snapDuration() { return mobileLayout ? MOBILE_SNAP_DURATION : SNAP_DURATION; }
+function snapVisualStrength() { return mobileLayout ? MOBILE_SNAP_VISUAL_STRENGTH : SNAP_VISUAL_STRENGTH; }
 function geometryFadeStart() { return mobileLayout ? MOBILE_GEOMETRY_FADE_START : GEOMETRY_FADE_START; }
 function geometryFadeEnd() { return mobileLayout ? MOBILE_GEOMETRY_FADE_END : GEOMETRY_FADE_END; }
 function contentRevealStart() { return mobileLayout ? MOBILE_CONTENT_REVEAL_START : CONTENT_REVEAL_START; }
@@ -162,7 +166,7 @@ function magnetizedProgress(progress) {
   const center = sceneCenter(nearest.index);
   if (nearest.distance <= innerLock) return { ...nearest, progress: center };
   const capture = 1 - smoothstep((nearest.distance - innerLock) / (radius - innerLock));
-  const strength = clamp(capture * SNAP_VISUAL_STRENGTH);
+  const strength = clamp(capture * snapVisualStrength());
   return { ...nearest, progress: mix(progress, center, strength) };
 }
 
@@ -349,6 +353,13 @@ function animateSceneSnap(index) {
 function settleSceneSnap() {
   snapTimer = 0;
   if (reduced || !stageIntersecting || snapAnimating || touchActive) return;
+  if (mobileLayout) {
+    const quietFor = performance.now() - lastScrollAt;
+    if (quietFor < MOBILE_SNAP_QUIET_WINDOW) {
+      snapTimer = window.setTimeout(settleSceneSnap, Math.max(16, MOBILE_SNAP_QUIET_WINDOW - quietFor));
+      return;
+    }
+  }
   const progress = scrollProgress();
   const nearest = nearestScene(progress);
   if (nearest.distance <= 0.00045 || nearest.distance > snapRadius()) return;
@@ -369,6 +380,7 @@ function scheduleSceneSnap() {
 }
 
 function updateFromScroll() {
+  lastScrollAt = performance.now();
   if (reduced || !stageIntersecting) return;
   if (!snapAnimating) scheduleSceneSnap();
   requestFrame();
@@ -678,7 +690,11 @@ window.addEventListener("touchstart", () => {
 }, { passive: true });
 window.addEventListener("touchend", () => {
   touchActive = false;
-  if (stageIntersecting) scheduleSceneSnap();
+  lastScrollAt = performance.now();
+  if (stageIntersecting) {
+    window.clearTimeout(snapTimer);
+    snapTimer = window.setTimeout(settleSceneSnap, MOBILE_SNAP_QUIET_WINDOW);
+  }
 }, { passive: true });
 window.addEventListener("touchcancel", () => {
   touchActive = false;

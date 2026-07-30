@@ -2573,8 +2573,8 @@ test("public Home and permanent documentation page keep release metadata out of 
   assert.match(html, /LOCALIZED UNIFIED MONITORING OPTIMIZATION SYSTEM/);
   assert.match(html, /class="motion-typing-lockup motion-typing-lockup-hero"/);
   assert.match(html, /class="motion-display-word">LUMOS/);
-  assert.match(html, /css\/home-spiral\.css\?build=motion-canvas-official-5/);
-  assert.match(html, /js\/home-spiral\.js\?build=motion-canvas-official-5/);
+  assert.match(html, /css\/home-spiral\.css\?build=motion-canvas-official-6/);
+  assert.match(html, /js\/home-spiral\.js\?build=motion-canvas-official-6/);
   assert.match(html, /https:\/\/github\.com\/hgd-dev\/lumos/);
   assert.match(html, /mailto:Lumosystem\.team@gmail\.com/);
   assert.match(html, /instagram\.com\/lumos_optimization/);
