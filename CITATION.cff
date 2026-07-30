@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use LUMOS in research, cite the software and the associated paper or preprint when available."
 title: "LUMOS: Localized Unified Monitoring Optimization System"
 type: software
-version: 3.2.6
+version: 3.3.0
 date-released: 2026-07-29
 license: MIT
 abstract: "A stable public socially constrained sequential Bayesian framework and browser-based tool for Heat, Air, Soil, and Water monitoring design, validation, intervention evaluation, cross-domain funding, robust multi-round policy analysis, verified deployment, field campaigns, live outcome tracking, commissioning, calibration, maintenance, and replacement planning."

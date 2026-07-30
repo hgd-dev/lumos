@@ -1,12 +1,19 @@
-# LUMOS 3.2.6 Multi-Page Public Release
+# LUMOS 3.3.0 Multi-Page Public Release
 
-## v3.2.6 simplified cosmic stage and tighter editorial motion
+## v3.3.0 official cinematic Home
 
-The unlinked `home-spiral.html` route no longer includes the three-dimensional film-strip history. Removing that background system simplifies the composition and eliminates its per-frame transform, opacity, filter, and depth calculations.
+The refined native-CSS editorial motion experience is now the official public `index.html` entry point. It opens on a brief true-black load-safe hold, assembles an extruded three-dimensional LUMOS wordmark with restrained white, blue, violet, and green chromatic slices, and morphs directly into the first scene.
 
-The persistent environment is stronger instead: brighter construction axes, a more visible triangular core, clearer guide and signal lines, stronger node glow, a brighter blueprint grid, and larger scene-reactive chromatic fields. Particle count is reduced while the static nebula treatment is stronger, producing a fuller space-and-technology atmosphere at lower runtime cost.
+The public Home preserves the six-scene Unified, Heat, Air, Water, and Soil narrative; cached scroll geometry; visible-scene-only rendering; hover-driven desktop menus; keyboard and touch fallbacks; bounded near-scene snapping; and reduced-motion linear flow. After the final scene, the axial triangle and foreground construction system fade away while the deterministic starfield, blueprint atmosphere, and softened LUMOS glow continue behind the conventional Home sections.
 
-Scene centers and the total pinned scroll distance are slightly closer together, so transitions feel more connected while retaining a foreground-free ambient gap.
+`home-spiral.html` remains available as a noindex compatibility preview, while `home-3d.html` remains the separate unlinked Three.js experiment. No scientific model, objective, constraint, adapter, evidence generator, validation protocol, workspace, or public claim boundary changed.
+
+
+## v3.2.7 watermark-free stage, faster pacing, and hover navigation
+
+The unlinked `home-spiral.html` route now removes the former ghost-word orbit and transition label that could read as an unintended echo or watermark behind the main triangle. The luminous axes, wireframe core, particles, blueprint grid, and scene-colored glow remain.
+
+The motion loop now caches scroll geometry and updates only scenes that are actually near the viewport. Scene centers and total pinned travel are tighter, while the snap radius is wider and the snap delay shorter. Shared desktop navigation dropdowns open and close on hover, with keyboard focus and touch/click fallback preserved.
 
 No scientific model, objective, constraint, evidence generator, stable public page, or workspace behavior changed.
 
@@ -89,7 +96,7 @@ See `docs/COMMISSIONING_AND_MAINTENANCE.md`, `docs/LIMITATIONS.md`, and `docs/PR
 
 ## Brand and Home refinement
 
-The 3.2.6 public architecture uses separate static entry pages for Home, About Us, Documentation, Research & Process, Contact & Feedback, Unified, Heat, Air, Soil, and Water. A shared workspace shell and shared JavaScript model preserve one scientific implementation across every workspace URL, while lightweight informational pages keep public navigation clear. New sessions open at the full United States extent, while saved workspaces are restored only by explicit user action.
+The 3.3.0 public architecture uses separate static entry pages for Home, About Us, Documentation, Research & Process, Contact & Feedback, Unified, Heat, Air, Soil, and Water. A shared workspace shell and shared JavaScript model preserve one scientific implementation across every workspace URL, while lightweight informational pages keep public navigation clear. New sessions open at the full United States extent, while saved workspaces are restored only by explicit user action.
 
 
 ## v3.1.4 information architecture

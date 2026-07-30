@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const expectedVersion = "3.2.6";
+const expectedVersion = "3.3.0";
 const required = [
   "index.html", "home-3d.html", "home-spiral.html", "about.html", "documentation.html", "research.html", "contact.html", "unified.html", "heat.html", "air.html", "soil.html", "water.html", "workspace-shell.html",
   "package.json", "release.json", "manifest.webmanifest", "service-worker.js", "404.html",
@@ -69,10 +69,13 @@ if (publicShell.includes("Scientific position")) failures.push("index.html still
 if (workspaceShell.includes('id="publicReadinessSection"') || workspaceShell.includes('id="publicReadinessResultSection"')) failures.push("workspace-shell.html exposes the internal public-readiness audit");
 if (/Claim boundaries|claim boundaries/.test(workspaceShell)) failures.push("workspace-shell.html exposes dedicated claim-boundary copy instead of centralized limitations");
 if (!publicShell.includes("https://github.com/hgd-dev/lumos")) failures.push("index.html is missing the public GitHub repository link");
-if (!publicShell.includes('id="heroTypeText"')) failures.push("index.html is missing the animated environmental-design phrase");
+if (!publicShell.includes('name="robots" content="index,follow"') || !publicShell.includes('id="spiralIntro"') || !publicShell.includes('id="spiralSequence"') || !publicShell.includes('id="spiralOrbit"')) failures.push("index.html is missing the official cinematic Home contract");
+if (!publicShell.includes('id="spiralPersistentBackdrop"') || !publicShell.includes('id="spiralPersistentCanvas"') || !publicShell.includes('class="spiral-persistent-grid"')) failures.push("index.html is missing the persistent cosmic Home background");
+if (!publicShell.includes('class="motion-title-intro-word motion-title-intro-word-depth') || !publicShell.includes('motion-title-intro-shutters') || !publicShell.includes('motion-title-intro-black')) failures.push("index.html is missing the cinematic three-dimensional LUMOS title intro");
+if (!publicShell.includes('id="motionTypingWord"') || !publicShell.includes('Design environmental monitoring, intervention, planning, optimization, deployment, and evaluation')) failures.push("index.html is missing the animated environmental-design identity");
+if (!publicShell.includes('css/home-spiral.css') || !publicShell.includes('js/home-spiral.js')) failures.push("index.html is missing the official motion Home assets");
+if (publicShell.includes('home-spiral-experiment-chip') || publicShell.includes('Motion experiment')) failures.push("index.html still exposes experimental presentation labeling");
 if (!publicShell.includes('class="home-install-mark"')) failures.push("index.html is missing the install-card LUMOS mark");
-if (!publicShell.includes('class="home-brand-hero"') || !publicShell.includes('class="home-brand-hero-wordmark"') || !publicShell.includes('home-system-name')) failures.push("index.html is missing the prominent Home brand lockup");
-if (!publicShell.includes('class="home-intro-card"') || !publicShell.includes('class="hero-title-reserve"') || !publicShell.includes('class="hero-title-animation"')) failures.push("index.html is missing the stable illuminated Home introduction contract");
 if (publicShell.includes("From uncertainty to action")) failures.push("index.html still exposes the removed masthead slogan");
 if (!publicShell.includes("fonts.googleapis.com/css2?family=Inter")) failures.push("index.html is missing the technical public font stylesheet");
 if (!publicShell.includes("Lumosystem.team@gmail.com") || !publicShell.includes("lumos_optimization") || !publicShell.includes("lumos-team-7786b2425")) failures.push("index.html is missing one or more official LUMOS social destinations");

@@ -116,21 +116,21 @@ export const DOCUMENTATION_PAGES = Object.freeze({
   }),
   "release-notes": Object.freeze({
     title: "Release notes",
-    kicker: "Current public release: 3.2.6",
-    summary: "No film strip, stronger ambient geometry, lower runtime overhead, and tighter scene spacing.",
+    kicker: "Current public release: 3.3.0",
+    summary: "The cinematic editorial-motion experience is now the official LUMOS Home.",
     html: `
-      <p><strong>LUMOS 3.2.6</strong> further refines the unlinked <code>home-spiral.html</code> experiment by removing the film-strip history, strengthening the luminous geometric background, reducing motion overhead, and tightening scene spacing.</p>
-      <h3>Experimental presentation</h3>
+      <p><strong>LUMOS 3.3.0</strong> promotes the refined cinematic motion experience from an unlinked preview to the official public <code>index.html</code> Home.</p>
+      <h3>Official cinematic Home</h3>
       <ul>
-        <li>Removed the three-dimensional film-strip history and its per-frame renderer.</li>
-        <li>Brightened the starfield, chromatic glow, blueprint grid, axes, triangular core, guide lines, signal strokes, and nodes.</li>
-        <li>Reduced runtime filter work, pointer follow-up frames, and particle cost while preserving a stronger cosmic atmosphere.</li>
-        <li>Shortened scene-center spacing and the pinned scroll distance for a more connected sequence.</li>
-        <li>Kept the stable Home and every scientific workspace unchanged.</li>
+        <li>Opens with a brief load-safe black hold and an extruded, chromatically sliced three-dimensional LUMOS title assembly.</li>
+        <li>Morphs directly into the first editorial scene rather than cutting between independent overlays.</li>
+        <li>Preserves the six-scene Unified, Heat, Air, Water, and Soil sequence with faster motion, wider snap behavior, and hover-driven desktop navigation.</li>
+        <li>Fades the axial geometry after the scene sequence while retaining the starfield and softened cosmic glow behind conventional Home content.</li>
+        <li>Keeps <code>home-spiral.html</code> as a noindex compatibility preview and retains <code>home-3d.html</code> as the separate unlinked Three.js experiment.</li>
       </ul>
       <h3>Scientific scope</h3>
       <p>No model, objective, constraint, adapter, evidence generator, validation protocol, or public claim boundary changed.</p>
-      <p>The stable public Home remains the default entry point, and the complete release history remains in <code>CHANGELOG.md</code>.</p>
+      <p>The complete release history remains in <code>CHANGELOG.md</code>.</p>
     `
   }),
   about: Object.freeze({

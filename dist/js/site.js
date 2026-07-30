@@ -163,12 +163,38 @@ async function registerServiceWorker() {
 
 function initializeWorkspaceMenus() {
   const menus = [...document.querySelectorAll(".site-menu")];
+  const hoverQuery = window.matchMedia?.("(hover: hover) and (pointer: fine)");
+  const closeOthers = (activeMenu) => {
+    for (const other of menus) if (other !== activeMenu) other.removeAttribute("open");
+  };
+
   for (const menu of menus) {
+    const summary = menu.querySelector(":scope > summary");
     menu.addEventListener("toggle", () => {
-      if (!menu.open) return;
-      for (const other of menus) if (other !== menu) other.removeAttribute("open");
+      if (menu.open) closeOthers(menu);
+    });
+    menu.addEventListener("mouseenter", () => {
+      if (!hoverQuery?.matches) return;
+      closeOthers(menu);
+      menu.setAttribute("open", "");
+    });
+    menu.addEventListener("mouseleave", () => {
+      if (hoverQuery?.matches && !menu.contains(document.activeElement)) menu.removeAttribute("open");
+    });
+    menu.addEventListener("focusin", () => {
+      closeOthers(menu);
+      menu.setAttribute("open", "");
+    });
+    menu.addEventListener("focusout", () => {
+      window.setTimeout(() => {
+        if (!menu.contains(document.activeElement) && hoverQuery?.matches) menu.removeAttribute("open");
+      }, 0);
+    });
+    summary?.addEventListener("click", (event) => {
+      if (hoverQuery?.matches && event.detail > 0) event.preventDefault();
     });
   }
+
   document.addEventListener("click", (event) => {
     for (const menu of menus) if (menu.open && !menu.contains(event.target)) menu.removeAttribute("open");
   });

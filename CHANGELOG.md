@@ -1,5 +1,27 @@
 # Changelog
 
+## [3.3.0] - 2026-07-29
+
+### Promoted
+
+- Promoted the refined editorial motion experience to the official public `index.html` Home while retaining `home-spiral.html` as a noindex compatibility preview.
+- Added a brief load-safe black hold, an extruded three-dimensional LUMOS title assembly, chromatic slice passes, and a seamless morph into the first scene.
+- Preserved the six-scene Unified, Heat, Air, Water, and Soil presentation, hover-driven desktop navigation, bounded scroll snapping, and reduced-motion fallback.
+- Reworked the end-of-sequence handoff so the axial triangle and construction lines fade away while the starfield and softened cosmic glow persist behind conventional Home content.
+- Updated release metadata, documentation, readiness contracts, service-worker cache identity, and verification expectations for the official v3.3.0 public presentation.
+- Preserved every scientific model, domain adapter, evidence generator, workspace, operational workflow, and claim boundary.
+
+## [3.2.7] - 2026-07-29
+
+### Refined
+
+- Removed the orbiting ghost-word and transition-label layers from the unlinked `home-spiral.html` experiment, eliminating the faint background echo/watermark visible behind the geometric core.
+- Reduced motion overhead through cached scroll geometry and visible-scene-only DOM updates, so distant scenes no longer receive unnecessary per-frame style writes.
+- Tightened the six scene centers and shortened the desktop and mobile pinned scroll tracks for faster movement between chapters.
+- Expanded the near-scene snap radius and shortened its release delay so scenes settle into place from a wider but still bounded interval.
+- Changed shared desktop header dropdowns to open and close on hover while preserving keyboard focus behavior and touch/click fallback.
+- Preserved the brighter cosmic background, axes, triangular core, stable public Home, every workspace, and all scientific behavior.
+
 ## [3.2.6] - 2026-07-29
 
 ### Refined

@@ -2,10 +2,10 @@ const track = document.querySelector("#spiralSequence");
 const viewport = document.querySelector("#spiralViewport");
 const orbit = document.querySelector("#spiralOrbit");
 const cards = Array.from(document.querySelectorAll(".spiral-item"));
-const ghostItems = Array.from(document.querySelectorAll("#motionGhostOrbit > span"));
-const ghostLabel = document.querySelector("#motionGhostLabel");
 const typingWord = document.querySelector("#motionTypingWord");
 const particleCanvas = document.querySelector("#spiralParticleCanvas");
+const persistentCanvas = document.querySelector("#spiralPersistentCanvas");
+const titleIntro = document.querySelector("#spiralIntro");
 const counter = document.querySelector("#spiralCounter");
 const activeIndex = document.querySelector("#spiralActiveIndex");
 const activeTitle = document.querySelector("#spiralActiveTitle");
@@ -16,19 +16,20 @@ const rootStyle = document.documentElement.style;
 const reducedMotionQuery = window.matchMedia?.("(prefers-reduced-motion: reduce)");
 const coarsePointerQuery = window.matchMedia?.("(pointer: coarse)");
 
-const SCENE_CENTERS = [0, 0.16, 0.32, 0.48, 0.64, 0.8];
+const SCENE_CENTERS = [0, 0.145, 0.29, 0.435, 0.58, 0.725];
 const SCENE_INNER_RADIUS = 0.019;
-const SCENE_OUTER_RADIUS = 0.051;
-const SCENE_INTERVAL = 0.16;
-const SNAP_RADIUS = 0.03;
-const SNAP_DELAY = 145;
-const STAGE_BLACK_START = 0.92;
-const STAGE_BLACK_END = 0.945;
-const STAGE_FADE_START = 0.95;
-const STAGE_FADE_END = 0.972;
-const CONTENT_REVEAL_START = 0.975;
-const CONTENT_REVEAL_END = 0.998;
+const SCENE_OUTER_RADIUS = 0.048;
+const SCENE_INTERVAL = 0.145;
+const SNAP_RADIUS = 0.045;
+const SNAP_DELAY = 125;
+const GEOMETRY_FADE_START = 0.81;
+const GEOMETRY_FADE_END = 0.905;
+const CONTENT_REVEAL_START = 0.865;
+const CONTENT_REVEAL_END = 0.965;
 const TYPING_WORDS = ["monitoring", "intervention", "planning", "optimization", "deployment", "evaluation"];
+const TITLE_INTRO_DELAY = 150;
+const TITLE_INTRO_HANDOFF = 2030;
+const TITLE_INTRO_DURATION = 2480;
 
 let activeCard = -1;
 let reduced = false;
@@ -41,8 +42,13 @@ let targetPointerX = 0;
 let targetPointerY = 0;
 let pointerX = 0;
 let pointerY = 0;
-let lastProgress = -1;
+let scrollStart = 0;
+let scrollRange = 1;
+const cardVisibility = cards.map(() => false);
 let typingTimer = 0;
+let titleIntroTimer = 0;
+let titleIntroHandoffTimer = 0;
+let titleIntroDelayTimer = 0;
 let typingWordIndex = 0;
 let typingCharacterIndex = TYPING_WORDS[0].length;
 let typingPhase = "hold";
@@ -54,15 +60,18 @@ const smoothstep = (value) => {
 };
 const mix = (a, b, t) => a + (b - a) * t;
 
-function scrollMetrics() {
-  if (!track) return { start: 0, range: 1 };
-  const start = track.offsetTop;
-  return { start, range: Math.max(1, track.offsetHeight - window.innerHeight) };
+function refreshScrollMetrics() {
+  if (!track) {
+    scrollStart = 0;
+    scrollRange = 1;
+    return;
+  }
+  scrollStart = track.offsetTop;
+  scrollRange = Math.max(1, track.offsetHeight - window.innerHeight);
 }
 
 function scrollProgress() {
-  const { start, range } = scrollMetrics();
-  return clamp((window.scrollY - start) / range);
+  return clamp((window.scrollY - scrollStart) / scrollRange);
 }
 
 function sceneCenter(index) {
@@ -84,8 +93,7 @@ function nearestScene(progress) {
 }
 
 function scrollToScene(index, behavior = "smooth") {
-  const { start, range } = scrollMetrics();
-  window.scrollTo({ top: start + sceneCenter(index) * range, behavior });
+  window.scrollTo({ top: scrollStart + sceneCenter(index) * scrollRange, behavior });
 }
 
 function createProgressControls() {
@@ -135,25 +143,6 @@ function cardOpacity(distance) {
   return 1 - smoothstep((absolute - SCENE_INNER_RADIUS) / (SCENE_OUTER_RADIUS - SCENE_INNER_RADIUS));
 }
 
-function renderGhostOrbit(progress, gapIntensity) {
-  const width = Math.max(1, window.innerWidth);
-  const height = Math.max(1, window.innerHeight);
-  ghostItems.forEach((ghost, index) => {
-    const center = sceneCenter(index);
-    const offset = (progress - center) / SCENE_INTERVAL;
-    const absolute = Math.abs(offset);
-    const angle = offset * 1.06 + index * 0.38 + progress * 1.35;
-    const x = Math.sin(angle) * width * 0.38 + offset * width * -0.08;
-    const y = Math.cos(angle * 0.84) * height * 0.23 + offset * height * -0.17;
-    const z = -260 - absolute * 300;
-    const proximity = clamp(1 - absolute * 0.5, 0, 1);
-    const opacity = (0.012 + gapIntensity * 0.17) * proximity;
-    ghost.style.opacity = opacity.toFixed(3);
-    ghost.style.visibility = opacity > 0.004 ? "visible" : "hidden";
-    ghost.style.transform = `translate3d(calc(-50% + ${x.toFixed(1)}px), calc(-50% + ${y.toFixed(1)}px), ${z.toFixed(1)}px) rotateY(${(offset * -28).toFixed(2)}deg) rotateZ(${(angle * 12).toFixed(2)}deg)`;
-  });
-}
-
 function renderMotion(force = false) {
   frameRequested = false;
   if (reduced || !track || !viewport || !orbit) return;
@@ -185,60 +174,52 @@ function renderMotion(force = false) {
     const rotateY = travel * 9.5;
     const rotateZ = travel * -7.5;
     const scale = clamp(1 - absoluteNormalized * 0.12, 0.76, 1);
-    const visible = opacity > 0.002 && Math.abs(distance) < SCENE_OUTER_RADIUS + 0.016;
+    const visible = opacity > 0.002 && Math.abs(distance) < SCENE_OUTER_RADIUS + 0.014;
 
+    if (!visible) {
+      if (cardVisibility[index]) {
+        card.style.opacity = "0";
+        card.style.visibility = "hidden";
+        cardVisibility[index] = false;
+      }
+      return;
+    }
+
+    cardVisibility[index] = true;
     card.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, ${z.toFixed(1)}px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) rotateZ(${rotateZ.toFixed(2)}deg) scale(${scale.toFixed(4)})`;
     card.style.opacity = opacity.toFixed(3);
-    card.style.visibility = visible ? "visible" : "hidden";
+    card.style.visibility = "visible";
     card.style.zIndex = String(50 - Math.round(absoluteNormalized * 10));
-    card.style.setProperty("--scene-copy-x", `${(travel * width * 0.025).toFixed(1)}px`);
-    card.style.setProperty("--scene-copy-y", `${(travel * height * 0.018).toFixed(1)}px`);
-    card.style.setProperty("--scene-plane-x", `${(travel * width * -0.055).toFixed(1)}px`);
-    card.style.setProperty("--scene-plane-y", `${(travel * height * -0.035).toFixed(1)}px`);
+    card.style.setProperty("--scene-copy-x", `${(travel * width * 0.022).toFixed(1)}px`);
+    card.style.setProperty("--scene-copy-y", `${(travel * height * 0.015).toFixed(1)}px`);
+    card.style.setProperty("--scene-plane-x", `${(travel * width * -0.048).toFixed(1)}px`);
+    card.style.setProperty("--scene-plane-y", `${(travel * height * -0.03).toFixed(1)}px`);
   });
 
   const gapIntensity = clamp(1 - maximumOpacity);
   const { index: nearest } = nearestScene(progress);
   setActiveCard(nearest);
-  renderGhostOrbit(progress, gapIntensity);
-  if (ghostLabel) {
-    let leftIndex = nearest;
-    let rightIndex = nearest;
-    for (let index = 0; index < cards.length - 1; index += 1) {
-      if (progress >= sceneCenter(index) && progress <= sceneCenter(index + 1)) {
-        leftIndex = index;
-        rightIndex = index + 1;
-        break;
-      }
-    }
-    ghostLabel.textContent = leftIndex === rightIndex
-      ? (cards[nearest]?.dataset.spiralTitle || "LUMOS")
-      : `${cards[leftIndex]?.dataset.spiralTitle || "LUMOS"} / ${cards[rightIndex]?.dataset.spiralTitle || "LUMOS"}`;
-    ghostLabel.style.opacity = (gapIntensity * 0.28).toFixed(3);
-    ghostLabel.style.transform = `translate3d(-50%, -50%, -180px) rotateZ(${(-8 + progress * 13).toFixed(2)}deg) scale(${(0.9 + gapIntensity * 0.08).toFixed(3)})`;
-  }
-
-  const blackOverlay = smoothstep((progress - STAGE_BLACK_START) / (STAGE_BLACK_END - STAGE_BLACK_START));
-  const stageFade = 1 - smoothstep((progress - STAGE_FADE_START) / (STAGE_FADE_END - STAGE_FADE_START));
+  const geometryFade = smoothstep((progress - GEOMETRY_FADE_START) / (GEOMETRY_FADE_END - GEOMETRY_FADE_START));
+  const geometryOpacity = 1 - geometryFade;
   const contentReveal = smoothstep((progress - CONTENT_REVEAL_START) / (CONTENT_REVEAL_END - CONTENT_REVEAL_START));
-  const headerOpacity = progress < STAGE_BLACK_START
-    ? 1
-    : progress < CONTENT_REVEAL_START
-      ? 1 - blackOverlay
-      : contentReveal;
+  const gridOpacity = mix(0.9, 0.26, geometryFade);
+  const glowOpacity = mix(0.34, 0.16, geometryFade);
   rootStyle.setProperty("--motion-gap", gapIntensity.toFixed(4));
-  rootStyle.setProperty("--motion-foreground-opacity", (1 - blackOverlay).toFixed(4));
-  rootStyle.setProperty("--motion-stage-opacity", stageFade.toFixed(4));
+  rootStyle.setProperty("--motion-foreground-opacity", "1");
+  rootStyle.setProperty("--motion-stage-opacity", "1");
+  rootStyle.setProperty("--motion-geometry-opacity", geometryOpacity.toFixed(4));
+  rootStyle.setProperty("--motion-grid-opacity", gridOpacity.toFixed(4));
+  rootStyle.setProperty("--motion-glow-opacity", glowOpacity.toFixed(4));
+  rootStyle.setProperty("--motion-interface-opacity", geometryOpacity.toFixed(4));
   rootStyle.setProperty("--motion-content-opacity", contentReveal.toFixed(4));
-  rootStyle.setProperty("--motion-content-shift", `${((1 - contentReveal) * 80).toFixed(1)}px`);
-  rootStyle.setProperty("--motion-header-opacity", headerOpacity.toFixed(4));
+  rootStyle.setProperty("--motion-content-shift", `${((1 - contentReveal) * 62).toFixed(1)}px`);
+  rootStyle.setProperty("--motion-header-opacity", "1");
   rootStyle.setProperty("--motion-core-rotation", `${(progress * 390 - 18).toFixed(2)}deg`);
 
-  document.body.classList.toggle("spiral-between-scenes", gapIntensity > 0.48 && progress < STAGE_BLACK_START);
-  document.body.classList.toggle("spiral-handoff-active", progress >= STAGE_BLACK_START);
+  document.body.classList.toggle("spiral-between-scenes", gapIntensity > 0.48 && progress < GEOMETRY_FADE_START);
+  document.body.classList.toggle("spiral-handoff-active", progress >= GEOMETRY_FADE_START);
   document.body.classList.toggle("spiral-handoff-ready", contentReveal > 0.82);
 
-  lastProgress = progress;
   if (
     Math.abs(pointerX - targetPointerX) > 0.012 ||
     Math.abs(pointerY - targetPointerY) > 0.012
@@ -256,8 +237,8 @@ function maybeSnapToScene() {
   const progress = scrollProgress();
   if (progress < SCENE_CENTERS[0] - SNAP_RADIUS || progress > SCENE_CENTERS.at(-1) + SNAP_RADIUS) return;
   const { index, distance } = nearestScene(progress);
-  if (distance > 0.0015 && distance <= SNAP_RADIUS) {
-    snappingUntil = Date.now() + 620;
+  if (distance > 0.001 && distance <= SNAP_RADIUS) {
+    snappingUntil = Date.now() + 560;
     scrollToScene(index, "smooth");
   }
 }
@@ -335,16 +316,16 @@ function seededRandom(seed) {
   };
 }
 
-function drawParticleField() {
-  if (!particleCanvas) return;
-  const context = particleCanvas.getContext("2d", { alpha: true, desynchronized: true });
+function drawParticleCanvas(canvas) {
+  if (!canvas) return;
+  const context = canvas.getContext("2d", { alpha: true, desynchronized: true });
   if (!context) return;
-  const rect = particleCanvas.getBoundingClientRect();
+  const rect = canvas.getBoundingClientRect();
   const ratio = Math.min(window.devicePixelRatio || 1, 1.15);
   const width = Math.max(1, Math.round(rect.width));
   const height = Math.max(1, Math.round(rect.height));
-  particleCanvas.width = Math.round(width * ratio);
-  particleCanvas.height = Math.round(height * ratio);
+  canvas.width = Math.round(width * ratio);
+  canvas.height = Math.round(height * ratio);
   context.setTransform(ratio, 0, 0, ratio, 0, 0);
   context.clearRect(0, 0, width, height);
 
@@ -388,6 +369,51 @@ function drawParticleField() {
   });
 }
 
+function completeTitleIntro(immediate = false) {
+  window.clearTimeout(titleIntroTimer);
+  window.clearTimeout(titleIntroHandoffTimer);
+  window.clearTimeout(titleIntroDelayTimer);
+  document.body.classList.remove("spiral-title-intro-pending", "spiral-title-intro-active", "spiral-title-intro-handoff");
+  document.body.classList.add("spiral-title-intro-complete");
+  if (titleIntro) titleIntro.setAttribute("aria-hidden", "true");
+  if (!immediate) renderMotion(true);
+}
+
+async function initializeTitleIntro() {
+  if (!titleIntro) return;
+  if (window.scrollY > 10 || reducedMotionQuery?.matches === true) {
+    completeTitleIntro(true);
+    return;
+  }
+
+  document.body.classList.remove("spiral-title-intro-complete");
+  document.body.classList.add("spiral-title-intro-pending");
+  const fontReady = document.fonts?.ready ?? Promise.resolve();
+  await Promise.race([
+    fontReady,
+    new Promise((resolve) => window.setTimeout(resolve, 420))
+  ]);
+
+  titleIntroDelayTimer = window.setTimeout(() => {
+    if (window.scrollY > 10 || reducedMotionQuery?.matches === true) {
+      completeTitleIntro(true);
+      return;
+    }
+    titleIntro.setAttribute("aria-hidden", "false");
+    document.body.classList.remove("spiral-title-intro-pending");
+    document.body.classList.add("spiral-title-intro-active");
+    titleIntroHandoffTimer = window.setTimeout(() => {
+      document.body.classList.add("spiral-title-intro-handoff");
+    }, TITLE_INTRO_HANDOFF);
+    titleIntroTimer = window.setTimeout(() => completeTitleIntro(), TITLE_INTRO_DURATION);
+  }, TITLE_INTRO_DELAY);
+}
+
+function drawParticleField() {
+  drawParticleCanvas(particleCanvas);
+  drawParticleCanvas(persistentCanvas);
+}
+
 function updateStageVisibility() {
   document.body.classList.toggle("spiral-stage-visible", stageIntersecting && !document.hidden && !reduced);
 }
@@ -408,15 +434,6 @@ function clearMotionStyles() {
     card.setAttribute("aria-hidden", "false");
     setInteractiveState(card, true);
   });
-  ghostItems.forEach((ghost) => {
-    ghost.style.removeProperty("transform");
-    ghost.style.removeProperty("opacity");
-    ghost.style.removeProperty("visibility");
-  });
-  if (ghostLabel) {
-    ghostLabel.style.removeProperty("transform");
-    ghostLabel.style.removeProperty("opacity");
-  }
 }
 
 function updateReducedState() {
@@ -431,7 +448,12 @@ function updateReducedState() {
     rootStyle.setProperty("--motion-content-opacity", "1");
     rootStyle.setProperty("--motion-content-shift", "0px");
     rootStyle.setProperty("--motion-header-opacity", "1");
+    rootStyle.setProperty("--motion-geometry-opacity", "0");
+    rootStyle.setProperty("--motion-grid-opacity", ".26");
+    rootStyle.setProperty("--motion-glow-opacity", ".16");
+    rootStyle.setProperty("--motion-interface-opacity", "0");
     document.body.classList.add("spiral-handoff-ready");
+    completeTitleIntro(true);
     setActiveCard(0);
   } else {
     renderMotion(true);
@@ -456,6 +478,7 @@ function scheduleResize() {
   if (resizeFrame) return;
   resizeFrame = window.requestAnimationFrame(() => {
     resizeFrame = 0;
+    refreshScrollMetrics();
     drawParticleField();
     renderMotion(true);
   });
@@ -465,7 +488,9 @@ window.addEventListener("scroll", updateFromScroll, { passive: true });
 window.addEventListener("resize", scheduleResize, { passive: true });
 reducedMotionQuery?.addEventListener?.("change", updateReducedState);
 
+refreshScrollMetrics();
 createProgressControls();
+void initializeTitleIntro();
 initializeTypingIdentity();
 drawParticleField();
 initializePointerTilt();

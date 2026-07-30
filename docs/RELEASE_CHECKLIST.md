@@ -2,9 +2,9 @@
 
 ## Version and package
 
-- [ ] `package.json`, `release.json`, `js/release/version.js`, service worker, citation metadata, release notes, and changelog identify `3.2.6`. The public masthead, browser title, footer, manifest name, README title, and model-specification title remain version-neutral.
+- [ ] `package.json`, `release.json`, `js/release/version.js`, service worker, citation metadata, release notes, and changelog identify `3.3.0`. The public masthead, browser title, footer, manifest name, README title, and model-specification title remain version-neutral.
 - [ ] Release status is `stable-public-v3`.
-- [ ] Service-worker cache is `lumos-v3.2.6` and contains every standard public entry page, the unlinked `home-3d.html` and `home-spiral.html` experiments, the shared workspace shell, all public domain modules, unified operations, and documentation scripts.
+- [ ] Service-worker cache is `lumos-v3.3.0` and contains every standard public entry page, the official cinematic Home assets, the unlinked `home-3d.html` experiment, the noindex `home-spiral.html` compatibility preview, the shared workspace shell, all public domain modules, unified operations, and documentation scripts.
 - [ ] No permanent credential is embedded in public assets.
 
 ## Automated verification
@@ -31,7 +31,7 @@
 - [ ] Saved workspace persistence and import/export remain functional.
 - [ ] Offline application shell loads after one successful online visit.
 - [ ] `home-3d.html` remains absent from standard Home navigation, declares `noindex,nofollow`, preserves every Home content section, and falls back cleanly when WebGL or the pinned Three.js module is unavailable.
-- [ ] `home-spiral.html` remains absent from standard Home and `home-3d.html` navigation, declares `noindex,nofollow`, rotates cards through a sticky native-scroll sequence, releases into conventional content, and becomes a linear card stack under reduced motion.
+- [ ] `index.html` is the indexable cinematic motion Home; `home-spiral.html` remains a noindex compatibility preview; both preserve the sticky native-scroll sequence, persistent cosmic content background, and reduced-motion linear fallback.
 
 ## Scientific and operational review
 

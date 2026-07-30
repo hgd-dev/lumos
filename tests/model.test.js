@@ -2170,7 +2170,7 @@ test("multi-page Unified interface exposes commissioning and full-map controls",
 
 test("cross-domain consistency audit passes and exports reproducible tidy rows", () => {
   const releaseMetadata = {
-    version: "3.2.6",
+    version: "3.3.0",
     status: "stable-public-v3",
     supportedDomains: ["heat", "air", "soil", "water"],
     supportedWorkspaces: [
@@ -2348,7 +2348,7 @@ test("desktop workspace fills the viewport above a compact footer", async () => 
   assert.match(styles, /body\.header-collapsed \.header-collapse-toggle/);
 });
 
-test("secret motion Home uses a continuous editorial stage and remains unlinked", async () => {
+test("official motion Home and noindex compatibility preview preserve the editorial stage", async () => {
   const { readFile } = await import("node:fs/promises");
   const standard = await readFile(new URL("../index.html", import.meta.url), "utf8");
   const immersive = await readFile(new URL("../home-3d.html", import.meta.url), "utf8");
@@ -2366,6 +2366,8 @@ test("secret motion Home uses a continuous editorial stage and remains unlinked"
   assert.match(spiral, /class="motion-blueprint-grid"/);
   assert.match(spiral, /id="motionTypingWord"/);
   assert.doesNotMatch(spiral, /class="motion-film-orbit"/);
+  assert.doesNotMatch(spiral, /id="motionGhostOrbit"/);
+  assert.doesNotMatch(spiral, /id="motionGhostLabel"/);
   assert.match(spiral, /data-spiral-title="UNIFIED"/);
   assert.match(spiral, /id="spiralCounter">01 \/ 06/);
   assert.match(spiral, /class="domain-glyph"/);
@@ -2383,15 +2385,17 @@ test("secret motion Home uses a continuous editorial stage and remains unlinked"
   assert.match(styles, /transform-style:\s*preserve-3d/);
   assert.match(styles, /motion-display-word/);
   assert.match(styles, /motion-plane-stack/);
-  assert.match(styles, /motion-ghost-orbit/);
+  assert.doesNotMatch(styles, /motion-ghost-orbit/);
   assert.match(styles, /margin-top:\s*-100vh/);
   assert.match(script, /scrollProgress\(\)/);
-  assert.match(script, /const SCENE_CENTERS = \[0, 0\.16, 0\.32, 0\.48, 0\.64, 0\.8\]/);
+  assert.match(script, /refreshScrollMetrics/);
+  assert.match(script, /cardVisibility/);
+  assert.match(script, /const SCENE_CENTERS = \[0, 0\.145, 0\.29, 0\.435, 0\.58, 0\.725\]/);
   assert.match(script, /CONTENT_REVEAL_START/);
   assert.match(script, /TYPING_WORDS/);
-  assert.match(script, /renderGhostOrbit/);
+  assert.doesNotMatch(script, /renderGhostOrbit/);
   assert.doesNotMatch(script, /renderFilmOrbit/);
-  assert.match(script, /const SNAP_RADIUS = 0\.03/);
+  assert.match(script, /const SNAP_RADIUS = 0\.045/);
   assert.doesNotMatch(script, /card\.style\.filter/);
   assert.match(script, /drawParticleField/);
   assert.match(script, /spiral-reduced/);
@@ -2403,7 +2407,7 @@ test("v3 release metadata is internally consistent", async () => {
   const release = JSON.parse(await readFile(new URL("../release.json", import.meta.url), "utf8"));
   const manifest = JSON.parse(await readFile(new URL("../manifest.webmanifest", import.meta.url), "utf8"));
   assert.equal(APP_NAME, "LUMOS");
-  assert.equal(APP_VERSION, "3.2.6");
+  assert.equal(APP_VERSION, "3.3.0");
   assert.equal(RELEASE_CHANNEL, "stable-public");
   assert.equal(packageJson.version, APP_VERSION);
   assert.equal(packageJson.scripts.verify, "node scripts/run-verification.mjs");
@@ -2446,7 +2450,7 @@ test("v3 release metadata is internally consistent", async () => {
 test("v3 service worker preserves the complete same-origin application shell", async () => {
   const { readFile } = await import("node:fs/promises");
   const worker = await readFile(new URL("../service-worker.js", import.meta.url), "utf8");
-  assert.match(worker, /lumos-v3\.2\.6/);
+  assert.match(worker, /lumos-v3\.3\.0/);
   assert.match(worker, /\.\/index\.html/);
   assert.match(worker, /\.\/home-3d\.html/);
   assert.match(worker, /\.\/css\/home-3d\.css/);
@@ -2512,10 +2516,11 @@ test("public Home and permanent documentation page keep release metadata out of 
   const contact = await readFile(new URL("../contact.html", import.meta.url), "utf8");
   const contentSource = await readFile(new URL("../js/content-page.js", import.meta.url), "utf8");
   const siteSource = await readFile(new URL("../js/site.js", import.meta.url), "utf8");
+  const motionSource = await readFile(new URL("../js/home-spiral.js", import.meta.url), "utf8");
   assert.equal(DEFAULT_DOCUMENTATION_PAGE, "quickstart");
   assert.equal(DOCUMENTATION_ORDER.length, 8);
   assert.ok(DOCUMENTATION_ORDER.every((key) => DOCUMENTATION_PAGES[key]?.title && DOCUMENTATION_PAGES[key]?.html));
-  assert.match(DOCUMENTATION_PAGES["release-notes"].html, /3\.2\.6/);
+  assert.match(DOCUMENTATION_PAGES["release-notes"].html, /3\.3\.0/);
   assert.equal(DOCUMENTATION_PAGES.about.title, "About Us");
   assert.match(DOCUMENTATION_PAGES.about.html, /The LUMOS Team/);
   assert.match(html, /id="homePage"/);
@@ -2524,28 +2529,39 @@ test("public Home and permanent documentation page keep release metadata out of 
   assert.match(html, /id="installAppButton"/);
   assert.match(html, /class="brand-mark"[^>]*lumos-mark\.svg/);
   assert.match(html, /Design environmental monitoring, intervention, planning, optimization, deployment, and evaluation/);
-  assert.match(html, /Informative, equitable, and operationally realistic/);
-  assert.match(html, /class="home-install-card"/);
-  assert.match(html, /id="heroTypeText"/);
+  assert.match(html, /id="spiralIntro"/);
+  assert.match(html, /id="spiralPersistentBackdrop"/);
+  assert.match(html, /id="spiralPersistentCanvas"/);
+  assert.match(html, /class="motion-title-intro-word motion-title-intro-word-depth/);
+  assert.match(html, /class="motion-title-intro-shutters"/);
+  assert.match(html, /class="motion-title-intro-black"/);
+  assert.match(html, /name="robots" content="index,follow"/);
+  assert.doesNotMatch(html, /home-spiral-experiment-chip|Motion experiment/);
+  assert.match(html, /class="home-install-card[^"]*"/);
+  assert.match(html, /id="motionTypingWord"/);
   assert.match(html, /fonts\.googleapis\.com\/css2\?family=Inter/);
   assert.match(html, /family=Orbitron/);
   assert.match(html, /family=Tektur/);
+  assert.match(siteSource, /mouseenter/);
+  assert.match(siteSource, /mouseleave/);
+  assert.match(siteSource, /\(hover: hover\) and \(pointer: fine\)/);
   assert.match(html, /class="home-install-mark"[^>]*lumos-mark\.svg/);
-  assert.match(html, /class="home-brand-hero"/);
-  assert.match(html, /class="home-brand-hero-wordmark">LUMOS/);
-  assert.match(html, /class="home-intro-card"/);
-  assert.match(html, /class="hero-title-reserve">optimization/);
-  assert.match(html, /class="hero-title-animation"/);
-  assert.match(html, /class="eyebrow home-system-name">Localized Unified Monitoring Optimization System/);
+  assert.match(html, /LOCALIZED UNIFIED MONITORING OPTIMIZATION SYSTEM/);
+  assert.match(html, /class="motion-typing-lockup motion-typing-lockup-hero"/);
+  assert.match(html, /class="motion-display-word">LUMOS/);
+  assert.match(html, /css\/home-spiral\.css\?build=motion-canvas-official-1/);
+  assert.match(html, /js\/home-spiral\.js\?build=motion-canvas-official-1/);
   assert.match(html, /https:\/\/github\.com\/hgd-dev\/lumos/);
   assert.match(html, /mailto:Lumosystem\.team@gmail\.com/);
   assert.match(html, /instagram\.com\/lumos_optimization/);
   assert.match(html, /linkedin\.com\/in\/lumos-team-7786b2425/);
   assert.match(html, /<strong>Unified<\/strong>/);
   assert.match(html, /<strong>Heat<\/strong>/);
-  assert.match(siteSource, /TYPE_WORDS/);
-  assert.match(siteSource, /"monitoring"[\s\S]*"intervention"[\s\S]*"planning"[\s\S]*"optimization"/);
-  assert.match(siteSource, /prefersReducedMotion/);
+  assert.match(motionSource, /TYPING_WORDS/);
+  assert.match(motionSource, /"monitoring"[\s\S]*"intervention"[\s\S]*"planning"[\s\S]*"optimization"/);
+  assert.match(motionSource, /reducedMotionQuery/);
+  assert.match(motionSource, /TITLE_INTRO_DURATION/);
+  assert.match(motionSource, /initializeTitleIntro/);
   assert.match(html, /The LUMOS Team/);
   assert.doesNotMatch(html, /and the LUMOS team/);
   assert.match(html, /href="documentation.html#quickstart"/);
@@ -2563,7 +2579,7 @@ test("public Home and permanent documentation page keep release metadata out of 
   assert.match(contact, /id="contactTitle"/);
   assert.match(contact, /replace-with-feedback-form/);
   assert.doesNotMatch(html, /id="documentationDialog"/);
-  assert.match(html, /class="footer-credit"/);
+  assert.match(html, /class="spiral-footer"/);
   assert.doesNotMatch(html, /href="docs\//);
   assert.match(html, /Based on professional research/);
   assert.doesNotMatch(html, /Scientific monitoring design and operations/);

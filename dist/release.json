@@ -1,6 +1,6 @@
 {
   "name": "LUMOS",
-  "version": "3.2.6",
+  "version": "3.3.0",
   "releaseDate": "2026-07-29",
   "status": "stable-public-v3",
   "primaryDomain": "multi-domain",
@@ -103,7 +103,7 @@
       "live-campaign-tracking",
       "commissioning-operations"
     ],
-    "presentation": "multi-page-site-with-stable-standard-home-two-unlinked-three-dimensional-presentation-experiments-layered-navigation-draggable-map-search-and-compact-footer",
+    "presentation": "multi-page-site-with-official-cinematic-motion-home-persistent-cosmic-background-layered-navigation-draggable-map-search-and-compact-footer",
     "limitationsAndScope": true,
     "aboutPage": true,
     "informationArchitecture": [
@@ -126,11 +126,32 @@
         "reduced-motion-fallback"
       ]
     },
-    "experimentalScrollPresentation": {
+    "officialHomePresentation": {
+      "entry": "index.html",
+      "indexing": "index-follow",
+      "renderer": "optimized-native-css-editorial-motion-canvas-with-cinematic-title-intro-and-persistent-cosmic-background",
+      "interaction": [
+        "brief-load-safe-black-hold",
+        "extruded-three-dimensional-lumos-title-assembly",
+        "chromatic-sliced-title-reveal",
+        "seamless-title-to-first-scene-handoff",
+        "sticky-pinned-continuous-motion-stage",
+        "six-scene-editorial-typography-system",
+        "custom-technical-heat-air-water-and-soil-glyphs",
+        "persistent-blueprint-grid-wireframe-core-and-starfield",
+        "depth-separated-domain-visual-planes",
+        "steep-diagonal-inertial-scene-transitions",
+        "expanded-near-scene-scroll-release-snap",
+        "persistent-cosmic-background-through-standard-content",
+        "desktop-hover-navigation-with-keyboard-and-touch-fallback",
+        "reduced-motion-linear-fallback"
+      ]
+    },
+    "compatibilityMotionPreview": {
       "entry": "home-spiral.html",
       "linkedFromPrimaryNavigation": false,
       "indexing": "noindex-nofollow",
-      "renderer": "optimized-native-css-editorial-motion-canvas-with-split-identity-and-unified-scenes-custom-domain-glyphs-and-brightened-ambient-geometric-background",
+      "renderer": "optimized-native-css-editorial-motion-canvas-with-clean-geometric-background-cached-scroll-metrics-and-hover-navigation",
       "interaction": [
         "sticky-pinned-continuous-motion-stage",
         "first-frame-lumos-hero-without-empty-lead-in",
@@ -144,8 +165,13 @@
         "expanded-near-scene-scroll-release-snap",
         "full-background-fade-before-standard-content",
         "pointer-reactive-stage-parallax",
-        "reduced-motion-linear-fallback"
-      ]
+        "reduced-motion-linear-fallback",
+        "watermark-free-ambient-geometric-background",
+        "cached-scroll-metrics-and-visible-scene-only-rendering",
+        "tighter-six-scene-scroll-sequence",
+        "desktop-hover-navigation-with-keyboard-and-touch-fallback"
+      ],
+      "role": "noindex-compatibility-preview-of-the-official-motion-home"
     }
   },
   "publicArchitecture": "multi-page-static-site",

@@ -3090,3 +3090,17 @@ body.header-collapsed .header-collapse-toggle,
   .about-current-work,
   .about-cta { align-items: flex-start; flex-direction: column; }
 }
+
+
+@media (hover: hover) and (pointer: fine) {
+  .site-menu > summary { cursor: default; }
+  .site-menu .workspace-menu-panel {
+    transform-origin: top center;
+    animation: siteMenuHoverIn 120ms ease-out both;
+  }
+}
+
+@keyframes siteMenuHoverIn {
+  from { opacity: 0; transform: translate(-50%, -4px) scale(.985); }
+  to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}

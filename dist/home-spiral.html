@@ -14,9 +14,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Orbitron:wght@500;600;700&amp;family=Tektur:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css?build=multi-page-8">
-  <link rel="stylesheet" href="css/home-spiral.css?build=motion-canvas-3">
+  <link rel="stylesheet" href="css/home-spiral.css?build=motion-canvas-6">
 </head>
-<body class="site-page home-active home-spiral-page" data-lumos-page="home-spiral">
+<body class="site-page home-active home-spiral-page spiral-title-intro-pending" data-lumos-page="home-spiral">
   <a class="skip-link" href="#spiralContent">Skip the animated sequence</a>
   <div id="offlineBanner" class="offline-banner" hidden role="status">Offline mode: the spiral experiment and application shell remain available, but live public-data services require a connection.</div>
 
@@ -51,47 +51,79 @@
   </header>
 
   <main id="spiralPage">
+    <div id="spiralPersistentBackdrop" class="spiral-persistent-backdrop" aria-hidden="true">
+      <canvas id="spiralPersistentCanvas" class="spiral-persistent-canvas"></canvas>
+      <div class="spiral-persistent-grid"></div>
+      <div class="spiral-persistent-glow spiral-persistent-glow-a"></div>
+      <div class="spiral-persistent-glow spiral-persistent-glow-b"></div>
+      <div class="spiral-persistent-glow spiral-persistent-glow-c"></div>
+    </div>
     <section id="spiralSequence" class="spiral-scroll-track" aria-labelledby="spiralTitle">
       <div class="spiral-sticky-stage">
+        <div id="spiralIntro" class="motion-title-intro" aria-hidden="true">
+          <div class="motion-title-intro-black"></div>
+          <div class="motion-title-intro-scanfield"></div>
+          <div class="motion-title-intro-object">
+            <div class="motion-title-intro-energy" role="presentation">
+              <span class="motion-title-intro-energy-ring motion-title-intro-energy-ring-a"></span>
+              <span class="motion-title-intro-energy-ring motion-title-intro-energy-ring-b"></span>
+              <span class="motion-title-intro-energy-ring motion-title-intro-energy-ring-c"></span>
+              <span class="motion-title-intro-energy-core"></span>
+            </div>
+            <div class="motion-title-intro-copy">
+              <p class="motion-title-intro-kicker">Localized Unified Monitoring Optimization System</p>
+              <div class="motion-title-intro-wordmark" role="presentation" aria-hidden="true">
+                <span class="motion-title-intro-word motion-title-intro-word-depth depth-6">LUMOS</span>
+                <span class="motion-title-intro-word motion-title-intro-word-depth depth-5">LUMOS</span>
+                <span class="motion-title-intro-word motion-title-intro-word-depth depth-4">LUMOS</span>
+                <span class="motion-title-intro-word motion-title-intro-word-depth depth-3">LUMOS</span>
+                <span class="motion-title-intro-word motion-title-intro-word-depth depth-2">LUMOS</span>
+                <span class="motion-title-intro-word motion-title-intro-word-depth depth-1">LUMOS</span>
+                <span class="motion-title-intro-word motion-title-intro-word-main">LUMOS</span>
+                <span class="motion-title-intro-word motion-title-intro-word-glow">LUMOS</span>
+                <span class="motion-title-intro-word motion-title-intro-word-slice motion-title-intro-word-slice-a">LUMOS</span>
+                <span class="motion-title-intro-word motion-title-intro-word-slice motion-title-intro-word-slice-b">LUMOS</span>
+              </div>
+              <div class="motion-title-intro-bar" role="presentation"><span class="motion-title-intro-bar-core"></span></div>
+            </div>
+          </div>
+          <div class="motion-title-intro-shutters" role="presentation">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
         <div class="motion-background" aria-hidden="true">
           <canvas id="spiralParticleCanvas" class="motion-particle-canvas"></canvas>
           <div class="motion-blueprint-grid"></div>
           <div class="motion-chroma motion-chroma-a"></div>
           <div class="motion-chroma motion-chroma-b"></div>
-          <div class="motion-axis motion-axis-horizontal"></div>
-          <div class="motion-axis motion-axis-diagonal"></div>
-          <div class="motion-axis motion-axis-vertical"></div>
-          <div class="motion-ghost-orbit" id="motionGhostOrbit">
-            <span data-ghost="LUMOS">LUMOS</span>
-            <span data-ghost="UNIFIED">UNIFIED</span>
-            <span data-ghost="HEAT">HEAT</span>
-            <span data-ghost="AIR">AIR</span>
-            <span data-ghost="WATER">WATER</span>
-            <span data-ghost="SOIL">SOIL</span>
-          </div>
-          <div id="motionGhostLabel" class="motion-ghost-label">LUMOS</div>
-          <div class="motion-core" id="motionCore">
-            <svg viewBox="0 0 600 600" role="presentation">
-              <g class="core-guides">
-                <circle cx="300" cy="300" r="238"></circle>
-                <circle cx="300" cy="300" r="178"></circle>
-                <circle cx="300" cy="300" r="112"></circle>
-                <path d="M92 420 300 60 508 420Z"></path>
-                <path d="M136 446 300 162 464 446Z"></path>
-                <path d="M64 300H536M300 64V536"></path>
-              </g>
-              <g class="core-signal">
-                <path d="M112 392 300 80 488 392Z"></path>
-                <path d="M150 414 300 154 450 414Z"></path>
-                <circle cx="300" cy="300" r="72"></circle>
-              </g>
-              <g class="core-nodes">
-                <circle cx="300" cy="80" r="5"></circle>
-                <circle cx="112" cy="392" r="5"></circle>
-                <circle cx="488" cy="392" r="5"></circle>
-                <circle cx="300" cy="300" r="7"></circle>
-              </g>
-            </svg>
+          <div class="motion-axial-layer">
+            <div class="motion-axis motion-axis-horizontal"></div>
+            <div class="motion-axis motion-axis-diagonal"></div>
+            <div class="motion-axis motion-axis-vertical"></div>
+            <div class="motion-core" id="motionCore">
+              <svg viewBox="0 0 600 600" role="presentation">
+                <g class="core-guides">
+                  <circle cx="300" cy="300" r="238"></circle>
+                  <circle cx="300" cy="300" r="178"></circle>
+                  <circle cx="300" cy="300" r="112"></circle>
+                  <path d="M92 420 300 60 508 420Z"></path>
+                  <path d="M136 446 300 162 464 446Z"></path>
+                  <path d="M64 300H536M300 64V536"></path>
+                </g>
+                <g class="core-signal">
+                  <path d="M112 392 300 80 488 392Z"></path>
+                  <path d="M150 414 300 154 450 414Z"></path>
+                  <circle cx="300" cy="300" r="72"></circle>
+                </g>
+                <g class="core-nodes">
+                  <circle cx="300" cy="80" r="5"></circle>
+                  <circle cx="112" cy="392" r="5"></circle>
+                  <circle cx="488" cy="392" r="5"></circle>
+                  <circle cx="300" cy="300" r="7"></circle>
+                </g>
+              </svg>
+            </div>
           </div>
 
         </div>
@@ -290,6 +322,6 @@
     </form>
   </dialog>
   <script type="module" src="js/site.js?build=multi-page-8"></script>
-  <script type="module" src="js/home-spiral.js?build=motion-canvas-3"></script>
+  <script type="module" src="js/home-spiral.js?build=motion-canvas-6"></script>
 </body>
 </html>
