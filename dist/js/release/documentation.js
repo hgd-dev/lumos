@@ -124,7 +124,7 @@ export const DOCUMENTATION_PAGES = Object.freeze({
       <ul>
         <li>Opens with a brief load-safe black hold and an extruded, chromatically sliced three-dimensional LUMOS title assembly.</li>
         <li>Morphs directly into the first editorial scene rather than cutting between independent overlays.</li>
-        <li>Preserves the six-scene Unified, Heat, Air, Water, and Soil sequence with faster motion, wider snap behavior, and hover-driven desktop navigation.</li>
+        <li>Preserves the six-scene Unified, Heat, Air, Water, and Soil sequence with persistent magnetic snapping with immediate visual attraction as each bounded scene interval is entered, plus hover-driven desktop navigation.</li>
         <li>Fades the axial geometry after the scene sequence while retaining the starfield and softened cosmic glow behind conventional Home content.</li>
         <li>Removes the retired <code>home-spiral.html</code> compatibility route now that the cinematic experience is the official Home, while retaining <code>home-3d.html</code> as the separate unlinked Three.js experiment.</li>
       </ul>

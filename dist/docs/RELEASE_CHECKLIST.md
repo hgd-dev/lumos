@@ -31,7 +31,7 @@
 - [ ] Saved workspace persistence and import/export remain functional.
 - [ ] Offline application shell loads after one successful online visit.
 - [ ] `home-3d.html` remains absent from standard Home navigation, declares `noindex,nofollow`, preserves every Home content section, and falls back cleanly when WebGL or the pinned Three.js module is unavailable.
-- [ ] `index.html` is the sole cinematic motion Home and preserves the sticky native-scroll sequence, persistent cosmic content background, and reduced-motion linear fallback; the retired `home-spiral.html` route is absent from source and build output.
+- [ ] `index.html` is the sole cinematic motion Home and preserves the sticky native-scroll sequence, persistent interval-entry magnetic snapping, persistent cosmic content background, and reduced-motion linear fallback; the retired `home-spiral.html` route is absent from source and build output.
 
 ## Scientific and operational review
 

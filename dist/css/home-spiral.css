@@ -104,6 +104,15 @@ body.home-spiral-page::before {
     radial-gradient(circle at 16% 38%, rgba(78,110,255,.13), transparent 36%),
     radial-gradient(circle at 84% 68%, rgba(67,222,196,.11), transparent 38%),
     linear-gradient(180deg, #020304 0%, #030706 46%, #06100d 100%);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 260ms ease, visibility 0s linear 0s;
+  contain: strict;
+}
+body.spiral-stage-visible:not(.spiral-handoff-active) .spiral-persistent-backdrop {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 120ms linear, visibility 0s linear 120ms;
 }
 .spiral-persistent-backdrop::after {
   content: "";
@@ -138,24 +147,24 @@ body.home-spiral-page::before {
   width: min(70vw, 980px);
   aspect-ratio: 1;
   border-radius: 50%;
-  filter: blur(132px);
-  mix-blend-mode: screen;
-  opacity: .2;
+  filter: none;
+  mix-blend-mode: normal;
+  opacity: .3;
 }
 .spiral-persistent-glow-a {
   left: -12%;
   top: -30%;
-  background: radial-gradient(circle, rgba(78,110,255,.66), transparent 66%);
+  background: radial-gradient(circle, rgba(78,110,255,.34) 0%, rgba(78,110,255,.16) 34%, rgba(78,110,255,.055) 56%, transparent 74%);
 }
 .spiral-persistent-glow-b {
   right: -16%;
   top: 18%;
-  background: radial-gradient(circle, rgba(67,222,196,.56), transparent 66%);
+  background: radial-gradient(circle, rgba(67,222,196,.3) 0%, rgba(67,222,196,.14) 34%, rgba(67,222,196,.05) 56%, transparent 74%);
 }
 .spiral-persistent-glow-c {
   left: 20%;
   bottom: -42%;
-  background: radial-gradient(circle, rgba(189,252,107,.45), transparent 68%);
+  background: radial-gradient(circle, rgba(189,252,107,.24) 0%, rgba(189,252,107,.11) 36%, rgba(189,252,107,.04) 58%, transparent 76%);
 }
 
 .spiral-scroll-track {
@@ -558,20 +567,21 @@ body.spiral-title-intro-complete .motion-axis {
   width: min(76vw, 1080px);
   aspect-ratio: 1;
   border-radius: 50%;
-  filter: blur(112px);
+  filter: none;
   opacity: var(--motion-glow-opacity);
   mix-blend-mode: screen;
   transform: translate3d(0, 0, 0);
+  will-change: opacity;
 }
 .motion-chroma-a {
   left: 12%;
   top: -22%;
-  background: radial-gradient(circle, rgba(var(--motion-accent-rgb), .82), transparent 66%);
+  background: radial-gradient(circle, rgba(var(--motion-accent-rgb), .64) 0%, rgba(var(--motion-accent-rgb), .24) 34%, rgba(var(--motion-accent-rgb), .08) 54%, transparent 74%);
 }
 .motion-chroma-b {
   right: -7%;
   bottom: -35%;
-  background: radial-gradient(circle, rgba(82, 115, 255, .58), transparent 64%);
+  background: radial-gradient(circle, rgba(82, 115, 255, .5) 0%, rgba(82, 115, 255, .2) 34%, rgba(82, 115, 255, .06) 55%, transparent 74%);
 }
 .motion-axis {
   position: absolute;
@@ -610,9 +620,20 @@ body.spiral-title-intro-complete .motion-axis {
     rotateZ(var(--motion-core-rotation));
   transform-style: preserve-3d;
   opacity: calc(.62 + var(--motion-gap) * .24);
-  filter: drop-shadow(0 0 28px rgba(var(--motion-accent-rgb), .34));
+  filter: none;
+  will-change: transform, opacity;
+  contain: layout paint style;
 }
-.motion-core svg { width: 100%; height: 100%; overflow: visible; }
+.motion-core::before {
+  content: "";
+  position: absolute;
+  inset: 9%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--motion-accent-rgb), .18), rgba(var(--motion-accent-rgb), .055) 42%, transparent 72%);
+  pointer-events: none;
+}
+.motion-core svg { position: relative; z-index: 1; width: 100%; height: 100%; overflow: visible; }
 .motion-core path,
 .motion-core circle {
   fill: none;
@@ -626,7 +647,12 @@ body.spiral-title-intro-complete .motion-axis {
   stroke-width: 1.9;
   stroke-dasharray: 6 6;
 }
-.core-nodes { filter: drop-shadow(0 0 14px rgba(var(--motion-accent-rgb), .46)) drop-shadow(0 0 32px rgba(var(--motion-accent-rgb), .2)); }
+.core-node-glow circle {
+  fill: rgba(var(--motion-accent-rgb), .08);
+  stroke: rgba(var(--motion-accent-rgb), .2);
+  stroke-width: 5;
+}
+.core-nodes { filter: none; }
 .core-nodes circle {
   fill: rgba(var(--motion-accent-rgb), .96);
   stroke: rgba(255,255,255,.94);
@@ -678,10 +704,10 @@ body.spiral-title-intro-complete .motion-axis {
   visibility: hidden;
   pointer-events: none;
   transform-style: preserve-3d;
-  will-change: transform, opacity;
+  will-change: auto;
   contain: layout paint style;
 }
-.spiral-item.is-active { pointer-events: auto; }
+.spiral-item.is-active { pointer-events: auto; will-change: transform, opacity; }
 .motion-scene-copy {
   position: relative;
   z-index: 3;
@@ -1298,6 +1324,13 @@ body:not(.spiral-handoff-ready) .spiral-after-content { pointer-events:none; }
   .motion-scene-metrics { margin-top:19px;padding-top:11px; }
   .motion-plane-stack { width:min(39vw,510px); }
   .motion-micro-ui { top:72px; }
+}
+
+.spiral-content-section,
+.spiral-install-card,
+.spiral-footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 760px;
 }
 
 @media (prefers-reduced-motion: reduce) {

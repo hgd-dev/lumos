@@ -4,7 +4,7 @@
 
 The refined native-CSS editorial motion experience is now the official public `index.html` entry point. It opens on a brief true-black load-safe hold, assembles an extruded three-dimensional LUMOS wordmark with restrained white, blue, violet, and green chromatic slices, and morphs directly into the first scene.
 
-The public Home preserves the six-scene Unified, Heat, Air, Water, and Soil narrative; cached scroll geometry; visible-scene-only rendering; hover-driven desktop menus; keyboard and touch fallbacks; bounded near-scene snapping; and reduced-motion linear flow. After the final scene, the axial triangle and foreground construction system fade away while the deterministic starfield, blueprint atmosphere, and softened LUMOS glow continue behind the conventional Home sections.
+The public Home preserves the six-scene Unified, Heat, Air, Water, and Soil narrative; cached scroll geometry; visible-scene-only rendering; hover-driven desktop menus; keyboard and touch fallbacks; persistent entry-triggered magnetic snapping with immediate visual attraction and reliable physical settlement inside each bounded scene interval; and reduced-motion linear flow. After the final scene, the axial triangle and foreground construction system fade away while the deterministic starfield, blueprint atmosphere, and softened LUMOS glow continue behind the conventional Home sections.
 
 The retired `home-spiral.html` compatibility route has been removed now that the cinematic experience is the sole official Home. `home-3d.html` remains the separate unlinked Three.js experiment. No scientific model, objective, constraint, adapter, evidence generator, validation protocol, workspace, or public claim boundary changed.
 

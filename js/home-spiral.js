@@ -20,8 +20,11 @@ const SCENE_CENTERS = [0, 0.145, 0.29, 0.435, 0.58, 0.725];
 const SCENE_INNER_RADIUS = 0.019;
 const SCENE_OUTER_RADIUS = 0.048;
 const SCENE_INTERVAL = 0.145;
-const SNAP_RADIUS = 0.045;
-const SNAP_DELAY = 125;
+const SNAP_RADIUS = 0.052;
+const SNAP_INNER_LOCK = 0.011;
+const SNAP_VISUAL_STRENGTH = 0.94;
+const SNAP_SETTLE_DELAY = 34;
+const SNAP_DURATION = 230;
 const GEOMETRY_FADE_START = 0.81;
 const GEOMETRY_FADE_END = 0.905;
 const CONTENT_REVEAL_START = 0.865;
@@ -36,7 +39,9 @@ let reduced = false;
 let stageIntersecting = true;
 let frameRequested = false;
 let snapTimer = 0;
-let snappingUntil = 0;
+let snapFrame = 0;
+let snapAnimating = false;
+let snapTargetIndex = -1;
 let resizeFrame = 0;
 let targetPointerX = 0;
 let targetPointerY = 0;
@@ -44,7 +49,13 @@ let pointerX = 0;
 let pointerY = 0;
 let scrollStart = 0;
 let scrollRange = 1;
-const cardVisibility = cards.map(() => false);
+let viewportWidth = Math.max(1, window.innerWidth);
+let viewportHeight = Math.max(1, window.innerHeight);
+const rootPropertyCache = new Map();
+const cardCssCache = cards.map(() => "");
+const bodyClassCache = new Map();
+let renderedCardIndex = -1;
+let persistentDrawScheduled = false;
 let typingTimer = 0;
 let titleIntroTimer = 0;
 let titleIntroHandoffTimer = 0;
@@ -60,14 +71,34 @@ const smoothstep = (value) => {
 };
 const mix = (a, b, t) => a + (b - a) * t;
 
+function setRootProperty(name, value) {
+  if (rootPropertyCache.get(name) === value) return;
+  rootPropertyCache.set(name, value);
+  rootStyle.setProperty(name, value);
+}
+
+function setCardCss(index, cssText) {
+  if (index < 0 || index >= cards.length || cardCssCache[index] === cssText) return;
+  cardCssCache[index] = cssText;
+  cards[index].style.cssText = cssText;
+}
+
+function toggleBodyClass(name, enabled) {
+  if (bodyClassCache.get(name) === enabled) return;
+  bodyClassCache.set(name, enabled);
+  document.body.classList.toggle(name, enabled);
+}
+
 function refreshScrollMetrics() {
   if (!track) {
     scrollStart = 0;
     scrollRange = 1;
     return;
   }
+  viewportWidth = Math.max(1, window.innerWidth);
+  viewportHeight = Math.max(1, window.innerHeight);
   scrollStart = track.offsetTop;
-  scrollRange = Math.max(1, track.offsetHeight - window.innerHeight);
+  scrollRange = Math.max(1, track.offsetHeight - viewportHeight);
 }
 
 function scrollProgress() {
@@ -81,15 +112,25 @@ function sceneCenter(index) {
 
 function nearestScene(progress) {
   let nearest = 0;
-  let distance = Infinity;
-  cards.forEach((_, index) => {
-    const nextDistance = Math.abs(progress - sceneCenter(index));
+  let distance = Math.abs(progress - SCENE_CENTERS[0]);
+  for (let index = 1; index < SCENE_CENTERS.length; index += 1) {
+    const nextDistance = Math.abs(progress - SCENE_CENTERS[index]);
     if (nextDistance < distance) {
       nearest = index;
       distance = nextDistance;
     }
-  });
+  }
   return { index: nearest, distance };
+}
+
+function magnetizedProgress(progress) {
+  const nearest = nearestScene(progress);
+  if (nearest.distance > SNAP_RADIUS) return { ...nearest, progress };
+  const center = sceneCenter(nearest.index);
+  if (nearest.distance <= SNAP_INNER_LOCK) return { ...nearest, progress: center };
+  const capture = 1 - smoothstep((nearest.distance - SNAP_INNER_LOCK) / (SNAP_RADIUS - SNAP_INNER_LOCK));
+  const strength = clamp(capture * SNAP_VISUAL_STRENGTH);
+  return { ...nearest, progress: mix(progress, center, strength) };
 }
 
 function scrollToScene(index, behavior = "smooth") {
@@ -134,8 +175,8 @@ function setActiveCard(index) {
   if (activeTitle) activeTitle.textContent = card.dataset.spiralTitle || `Scene ${index + 1}`;
   if (sceneCode) sceneCode.textContent = card.dataset.sceneCode || "LUMOS / SYSTEM";
   if (status) status.textContent = `Motion scene ${index + 1} of ${cards.length}: ${card.dataset.spiralTitle || "LUMOS"}.`;
-  rootStyle.setProperty("--motion-accent", card.dataset.accent || "#bdfc6b");
-  rootStyle.setProperty("--motion-accent-rgb", card.dataset.accentRgb || "189,252,107");
+  setRootProperty("--motion-accent", card.dataset.accent || "#bdfc6b");
+  setRootProperty("--motion-accent-rgb", card.dataset.accentRgb || "189,252,107");
 }
 
 function cardOpacity(distance) {
@@ -145,84 +186,72 @@ function cardOpacity(distance) {
 
 function renderMotion(force = false) {
   frameRequested = false;
-  if (reduced || !track || !viewport || !orbit) return;
+  if (reduced || !track || !viewport || !orbit || (!force && !stageIntersecting)) return;
 
-  const progress = scrollProgress();
-  const pointerEase = force ? 1 : 0.34;
+  const rawProgress = scrollProgress();
+  const magnetic = magnetizedProgress(rawProgress);
+  const progress = magnetic.progress;
+  const pointerEase = force ? 1 : 0.42;
   pointerX = mix(pointerX, targetPointerX, pointerEase);
   pointerY = mix(pointerY, targetPointerY, pointerEase);
-  rootStyle.setProperty("--motion-pointer-x", pointerX.toFixed(4));
-  rootStyle.setProperty("--motion-pointer-y", pointerY.toFixed(4));
-  rootStyle.setProperty("--motion-progress", progress.toFixed(5));
+  setRootProperty("--motion-pointer-x", pointerX.toFixed(4));
+  setRootProperty("--motion-pointer-y", pointerY.toFixed(4));
+  setRootProperty("--motion-progress", progress.toFixed(5));
 
-  let maximumOpacity = 0;
-  const width = Math.max(1, window.innerWidth);
-  const height = Math.max(1, window.innerHeight);
+  const index = magnetic.index;
+  const distance = progress - SCENE_CENTERS[index];
+  const normalized = distance / SCENE_INTERVAL;
+  const absoluteNormalized = Math.abs(normalized);
+  const opacity = cardOpacity(distance);
+  const visible = opacity > 0.002 && Math.abs(distance) < SCENE_OUTER_RADIUS + 0.014;
 
-  cards.forEach((card, index) => {
-    const distance = progress - sceneCenter(index);
-    const normalized = distance / SCENE_INTERVAL;
-    const absoluteNormalized = Math.abs(normalized);
-    const opacity = cardOpacity(distance);
-    maximumOpacity = Math.max(maximumOpacity, opacity);
+  if (renderedCardIndex !== index && renderedCardIndex >= 0) {
+    setCardCss(renderedCardIndex, "opacity:0;visibility:hidden;");
+  }
 
+  if (visible) {
     const travel = Math.tanh(normalized * 1.48);
-    const x = travel * width * -0.48;
-    const y = travel * height * -0.59;
+    const x = travel * viewportWidth * -0.48;
+    const y = travel * viewportHeight * -0.59;
     const z = -absoluteNormalized * 760;
-    const rotateX = travel * -4.2;
-    const rotateY = travel * 9.5;
-    const rotateZ = travel * -7.5;
     const scale = clamp(1 - absoluteNormalized * 0.12, 0.76, 1);
-    const visible = opacity > 0.002 && Math.abs(distance) < SCENE_OUTER_RADIUS + 0.014;
+    const cssText = [
+      `transform:translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,${z.toFixed(1)}px) rotateX(${(travel * -4.2).toFixed(2)}deg) rotateY(${(travel * 9.5).toFixed(2)}deg) rotateZ(${(travel * -7.5).toFixed(2)}deg) scale(${scale.toFixed(4)})`,
+      `opacity:${opacity.toFixed(3)}`,
+      "visibility:visible",
+      `--scene-copy-x:${(travel * viewportWidth * 0.022).toFixed(1)}px`,
+      `--scene-copy-y:${(travel * viewportHeight * 0.015).toFixed(1)}px`,
+      `--scene-plane-x:${(travel * viewportWidth * -0.048).toFixed(1)}px`,
+      `--scene-plane-y:${(travel * viewportHeight * -0.03).toFixed(1)}px`
+    ].join(";") + ";";
+    setCardCss(index, cssText);
+    renderedCardIndex = index;
+  } else {
+    setCardCss(index, "opacity:0;visibility:hidden;");
+    renderedCardIndex = -1;
+  }
 
-    if (!visible) {
-      if (cardVisibility[index]) {
-        card.style.opacity = "0";
-        card.style.visibility = "hidden";
-        cardVisibility[index] = false;
-      }
-      return;
-    }
-
-    cardVisibility[index] = true;
-    card.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, ${z.toFixed(1)}px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) rotateZ(${rotateZ.toFixed(2)}deg) scale(${scale.toFixed(4)})`;
-    card.style.opacity = opacity.toFixed(3);
-    card.style.visibility = "visible";
-    card.style.zIndex = String(50 - Math.round(absoluteNormalized * 10));
-    card.style.setProperty("--scene-copy-x", `${(travel * width * 0.022).toFixed(1)}px`);
-    card.style.setProperty("--scene-copy-y", `${(travel * height * 0.015).toFixed(1)}px`);
-    card.style.setProperty("--scene-plane-x", `${(travel * width * -0.048).toFixed(1)}px`);
-    card.style.setProperty("--scene-plane-y", `${(travel * height * -0.03).toFixed(1)}px`);
-  });
-
-  const gapIntensity = clamp(1 - maximumOpacity);
-  const { index: nearest } = nearestScene(progress);
-  setActiveCard(nearest);
-  const geometryFade = smoothstep((progress - GEOMETRY_FADE_START) / (GEOMETRY_FADE_END - GEOMETRY_FADE_START));
+  const gapIntensity = clamp(1 - opacity);
+  setActiveCard(index);
+  const geometryFade = smoothstep((rawProgress - GEOMETRY_FADE_START) / (GEOMETRY_FADE_END - GEOMETRY_FADE_START));
   const geometryOpacity = 1 - geometryFade;
-  const contentReveal = smoothstep((progress - CONTENT_REVEAL_START) / (CONTENT_REVEAL_END - CONTENT_REVEAL_START));
-  const gridOpacity = mix(0.9, 0.26, geometryFade);
-  const glowOpacity = mix(0.34, 0.16, geometryFade);
-  rootStyle.setProperty("--motion-gap", gapIntensity.toFixed(4));
-  rootStyle.setProperty("--motion-foreground-opacity", "1");
-  rootStyle.setProperty("--motion-stage-opacity", "1");
-  rootStyle.setProperty("--motion-geometry-opacity", geometryOpacity.toFixed(4));
-  rootStyle.setProperty("--motion-grid-opacity", gridOpacity.toFixed(4));
-  rootStyle.setProperty("--motion-glow-opacity", glowOpacity.toFixed(4));
-  rootStyle.setProperty("--motion-interface-opacity", geometryOpacity.toFixed(4));
-  rootStyle.setProperty("--motion-content-opacity", contentReveal.toFixed(4));
-  rootStyle.setProperty("--motion-content-shift", `${((1 - contentReveal) * 62).toFixed(1)}px`);
-  rootStyle.setProperty("--motion-header-opacity", "1");
-  rootStyle.setProperty("--motion-core-rotation", `${(progress * 390 - 18).toFixed(2)}deg`);
+  const contentReveal = smoothstep((rawProgress - CONTENT_REVEAL_START) / (CONTENT_REVEAL_END - CONTENT_REVEAL_START));
+  setRootProperty("--motion-gap", gapIntensity.toFixed(4));
+  setRootProperty("--motion-geometry-opacity", geometryOpacity.toFixed(4));
+  setRootProperty("--motion-grid-opacity", mix(0.9, 0.26, geometryFade).toFixed(4));
+  setRootProperty("--motion-glow-opacity", mix(0.34, 0.16, geometryFade).toFixed(4));
+  setRootProperty("--motion-interface-opacity", geometryOpacity.toFixed(4));
+  setRootProperty("--motion-content-opacity", contentReveal.toFixed(4));
+  setRootProperty("--motion-content-shift", `${((1 - contentReveal) * 62).toFixed(1)}px`);
+  setRootProperty("--motion-core-rotation", `${(progress * 390 - 18).toFixed(2)}deg`);
 
-  document.body.classList.toggle("spiral-between-scenes", gapIntensity > 0.48 && progress < GEOMETRY_FADE_START);
-  document.body.classList.toggle("spiral-handoff-active", progress >= GEOMETRY_FADE_START);
-  document.body.classList.toggle("spiral-handoff-ready", contentReveal > 0.82);
+  toggleBodyClass("spiral-between-scenes", gapIntensity > 0.48 && rawProgress < GEOMETRY_FADE_START);
+  toggleBodyClass("spiral-handoff-active", rawProgress >= GEOMETRY_FADE_START);
+  toggleBodyClass("spiral-handoff-ready", contentReveal > 0.82);
 
   if (
-    Math.abs(pointerX - targetPointerX) > 0.012 ||
-    Math.abs(pointerY - targetPointerY) > 0.012
+    Math.abs(pointerX - targetPointerX) > 0.02 ||
+    Math.abs(pointerY - targetPointerY) > 0.02
   ) requestFrame();
 }
 
@@ -232,25 +261,75 @@ function requestFrame() {
   window.requestAnimationFrame(() => renderMotion(false));
 }
 
-function maybeSnapToScene() {
-  if (reduced || !stageIntersecting || Date.now() < snappingUntil) return;
-  const progress = scrollProgress();
-  if (progress < SCENE_CENTERS[0] - SNAP_RADIUS || progress > SCENE_CENTERS.at(-1) + SNAP_RADIUS) return;
-  const { index, distance } = nearestScene(progress);
-  if (distance > 0.001 && distance <= SNAP_RADIUS) {
-    snappingUntil = Date.now() + 560;
-    scrollToScene(index, "smooth");
+function cancelSceneSnap() {
+  window.clearTimeout(snapTimer);
+  window.cancelAnimationFrame(snapFrame);
+  snapTimer = 0;
+  snapFrame = 0;
+  snapAnimating = false;
+  snapTargetIndex = -1;
+}
+
+function animateSceneSnap(index) {
+  window.cancelAnimationFrame(snapFrame);
+  const startY = window.scrollY;
+  const targetY = scrollStart + sceneCenter(index) * scrollRange;
+  const distanceY = targetY - startY;
+  if (Math.abs(distanceY) < 0.6) {
+    window.scrollTo(0, targetY);
+    snapAnimating = false;
+    snapTargetIndex = -1;
+    requestFrame();
+    return;
   }
+
+  snapAnimating = true;
+  snapTargetIndex = index;
+  const startedAt = performance.now();
+  const step = (now) => {
+    if (!snapAnimating || snapTargetIndex !== index) return;
+    const time = clamp((now - startedAt) / SNAP_DURATION);
+    const eased = 1 - Math.pow(1 - time, 4);
+    window.scrollTo(0, startY + distanceY * eased);
+    requestFrame();
+    if (time < 1) {
+      snapFrame = window.requestAnimationFrame(step);
+    } else {
+      window.scrollTo(0, targetY);
+      snapFrame = 0;
+      snapAnimating = false;
+      snapTargetIndex = -1;
+      requestFrame();
+    }
+  };
+  snapFrame = window.requestAnimationFrame(step);
+}
+
+function settleSceneSnap() {
+  snapTimer = 0;
+  if (reduced || !stageIntersecting || snapAnimating) return;
+  const progress = scrollProgress();
+  const nearest = nearestScene(progress);
+  if (nearest.distance <= 0.00045 || nearest.distance > SNAP_RADIUS) return;
+  animateSceneSnap(nearest.index);
 }
 
 function scheduleSceneSnap() {
   window.clearTimeout(snapTimer);
-  snapTimer = window.setTimeout(maybeSnapToScene, SNAP_DELAY);
+  if (snapAnimating) return;
+  const progress = scrollProgress();
+  const nearest = nearestScene(progress);
+  if (nearest.distance > SNAP_RADIUS) {
+    snapTargetIndex = -1;
+    return;
+  }
+  snapTargetIndex = nearest.index;
+  snapTimer = window.setTimeout(settleSceneSnap, SNAP_SETTLE_DELAY);
 }
 
 function updateFromScroll() {
-  if (reduced) return;
-  scheduleSceneSnap();
+  if (reduced || !stageIntersecting) return;
+  if (!snapAnimating) scheduleSceneSnap();
   requestFrame();
 }
 
@@ -409,13 +488,31 @@ async function initializeTitleIntro() {
   }, TITLE_INTRO_DELAY);
 }
 
-function drawParticleField() {
-  drawParticleCanvas(particleCanvas);
+function drawPersistentField() {
+  persistentDrawScheduled = false;
   drawParticleCanvas(persistentCanvas);
 }
 
+function schedulePersistentField() {
+  if (persistentDrawScheduled || !persistentCanvas) return;
+  persistentDrawScheduled = true;
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(drawPersistentField, { timeout: 900 });
+  } else {
+    window.setTimeout(drawPersistentField, 120);
+  }
+}
+
+function drawParticleField() {
+  drawParticleCanvas(particleCanvas);
+  schedulePersistentField();
+}
+
 function updateStageVisibility() {
-  document.body.classList.toggle("spiral-stage-visible", stageIntersecting && !document.hidden && !reduced);
+  const visible = stageIntersecting && !document.hidden && !reduced;
+  toggleBodyClass("spiral-stage-visible", visible);
+  if (!visible) cancelSceneSnap();
+  else requestFrame();
 }
 
 function initializeStageVisibility() {
@@ -429,11 +526,13 @@ function initializeStageVisibility() {
 }
 
 function clearMotionStyles() {
-  cards.forEach((card) => {
+  cards.forEach((card, index) => {
     ["transform", "opacity", "filter", "visibility", "z-index", "--scene-copy-x", "--scene-copy-y", "--scene-plane-x", "--scene-plane-y"].forEach((property) => card.style.removeProperty(property));
+    cardCssCache[index] = "";
     card.setAttribute("aria-hidden", "false");
     setInteractiveState(card, true);
   });
+  renderedCardIndex = -1;
 }
 
 function updateReducedState() {
@@ -442,16 +541,17 @@ function updateReducedState() {
   document.body.classList.toggle("spiral-fallback", !CSS.supports?.("transform-style", "preserve-3d"));
   updateStageVisibility();
   if (reduced) {
+    cancelSceneSnap();
     clearMotionStyles();
-    rootStyle.setProperty("--motion-stage-opacity", "1");
-    rootStyle.setProperty("--motion-foreground-opacity", "1");
-    rootStyle.setProperty("--motion-content-opacity", "1");
-    rootStyle.setProperty("--motion-content-shift", "0px");
-    rootStyle.setProperty("--motion-header-opacity", "1");
-    rootStyle.setProperty("--motion-geometry-opacity", "0");
-    rootStyle.setProperty("--motion-grid-opacity", ".26");
-    rootStyle.setProperty("--motion-glow-opacity", ".16");
-    rootStyle.setProperty("--motion-interface-opacity", "0");
+    setRootProperty("--motion-stage-opacity", "1");
+    setRootProperty("--motion-foreground-opacity", "1");
+    setRootProperty("--motion-content-opacity", "1");
+    setRootProperty("--motion-content-shift", "0px");
+    setRootProperty("--motion-header-opacity", "1");
+    setRootProperty("--motion-geometry-opacity", "0");
+    setRootProperty("--motion-grid-opacity", ".26");
+    setRootProperty("--motion-glow-opacity", ".16");
+    setRootProperty("--motion-interface-opacity", "0");
     document.body.classList.add("spiral-handoff-ready");
     completeTitleIntro(true);
     setActiveCard(0);
@@ -479,12 +579,20 @@ function scheduleResize() {
   resizeFrame = window.requestAnimationFrame(() => {
     resizeFrame = 0;
     refreshScrollMetrics();
+    persistentDrawScheduled = false;
     drawParticleField();
     renderMotion(true);
   });
 }
 
+window.addEventListener("wheel", () => {
+  if (snapAnimating) cancelSceneSnap();
+}, { passive: true });
+window.addEventListener("touchstart", () => {
+  if (snapAnimating) cancelSceneSnap();
+}, { passive: true });
 window.addEventListener("scroll", updateFromScroll, { passive: true });
+window.addEventListener("scrollend", settleSceneSnap, { passive: true });
 window.addEventListener("resize", scheduleResize, { passive: true });
 reducedMotionQuery?.addEventListener?.("change", updateReducedState);
 
