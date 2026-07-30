@@ -2414,6 +2414,13 @@ test("official motion Home preserves the editorial stage without a duplicate com
   assert.doesNotMatch(styles, /filter:\s*blur\(132px\)/);
   assert.match(styles, /core-node-glow/);
   assert.match(script, /spiral-reduced/);
+  assert.match(standard, /id="homeMobileMenuButton"/);
+  assert.match(standard, /id="homePrimaryNavigation"/);
+  assert.match(styles, /@media \(max-width: 780px\)/);
+  assert.match(styles, /height:\s*100dvh/);
+  assert.match(script, /const MOBILE_SCENE_CENTERS = \[0, 0\.135, 0\.27, 0\.405, 0\.54, 0\.675\]/);
+  assert.match(script, /mobileLayoutQuery/);
+  assert.match(script, /initializeMobileNavigation/);
 });
 
 test("v3 release metadata is internally consistent", async () => {
@@ -2566,8 +2573,8 @@ test("public Home and permanent documentation page keep release metadata out of 
   assert.match(html, /LOCALIZED UNIFIED MONITORING OPTIMIZATION SYSTEM/);
   assert.match(html, /class="motion-typing-lockup motion-typing-lockup-hero"/);
   assert.match(html, /class="motion-display-word">LUMOS/);
-  assert.match(html, /css\/home-spiral\.css\?build=motion-canvas-official-4/);
-  assert.match(html, /js\/home-spiral\.js\?build=motion-canvas-official-4/);
+  assert.match(html, /css\/home-spiral\.css\?build=motion-canvas-official-5/);
+  assert.match(html, /js\/home-spiral\.js\?build=motion-canvas-official-5/);
   assert.match(html, /https:\/\/github\.com\/hgd-dev\/lumos/);
   assert.match(html, /mailto:Lumosystem\.team@gmail\.com/);
   assert.match(html, /instagram\.com\/lumos_optimization/);

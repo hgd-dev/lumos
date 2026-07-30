@@ -11,6 +11,8 @@
 - Reduced scroll-time overhead without removing visible detail by caching root/card style writes, caching viewport geometry, limiting compositor promotion to the active scene, replacing large moving blur filters with equivalent gradient glows, and deferring below-fold section painting.
 - Reworked the end-of-sequence handoff so the axial triangle and construction lines fade away while the starfield and softened cosmic glow persist behind conventional Home content.
 - Updated release metadata, documentation, readiness contracts, service-worker cache identity, and verification expectations for the official v3.3.0 public presentation.
+- Added a mobile-only responsive mode that preserves the desktop composition while adapting scene spacing, depth travel, typography, safe-area padding, touch snapping, particle raster cost, and conventional content for narrow/coarse-pointer devices.
+- Added an accessible compact navigation drawer for phones and tablets; desktop navigation and motion behavior remain unchanged.
 - Preserved every scientific model, domain adapter, evidence generator, workspace, operational workflow, and claim boundary.
 
 ## [3.2.7] - 2026-07-29

@@ -15,8 +15,14 @@ const status = document.querySelector("#spiralStatus");
 const rootStyle = document.documentElement.style;
 const reducedMotionQuery = window.matchMedia?.("(prefers-reduced-motion: reduce)");
 const coarsePointerQuery = window.matchMedia?.("(pointer: coarse)");
+const mobileLayoutQuery = window.matchMedia?.("(max-width: 780px)");
+const smallMobileLayoutQuery = window.matchMedia?.("(max-width: 430px)");
+const compactNavigationQuery = window.matchMedia?.("(max-width: 1080px)");
+const mobileMenuButton = document.querySelector("#homeMobileMenuButton");
+const primaryNavigation = document.querySelector("#homePrimaryNavigation");
 
 const SCENE_CENTERS = [0, 0.145, 0.29, 0.435, 0.58, 0.725];
+const MOBILE_SCENE_CENTERS = [0, 0.135, 0.27, 0.405, 0.54, 0.675];
 const SCENE_INNER_RADIUS = 0.019;
 const SCENE_OUTER_RADIUS = 0.048;
 const SCENE_INTERVAL = 0.145;
@@ -25,6 +31,15 @@ const SNAP_INNER_LOCK = 0.011;
 const SNAP_VISUAL_STRENGTH = 0.94;
 const SNAP_SETTLE_DELAY = 34;
 const SNAP_DURATION = 230;
+const MOBILE_SCENE_INTERVAL = 0.135;
+const MOBILE_SNAP_RADIUS = 0.06;
+const MOBILE_SNAP_INNER_LOCK = 0.014;
+const MOBILE_SNAP_SETTLE_DELAY = 72;
+const MOBILE_SNAP_DURATION = 260;
+const MOBILE_GEOMETRY_FADE_START = 0.75;
+const MOBILE_GEOMETRY_FADE_END = 0.855;
+const MOBILE_CONTENT_REVEAL_START = 0.805;
+const MOBILE_CONTENT_REVEAL_END = 0.925;
 const GEOMETRY_FADE_START = 0.81;
 const GEOMETRY_FADE_END = 0.905;
 const CONTENT_REVEAL_START = 0.865;
@@ -35,6 +50,9 @@ const TITLE_INTRO_HANDOFF = 2030;
 const TITLE_INTRO_DURATION = 2480;
 
 let activeCard = -1;
+let mobileLayout = mobileLayoutQuery?.matches === true;
+let smallMobileLayout = smallMobileLayoutQuery?.matches === true;
+let touchActive = false;
 let reduced = false;
 let stageIntersecting = true;
 let frameRequested = false;
@@ -71,6 +89,17 @@ const smoothstep = (value) => {
 };
 const mix = (a, b, t) => a + (b - a) * t;
 
+function sceneCenters() { return mobileLayout ? MOBILE_SCENE_CENTERS : SCENE_CENTERS; }
+function sceneInterval() { return mobileLayout ? MOBILE_SCENE_INTERVAL : SCENE_INTERVAL; }
+function snapRadius() { return mobileLayout ? MOBILE_SNAP_RADIUS : SNAP_RADIUS; }
+function snapInnerLock() { return mobileLayout ? MOBILE_SNAP_INNER_LOCK : SNAP_INNER_LOCK; }
+function snapSettleDelay() { return mobileLayout ? MOBILE_SNAP_SETTLE_DELAY : SNAP_SETTLE_DELAY; }
+function snapDuration() { return mobileLayout ? MOBILE_SNAP_DURATION : SNAP_DURATION; }
+function geometryFadeStart() { return mobileLayout ? MOBILE_GEOMETRY_FADE_START : GEOMETRY_FADE_START; }
+function geometryFadeEnd() { return mobileLayout ? MOBILE_GEOMETRY_FADE_END : GEOMETRY_FADE_END; }
+function contentRevealStart() { return mobileLayout ? MOBILE_CONTENT_REVEAL_START : CONTENT_REVEAL_START; }
+function contentRevealEnd() { return mobileLayout ? MOBILE_CONTENT_REVEAL_END : CONTENT_REVEAL_END; }
+
 function setRootProperty(name, value) {
   if (rootPropertyCache.get(name) === value) return;
   rootPropertyCache.set(name, value);
@@ -106,15 +135,17 @@ function scrollProgress() {
 }
 
 function sceneCenter(index) {
-  if (SCENE_CENTERS[index] != null) return SCENE_CENTERS[index];
-  return SCENE_CENTERS[0] + index * SCENE_INTERVAL;
+  const centers = sceneCenters();
+  if (centers[index] != null) return centers[index];
+  return centers[0] + index * sceneInterval();
 }
 
 function nearestScene(progress) {
+  const centers = sceneCenters();
   let nearest = 0;
-  let distance = Math.abs(progress - SCENE_CENTERS[0]);
-  for (let index = 1; index < SCENE_CENTERS.length; index += 1) {
-    const nextDistance = Math.abs(progress - SCENE_CENTERS[index]);
+  let distance = Math.abs(progress - centers[0]);
+  for (let index = 1; index < centers.length; index += 1) {
+    const nextDistance = Math.abs(progress - centers[index]);
     if (nextDistance < distance) {
       nearest = index;
       distance = nextDistance;
@@ -125,10 +156,12 @@ function nearestScene(progress) {
 
 function magnetizedProgress(progress) {
   const nearest = nearestScene(progress);
-  if (nearest.distance > SNAP_RADIUS) return { ...nearest, progress };
+  const radius = snapRadius();
+  const innerLock = snapInnerLock();
+  if (nearest.distance > radius) return { ...nearest, progress };
   const center = sceneCenter(nearest.index);
-  if (nearest.distance <= SNAP_INNER_LOCK) return { ...nearest, progress: center };
-  const capture = 1 - smoothstep((nearest.distance - SNAP_INNER_LOCK) / (SNAP_RADIUS - SNAP_INNER_LOCK));
+  if (nearest.distance <= innerLock) return { ...nearest, progress: center };
+  const capture = 1 - smoothstep((nearest.distance - innerLock) / (radius - innerLock));
   const strength = clamp(capture * SNAP_VISUAL_STRENGTH);
   return { ...nearest, progress: mix(progress, center, strength) };
 }
@@ -199,8 +232,8 @@ function renderMotion(force = false) {
   setRootProperty("--motion-progress", progress.toFixed(5));
 
   const index = magnetic.index;
-  const distance = progress - SCENE_CENTERS[index];
-  const normalized = distance / SCENE_INTERVAL;
+  const distance = progress - sceneCenter(index);
+  const normalized = distance / sceneInterval();
   const absoluteNormalized = Math.abs(normalized);
   const opacity = cardOpacity(distance);
   const visible = opacity > 0.002 && Math.abs(distance) < SCENE_OUTER_RADIUS + 0.014;
@@ -210,19 +243,23 @@ function renderMotion(force = false) {
   }
 
   if (visible) {
-    const travel = Math.tanh(normalized * 1.48);
-    const x = travel * viewportWidth * -0.48;
-    const y = travel * viewportHeight * -0.59;
-    const z = -absoluteNormalized * 760;
-    const scale = clamp(1 - absoluteNormalized * 0.12, 0.76, 1);
+    const portraitMobileLayout = smallMobileLayout;
+    const travel = Math.tanh(normalized * (portraitMobileLayout ? 1.12 : mobileLayout ? 1.28 : 1.48));
+    const x = travel * viewportWidth * (portraitMobileLayout ? -0.06 : mobileLayout ? -0.16 : -0.48);
+    const y = travel * viewportHeight * (portraitMobileLayout ? -0.36 : mobileLayout ? -0.7 : -0.59);
+    const z = -absoluteNormalized * (portraitMobileLayout ? 320 : mobileLayout ? 430 : 760);
+    const scale = clamp(1 - absoluteNormalized * (portraitMobileLayout ? 0.05 : mobileLayout ? 0.08 : 0.12), portraitMobileLayout ? 0.9 : mobileLayout ? 0.84 : 0.76, 1);
+    const rotateX = travel * (portraitMobileLayout ? -1.2 : mobileLayout ? -2.2 : -4.2);
+    const rotateY = travel * (portraitMobileLayout ? 2.8 : mobileLayout ? 4.8 : 9.5);
+    const rotateZ = travel * (portraitMobileLayout ? -1.8 : mobileLayout ? -3.4 : -7.5);
     const cssText = [
-      `transform:translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,${z.toFixed(1)}px) rotateX(${(travel * -4.2).toFixed(2)}deg) rotateY(${(travel * 9.5).toFixed(2)}deg) rotateZ(${(travel * -7.5).toFixed(2)}deg) scale(${scale.toFixed(4)})`,
+      `transform:translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,${z.toFixed(1)}px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) rotateZ(${rotateZ.toFixed(2)}deg) scale(${scale.toFixed(4)})`,
       `opacity:${opacity.toFixed(3)}`,
       "visibility:visible",
-      `--scene-copy-x:${(travel * viewportWidth * 0.022).toFixed(1)}px`,
-      `--scene-copy-y:${(travel * viewportHeight * 0.015).toFixed(1)}px`,
-      `--scene-plane-x:${(travel * viewportWidth * -0.048).toFixed(1)}px`,
-      `--scene-plane-y:${(travel * viewportHeight * -0.03).toFixed(1)}px`
+      `--scene-copy-x:${(travel * viewportWidth * (portraitMobileLayout ? 0.004 : mobileLayout ? 0.008 : 0.022)).toFixed(1)}px`,
+      `--scene-copy-y:${(travel * viewportHeight * (portraitMobileLayout ? 0.006 : mobileLayout ? 0.01 : 0.015)).toFixed(1)}px`,
+      `--scene-plane-x:${(travel * viewportWidth * (portraitMobileLayout ? -0.008 : mobileLayout ? -0.018 : -0.048)).toFixed(1)}px`,
+      `--scene-plane-y:${(travel * viewportHeight * (portraitMobileLayout ? -0.012 : mobileLayout ? -0.018 : -0.03)).toFixed(1)}px`
     ].join(";") + ";";
     setCardCss(index, cssText);
     renderedCardIndex = index;
@@ -233,9 +270,13 @@ function renderMotion(force = false) {
 
   const gapIntensity = clamp(1 - opacity);
   setActiveCard(index);
-  const geometryFade = smoothstep((rawProgress - GEOMETRY_FADE_START) / (GEOMETRY_FADE_END - GEOMETRY_FADE_START));
+  const geometryStart = geometryFadeStart();
+  const geometryEnd = geometryFadeEnd();
+  const contentStart = contentRevealStart();
+  const contentEnd = contentRevealEnd();
+  const geometryFade = smoothstep((rawProgress - geometryStart) / (geometryEnd - geometryStart));
   const geometryOpacity = 1 - geometryFade;
-  const contentReveal = smoothstep((rawProgress - CONTENT_REVEAL_START) / (CONTENT_REVEAL_END - CONTENT_REVEAL_START));
+  const contentReveal = smoothstep((rawProgress - contentStart) / (contentEnd - contentStart));
   setRootProperty("--motion-gap", gapIntensity.toFixed(4));
   setRootProperty("--motion-geometry-opacity", geometryOpacity.toFixed(4));
   setRootProperty("--motion-grid-opacity", mix(0.9, 0.26, geometryFade).toFixed(4));
@@ -245,8 +286,8 @@ function renderMotion(force = false) {
   setRootProperty("--motion-content-shift", `${((1 - contentReveal) * 62).toFixed(1)}px`);
   setRootProperty("--motion-core-rotation", `${(progress * 390 - 18).toFixed(2)}deg`);
 
-  toggleBodyClass("spiral-between-scenes", gapIntensity > 0.48 && rawProgress < GEOMETRY_FADE_START);
-  toggleBodyClass("spiral-handoff-active", rawProgress >= GEOMETRY_FADE_START);
+  toggleBodyClass("spiral-between-scenes", gapIntensity > 0.48 && rawProgress < geometryStart);
+  toggleBodyClass("spiral-handoff-active", rawProgress >= geometryStart);
   toggleBodyClass("spiral-handoff-ready", contentReveal > 0.82);
 
   if (
@@ -288,7 +329,7 @@ function animateSceneSnap(index) {
   const startedAt = performance.now();
   const step = (now) => {
     if (!snapAnimating || snapTargetIndex !== index) return;
-    const time = clamp((now - startedAt) / SNAP_DURATION);
+    const time = clamp((now - startedAt) / snapDuration());
     const eased = 1 - Math.pow(1 - time, 4);
     window.scrollTo(0, startY + distanceY * eased);
     requestFrame();
@@ -307,24 +348,24 @@ function animateSceneSnap(index) {
 
 function settleSceneSnap() {
   snapTimer = 0;
-  if (reduced || !stageIntersecting || snapAnimating) return;
+  if (reduced || !stageIntersecting || snapAnimating || touchActive) return;
   const progress = scrollProgress();
   const nearest = nearestScene(progress);
-  if (nearest.distance <= 0.00045 || nearest.distance > SNAP_RADIUS) return;
+  if (nearest.distance <= 0.00045 || nearest.distance > snapRadius()) return;
   animateSceneSnap(nearest.index);
 }
 
 function scheduleSceneSnap() {
   window.clearTimeout(snapTimer);
-  if (snapAnimating) return;
+  if (snapAnimating || touchActive) return;
   const progress = scrollProgress();
   const nearest = nearestScene(progress);
-  if (nearest.distance > SNAP_RADIUS) {
+  if (nearest.distance > snapRadius()) {
     snapTargetIndex = -1;
     return;
   }
   snapTargetIndex = nearest.index;
-  snapTimer = window.setTimeout(settleSceneSnap, SNAP_SETTLE_DELAY);
+  snapTimer = window.setTimeout(settleSceneSnap, snapSettleDelay());
 }
 
 function updateFromScroll() {
@@ -400,7 +441,7 @@ function drawParticleCanvas(canvas) {
   const context = canvas.getContext("2d", { alpha: true, desynchronized: true });
   if (!context) return;
   const rect = canvas.getBoundingClientRect();
-  const ratio = Math.min(window.devicePixelRatio || 1, 1.15);
+  const ratio = Math.min(window.devicePixelRatio || 1, mobileLayout ? 1 : 1.15);
   const width = Math.max(1, Math.round(rect.width));
   const height = Math.max(1, Math.round(rect.height));
   canvas.width = Math.round(width * ratio);
@@ -409,11 +450,11 @@ function drawParticleCanvas(canvas) {
   context.clearRect(0, 0, width, height);
 
   const random = seededRandom(0x4c554d4f);
-  const count = width < 760 ? 108 : 196;
+  const count = mobileLayout ? 82 : (width < 760 ? 108 : 196);
   for (let index = 0; index < count; index += 1) {
     const x = random() * width;
     const y = random() * height;
-    const bright = random() > 0.885;
+    const bright = random() > (mobileLayout ? 0.86 : 0.885);
     const size = bright ? 1.15 + random() * 1.7 : 0.22 + random() * 0.82;
     context.beginPath();
     context.arc(x, y, size, 0, Math.PI * 2);
@@ -508,6 +549,48 @@ function drawParticleField() {
   schedulePersistentField();
 }
 
+function setMobileMenu(open) {
+  const enabled = compactNavigationQuery?.matches === true && open;
+  toggleBodyClass("home-mobile-menu-open", enabled);
+  mobileMenuButton?.setAttribute("aria-expanded", enabled ? "true" : "false");
+  mobileMenuButton?.setAttribute("aria-label", enabled ? "Close navigation menu" : "Open navigation menu");
+}
+
+function initializeMobileNavigation() {
+  if (!mobileMenuButton || !primaryNavigation) return;
+  mobileMenuButton.addEventListener("click", () => {
+    setMobileMenu(!document.body.classList.contains("home-mobile-menu-open"));
+  });
+  primaryNavigation.addEventListener("click", (event) => {
+    if (event.target.closest("a")) setMobileMenu(false);
+  });
+  document.addEventListener("click", (event) => {
+    if (!document.body.classList.contains("home-mobile-menu-open")) return;
+    if (primaryNavigation.contains(event.target) || mobileMenuButton.contains(event.target)) return;
+    setMobileMenu(false);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setMobileMenu(false);
+  });
+}
+
+function updateResponsiveMode() {
+  const nextMobileLayout = mobileLayoutQuery?.matches === true;
+  const nextSmallMobileLayout = smallMobileLayoutQuery?.matches === true;
+  const changed = nextMobileLayout !== mobileLayout || nextSmallMobileLayout !== smallMobileLayout;
+  mobileLayout = nextMobileLayout;
+  smallMobileLayout = nextSmallMobileLayout;
+  toggleBodyClass("spiral-mobile-layout", mobileLayout);
+  toggleBodyClass("spiral-small-mobile-layout", smallMobileLayout);
+  toggleBodyClass("spiral-coarse-pointer", coarsePointerQuery?.matches === true);
+  if (!compactNavigationQuery?.matches) setMobileMenu(false);
+  if (changed) {
+    cancelSceneSnap();
+    renderedCardIndex = -1;
+    cardCssCache.fill("");
+  }
+}
+
 function updateStageVisibility() {
   const visible = stageIntersecting && !document.hidden && !reduced;
   toggleBodyClass("spiral-stage-visible", visible);
@@ -578,6 +661,7 @@ function scheduleResize() {
   if (resizeFrame) return;
   resizeFrame = window.requestAnimationFrame(() => {
     resizeFrame = 0;
+    updateResponsiveMode();
     refreshScrollMetrics();
     persistentDrawScheduled = false;
     drawParticleField();
@@ -589,13 +673,27 @@ window.addEventListener("wheel", () => {
   if (snapAnimating) cancelSceneSnap();
 }, { passive: true });
 window.addEventListener("touchstart", () => {
+  touchActive = true;
   if (snapAnimating) cancelSceneSnap();
+}, { passive: true });
+window.addEventListener("touchend", () => {
+  touchActive = false;
+  if (stageIntersecting) scheduleSceneSnap();
+}, { passive: true });
+window.addEventListener("touchcancel", () => {
+  touchActive = false;
 }, { passive: true });
 window.addEventListener("scroll", updateFromScroll, { passive: true });
 window.addEventListener("scrollend", settleSceneSnap, { passive: true });
 window.addEventListener("resize", scheduleResize, { passive: true });
 reducedMotionQuery?.addEventListener?.("change", updateReducedState);
+mobileLayoutQuery?.addEventListener?.("change", scheduleResize);
+smallMobileLayoutQuery?.addEventListener?.("change", scheduleResize);
+coarsePointerQuery?.addEventListener?.("change", updateResponsiveMode);
+compactNavigationQuery?.addEventListener?.("change", updateResponsiveMode);
 
+updateResponsiveMode();
+initializeMobileNavigation();
 refreshScrollMetrics();
 createProgressControls();
 void initializeTitleIntro();
