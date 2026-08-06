@@ -1,4 +1,49 @@
+## v4.1.0 — Official LUMOSLab Convergence Protocol
+
+- Finalized the release header: removed the persistent Replay control and added a protected responsive grid so the brand, navigation, GitHub action, and System check never compress or overlap.
+- Promoted the approved circuit-only Convergence Protocol into the indexed public `lumos-lab.html`.
+- Removed the secret `lumos-lab-protocol.html` route, experiment badge, noindex framing, and prototype asset names.
+- Added first-class `css/lumos-lab-intro.css` and `js/lumos-lab-intro.js` assets with immediate Skip/Escape, mobile-shortened timing, and reduced-motion support.
+- Preserved all nineteen LUMOSLab studios, local project records, dedicated scientific workspaces, model behavior, evidence, validation, and claim boundaries.
+
 # Changelog
+
+## [4.0.0] - 2026-07-31
+
+### Convergence Protocol preview
+
+- Added an unlinked preview route that preserved the complete v4.0.0 LUMOSLab workspace beneath a distinct Convergence Protocol intro.
+- Refined the preview intro to remove the four corner-domain signal systems and route the established Heat, Air, Soil, and Water colors directly through deterministic orthogonal circuit branches from the viewport edges into the unified decision core.
+- Added immediate Skip and Replay controls, a shorter mobile sequence, a reduced-motion fallback, native SVG/CSS/canvas rendering, offline packaging, and `noindex,nofollow` indexing protection.
+- Kept the public `lumos-lab.html`, official Home, scientific engines, objectives, constraints, evidence, validation, and claim boundaries unchanged.
+
+### Expanded
+
+- Expanded LUMOSLab from nine decision views into a nineteen-view local-first environmental program studio while preserving the completed Home and every authoritative domain engine.
+- Added a command center that summarizes plan readiness, deployment sites, evidence, lifecycle cost, validation, governance, and the highest-value next actions.
+- Added schematic geographic project building with study boundaries, priority and exclusion zones, draggable and lockable sites, site roles, feasibility fields, GeoJSON import, and GIS-ready GeoJSON export.
+- Added candidate-site readiness, heterogeneous sensor and sampling catalogs, capital and recurring costs, staffing, contingency, lifecycle totals, and constraint-conflict explanations.
+- Added local observation intake, synthetic observation generation, completeness and quality checks, sensor drift and calibration diagnostics, maintenance recommendations, and adaptive planning updates.
+- Added local validation and model-comparison diagnostics, repeated simulation settings, intervention power, and minimum detectable-effect estimates.
+- Added true one-budget Heat, Air, Soil, and Water allocation previews, compound-risk and monitoring-gap separation, shared-host planning, and mobile monitoring route previews.
+- Added recommendation stability, selection-frequency classifications, fragile-site identification, and assumption-sensitivity analysis.
+- Added an assumption register, append-only decision log, review stages, approval checks, and executive, technical, operations, and community summaries.
+- Added component ablations, batch experiment grids, synthetic-city generation, model-card creation, project story mode, and a rule-based assistant grounded only in the active project record.
+- Added high-contrast, user-controlled reduced-motion, Spanish navigation, local autosave status, complete planning archives, model-card exports, and expanded offline caching.
+- Preserved the scientific boundary: LUMOSLab supplies planning, simulation, operations, and communication previews; the dedicated scientific workspaces remain authoritative for posterior inference, optimization, locked validation, mapped evidence, and scientific exports.
+
+
+## [3.4.0] - 2026-07-31
+
+### Added
+
+- Added `lumos-lab.html` as a top-level LUMOSLab decision studio linking the Unified, Heat, Air, Soil, and Water scientific workspaces.
+- Added guided plan creation with study area, budget, monitoring units, objective profiles, operational constraints, and separately documented community priorities.
+- Added local-first scenario saving, duplication, side-by-side comparison, portable JSON project import/export, reproducibility identifiers, and printable HTML decision reports.
+- Added explainable recommendation previews, data-readiness checks, animated sequential site selection, domain-specific provenance registers, and local CSV/JSON/GeoJSON review.
+- Added intervention-design readiness, operational stress testing, equity-information Pareto exploration, scientific comparator previews, and multi-round deployment timelines.
+- Added LUMOSLab to shared top navigation, static build packaging, offline application shell, release checks, public metadata, and documentation.
+- Preserved the finished cinematic Home and all existing scientific engines; LUMOSLab is explicitly an orchestration and planning-preview layer, while the dedicated workspaces remain authoritative for full domain execution and evidence.
 
 ## [3.3.0] - 2026-07-29
 

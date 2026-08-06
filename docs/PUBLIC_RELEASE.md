@@ -1,4 +1,24 @@
-# LUMOS 3.3.0 Multi-Page Public Release
+## v4.1.0 official LUMOSLab Convergence Protocol
+
+The approved circuit-only Convergence Protocol is now the official introduction to `lumos-lab.html`. Color-coded orthogonal circuit traces enter from the viewport edges, converge on the unified decision core, assemble a geographic monitoring network, branch into efficiency, equity, and resilience alternatives, and reveal the complete nineteen-view Lab without a route change.
+
+The LUMOSLab header uses a protected responsive grid so the brand, full navigation, repository action, and System check never compress into one another. The public Replay control was removed for the final release.
+
+The former `lumos-lab-protocol.html` secret route and its prototype asset names were removed. The production presentation now uses `css/lumos-lab-intro.css` and `js/lumos-lab-intro.js`, retains Skip/Escape, mobile-shortened timing, and reduced-motion behavior, and remains separate from all scientific calculations and stored project records.
+
+# LUMOS Public Release History
+
+## v4.0.0 comprehensive LUMOSLab program studio
+
+LUMOSLab now covers the complete planning-to-handoff workflow while remaining a local-first orchestration layer over the authoritative scientific workspaces. The release adds a command center; schematic geographic boundary, zone, and site editing; GeoJSON import and export; candidate feasibility; heterogeneous sensor and sampling catalogs; lifecycle costing; observation intake; sensor-health diagnostics; adaptive planning updates; model comparison; simulation and detectable-effect analysis; one-budget four-domain allocation; compound-risk and monitoring-gap views; shared infrastructure; mobile route previews; stability and sensitivity analysis; assumption and decision logs; approval stages; stakeholder briefs; ablation and batch research tools; synthetic-city generation; model cards; story mode; and a project-grounded assistant.
+
+All new metrics remain explicitly labeled as planning or simulation outputs. Full posterior inference, locked validation, scientific evidence, and operational exports remain in the dedicated Heat, Air, Soil, Water, and Unified workspaces.
+
+## v3.4.0 LUMOSLab decision studio
+
+LUMOSLab is now available at `lumos-lab.html` and in the shared top navigation. It provides a guided local-first planning workflow across Heat, Air, Soil, and Water, including plan creation and duplication, scenario comparison, explainable recommendation previews, data-file review, provenance registers, intervention-design readiness, robustness stress tests, Pareto tradeoff exploration, sequential deployment timelines, project import/export, and printable decision reports.
+
+LUMOSLab is an orchestration and planning-preview layer. The dedicated domain workspaces and Unified workspace remain authoritative for full scientific model execution, mapped evidence, validation, and operational exports. The page preserves the established claim boundaries: its normalized planning indicators are not regulatory determinations, certification, causal proof, health findings, or guaranteed field deployability.
 
 ## v3.3.0 official cinematic Home
 
@@ -68,7 +88,7 @@ LUMOS v3 is the first complete public release of the Localized Unified Monitorin
 - Imported candidate inventories and explicit verified/conditional/unresolved/infeasible review states.
 - Phased field campaigns, reserve sites, live outcome tracking, and adaptive replacement.
 - Commissioning, procurement, permit, calibration, uptime, completeness, maintenance, tickets, and replacement planning.
-- Browser-local workspaces, offline application-shell caching, and JSON/CSV evidence exports.
+- Browser-local workspaces, LUMOSLab plan files, offline application-shell caching, and JSON/CSV/HTML exports.
 - Public architecture audit; internal release-quality checks remain repository tooling rather than a visitor-facing workspace.
 
 ## Professional release standards
@@ -96,7 +116,7 @@ See `docs/COMMISSIONING_AND_MAINTENANCE.md`, `docs/LIMITATIONS.md`, and `docs/PR
 
 ## Brand and Home refinement
 
-The 3.3.0 public architecture uses separate static entry pages for Home, About Us, Documentation, Research & Process, Contact & Feedback, Unified, Heat, Air, Soil, and Water. A shared workspace shell and shared JavaScript model preserve one scientific implementation across every workspace URL, while lightweight informational pages keep public navigation clear. New sessions open at the full United States extent, while saved workspaces are restored only by explicit user action.
+The 4.0.0 public architecture uses separate static entry pages for Home, About Us, Documentation, Research & Process, Contact & Feedback, LUMOSLab, Unified, Heat, Air, Soil, and Water. A shared workspace shell and shared JavaScript model preserve one scientific implementation across every workspace URL, while lightweight informational pages keep public navigation clear. New sessions open at the full United States extent, while saved workspaces are restored only by explicit user action.
 
 
 ## v3.1.4 information architecture

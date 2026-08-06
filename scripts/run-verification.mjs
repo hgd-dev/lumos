@@ -16,6 +16,8 @@ function runScript(label, script) {
 }
 
 await runScript("Automated tests", "scripts/run-tests.mjs");
+await runScript("Release integrity check", "scripts/release-check.mjs");
+await runScript("Deterministic static build", "scripts/build-static-site.mjs");
 await Promise.all([
   runScript("Cross-domain architecture audit", "scripts/run-cross-domain-audit.mjs"),
   runScript("Initial cross-domain allocation", "scripts/run-cross-domain-budget-allocation.mjs"),
@@ -29,6 +31,4 @@ await Promise.all([
   runScript("Installation commissioning and maintenance operations", "scripts/run-commissioning-operations.mjs")
 ]);
 await runScript("Internal release quality audit", "scripts/run-public-launch-readiness.mjs");
-await runScript("Release integrity check", "scripts/release-check.mjs");
-await runScript("Deterministic static build", "scripts/build-static-site.mjs");
 console.log("\nLUMOS verification completed successfully.");

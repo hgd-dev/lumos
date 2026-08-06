@@ -2170,8 +2170,8 @@ test("multi-page Unified interface exposes commissioning and full-map controls",
 
 test("cross-domain consistency audit passes and exports reproducible tidy rows", () => {
   const releaseMetadata = {
-    version: "3.3.0",
-    status: "stable-public-v3",
+    version: "4.0.0",
+    status: "stable-public-v4",
     supportedDomains: ["heat", "air", "soil", "water"],
     supportedWorkspaces: [
       "unified-cross-domain-audit",
@@ -2423,19 +2423,93 @@ test("official motion Home preserves the editorial stage without a duplicate com
   assert.match(script, /initializeMobileNavigation/);
 });
 
-test("v3 release metadata is internally consistent", async () => {
+test("LUMOSLab exposes the guided Phase A and Phase B decision workflow", async () => {
+  const { readFile } = await import("node:fs/promises");
+  const html = await readFile(new URL("../lumos-lab.html", import.meta.url), "utf8");
+  const script = await readFile(new URL("../js/lumos-lab.js", import.meta.url), "utf8");
+  assert.match(html, /id="labWorkspace"/);
+  assert.match(html, /data-lab-panel="plan"/);
+  assert.match(html, /data-lab-panel="analysis"/);
+  assert.match(html, /data-lab-panel="compare"/);
+  assert.match(html, /data-lab-panel="data"/);
+  assert.match(html, /data-lab-panel="intervention"/);
+  assert.match(html, /data-lab-panel="robustness"/);
+  assert.match(html, /data-lab-panel="tradeoffs"/);
+  assert.match(html, /data-lab-panel="timeline"/);
+  assert.match(html, /data-lab-panel="export"/);
+  assert.match(script, /lumoslab-projects-v1/);
+  assert.match(script, /function buildAnalysis/);
+  assert.match(script, /function exportProject/);
+  assert.match(script, /planning-preview layer|planning-preview-and-orchestration|planning preview/i);
+});
+
+test("LUMOSLab v4 exposes comprehensive operational, validation, governance, and research studios", async () => {
+  const { readFile } = await import("node:fs/promises");
+  const html = await readFile(new URL("../lumos-lab.html", import.meta.url), "utf8");
+  const advanced = await readFile(new URL("../js/lumos-lab-advanced.js", import.meta.url), "utf8");
+  for (const panel of ["command", "geography", "operations", "monitoring", "validation", "unified-program", "intelligence", "governance", "research-studio", "story"]) {
+    assert.match(html, new RegExp(`data-lab-panel="${panel}"`));
+  }
+  assert.match(html, /id="geographyCanvas"/);
+  assert.match(html, /id="sensorHealthTableBody"/);
+  assert.match(html, /id="validationModelTable"/);
+  assert.match(html, /id="domainAllocationGrid"/);
+  assert.match(html, /id="modelCardPreview"/);
+  assert.match(html, /id="assistantTranscript"/);
+  assert.match(advanced, /lumoslab-advanced-v1/);
+  assert.match(advanced, /function exportGeoJson/);
+  assert.match(advanced, /function runValidationSuite/);
+  assert.match(advanced, /function optimizeUnifiedProgram/);
+  assert.match(advanced, /function runIntelligence/);
+  assert.match(advanced, /function runResearchStudio/);
+  assert.match(advanced, /planning, simulation, operations, and communication layer/i);
+});
+
+
+test("official LUMOSLab Convergence Protocol intro preserves the complete public workspace", async () => {
+  const { readFile, access } = await import("node:fs/promises");
+  const { constants } = await import("node:fs");
+  const lab = await readFile(new URL("../lumos-lab.html", import.meta.url), "utf8");
+  const styles = await readFile(new URL("../css/lumos-lab-intro.css", import.meta.url), "utf8");
+  const script = await readFile(new URL("../js/lumos-lab-intro.js", import.meta.url), "utf8");
+  assert.match(lab, /name="robots" content="index,follow"/);
+  assert.match(lab, /id="protocolIntro"/);
+  assert.match(lab, /id="protocolCircuitLayer"/);
+  assert.match(lab, /id="protocolSkipButton"/);
+  assert.doesNotMatch(lab, /id="protocolReplayButton"|Replay intro/);
+  assert.doesNotMatch(lab, /class="protocol-domain|DOMAIN SIGNALS ONLINE|THERMAL FIELD \/\/ ACTIVE|EXPERIMENT 01|Secret experiment|Convergence Protocol Experiment/);
+  assert.match(lab, /data-lab-panel="geography"/);
+  assert.match(lab, /data-lab-panel="research-studio"/);
+  assert.match(lab, /js\/lumos-lab-intro\.js\?build=intro-2/);
+  assert.match(lab, /css\/lumos-lab-intro\.css\?build=intro-2/);
+  assert.match(lab, /css\/lumos-lab\.css\?build=lab-3/);
+  assert.match(styles, /--protocol-heat:\s*#ffb45f/);
+  assert.match(styles, /--protocol-air:\s*#8fd7ff/);
+  assert.match(styles, /--protocol-soil:\s*#d8bf75/);
+  assert.match(styles, /--protocol-water:\s*#78a9ff/);
+  assert.match(styles, /--protocol-unified:\s*#bdfc6b/);
+  assert.match(script, /function buildCircuitNetwork/);
+  assert.match(script, /orthogonalPath/);
+  assert.match(script, /prefers-reduced-motion/);
+  assert.match(script, /compactViewport/);
+  assert.match(script, /finishProtocol/);
+  await assert.rejects(access(new URL("../lumos-lab-protocol.html", import.meta.url), constants.F_OK));
+});
+
+test("v4 release metadata is internally consistent", async () => {
   const { readFile } = await import("node:fs/promises");
   const packageJson = JSON.parse(await readFile(new URL("../package.json", import.meta.url), "utf8"));
   const release = JSON.parse(await readFile(new URL("../release.json", import.meta.url), "utf8"));
   const manifest = JSON.parse(await readFile(new URL("../manifest.webmanifest", import.meta.url), "utf8"));
   assert.equal(APP_NAME, "LUMOS");
-  assert.equal(APP_VERSION, "3.3.0");
+  assert.equal(APP_VERSION, "4.1.0");
   assert.equal(RELEASE_CHANNEL, "stable-public");
   assert.equal(packageJson.version, APP_VERSION);
   assert.equal(packageJson.scripts.verify, "node scripts/run-verification.mjs");
   assert.equal(release.version, APP_VERSION);
-  assert.equal(release.status, "stable-public-v3");
+  assert.equal(release.status, "stable-public-v4");
   assert.ok(release.supportedDomains.includes("water"));
+  assert.ok(release.supportedWorkspaces.includes("lumoslab-decision-studio"));
   assert.ok(release.supportedWorkspaces.includes("unified-cross-domain-budget-allocation"));
   assert.ok(release.supportedWorkspaces.includes("unified-sequential-evidence-reallocation"));
   assert.ok(release.supportedWorkspaces.includes("unified-multi-round-adaptive-simulation"));
@@ -2460,6 +2534,8 @@ test("v3 release metadata is internally consistent", async () => {
   assert.equal(release.publicRelease.aboutPage, true);
   assert.equal(release.publicRelease.compatibilityMotionPreview, undefined);
   assert.deepEqual(release.experimentalEntryPoints, ["home-3d.html"]);
+  assert.equal(release.publicRelease.officialLabPresentation.entry, "lumos-lab.html");
+  assert.equal(release.publicRelease.officialLabPresentation.indexing, "index-follow");
   assert.equal(release.publicRelease.embeddedCredentials, false);
   assert.ok(release.publicRelease.accessibility.includes("home-navigation"));
   assert.ok(release.publicRelease.accessibility.includes("in-app-documentation"));
@@ -2471,12 +2547,14 @@ test("v3 release metadata is internally consistent", async () => {
   assert.equal(manifest.start_url, "./");
 });
 
-test("v3 service worker preserves the complete same-origin application shell", async () => {
+test("v4 service worker preserves the complete same-origin application shell", async () => {
   const { readFile } = await import("node:fs/promises");
   const worker = await readFile(new URL("../service-worker.js", import.meta.url), "utf8");
-  assert.match(worker, /lumos-v3\.3\.0/);
+  assert.match(worker, /lumos-v4\.1\.0-lab-intro-2/);
   assert.match(worker, /\.\/index\.html/);
   assert.match(worker, /\.\/home-3d\.html/);
+  assert.match(worker, /\.\/css\/lumos-lab-intro\.css/);
+  assert.match(worker, /\.\/js\/lumos-lab-intro\.js/);
   assert.match(worker, /\.\/css\/home-3d\.css/);
   assert.match(worker, /\.\/js\/home-3d\.js/);
   assert.doesNotMatch(worker, /\.\/home-spiral\.html/);
@@ -2493,6 +2571,7 @@ test("v3 service worker preserves the complete same-origin application shell", a
   assert.match(worker, /\.\/water\.html/);
   assert.match(worker, /\.\/workspace-shell\.html/);
   assert.match(worker, /\.\/js\/workspace-bootstrap\.js/);
+  assert.match(worker, /\.\/js\/lumos-lab-advanced\.js/);
   assert.match(worker, /\.\/js\/content-page\.js/);
   assert.match(worker, /\.\/js\/model\/optimizer\.js/);
   assert.match(worker, /\.\/js\/config\/domain-registry\.js/);
@@ -2544,7 +2623,7 @@ test("public Home and permanent documentation page keep release metadata out of 
   assert.equal(DEFAULT_DOCUMENTATION_PAGE, "quickstart");
   assert.equal(DOCUMENTATION_ORDER.length, 8);
   assert.ok(DOCUMENTATION_ORDER.every((key) => DOCUMENTATION_PAGES[key]?.title && DOCUMENTATION_PAGES[key]?.html));
-  assert.match(DOCUMENTATION_PAGES["release-notes"].html, /3\.3\.0/);
+  assert.match(DOCUMENTATION_PAGES["release-notes"].html, /4\.1\.0/);
   assert.equal(DOCUMENTATION_PAGES.about.title, "About Us");
   assert.match(DOCUMENTATION_PAGES.about.html, /The LUMOS Team/);
   assert.match(html, /id="homePage"/);
@@ -2940,7 +3019,7 @@ test("national Air loader creates a wind-aware optimizable pollutant scenario", 
     }
     if (url.includes("api.openaq.org/v3/locations/99/latest")) {
       return new Response(JSON.stringify({ results: [{
-        datetime: { utc: "2026-07-24T18:00:00Z" },
+        datetime: { utc: new Date().toISOString() },
         value: 12.4,
         sensorsId: 9901,
         locationsId: 99

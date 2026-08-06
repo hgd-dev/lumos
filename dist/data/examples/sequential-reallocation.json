@@ -2,7 +2,7 @@
   "schema": "lumos-sequential-reallocation-v1",
   "schemaVersion": "1.0",
   "architecture": "Evidence-calibrated sequential cross-domain reallocation",
-  "generatedAt": "2026-07-30T12:35:57.499Z",
+  "generatedAt": "2026-08-01T19:48:52.667Z",
   "ready": true,
   "evidenceMode": "Controlled illustrative evidence",
   "evidenceBundle": {

@@ -2,9 +2,9 @@
 
 ## Version and package
 
-- [ ] `package.json`, `release.json`, `js/release/version.js`, service worker, citation metadata, release notes, and changelog identify `3.3.0`. The public masthead, browser title, footer, manifest name, README title, and model-specification title remain version-neutral.
-- [ ] Release status is `stable-public-v3`.
-- [ ] Service-worker cache is `lumos-v3.3.0` and contains every standard public entry page, the official cinematic Home assets, the unlinked `home-3d.html` experiment, the shared workspace shell, all public domain modules, unified operations, and documentation scripts.
+- [ ] `package.json`, `release.json`, `js/release/version.js`, service worker, citation metadata, release notes, and changelog identify `4.1.0`. The public masthead, browser title, footer, manifest name, README title, and model-specification title remain version-neutral.
+- [ ] Release status is `stable-public-v4`.
+- [ ] Service-worker cache is `lumos-v4.1.0-lab-intro-2` and contains every standard public entry page, the official cinematic Home assets, the unlinked `home-3d.html` experiment, the shared workspace shell, all public domain modules, unified operations, and documentation scripts.
 - [ ] No permanent credential is embedded in public assets.
 
 ## Automated verification
@@ -21,6 +21,8 @@
 ## Browser review
 
 - [ ] Hard refresh twice after applying the release.
+- [ ] LUMOSLab creates, saves, duplicates, compares, imports, and exports local plans; all nineteen workflow views remain keyboard accessible.
+- [ ] LUMOSLab geography editing, feasibility, sensor catalog, lifecycle costing, observation health, validation and power, unified allocation, stability, governance, research, story, assistant, and export controls produce visible results without console errors.
 - [ ] Unified, Heat, Air, Soil, and Water switch without stale labels, layers, legends, evidence, or controls.
 - [ ] Header and both side panels collapse and restore independently.
 - [ ] Focus map creates a near-full-window map; Escape restores the prior layout.
@@ -31,6 +33,7 @@
 - [ ] Saved workspace persistence and import/export remain functional.
 - [ ] Offline application shell loads after one successful online visit.
 - [ ] `home-3d.html` remains absent from standard Home navigation, declares `noindex,nofollow`, preserves every Home content section, and falls back cleanly when WebGL or the pinned Three.js module is unavailable.
+- [ ] `lumos-lab.html` contains the indexed official Convergence Protocol intro, complete Lab workspace, immediate Skip/Escape, mobile-shortened and reduced-motion behavior, no public Replay control, and a non-compressing responsive header.
 - [ ] `index.html` is the sole cinematic motion Home and preserves the sticky native-scroll sequence, persistent interval-entry magnetic snapping, persistent cosmic content background, and reduced-motion linear fallback; the retired `home-spiral.html` route is absent from source and build output.
 
 ## Scientific and operational review

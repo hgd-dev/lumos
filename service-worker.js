@@ -1,4 +1,4 @@
-const CACHE_NAME = "lumos-v3.3.0-mobile-1";
+const CACHE_NAME = "lumos-v4.1.0-lab-intro-2";
 const LIBRARY_ASSETS = [
   "https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css",
   "https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js",
@@ -12,6 +12,7 @@ const APP_SHELL = [
   "./documentation.html",
   "./research.html",
   "./contact.html",
+  "./lumos-lab.html",
   "./unified.html",
   "./heat.html",
   "./air.html",
@@ -21,12 +22,17 @@ const APP_SHELL = [
   "./css/styles.css",
   "./css/home-3d.css",
   "./css/home-spiral.css",
+  "./css/lumos-lab.css",
+  "./css/lumos-lab-intro.css",
   "./manifest.webmanifest",
   "./assets/lumos-mark.svg",
   "./js/app.js",
   "./js/site.js",
   "./js/home-3d.js",
   "./js/home-spiral.js",
+  "./js/lumos-lab.js",
+  "./js/lumos-lab-advanced.js",
+  "./js/lumos-lab-intro.js",
   "./js/info-page.js",
   "./js/content-page.js",
   "./js/workspace-bootstrap.js",

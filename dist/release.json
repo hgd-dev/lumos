@@ -1,10 +1,11 @@
 {
   "name": "LUMOS",
-  "version": "3.3.0",
-  "releaseDate": "2026-07-29",
-  "status": "stable-public-v3",
+  "version": "4.1.0",
+  "releaseDate": "2026-08-01",
+  "status": "stable-public-v4",
   "primaryDomain": "multi-domain",
   "supportedWorkspaces": [
+    "lumoslab-decision-studio",
     "unified-cross-domain-audit",
     "unified-cross-domain-budget-allocation",
     "unified-sequential-evidence-reallocation",
@@ -23,7 +24,13 @@
     "four-case-soil-evidence-suite",
     "nationwide-water-viewport",
     "four-case-water-evidence-suite",
-    "unified-commissioning-maintenance-operations"
+    "unified-commissioning-maintenance-operations",
+    "lumoslab-full-program-studio",
+    "lumoslab-geographic-project-editor",
+    "lumoslab-observation-health-loop",
+    "lumoslab-validation-power-studio",
+    "lumoslab-research-governance-story-system",
+    "lumoslab-convergence-protocol"
   ],
   "coreModel": "socially-constrained-sequential-bayesian-environmental-monitoring-design",
   "hosting": "static-github-pages",
@@ -63,7 +70,11 @@
     "commissioningOperations": "js/model/unified/commissioning-operations.js",
     "commissioningMethod": "append-only-domain-aware-installation-calibration-uptime-maintenance-ticket-and-replacement-planning",
     "publicReadinessAuditor": "js/release/public-readiness.js",
-    "publicReadinessMethod": "deterministic-science-accessibility-governance-reproducibility-and-release-contract-audit"
+    "publicReadinessMethod": "deterministic-science-accessibility-governance-reproducibility-and-release-contract-audit",
+    "lumosLabAdvancedController": "js/lumos-lab-advanced.js",
+    "lumosLabAdvancedMethod": "local-first-geographic-operational-validation-cross-domain-governance-research-and-communication-orchestration",
+    "lumosLabIntroController": "js/lumos-lab-intro.js",
+    "lumosLabIntroMethod": "native-svg-edge-circuit-convergence-with-geographic-network-and-accessible-public-workspace-handoff"
   },
   "publicRelease": {
     "professionalRelease": true,
@@ -81,7 +92,12 @@
       "home-navigation",
       "in-app-documentation",
       "toggleable-map-search",
-      "draggable-map-search"
+      "draggable-map-search",
+      "high-contrast-mode",
+      "user-controlled-reduced-motion",
+      "spanish-navigation-localization",
+      "accessible-svg-editors",
+      "local-autosave-status"
     ],
     "governanceDocuments": [
       "docs/LIMITATIONS.md",
@@ -103,7 +119,7 @@
       "live-campaign-tracking",
       "commissioning-operations"
     ],
-    "presentation": "multi-page-site-with-official-cinematic-motion-home-persistent-cosmic-background-layered-navigation-draggable-map-search-and-compact-footer",
+    "presentation": "multi-page-site-with-official-cinematic-home-official-lumoslab-convergence-intro-comprehensive-program-studio-layered-navigation-and-scientific-workspaces",
     "limitationsAndScope": true,
     "aboutPage": true,
     "informationArchitecture": [
@@ -146,12 +162,28 @@
         "desktop-hover-navigation-with-keyboard-and-touch-fallback",
         "reduced-motion-linear-fallback"
       ]
+    },
+    "officialLabPresentation": {
+      "entry": "lumos-lab.html",
+      "indexing": "index-follow",
+      "renderer": "native-svg-css-and-canvas-with-no-external-runtime",
+      "interaction": [
+        "orthogonal-circuit-branch-convergence",
+        "unified-decision-core",
+        "geographic-network-assembly",
+        "scenario-branching",
+        "immediate-skip-and-escape-controls",
+        "mobile-shortened-sequence",
+        "reduced-motion-fallback",
+        "seamless-workspace-handoff"
+      ]
     }
   },
   "publicArchitecture": "multi-page-static-site",
   "publicEntryPoints": [
     "index.html",
     "about.html",
+    "lumos-lab.html",
     "unified.html",
     "heat.html",
     "air.html",
@@ -160,5 +192,41 @@
   ],
   "experimentalEntryPoints": [
     "home-3d.html"
-  ]
+  ],
+  "lumosLab": {
+    "entry": "lumos-lab.html",
+    "role": "comprehensive-cross-domain-geographic-planning-operational-feasibility-observation-health-validation-power-budget-stability-governance-research-and-communication-studio",
+    "storage": "local-browser-core-projects-plus-advanced-project-records",
+    "scientificBoundary": "planning-preview-and-orchestration-layer; dedicated workspaces remain authoritative for full domain execution",
+    "documentation": "docs/LUMOSLAB.md",
+    "advancedController": "js/lumos-lab-advanced.js",
+    "views": 19,
+    "capabilities": [
+      "guided-plans",
+      "explainable-analysis",
+      "scenario-comparison",
+      "data-provenance-and-harmonization",
+      "intervention-planning",
+      "robustness",
+      "pareto-tradeoffs",
+      "sequential-deployment",
+      "command-center",
+      "geographic-editing",
+      "sensor-catalog-and-lifecycle-costing",
+      "observation-and-health-loop",
+      "validation-simulation-and-power",
+      "unified-four-domain-allocation",
+      "stability-and-sensitivity",
+      "governance-and-approval",
+      "ablation-batch-and-synthetic-research",
+      "story-mode-and-grounded-assistant",
+      "reproducible-export"
+    ],
+    "intro": {
+      "name": "Convergence Protocol",
+      "controller": "js/lumos-lab-intro.js",
+      "stylesheet": "css/lumos-lab-intro.css",
+      "build": "intro-2"
+    }
+  }
 }

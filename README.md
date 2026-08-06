@@ -14,6 +14,8 @@
   ·
   <a href="https://hgd-dev.github.io/lumos/unified.html">Unified</a>
   ·
+  <a href="https://hgd-dev.github.io/lumos/lumos-lab.html">LUMOSLab</a>
+  ·
   <a href="https://hgd-dev.github.io/lumos/about.html">About Us</a>
   ·
   <a href="https://hgd-dev.github.io/lumos/research.html">Research</a>
@@ -61,6 +63,7 @@ Rather than return one opaque answer, LUMOS generates and compares alternative p
 
 | Workspace | Scientific focus |
 | --- | --- |
+| **LUMOSLab** | Circuit-convergence introduction plus a complete local-first program studio for geographic design, editable sites, feasibility, sensor catalogs, lifecycle budgets, observation and sensor health, validation and power, cross-domain allocation, stability, governance, research, story mode, and reproducible exports |
 | **Unified** | Cross-domain budgeting, sequential reallocation, robust trajectories, shared hosts, field campaigns, commissioning, and maintenance |
 | **Heat** | Temperature and apparent heat, canopy, imperviousness, exposure, vulnerability, live conditions, forecasts, and heat-intervention evaluation |
 | **Air** | PM2.5, PM10, nitrogen dioxide, and ozone with meteorological transport, source context, reference observations, and calibration roles |
@@ -105,10 +108,11 @@ The public application includes:
 - multiple portfolio recommendations rather than one hidden score;
 - map, table, diagnostic, and explainability views;
 - permanent documentation and research pages with stable section URLs, including a paper and conference-status area;
-- browser-local workspace persistence;
-- JSON and CSV evidence exports;
+- browser-local workspace persistence and local autosave;
+- a comprehensive LUMOSLab program studio with schematic GIS editing, operational costing, observation health, validation, research, governance, and stakeholder communication;
+- JSON, CSV, GeoJSON, HTML, model-card, and complete planning-archive exports;
 - an installable progressive web app shell;
-- reduced-motion and color-vision-safe settings;
+- reduced-motion, high-contrast, color-vision-safe, and Spanish navigation settings;
 - keyboard navigation, visible focus, and skip navigation;
 - collapsible controls and a near-full-window Focus Map mode; and
 - responsive desktop and mobile layouts.
@@ -122,6 +126,7 @@ The public application includes:
 | Documentation | [`documentation.html`](documentation.html) | Quickstart, user guide, interface guide, limitations, privacy, release notes, and changelog |
 | Research & Process | [`research.html`](research.html) | Methodology, architecture, data sources, validation, reproducibility, monitoring lifecycle, paper/conference status, and citation |
 | Contact & Feedback | [`contact.html`](contact.html) | General contact, GitHub issues, feature requests, feedback form, and official social links |
+| LUMOSLab | [`lumos-lab.html`](lumos-lab.html) | Official circuit-convergence introduction plus complete cross-domain planning, geography, operations, validation, research, governance, and communication studio |
 | Unified | [`unified.html`](unified.html) | Cross-domain allocation, simulation, deployment, campaigns, commissioning, and maintenance |
 | Heat | [`heat.html`](heat.html) | LUMOS—Heat scientific workspace |
 | Air | [`air.html`](air.html) | LUMOS—Air scientific workspace |

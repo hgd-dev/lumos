@@ -116,23 +116,23 @@ export const DOCUMENTATION_PAGES = Object.freeze({
   }),
   "release-notes": Object.freeze({
     title: "Release notes",
-    kicker: "Current public release: 3.3.0",
-    summary: "The cinematic editorial-motion experience is now the official LUMOS Home.",
+    kicker: "Current public release: 4.1.0",
+    summary: "The circuit-only Convergence Protocol is now the official introduction to the complete LUMOSLab workspace.",
     html: `
-      <p><strong>LUMOS 3.3.0</strong> promotes the refined cinematic motion experience from an unlinked preview to the official public <code>index.html</code> Home.</p>
-      <h3>Official cinematic Home</h3>
+      <p><strong>LUMOS 4.1.0</strong> promotes the approved circuit-only Convergence Protocol into the indexed public <code>lumos-lab.html</code> experience.</p>
+      <h3>Official LUMOSLab introduction</h3>
       <ul>
-        <li>Opens with a brief load-safe black hold and an extruded, chromatically sliced three-dimensional LUMOS title assembly.</li>
-        <li>Morphs directly into the first editorial scene rather than cutting between independent overlays.</li>
-        <li>Preserves the six-scene Unified, Heat, Air, Water, and Soil sequence with persistent magnetic snapping with immediate visual attraction as each bounded scene interval is entered, plus hover-driven desktop navigation.</li>
-        <li>Fades the axial geometry after the scene sequence while retaining the starfield and softened cosmic glow behind conventional Home content.</li>
-        <li>Removes the retired <code>home-spiral.html</code> compatibility route now that the cinematic experience is the official Home, while retaining <code>home-3d.html</code> as the separate unlinked Three.js experiment.</li>
+        <li>Routes the established Heat, Air, Soil, and Water colors through deterministic orthogonal circuits from the viewport edges into one unified decision core.</li>
+        <li>Assembles a geographic monitoring network, branches into efficiency, equity, and resilience alternatives, and transitions directly into the complete nineteen-view Lab.</li>
+        <li>Includes immediate Skip and Escape controls, a shortened mobile sequence, reduced-motion behavior, a no-script workspace fallback, and no persistent public replay control.</li>
+        <li>Removes the former preview route, noindex framing, visible prototype label, and prototype asset names.</li>
       </ul>
       <h3>Scientific scope</h3>
-      <p>No model, objective, constraint, adapter, evidence generator, validation protocol, or public claim boundary changed.</p>
+      <p>The introduction is a presentation layer only. LUMOSLab remains the local-first planning, simulation, operations, governance, and communication layer, while the dedicated Unified, Heat, Air, Soil, and Water workspaces remain authoritative for full scientific execution and evidence.</p>
       <p>The complete release history remains in <code>CHANGELOG.md</code>.</p>
     `
   }),
+
   about: Object.freeze({
     title: "About Us",
     kicker: "The people and purpose behind LUMOS",

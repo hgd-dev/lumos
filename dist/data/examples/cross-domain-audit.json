@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "architecture": "Socially Constrained Sequential Bayesian Environmental Monitoring Design",
-  "generatedAt": "2026-07-30T12:35:56.597Z",
+  "generatedAt": "2026-08-06T11:16:08.870Z",
   "publicDomains": [
     "heat",
     "air",
@@ -736,12 +736,12 @@
       "detail": "Internal release-quality auditor: js/release/public-readiness.js."
     },
     {
-      "id": "shared-stable-v3-status",
+      "id": "shared-stable-v4-status",
       "domainKey": "shared",
       "category": "release",
-      "label": "Stable public v3 release status",
+      "label": "Stable public v4 release status",
       "status": "pass",
-      "detail": "Release status: stable-public-v3."
+      "detail": "Release status: stable-public-v4."
     },
     {
       "id": "shared-research-positioning",
@@ -1334,5 +1334,5 @@
     "fail": 0
   },
   "ready": true,
-  "checksum": "6be571eb"
+  "checksum": "8322e1c2"
 }

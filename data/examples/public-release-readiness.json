@@ -2,7 +2,7 @@
   "schemaVersion": "1.0",
   "architecture": "LUMOS-v3-internal-release-quality-audit",
   "generatedAt": "1970-01-01T00:00:00.000Z",
-  "version": "3.3.0",
+  "version": "4.1.0",
   "checks": [
     {
       "id": "release-version",
@@ -16,7 +16,7 @@
       "category": "release",
       "label": "Stable public release channel",
       "status": "pass",
-      "detail": "Release status: stable-public-v3."
+      "detail": "Release status: stable-public-v4."
     },
     {
       "id": "domain-coverage",
@@ -37,7 +37,7 @@
       "category": "science",
       "label": "Cross-domain scientific audit",
       "status": "pass",
-      "detail": "86 passes, 0 warnings, 0 failures; checksum 6be571eb."
+      "detail": "86 passes, 0 warnings, 0 failures; checksum 8322e1c2."
     },
     {
       "id": "commissioning-example",
@@ -152,5 +152,5 @@
   },
   "ready": true,
   "claimBoundary": "This readiness audit verifies declared software, evidence, accessibility, governance, and release contracts. It does not certify environmental accuracy, cybersecurity, regulatory compliance, accessibility conformance, field deployment, or institutional approval.",
-  "checksum": "50eb594a"
+  "checksum": "f4d6502d"
 }

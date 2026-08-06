@@ -1,6 +1,6 @@
 {
   "name": "lumos-core",
-  "version": "3.3.0",
+  "version": "4.1.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -27,5 +27,5 @@
     "commission:operations": "node scripts/run-commissioning-operations.mjs",
     "audit:public": "node scripts/run-public-launch-readiness.mjs"
   },
-  "description": "LUMOS: a multi-page public platform for socially constrained Bayesian environmental-monitoring design, research, documentation, and program operations across Heat, Air, Soil, and Water."
+  "description": "LUMOS: a multi-page public platform with a comprehensive LUMOSLab planning, geographic, operational, validation, research, governance, and communication system across Heat, Air, Soil, and Water."
 }

@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LUMOSLab is the cross-domain planning, scenario comparison, data review, intervention, robustness, and decision-analysis studio for LUMOS.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="LUMOSLab · Environmental Decision Studio">
+  <meta property="og:description" content="Create and compare Heat, Air, Soil, and Water monitoring plans, review data, test interventions, explore tradeoffs, and launch the full scientific workspaces.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#07100f">
+  <meta name="application-name" content="LUMOS">
+  <title>LUMOSLab · Environmental Decision Studio</title>
+  <link rel="icon" href="assets/lumos-mark.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Orbitron:wght@500;600;700&amp;family=Tektur:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?build=multi-page-9">
+  <link rel="stylesheet" href="css/lumos-lab.css?build=lab-3">
+  <link rel="stylesheet" href="css/lumos-lab-intro.css?build=intro-2">
+  <noscript><style>.protocol-intro{display:none!important}.lab-page.lab-intro-running>.app-header,.lab-page.lab-intro-running>.lab-shell,.lab-page.lab-intro-running>.app-footer,.lab-page.lab-intro-running>.offline-banner{opacity:1!important;filter:none!important;transform:none!important}</style></noscript>
+</head>
+<body class="site-page lab-page lab-intro-running" data-lumos-page="lab">
+  <section id="protocolIntro" class="protocol-intro" aria-labelledby="protocolTitle" aria-describedby="protocolDescription">
+    <div class="protocol-backdrop" aria-hidden="true">
+      <div class="protocol-grid"></div>
+      <div class="protocol-scan"></div>
+      <canvas id="protocolParticleCanvas" class="protocol-particle-canvas"></canvas>
+    </div>
+
+    <div class="protocol-topline" aria-hidden="true">
+      <span>CONVERGENCE PROTOCOL</span>
+      <span id="protocolClock">T+00.0</span>
+      <span>LOCAL SYSTEM / LUMOSLAB</span>
+    </div>
+
+    <div class="protocol-corner protocol-corner-nw" aria-hidden="true"><i></i><span>40.7128 N</span></div>
+    <div class="protocol-corner protocol-corner-ne" aria-hidden="true"><i></i><span>74.0060 W</span></div>
+    <div class="protocol-corner protocol-corner-sw" aria-hidden="true"><i></i><span>GRID 16 / 04</span></div>
+    <div class="protocol-corner protocol-corner-se" aria-hidden="true"><i></i><span>SECURE LOCAL MODE</span></div>
+
+    <svg id="protocolSvg" class="protocol-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Color-coded circuit traces converge from the viewport edges into a unified environmental planning network">
+      <defs>
+        <filter id="protocolGlow" x="-100%" y="-100%" width="300%" height="300%">
+          <feGaussianBlur stdDeviation="5" result="blur"></feGaussianBlur>
+          <feMerge><feMergeNode in="blur"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+        </filter>
+        <filter id="protocolSoftGlow" x="-100%" y="-100%" width="300%" height="300%">
+          <feGaussianBlur stdDeviation="2.5" result="blur"></feGaussianBlur>
+          <feMerge><feMergeNode in="blur"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+        </filter>
+        <radialGradient id="protocolCoreFill" cx="50%" cy="50%" r="50%">
+          <stop offset="0" stop-color="#f2ffe0" stop-opacity=".96"></stop>
+          <stop offset=".24" stop-color="#bdfc6b" stop-opacity=".78"></stop>
+          <stop offset=".72" stop-color="#69c3b0" stop-opacity=".18"></stop>
+          <stop offset="1" stop-color="#07100f" stop-opacity="0"></stop>
+        </radialGradient>
+        <linearGradient id="protocolUnifiedStroke" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#ffb45f"></stop>
+          <stop offset=".32" stop-color="#8fd7ff"></stop>
+          <stop offset=".66" stop-color="#d8bf75"></stop>
+          <stop offset="1" stop-color="#78a9ff"></stop>
+        </linearGradient>
+      </defs>
+
+      <g id="protocolCircuitLayer" class="protocol-circuit-layer"></g>
+
+      <g class="protocol-core" aria-hidden="true">
+        <circle class="protocol-core-aura" cx="800" cy="450" r="138"></circle>
+        <circle class="protocol-core-ring ring-one" cx="800" cy="450" r="104"></circle>
+        <circle class="protocol-core-ring ring-two" cx="800" cy="450" r="78"></circle>
+        <circle class="protocol-core-fill" cx="800" cy="450" r="70"></circle>
+        <path class="protocol-core-cross" d="M800 392V508M742 450H858"></path>
+        <path class="protocol-core-mark" d="M800 410 L833 429 L833 471 L800 490 L767 471 L767 429 Z"></path>
+        <circle class="protocol-core-node" cx="800" cy="450" r="11"></circle>
+      </g>
+
+      <g class="protocol-metrics" aria-hidden="true">
+        <g transform="translate(603 334)"><line x1="0" y1="18" x2="92" y2="72"></line><text x="0" y="0">UNCERTAINTY</text><text x="0" y="20" class="metric-value">−31.8%</text></g>
+        <g transform="translate(905 334)"><line x1="0" y1="18" x2="-96" y2="72"></line><text x="0" y="0">EQUITY</text><text x="0" y="20" class="metric-value">CONSTRAINED</text></g>
+        <g transform="translate(586 572)"><line x1="0" y1="-18" x2="105" y2="-75"></line><text x="0" y="0">FEASIBILITY</text><text x="0" y="20" class="metric-value">VALIDATING</text></g>
+        <g transform="translate(914 572)"><line x1="0" y1="-18" x2="-105" y2="-75"></line><text x="0" y="0">ROBUSTNESS</text><text x="0" y="20" class="metric-value">STRESS TESTED</text></g>
+      </g>
+
+      <g class="protocol-network" aria-hidden="true">
+        <path class="protocol-boundary" d="M530 250 L1058 218 L1160 378 L1112 657 L882 720 L601 660 L464 480 Z"></path>
+        <g class="protocol-mesh">
+          <path d="M530 250L1112 657M1058 218L601 660M464 480L1160 378M601 660L1058 218M530 250L882 720"></path>
+          <path d="M540 375L1091 364M520 510L1120 520M655 250L650 660M800 230L800 700M960 230L958 685"></path>
+        </g>
+        <g class="protocol-network-links">
+          <path d="M570 353L704 294L817 366L963 304L1064 390L983 511L1090 573L890 642L763 558L620 600L544 486Z"></path>
+          <path d="M704 294L763 558M963 304L890 642M570 353L983 511M817 366L1090 573M620 600L1064 390"></path>
+        </g>
+        <g class="protocol-candidates">
+          <circle cx="570" cy="353" r="6"></circle><circle cx="704" cy="294" r="6"></circle><circle cx="817" cy="366" r="6"></circle><circle cx="963" cy="304" r="6"></circle><circle cx="1064" cy="390" r="6"></circle><circle cx="983" cy="511" r="6"></circle><circle cx="1090" cy="573" r="6"></circle><circle cx="890" cy="642" r="6"></circle><circle cx="763" cy="558" r="6"></circle><circle cx="620" cy="600" r="6"></circle><circle cx="544" cy="486" r="6"></circle>
+        </g>
+        <g class="protocol-selected">
+          <circle cx="704" cy="294" r="10"></circle><circle cx="963" cy="304" r="10"></circle><circle cx="983" cy="511" r="10"></circle><circle cx="763" cy="558" r="10"></circle><circle cx="544" cy="486" r="10"></circle>
+        </g>
+      </g>
+
+      <g class="protocol-scenarios" aria-hidden="true">
+        <g class="scenario scenario-efficiency" transform="translate(602 450)"><circle r="42"></circle><circle cx="-17" cy="7" r="4"></circle><circle cx="6" cy="-14" r="4"></circle><circle cx="19" cy="12" r="4"></circle><path d="M-17 7L6-14L19 12Z"></path><text y="67" text-anchor="middle">EFFICIENCY</text></g>
+        <g class="scenario scenario-equity" transform="translate(800 450)"><circle r="46"></circle><circle cx="-18" cy="-10" r="4"></circle><circle cx="18" cy="-10" r="4"></circle><circle cx="0" cy="18" r="4"></circle><path d="M-18-10L18-10L0 18Z"></path><text y="71" text-anchor="middle">EQUITY</text></g>
+        <g class="scenario scenario-resilience" transform="translate(998 450)"><circle r="42"></circle><circle cx="-18" cy="10" r="4"></circle><circle cx="0" cy="-17" r="4"></circle><circle cx="19" cy="9" r="4"></circle><path d="M-18 10L0-17L19 9Z"></path><text y="67" text-anchor="middle">RESILIENCE</text></g>
+      </g>
+    </svg>
+
+    <div class="protocol-status" aria-live="polite" aria-atomic="true">
+      <span class="protocol-status-index" id="protocolStatusIndex">01</span>
+      <div><p id="protocolStatusLabel">INITIALIZING LOCAL SYSTEM</p><small id="protocolStatusDetail">Preparing edge-to-core convergence routing</small></div>
+    </div>
+
+    <div class="protocol-title-lockup">
+      <p>Unified environmental decision system</p>
+      <h1 id="protocolTitle"><span>LUMOS</span>Lab</h1>
+      <p id="protocolDescription">Build plans. Test assumptions. Make decisions.</p>
+    </div>
+
+    <div class="protocol-progress" aria-hidden="true"><span id="protocolProgressBar"></span></div>
+    <button id="protocolSkipButton" class="protocol-skip" type="button">Skip protocol <span>Esc</span></button>
+  </section>
+  <a class="skip-link" href="#labWorkspace">Skip to LUMOSLab workspace</a>
+  <div id="offlineBanner" class="offline-banner" hidden role="status">Offline mode: saved plans and the LUMOSLab application shell remain available, but live public-data services require a connection.</div>
+  <header id="appHeader" class="app-header site-header">
+    <a class="brand-lockup site-brand" href="index.html" aria-label="LUMOS Home">
+      <img class="brand-mark" src="assets/lumos-mark.svg" alt="" width="48" height="48">
+      <span class="brand-copy"><strong>LUMOS</strong></span>
+    </a>
+    <nav class="site-navigation" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="unified.html">Unified</a>
+      <a href="lumos-lab.html" class="active" aria-current="page">LUMOSLab</a>
+      <details class="workspace-menu site-menu">
+        <summary>Workspaces</summary>
+        <div class="workspace-menu-panel"><a href="heat.html"><span>Heat</span><small>LUMOS—Heat</small></a><a href="air.html"><span>Air</span><small>LUMOS—Air</small></a><a href="soil.html"><span>Soil</span><small>LUMOS—Soil</small></a><a href="water.html"><span>Water</span><small>LUMOS—Water</small></a></div>
+      </details>
+      <details class="workspace-menu site-menu documentation-menu">
+        <summary>Documentation</summary>
+        <div class="workspace-menu-panel documentation-menu-panel"><a href="documentation.html#quickstart"><span>Quickstart</span><small>From study area to export</small></a><a href="documentation.html#user-guide"><span>User guide</span><small>Core workflow and controls</small></a><a href="documentation.html#interface-guide"><span>Interface guide</span><small>Navigation, maps, and workspaces</small></a><a href="documentation.html#limitations"><span>Limitations</span><small>Scope and intended use</small></a><a href="documentation.html#privacy"><span>Privacy</span><small>Local-first data governance</small></a><a href="documentation.html#release-notes"><span>Release notes</span><small>Current public release</small></a><a href="documentation.html#changelog"><span>Changelog</span><small>Complete version history</small></a></div>
+      </details>
+      <details class="workspace-menu site-menu research-menu">
+        <summary>Research &amp; Process</summary>
+        <div class="workspace-menu-panel research-menu-panel"><a href="research.html#methodology"><span>Methodology</span><small>Scientific framework and objectives</small></a><a href="research.html#architecture"><span>Model architecture</span><small>Shared engine and domain adapters</small></a><a href="research.html#data-sources"><span>Data sources</span><small>Provenance and fallback behavior</small></a><a href="research.html#validation"><span>Validation &amp; benchmarking</span><small>Evidence and comparator design</small></a><a href="research.html#reproducibility"><span>Reproducibility</span><small>Frozen evidence and verification</small></a><a href="research.html#lifecycle"><span>Monitoring lifecycle</span><small>Planning through maintenance</small></a><a href="research.html#paper"><span>Paper &amp; conference</span><small>Manuscript and submission status</small></a><a href="research.html#citation"><span>Citation</span><small>Recommended scholarly attribution</small></a></div>
+      </details>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-actions site-header-actions">
+      <a class="icon-link header-icon-link" href="https://github.com/hgd-dev/lumos" target="_blank" rel="noopener noreferrer" aria-label="Open the LUMOS GitHub repository" title="GitHub repository"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .7a11.3 11.3 0 0 0-3.57 22.02c.57.1.78-.25.78-.55v-2.16c-3.18.69-3.85-1.35-3.85-1.35-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.73-1.53-2.54-.29-5.21-1.27-5.21-5.65 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.13 1.17A10.87 10.87 0 0 1 12 6.94c.97 0 1.94.13 2.85.38 2.17-1.48 3.13-1.17 3.13-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.39-2.68 5.35-5.22 5.64.41.36.77 1.06.77 2.14v3.17c0 .3.21.66.79.55A11.3 11.3 0 0 0 12 .7Z"/></svg></a>
+      <button id="systemCheckButton" class="secondary-button" type="button">System check</button>
+    </div>
+  </header>
+  <main id="labWorkspace" class="lab-shell" aria-labelledby="labTitle">
+    <section class="lab-hero">
+      <div class="lab-hero-copy">
+        <p class="eyebrow">Cross-domain decision studio</p>
+        <h1 id="labTitle"><span>LUMOS</span>Lab</h1>
+        <p>Create, compare, explain, stress-test, and export environmental monitoring plans across Heat, Air, Soil, and Water. LUMOSLab coordinates the workflow; the dedicated scientific workspaces remain the source for full model execution and site-level evidence.</p>
+        <div class="lab-hero-actions"><button id="heroNewPlanButton" class="primary-button" type="button">Create a plan</button><button class="secondary-button" type="button" data-lab-view="compare">Compare scenarios</button><a class="secondary-button button-link" href="unified.html">Open Unified</a></div>
+      </div>
+      <div class="lab-hero-status" aria-label="LUMOSLab capabilities">
+        <span>Guided planning</span><span>Scenario comparison</span><span>Explainability</span><span>Data review</span><span>Intervention design</span><span>Sequential deployment</span><span>Robustness testing</span><span>Pareto tradeoffs</span>
+      </div>
+    </section>
+    <div class="lab-accessibility-bar" aria-label="LUMOSLab display controls"><span>Display</span><button id="labContrastButton" type="button">High contrast</button><button id="labMotionButton" type="button">Reduce motion</button><button id="labLanguageButton" type="button">Español</button><span id="labAutosaveStatus" role="status">Local autosave ready</span></div>
+
+    <section class="lab-domain-launcher" aria-labelledby="labDomainTitle">
+      <div><p class="section-kicker">Four scientific adapters</p><h2 id="labDomainTitle">Plan here. Validate in the full workspace.</h2></div>
+      <div id="domainLauncherGrid" class="lab-domain-grid"></div>
+    </section>
+
+    <section class="lab-studio">
+      <aside class="lab-sidebar" aria-label="LUMOSLab navigation and saved plans">
+        <div class="lab-sidebar-heading"><p class="section-kicker">Decision workflow</p><strong id="activeProjectLabel">Untitled plan</strong><small id="activeProjectMeta">No saved scenario</small></div>
+        <nav class="lab-view-nav" aria-label="LUMOSLab sections">
+          <button class="active" type="button" data-lab-view="plan"><span>01</span>Plan builder</button>
+          <button type="button" data-lab-view="analysis"><span>02</span>Analysis &amp; explanation</button>
+          <button type="button" data-lab-view="compare"><span>03</span>Scenario comparison</button>
+          <button type="button" data-lab-view="data"><span>04</span>Data &amp; provenance</button>
+          <button type="button" data-lab-view="intervention"><span>05</span>Intervention planner</button>
+          <button type="button" data-lab-view="robustness"><span>06</span>Robustness center</button>
+          <button type="button" data-lab-view="tradeoffs"><span>07</span>Tradeoff explorer</button>
+          <button type="button" data-lab-view="timeline"><span>08</span>Sequential timeline</button>
+          <span class="lab-nav-divider">Operational system</span>
+          <button type="button" data-lab-view="command"><span>09</span>Command center</button>
+          <button type="button" data-lab-view="geography"><span>10</span>Geography &amp; map editor</button>
+          <button type="button" data-lab-view="operations"><span>11</span>Feasibility &amp; lifecycle cost</button>
+          <button type="button" data-lab-view="monitoring"><span>12</span>Observations &amp; sensor health</button>
+          <button type="button" data-lab-view="validation"><span>13</span>Validation, simulation &amp; power</button>
+          <button type="button" data-lab-view="unified-program"><span>14</span>Unified four-domain program</button>
+          <button type="button" data-lab-view="intelligence"><span>15</span>Stability &amp; sensitivity</button>
+          <button type="button" data-lab-view="governance"><span>16</span>Governance &amp; review</button>
+          <button type="button" data-lab-view="research-studio"><span>17</span>Research studio</button>
+          <button type="button" data-lab-view="story"><span>18</span>Story mode &amp; assistant</button>
+          <button type="button" data-lab-view="export"><span>19</span>Export &amp; reproduce</button>
+        </nav>
+        <section class="lab-saved-plans" aria-labelledby="savedPlansTitle">
+          <div class="lab-section-minihead"><strong id="savedPlansTitle">Saved plans</strong><button id="newPlanButton" class="text-button" type="button">New</button></div>
+          <div id="savedPlanList" class="saved-plan-list"></div>
+        </section>
+      </aside>
+
+      <div class="lab-main">
+        <section class="lab-view active" data-lab-panel="plan" aria-labelledby="planBuilderTitle">
+          <div class="lab-view-heading"><div><p class="section-kicker">Phase A · Guided workflow</p><h2 id="planBuilderTitle">Build an environmental monitoring plan</h2></div><span class="lab-mode-badge">Local-first project file</span></div>
+          <div class="lab-form-grid">
+            <label class="lab-field lab-field-wide">Plan name<input id="planName" type="text" value="Community monitoring plan" maxlength="80"></label>
+            <label class="lab-field">Environmental domain<select id="planDomain"><option value="heat">Heat</option><option value="air">Air</option><option value="soil">Soil</option><option value="water">Water</option></select></label>
+            <label class="lab-field">Study area<input id="planRegion" type="text" value="New York City" maxlength="100"></label>
+            <label class="lab-field">Planning budget<input id="planBudget" type="number" min="1000" step="1000" value="60000"></label>
+            <label class="lab-field">Target units<input id="planUnits" type="number" min="2" max="60" step="1" value="10"></label>
+            <label class="lab-field">Primary objective<select id="planObjective"><option value="balanced">Balanced decision value</option><option value="uncertainty">Uncertainty reduction</option><option value="equity">Equity and information floors</option><option value="exposure">Population exposure</option><option value="intervention">Intervention sensitivity</option><option value="resilience">Failure resilience</option></select></label>
+            <label class="lab-field">Deployment mode<select id="planMode"><option value="fixed">Fixed network</option><option value="sequential">Sequential deployment</option><option value="intervention">Intervention evaluation</option><option value="mixed">Mixed fixed + temporary network</option></select></label>
+          </div>
+          <div class="lab-builder-columns">
+            <section class="lab-card"><p class="section-kicker">Objective weights</p><div class="lab-slider-list">
+              <label>Information gain <output id="weightInformationValue">30%</output><input id="weightInformation" type="range" min="0" max="100" value="30"></label>
+              <label>Exposure coverage <output id="weightExposureValue">20%</output><input id="weightExposure" type="range" min="0" max="100" value="20"></label>
+              <label>Equity <output id="weightEquityValue">25%</output><input id="weightEquity" type="range" min="0" max="100" value="25"></label>
+              <label>Robustness <output id="weightRobustnessValue">15%</output><input id="weightRobustness" type="range" min="0" max="100" value="15"></label>
+              <label>Intervention value <output id="weightInterventionValue">10%</output><input id="weightIntervention" type="range" min="0" max="100" value="10"></label>
+            </div></section>
+            <section class="lab-card"><p class="section-kicker">Operational constraints</p><div class="lab-check-list">
+              <label><input id="constraintEquity" type="checkbox" checked><span><strong>Minimum group information</strong><small>Protect against plans that improve average information while leaving a priority group poorly observed.</small></span></label>
+              <label><input id="constraintAccess" type="checkbox" checked><span><strong>Access and permission</strong><small>Reserve candidate sites for field review rather than treating every point as installable.</small></span></label>
+              <label><input id="constraintPower" type="checkbox"><span><strong>Power and connectivity</strong><small>Prefer hosts compatible with continuous monitoring equipment.</small></span></label>
+              <label><input id="constraintFailure" type="checkbox" checked><span><strong>Single-sensor failure tolerance</strong><small>Penalize designs that depend excessively on one site.</small></span></label>
+            </div></section>
+            <section class="lab-card"><p class="section-kicker">Community priorities</p><label class="lab-field">Priority statement<textarea id="planPriority" rows="5" maxlength="500">Improve information quality near schools, public housing, outdoor workers, and neighborhoods with limited existing monitoring.</textarea></label><p class="lab-note">Community-stated priorities remain distinct from demographic vulnerability, modeled exposure, and formal fairness constraints.</p></section>
+          </div>
+          <div class="lab-action-row"><button id="savePlanButton" class="primary-button" type="button">Save plan</button><button id="duplicatePlanButton" class="secondary-button" type="button">Duplicate</button><button id="generatePlanButton" class="secondary-button" type="button">Generate analysis preview</button><button id="deletePlanButton" class="text-button danger-text" type="button">Delete plan</button></div>
+          <p id="planStatus" class="lab-status" role="status">Adjust the plan, then save or generate an analysis preview.</p>
+        </section>
+
+        <section class="lab-view" data-lab-panel="analysis" aria-labelledby="analysisTitle">
+          <div class="lab-view-heading"><div><p class="section-kicker">Phase A + B · Explainable design</p><h2 id="analysisTitle">Analysis and recommendation explanation</h2></div><div class="lab-inline-actions"><button id="runAnalysisButton" class="primary-button" type="button">Run preview</button><button id="playOptimizationButton" class="secondary-button" type="button">Play selection</button></div></div>
+          <div id="analysisMetricGrid" class="lab-metric-grid"></div>
+          <div class="lab-analysis-grid">
+            <section class="lab-map-card"><div class="lab-card-heading"><div><strong>Decision surface</strong><small id="analysisMapSubtitle">Illustrative planning preview</small></div><span id="analysisPlaybackStatus">Ready</span></div><svg id="analysisMap" class="lab-analysis-map" viewBox="0 0 800 470" role="img" aria-label="Illustrative monitoring plan map"></svg><div class="lab-map-legend"><span><i class="legend-candidate"></i>Candidate</span><span><i class="legend-selected"></i>Recommended</span><span><i class="legend-priority"></i>Priority area</span></div></section>
+            <section class="lab-card lab-explanation-panel"><p class="section-kicker">Why these sites?</p><div id="recommendationList" class="recommendation-list"></div></section>
+          </div>
+          <section class="lab-card"><div class="lab-card-heading"><div><strong>Data readiness checker</strong><small>Warnings should be resolved in the full scientific workspace before operational use.</small></div></div><div id="readinessChecks" class="readiness-grid"></div></section>
+        </section>
+
+        <section class="lab-view" data-lab-panel="compare" aria-labelledby="compareTitle">
+          <div class="lab-view-heading"><div><p class="section-kicker">Phase A · Scenario laboratory</p><h2 id="compareTitle">Compare saved plans side by side</h2></div><button id="refreshComparisonButton" class="secondary-button" type="button">Refresh comparison</button></div>
+          <div id="comparisonPicker" class="comparison-picker"></div>
+          <div id="comparisonCards" class="comparison-cards"></div>
+          <section class="lab-card"><div class="lab-card-heading"><div><strong>Decision matrix</strong><small>Metrics are normalized planning indicators for comparison, not regulatory determinations.</small></div></div><div class="lab-table-wrap"><table><thead><tr><th>Plan</th><th>Domain</th><th>Information</th><th>Equity</th><th>Robustness</th><th>Intervention</th><th>Cost use</th><th>Composite</th></tr></thead><tbody id="comparisonTableBody"></tbody></table></div></section>
+        </section>
+
+        <section class="lab-view" data-lab-panel="data" aria-labelledby="dataTitle">
+          <div class="lab-view-heading"><div><p class="section-kicker">Phase A · Bring your own data</p><h2 id="dataTitle">Review files and data provenance</h2></div><span class="lab-mode-badge">CSV · JSON · GeoJSON</span></div>
+          <div class="lab-data-grid">
+            <section class="lab-card"><p class="section-kicker">Local file review</p><label class="lab-upload-zone" for="labDataFile"><strong>Choose a data file</strong><span>Files are parsed in this browser and are not uploaded by LUMOSLab.</span><input id="labDataFile" type="file" accept=".csv,.json,.geojson,application/json,text/csv"></label><div id="dataFileSummary" class="data-file-summary"><p>No file selected.</p></div></section>
+            <section class="lab-card"><p class="section-kicker">Column mapping</p><div class="lab-form-grid compact"><label class="lab-field">Latitude<select id="latitudeColumn"><option value="">Not mapped</option></select></label><label class="lab-field">Longitude<select id="longitudeColumn"><option value="">Not mapped</option></select></label><label class="lab-field">Measurement<select id="measurementColumn"><option value="">Not mapped</option></select></label><label class="lab-field">Group or priority<select id="groupColumn"><option value="">Not mapped</option></select></label></div><button id="validateDataButton" class="secondary-button" type="button">Validate mapping</button><div id="dataValidationResults" class="readiness-grid compact"></div></section>
+          </div>
+          <section class="lab-card"><div class="lab-card-heading"><div><strong>Current provenance register</strong><small>Review source date, resolution, transformation, and intended role before analysis.</small></div></div><div class="lab-table-wrap"><table><thead><tr><th>Layer</th><th>Source role</th><th>Typical resolution</th><th>Freshness</th><th>Planning limitation</th></tr></thead><tbody id="provenanceTableBody"></tbody></table></div></section>
+        </section>
+
+        <section class="lab-view" data-lab-panel="intervention" aria-labelledby="interventionTitle">
+          <div class="lab-view-heading"><div><p class="section-kicker">Phase B · Before/after evaluation</p><h2 id="interventionTitle">Design an intervention monitoring plan</h2></div><button id="runInterventionButton" class="primary-button" type="button">Evaluate readiness</button></div>
+          <div class="lab-form-grid">
+            <label class="lab-field lab-field-wide">Intervention description<input id="interventionDescription" type="text" value="Neighborhood cooling and shade intervention" maxlength="140"></label>
+            <label class="lab-field">Treatment area<input id="treatmentArea" type="text" value="Target neighborhoods"></label>
+            <label class="lab-field">Comparison area<input id="controlArea" type="text" value="Matched comparison neighborhoods"></label>
+            <label class="lab-field">Pre-period weeks<input id="preWeeks" type="number" min="1" max="104" value="8"></label>
+            <label class="lab-field">Post-period weeks<input id="postWeeks" type="number" min="1" max="104" value="12"></label>
+            <label class="lab-field">Expected effect<select id="effectSize"><option value="small">Small</option><option value="moderate" selected>Moderate</option><option value="large">Large</option></select></label>
+            <label class="lab-field">Spillover concern<select id="spilloverConcern"><option value="low">Low</option><option value="moderate" selected>Moderate</option><option value="high">High</option></select></label>
+          </div>
+          <div id="interventionResults" class="lab-result-stack"></div>
+          <p class="lab-note">This planner evaluates design readiness and balance. It does not establish causality; final evaluation requires domain-appropriate assumptions, comparison design, diagnostics, and interpretation.</p>
+        </section>
+
+        <section class="lab-view" data-lab-panel="robustness" aria-labelledby="robustnessTitle">
+          <div class="lab-view-heading"><div><p class="section-kicker">Phase B · Robustness stress tests</p><h2 id="robustnessTitle">Test the plan against operational uncertainty</h2></div><button id="runStressTestsButton" class="primary-button" type="button">Run stress tests</button></div>
+          <div class="lab-builder-columns">
+            <section class="lab-card"><p class="section-kicker">Stress assumptions</p><div class="lab-slider-list"><label>Sensor failure rate <output id="failureRateValue">10%</output><input id="failureRate" type="range" min="0" max="50" value="10"></label><label>Missing-data rate <output id="missingRateValue">15%</output><input id="missingRate" type="range" min="0" max="60" value="15"></label><label>Cost overrun <output id="costOverrunValue">10%</output><input id="costOverrun" type="range" min="0" max="80" value="10"></label><label>Environmental shift <output id="environmentShiftValue">20%</output><input id="environmentShift" type="range" min="0" max="100" value="20"></label></div></section>
+            <section class="lab-card"><p class="section-kicker">Discrete disruptions</p><div class="lab-check-list"><label><input id="stressAccess" type="checkbox" checked><span><strong>Candidate-site loss</strong><small>Remove high-value sites after the initial plan.</small></span></label><label><input id="stressCalibration" type="checkbox"><span><strong>Calibration drift</strong><small>Reduce effective reliability of lower-cost instruments.</small></span></label><label><input id="stressCommunications" type="checkbox"><span><strong>Communications outage</strong><small>Temporarily reduce data completeness for continuous sensors.</small></span></label></div></section>
+          </div>
+          <div id="stressResultGrid" class="stress-result-grid"></div>
+        </section>
+
+        <section class="lab-view" data-lab-panel="tradeoffs" aria-labelledby="tradeoffTitle">
+          <div class="lab-view-heading"><div><p class="section-kicker">Phase B · Multi-objective design</p><h2 id="tradeoffTitle">Explore the Pareto tradeoff surface</h2></div><button id="rebuildTradeoffsButton" class="secondary-button" type="button">Rebuild frontier</button></div>
+          <div class="lab-tradeoff-grid">
+            <section class="lab-map-card"><div class="lab-card-heading"><div><strong>Equity–information frontier</strong><small>Click a nondominated plan to apply its objective profile.</small></div></div><svg id="paretoChart" class="pareto-chart" viewBox="0 0 760 430" role="img" aria-label="Pareto frontier chart"></svg></section>
+            <section class="lab-card"><p class="section-kicker">Selected tradeoff</p><div id="selectedTradeoff" class="selected-tradeoff"></div></section>
+          </div>
+          <section class="lab-card"><div class="lab-card-heading"><div><strong>Benchmark dashboard</strong><small>Comparator scores are normalized previews aligned with the research benchmark families used by LUMOS.</small></div></div><div class="lab-table-wrap"><table><thead><tr><th>Method</th><th>Information</th><th>Equity</th><th>Robustness</th><th>Runtime class</th><th>Role</th></tr></thead><tbody id="benchmarkTableBody"></tbody></table></div></section>
+        </section>
+
+        <section class="lab-view" data-lab-panel="timeline" aria-labelledby="timelineTitle">
+          <div class="lab-view-heading"><div><p class="section-kicker">Phase B · Sequential deployment</p><h2 id="timelineTitle">Plan how the network learns over time</h2></div><button id="buildTimelineButton" class="primary-button" type="button">Build timeline</button></div>
+          <div class="lab-form-grid compact"><label class="lab-field">Deployment rounds<input id="timelineRounds" type="number" min="2" max="8" value="4"></label><label class="lab-field">Initial share<input id="initialShare" type="number" min="20" max="90" value="50"></label><label class="lab-field">Learning response<select id="learningResponse"><option value="conservative">Conservative</option><option value="central" selected>Central</option><option value="optimistic">Optimistic</option></select></label><label class="lab-field">Temporary relocation<select id="allowRelocation"><option value="yes">Allowed</option><option value="no">Not allowed</option></select></label></div>
+          <div id="timelineResults" class="timeline-results"></div>
+        </section>
+
+        <section class="lab-view" data-lab-panel="command" aria-labelledby="commandTitle">
+          <div class="lab-view-heading"><div><p class="section-kicker">Program overview</p><h2 id="commandTitle">LUMOSLab command center</h2></div><button id="refreshCommandButton" class="secondary-button" type="button">Refresh dashboard</button></div>
+          <div id="commandMetricGrid" class="lab-metric-grid advanced-metric-grid"></div>
+          <div class="lab-dashboard-grid">
+            <section class="lab-card"><div class="lab-card-heading"><div><strong>Project readiness</strong><small>One consolidated view of plan, data, operations, validation, and review.</small></div><span id="commandReadinessScore">—</span></div><div id="commandReadinessList" class="readiness-grid compact"></div></section>
+            <section class="lab-card"><div class="lab-card-heading"><div><strong>Priority actions</strong><small>Highest-value next steps generated from the current local project.</small></div></div><ol id="commandActionList" class="lab-action-list"></ol></section>
+            <section class="lab-card"><div class="lab-card-heading"><div><strong>Program pulse</strong><small>Current domains, costs, sites, observations, and review status.</small></div></div><div id="commandPulse" class="lab-kv-list"></div></section>
+          </div>
+        </section>
+
+        <section class="lab-view" data-lab-panel="geography" aria-labelledby="geographyTitle">
+          <div class="lab-view-heading"><div><p class="section-kicker">Geographic project builder</p><h2 id="geographyTitle">Draw the study area and edit the plan directly</h2></div><div class="lab-inline-actions"><button id="resetGeographyButton" class="secondary-button" type="button">Reset canvas</button><button id="saveGeographyButton" class="primary-button" type="button">Save geography</button></div></div>
+          <div class="lab-map-editor-layout">
+            <section class="lab-map-card"><div class="lab-map-toolbar" role="toolbar" aria-label="Map editing tools"><button class="active" data-map-tool="select" type="button">Select / drag</button><button data-map-tool="site" type="button">Add site</button><button data-map-tool="boundary" type="button">Study boundary</button><button data-map-tool="priority" type="button">Priority zone</button><button data-map-tool="exclusion" type="button">Exclusion zone</button><button id="finishShapeButton" type="button">Finish shape</button></div><svg id="geographyCanvas" class="lab-geography-map" viewBox="0 0 900 540" role="img" aria-label="Interactive schematic geographic project editor"></svg><div class="lab-map-legend"><span><i class="legend-selected"></i>Monitoring site</span><span><i class="legend-priority"></i>Priority zone</span><span><i class="legend-exclusion"></i>Exclusion zone</span><span><i class="legend-boundary"></i>Study boundary</span></div></section>
+            <aside class="lab-card"><p class="section-kicker">Selected geography</p><div id="selectedSiteEditor" class="selected-site-editor"><p class="lab-note">Select a site to edit its role, lock state, cost, and feasibility.</p></div><div class="lab-action-stack"><label class="secondary-button button-link file-button">Import GeoJSON<input id="geographyImportFile" type="file" accept=".json,.geojson,application/geo+json,application/json"></label><button id="exportGeoJsonButton" class="secondary-button" type="button">Export GIS GeoJSON</button></div><div id="geographyStats" class="lab-kv-list"></div></aside>
+          </div>
+        </section>
+
+        <section class="lab-view" data-lab-panel="operations" aria-labelledby="operationsTitle">
+          <div class="lab-view-heading"><div><p class="section-kicker">Operational deployment</p><h2 id="operationsTitle">Feasibility, sensor catalog, and lifecycle budget</h2></div><button id="recalculateOperationsButton" class="primary-button" type="button">Recalculate operations</button></div>
+          <div class="lab-three-column-grid">
+            <section class="lab-card"><p class="section-kicker">Candidate feasibility</p><div id="feasibilitySummary" class="lab-kv-list"></div><div class="lab-table-wrap compact-table"><table><thead><tr><th>Site</th><th>Status</th><th>Access</th><th>Power</th><th>Safety</th></tr></thead><tbody id="feasibilityTableBody"></tbody></table></div></section>
+            <section class="lab-card"><p class="section-kicker">Sensor and sampling catalog</p><div id="sensorCatalog" class="sensor-catalog"></div></section>
+            <section class="lab-card"><p class="section-kicker">Lifecycle assumptions</p><div class="lab-form-grid compact"><label class="lab-field">Planning years<input id="lifecycleYears" type="number" min="1" max="15" value="5"></label><label class="lab-field">Contingency %<input id="lifecycleContingency" type="number" min="0" max="50" value="12"></label><label class="lab-field">Staff cost / hour<input id="staffHourlyCost" type="number" min="0" step="5" value="55"></label><label class="lab-field">Annual field hours<input id="annualFieldHours" type="number" min="0" step="10" value="240"></label></div><div id="lifecycleCostSummary" class="lab-kv-list"></div></section>
+          </div>
+          <section class="lab-card"><div class="lab-card-heading"><div><strong>Budget and constraint diagnosis</strong><small>Explains infeasibility and suggests the smallest practical changes.</small></div></div><div id="constraintConflictResults" class="lab-result-stack"></div></section>
+        </section>
+
+        <section class="lab-view" data-lab-panel="monitoring" aria-labelledby="monitoringTitle">
+          <div class="lab-view-heading"><div><p class="section-kicker">Adaptive monitoring loop</p><h2 id="monitoringTitle">Upload observations, inspect sensor health, and update the plan</h2></div><div class="lab-inline-actions"><button id="simulateObservationsButton" class="secondary-button" type="button">Generate demo observations</button><button id="updatePosteriorButton" class="primary-button" type="button">Update planning posterior</button></div></div>
+          <div class="lab-data-grid">
+            <section class="lab-card"><p class="section-kicker">Observation intake</p><label class="lab-upload-zone compact-upload" for="observationFile"><strong>Choose observations</strong><span>CSV or JSON with site, value, time, and optional quality fields.</span><input id="observationFile" type="file" accept=".csv,.json,application/json,text/csv"></label><div id="observationSummary" class="lab-kv-list"></div></section>
+            <section class="lab-card"><p class="section-kicker">Data quality center</p><div id="qualityMetricGrid" class="lab-metric-grid mini-metrics"></div><div id="qualityWarnings" class="readiness-grid compact"></div></section>
+          </div>
+          <section class="lab-card"><div class="lab-card-heading"><div><strong>Sensor and site health</strong><small>Local diagnostic signals for missingness, drift, disagreement, calibration, and maintenance priority.</small></div></div><div class="lab-table-wrap"><table><thead><tr><th>Asset</th><th>Health</th><th>Completeness</th><th>Drift</th><th>Calibration</th><th>Recommended action</th></tr></thead><tbody id="sensorHealthTableBody"></tbody></table></div></section>
+          <section class="lab-card"><div class="lab-card-heading"><div><strong>Adaptive update result</strong><small>Shows how incoming evidence changes uncertainty and the next deployment round.</small></div></div><div id="posteriorUpdateResults" class="lab-result-stack"></div></section>
+        </section>
+
+        <section class="lab-view" data-lab-panel="validation" aria-labelledby="validationTitle">
+          <div class="lab-view-heading"><div><p class="section-kicker">Scientific design diagnostics</p><h2 id="validationTitle">Validation, simulation, and detectable-effect analysis</h2></div><button id="runValidationSuiteButton" class="primary-button" type="button">Run local diagnostic suite</button></div>
+          <div class="lab-form-grid compact"><label class="lab-field">Validation folds<input id="validationFolds" type="number" min="3" max="10" value="5"></label><label class="lab-field">Simulation repeats<input id="simulationRepeats" type="number" min="20" max="1000" value="200"></label><label class="lab-field">Measurement noise %<input id="validationNoise" type="number" min="1" max="80" value="15"></label><label class="lab-field">Expected intervention effect %<input id="expectedEffect" type="number" min="1" max="100" value="20"></label><label class="lab-field">Pre period weeks<input id="powerPreWeeks" type="number" min="1" max="104" value="8"></label><label class="lab-field">Post period weeks<input id="powerPostWeeks" type="number" min="1" max="104" value="8"></label></div>
+          <div id="validationMetricGrid" class="lab-metric-grid"></div>
+          <div class="lab-analysis-grid"><section class="lab-card"><p class="section-kicker">Model comparison</p><div class="lab-table-wrap"><table><thead><tr><th>Model</th><th>RMSE</th><th>MAE</th><th>Interval coverage</th><th>Calibration</th></tr></thead><tbody id="validationModelTable"></tbody></table></div></section><section class="lab-card"><p class="section-kicker">Power and simulation conclusions</p><div id="powerResults" class="lab-result-stack"></div></section></div>
+        </section>
+
+        <section class="lab-view" data-lab-panel="unified-program" aria-labelledby="unifiedProgramTitle">
+          <div class="lab-view-heading"><div><p class="section-kicker">Unified cross-domain planning</p><h2 id="unifiedProgramTitle">Allocate one program across Heat, Air, Soil, and Water</h2></div><button id="optimizeUnifiedProgramButton" class="primary-button" type="button">Optimize unified program</button></div>
+          <div class="lab-form-grid compact"><label class="lab-field">Total program budget<input id="unifiedBudget" type="number" min="10000" step="5000" value="250000"></label><label class="lab-field">Allocation principle<select id="allocationPrinciple"><option value="marginal">Highest marginal information</option><option value="balanced">Balanced four-domain portfolio</option><option value="equity">Equity-prioritized portfolio</option><option value="readiness">Operational readiness</option></select></label><label class="lab-field">Shared-host savings %<input id="sharedHostSavings" type="number" min="0" max="50" value="18"></label><label class="lab-field">Mobile sampling hours<input id="mobileRouteHours" type="number" min="1" max="100" value="16"></label></div>
+          <div id="domainAllocationGrid" class="domain-allocation-grid"></div>
+          <div class="lab-analysis-grid"><section class="lab-card"><p class="section-kicker">Compound-risk and monitoring-gap view</p><div id="compoundRiskGrid" class="compound-risk-grid"></div><p class="lab-note">Observed conditions, modeled risk, uncertainty, monitoring gaps, vulnerability, and community priorities remain separate dimensions.</p></section><section class="lab-card"><p class="section-kicker">Shared infrastructure portfolio</p><div id="sharedHostResults" class="lab-result-stack"></div></section></div>
+          <section class="lab-map-card"><div class="lab-card-heading"><div><strong>Mobile monitoring route preview</strong><small>Schematic route for temporary or mobile sampling; operational routing requires field verification.</small></div></div><svg id="mobileRouteCanvas" class="lab-route-map" viewBox="0 0 900 330" role="img" aria-label="Schematic mobile monitoring route"></svg></section>
+        </section>
+
+        <section class="lab-view" data-lab-panel="intelligence" aria-labelledby="intelligenceTitle">
+          <div class="lab-view-heading"><div><p class="section-kicker">Decision intelligence</p><h2 id="intelligenceTitle">Recommendation stability and sensitivity analysis</h2></div><button id="runIntelligenceButton" class="primary-button" type="button">Run stability analysis</button></div>
+          <div class="lab-form-grid compact"><label class="lab-field">Alternative seeds<input id="stabilitySeeds" type="number" min="10" max="500" value="100"></label><label class="lab-field">Weight perturbation %<input id="weightPerturbation" type="number" min="1" max="50" value="15"></label><label class="lab-field">Budget perturbation %<input id="budgetPerturbation" type="number" min="1" max="50" value="20"></label><label class="lab-field">Candidate loss %<input id="candidateLoss" type="number" min="0" max="80" value="10"></label></div>
+          <div id="stabilityMetricGrid" class="lab-metric-grid"></div>
+          <div class="lab-analysis-grid"><section class="lab-card"><p class="section-kicker">Selection frequency</p><div id="stabilitySiteList" class="recommendation-list"></div></section><section class="lab-card"><p class="section-kicker">Assumption sensitivity</p><div id="sensitivityBars" class="sensitivity-bars"></div></section></div>
+        </section>
+
+        <section class="lab-view" data-lab-panel="governance" aria-labelledby="governanceTitle">
+          <div class="lab-view-heading"><div><p class="section-kicker">Reproducible decision process</p><h2 id="governanceTitle">Assumptions, review stages, and decision log</h2></div><button id="saveGovernanceButton" class="primary-button" type="button">Save governance record</button></div>
+          <div class="lab-three-column-grid">
+            <section class="lab-card"><p class="section-kicker">Project stage</p><label class="lab-field">Current status<select id="projectStage"><option>Draft</option><option>Data review</option><option>Scientific review</option><option>Community review</option><option>Operational review</option><option>Approved</option><option>Deployed</option><option>Archived</option></select></label><div id="approvalChecklist" class="lab-check-list compact-checks"></div></section>
+            <section class="lab-card"><p class="section-kicker">Assumption register</p><label class="lab-field">Add assumption<textarea id="assumptionInput" rows="3" placeholder="State one assumption and why it is reasonable."></textarea></label><button id="addAssumptionButton" class="secondary-button" type="button">Add assumption</button><div id="assumptionList" class="decision-log-list"></div></section>
+            <section class="lab-card"><p class="section-kicker">Decision log</p><label class="lab-field">Decision or manual override<textarea id="decisionInput" rows="3" placeholder="Describe what changed and why."></textarea></label><button id="addDecisionButton" class="secondary-button" type="button">Add log entry</button><div id="decisionLogList" class="decision-log-list"></div></section>
+          </div>
+          <section class="lab-card"><div class="lab-card-heading"><div><strong>Stakeholder views</strong><small>Generate audience-specific summaries from the same project record.</small></div><div class="lab-inline-actions"><button class="secondary-button" data-stakeholder="executive" type="button">Executive</button><button class="secondary-button" data-stakeholder="technical" type="button">Technical</button><button class="secondary-button" data-stakeholder="operations" type="button">Operations</button><button class="secondary-button" data-stakeholder="community" type="button">Community</button></div></div><article id="stakeholderBrief" class="stakeholder-brief"></article></section>
+        </section>
+
+        <section class="lab-view" data-lab-panel="research-studio" aria-labelledby="researchStudioTitle">
+          <div class="lab-view-heading"><div><p class="section-kicker">Research and paper support</p><h2 id="researchStudioTitle">Ablations, batch experiments, synthetic cities, and model cards</h2></div><button id="runResearchStudioButton" class="primary-button" type="button">Run research preview</button></div>
+          <div class="lab-three-column-grid">
+            <section class="lab-card"><p class="section-kicker">Ablation design</p><div id="ablationControls" class="lab-check-list compact-checks"></div><div id="ablationResults" class="lab-result-stack"></div></section>
+            <section class="lab-card"><p class="section-kicker">Batch experiment grid</p><div class="lab-form-grid compact"><label class="lab-field">Budgets<input id="batchBudgets" type="text" value="30000,60000,120000"></label><label class="lab-field">Unit counts<input id="batchUnits" type="text" value="5,10,15"></label><label class="lab-field">Noise levels<input id="batchNoise" type="text" value="0.1,0.2,0.3"></label><label class="lab-field">Replicates<input id="batchReplicates" type="number" min="1" max="100" value="10"></label></div><div id="batchSummary" class="lab-kv-list"></div></section>
+            <section class="lab-card"><p class="section-kicker">Synthetic city generator</p><div class="lab-form-grid compact"><label class="lab-field">Hotspots<input id="syntheticHotspots" type="number" min="1" max="12" value="4"></label><label class="lab-field">Inequality<input id="syntheticInequality" type="range" min="0" max="100" value="55"></label><label class="lab-field">Barriers<input id="syntheticBarriers" type="number" min="0" max="8" value="2"></label><label class="lab-field">Source mobility<select id="syntheticMobility"><option value="fixed">Fixed</option><option value="mixed">Mixed</option><option value="mobile">Mobile</option></select></label></div><svg id="syntheticCityCanvas" class="synthetic-city-map" viewBox="0 0 420 260" role="img" aria-label="Generated synthetic environmental city"></svg></section>
+          </div>
+          <section class="lab-card"><div class="lab-card-heading"><div><strong>Generated model card</strong><small>Intended use, unsupported use, inputs, algorithms, validation, equity considerations, and human-review requirements.</small></div><button id="exportModelCardButton" class="secondary-button" type="button">Export model card</button></div><article id="modelCardPreview" class="model-card-preview"></article></section>
+        </section>
+
+        <section class="lab-view" data-lab-panel="story" aria-labelledby="storyTitle">
+          <div class="lab-view-heading"><div><p class="section-kicker">Communication layer</p><h2 id="storyTitle">Map story and grounded project assistant</h2></div><button id="buildStoryButton" class="primary-button" type="button">Build project story</button></div>
+          <div class="lab-story-layout"><section class="lab-card"><p class="section-kicker">Guided presentation</p><div id="storySlides" class="story-slides"></div><div class="lab-inline-actions"><button id="previousStoryButton" class="secondary-button" type="button">Previous</button><span id="storyPosition" class="lab-mode-badge">1 / 1</span><button id="nextStoryButton" class="secondary-button" type="button">Next</button></div></section><section class="lab-card"><p class="section-kicker">Ask about this project</p><div id="assistantTranscript" class="assistant-transcript" aria-live="polite"></div><form id="assistantForm" class="assistant-form"><label class="lab-field">Question<input id="assistantQuestion" type="text" placeholder="Why was this site selected?" autocomplete="off"></label><button class="primary-button" type="submit">Ask</button></form><p class="lab-note">The assistant answers only from the current structured project, local calculations, and explicit limitations.</p></section></div>
+        </section>
+
+        <section class="lab-view" data-lab-panel="export" aria-labelledby="exportTitle">
+          <div class="lab-view-heading"><div><p class="section-kicker">Phase A · Reproducible handoff</p><h2 id="exportTitle">Export, share, and continue in the full tools</h2></div><span id="reproducibilityId" class="lab-mode-badge">ID pending</span></div>
+          <div class="lab-export-grid">
+            <article class="lab-card"><p class="section-kicker">Project file</p><h3>Portable LUMOSLab JSON</h3><p>Includes plan settings, objective weights, constraints, comparison metrics, intervention assumptions, and reproducibility metadata.</p><button id="exportProjectButton" class="primary-button" type="button">Export project</button></article>
+            <article class="lab-card"><p class="section-kicker">Decision report</p><h3>Printable HTML report</h3><p>Creates an executive summary with assumptions, metrics, recommended sites, limitations, and next-step workspace links.</p><button id="exportReportButton" class="secondary-button" type="button">Export report</button></article>
+            <article class="lab-card"><p class="section-kicker">Restore</p><h3>Import a project file</h3><p>Load a previously exported LUMOSLab plan without replacing other saved local scenarios.</p><label class="secondary-button button-link file-button">Import project<input id="importProjectFile" type="file" accept="application/json,.json"></label></article>
+          </div>
+          <section class="lab-card"><div class="lab-card-heading"><div><strong>Continue in the scientific workspace</strong><small>Use LUMOSLab for decisions and communication; use the domain workspace for full model configuration, map evidence, validation, and exports.</small></div></div><div id="workspaceContinuationGrid" class="workspace-continuation-grid"></div></section>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="systemCheckDialog" class="release-dialog">
+    <form method="dialog" class="release-dialog-card"><div class="release-dialog-heading"><div><p class="section-kicker">Application services</p><h2>System check</h2></div><button class="text-button" value="cancel" aria-label="Close system check">Close</button></div><p id="systemCheckSummary" class="section-help">Run a check to verify browser capabilities and public-data services.</p><ul id="systemCheckList" class="system-check-list"></ul><div class="release-dialog-actions"><button id="runSystemCheckButton" class="primary-button" type="button">Run system check</button></div></form>
+  </dialog>
+
+  <footer class="app-footer site-footer"><div class="footer-identity"><p class="footer-credit"><span>Full creation including ideation, website, code, and interface by Hudson Dong, Class of 2027, Stuyvesant High School, New York City.</span><strong>The LUMOS Team</strong></p><nav class="footer-socials" aria-label="LUMOS social links"><a class="icon-link" href="https://github.com/hgd-dev/lumos" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .7a11.3 11.3 0 0 0-3.57 22.02c.57.1.78-.25.78-.55v-2.16c-3.18.69-3.85-1.35-3.85-1.35-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.73-1.53-2.54-.29-5.21-1.27-5.21-5.65 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.13 1.17A10.87 10.87 0 0 1 12 6.94c.97 0 1.94.13 2.85.38 2.17-1.48 3.13-1.17 3.13-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.39-2.68 5.35-5.22 5.64.41.36.77 1.06.77 2.14v3.17c0 .3.21.66.79.55A11.3 11.3 0 0 0 12 .7Z"/></svg></a><a class="icon-link" href="mailto:Lumosystem.team@gmail.com" aria-label="Email the LUMOS team" title="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3.5 5.25h17A2.5 2.5 0 0 1 23 7.75v8.5a2.5 2.5 0 0 1-2.5 2.5h-17A2.5 2.5 0 0 1 1 16.25v-8.5a2.5 2.5 0 0 1 2.5-2.5Zm0 1.8v.28L12 13.1l8.5-5.77v-.28h-17Zm17 9.9c.39 0 .7-.31.7-.7V9.5l-8.7 5.9a.9.9 0 0 1-1 0L2.8 9.5v6.75c0 .39.31.7.7.7h17Z"/></svg></a><a class="icon-link" href="https://www.instagram.com/lumos_optimization/" target="_blank" rel="noopener noreferrer" aria-label="LUMOS on Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.3 2h9.4A5.3 5.3 0 0 1 22 7.3v9.4a5.3 5.3 0 0 1-5.3 5.3H7.3A5.3 5.3 0 0 1 2 16.7V7.3A5.3 5.3 0 0 1 7.3 2Zm0 1.8a3.5 3.5 0 0 0-3.5 3.5v9.4a3.5 3.5 0 0 0 3.5 3.5h9.4a3.5 3.5 0 0 0 3.5-3.5V7.3a3.5 3.5 0 0 0-3.5-3.5H7.3Zm9.9 1.35a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 6.85A5.15 5.15 0 1 1 12 17.15 5.15 5.15 0 0 1 12 6.85Zm0 1.8A3.35 3.35 0 1 0 12 15.35 3.35 3.35 0 0 0 12 8.65Z"/></svg></a><a class="icon-link" href="https://www.linkedin.com/in/lumos-team-7786b2425/" target="_blank" rel="noopener noreferrer" aria-label="LUMOS on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5.35 3.5A2.15 2.15 0 1 1 5.35 7.8a2.15 2.15 0 0 1 0-4.3ZM3.5 9.25h3.7V20.5H3.5V9.25Zm5.85 0h3.55v1.54h.05c.49-.94 1.7-1.94 3.5-1.94 3.75 0 4.45 2.47 4.45 5.68v5.97h-3.7v-5.29c0-1.26-.02-2.88-1.75-2.88-1.76 0-2.03 1.37-2.03 2.79v5.38h-3.7V9.25Z"/></svg></a></nav></div></footer>
+  <script type="module" src="js/site.js?build=multi-page-9"></script>
+  <script type="module" src="js/lumos-lab.js?build=lab-2"></script>
+  <script type="module" src="js/lumos-lab-advanced.js?build=lab-2"></script>
+  <script type="module" src="js/lumos-lab-intro.js?build=intro-2"></script>
+</body>
+</html>

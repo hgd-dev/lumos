@@ -93,12 +93,12 @@ export function runPublicLaunchReadiness(options = {}) {
 
   checks.push(readinessCheck({
     id: "release-version", category: "release", label: "Release metadata identity",
-    satisfied: release.version === "3.3.0",
+    satisfied: release.version === "4.1.0",
     detail: release.version ? "Release metadata, citation, and packaged assets identify one consistent release." : "Release metadata does not identify a packaged release."
   }));
   checks.push(readinessCheck({
     id: "release-status", category: "release", label: "Stable public release channel",
-    satisfied: release.status === "stable-public-v3",
+    satisfied: release.status === "stable-public-v4",
     detail: `Release status: ${release.status ?? "not declared"}.`
   }));
   checks.push(readinessCheck({

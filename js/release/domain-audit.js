@@ -451,8 +451,8 @@ export function runCrossDomainConsistencyAudit({ releaseMetadata = null } = {}) 
   }));
 
   sharedChecks.push(auditCheck({
-    id: "shared-stable-v3-status", category: "release", label: "Stable public v3 release status",
-    satisfied: !releaseMetadata || releaseMetadata.status === "stable-public-v3",
+    id: "shared-stable-v4-status", category: "release", label: "Stable public v4 release status",
+    satisfied: !releaseMetadata || releaseMetadata.status === "stable-public-v4",
     detail: releaseMetadata
       ? `Release status: ${releaseMetadata.status ?? "not declared"}.`
       : "Release metadata was not supplied to this browser audit.",
