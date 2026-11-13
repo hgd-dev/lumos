@@ -251,9 +251,6 @@ docs/                           methodology, operations, governance, and limitat
 
 Bug reports and feature requests can be submitted through [GitHub Issues](https://github.com/hgd-dev/lumos/issues). A structured feedback-form link will be added before the conference and outreach release.
 
-## Attribution
-
-**Full creation including ideation, website, code, and interface by Hudson Dong, Class of 2027, Stuyvesant High School, New York City.**
 
 **The LUMOS Team**
 
@@ -261,7 +258,7 @@ Bug reports and feature requests can be submitted through [GitHub Issues](https:
 
 Recommended citation:
 
-Machine-readable citation metadata is available in [`CITATION.cff`](CITATION.cff).
+
 
 ## License
 
