@@ -261,8 +261,6 @@ Bug reports and feature requests can be submitted through [GitHub Issues](https:
 
 Recommended citation:
 
-> Dong, Hudson. *LUMOS: Localized Unified Monitoring Optimization System.* Public software and methodology for socially constrained Bayesian environmental-monitoring design and operations, 2026.
-
 Machine-readable citation metadata is available in [`CITATION.cff`](CITATION.cff).
 
 ## License
